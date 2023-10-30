@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "format-all": "prettier --write .",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,8 +18,11 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "eslint": "^8.52.0",
     "eslint-config-next": "14.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.3",
     "sass": "^1.69.5",
     "typescript": "^5"
   }
