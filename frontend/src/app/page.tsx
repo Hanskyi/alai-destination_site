@@ -1,17 +1,11 @@
 import React from 'react';
+import Reviews from "@/components/Reviews/Reviews";
 
 const Home = () => {
     return (
-        <div>
-         <h1>TEXT</h1>
-            <ul>
-                <li>text</li>
-                <li>text</li>
-                <li>text</li>
-                <li>text</li>
-                <li>text</li>
-            </ul>
-        </div>
+      <div>
+        <Reviews />
+      </div>
     );
 };
 
