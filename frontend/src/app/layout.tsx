@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './globals.scss'
 import React, {PropsWithChildren} from "react";
+import Header from "@/components/Header/Header";
 
 const montserrat  = Montserrat({ subsets: ['latin'],weight:['400','600','700','500'] })
 
@@ -14,7 +15,7 @@ const  RootLayout: React.FC<PropsWithChildren> = ({children})=> {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-      <header></header>
+      <Header />
       <main>
           {children}
       </main>
