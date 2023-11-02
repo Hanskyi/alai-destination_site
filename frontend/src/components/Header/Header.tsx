@@ -7,7 +7,7 @@ import bookingIcon from '../../../public/booking-icon.png';
 import logoSmall from '../../../public/logo-small.svg';
 import phoneIcon from '../../../public/phone-icon.png';
 import logo from '../../../public/logo.svg';
-import './Header.css';
+import './Header.scss';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

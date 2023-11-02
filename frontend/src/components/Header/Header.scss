@@ -1,3 +1,5 @@
+@use '../../app/mixins';
+
 .header {
     height: 7rem;
     box-shadow: 0 4px 24px 0 rgba(0, 0, 0, .14);
@@ -8,6 +10,10 @@
     left: 0;
     right: 0;
     background-color: #fff;
+
+    @include mixins.lg {
+        height: 56px;
+    }
 }
 
 .container {
@@ -25,16 +31,34 @@
     color: #222222;
     font-size: 16px;
     font-weight: 500;
+
+    @include mixins.xl {
+        display: block;
+    }
+
+    @include mixins.lg {
+        margin: 5px 0;
+        padding: 15px 0 10px 16px;
+        font-weight: 400;
+    }
 }
 
 .header-link-large {
     margin: 0 25px;
     color: #222222;
     font-size: 16px;
+
+    @include mixins.xl {
+        display: none;
+    }
 }
 
 .largeScreen-links {
     margin-left: 100px;
+
+    @include mixins.xl {
+        display: none;
+    }
 }
 
 .header-top {
@@ -45,37 +69,70 @@
 .header-bottom {
     display: flex;
     align-items: center;
+
+    @include mixins.xl {
+        margin-top: -20px;
+    }
 }
 
 .links {
     margin-left: auto;
     padding-top: 15px;
     display: none;
+
+    @include mixins.xl {
+        display: inherit;
+    }
+
+    @include mixins.lg {
+        display: flex;
+    }
 }
 
 .links-bottom {
     padding-top: 40px;
     display: flex;
     align-items: center;
+
+    @include mixins.lg {
+        display: none;
+    }
 }
 
 .logo {
     margin-right: 65px;
+
+    @include mixins.lg {
+        display: none;
+    }
 }
 
 .logo-small {
     display: none;
+
+    @include mixins.lg {
+        display: block;
+        padding-top: 20px;
+    }
 }
 
 .header-img {
     margin-bottom: -7px;
     margin-right: 5px;
+
+    @include mixins.lg {
+        display: block;
+    }
 }
 
 .burger-menu {
     display: none;
     flex-direction: column;
     cursor: pointer;
+
+    @include mixins.lg {
+        display: flex;
+    }
 }
 
 .burger-menu.open {
@@ -129,73 +186,8 @@
     display: block;
 }
 
-@media screen and (max-width: 960px) {
-
-    .header {
-        height: 56px;
-    }
-
-    .burger-menu {
-        display: flex;
-    }
-
-    .header-link {
-        margin: 5px 0;
-        padding: 15px 0 10px 16px;
-    }
-
-    .header-link:hover {
-        background-color: #f0f1f4;
-    }
-
-    .links-bottom {
+.top-text {
+    @include mixins.lg {
         display: none;
-    }
-
-    .top-text {
-        display: none;
-    }
-
-    .header-img {
-        display: block;
-    }
-
-    .links {
-        display: flex;
-    }
-
-    .logo {
-        display: none;
-    }
-
-    .logo-small {
-        display: block;
-        padding-top: 20px;
-    }
-
-    .header-link {
-        font-weight: 400;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .header-bottom {
-        margin-top: -20px;
-    }
-
-    .links {
-        display: inherit;
-    }
-
-    .largeScreen-links {
-        display: none;
-    }
-
-    .header-link-large {
-      display: none;
-    }
-
-    .header-link {
-        display: block;
     }
 }
