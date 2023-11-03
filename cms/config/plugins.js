@@ -1,4 +1,5 @@
 module.exports = ({ env }) => ({
+  // ..
   'transformer': {
     enabled: true,
     config: {
@@ -8,4 +9,5 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  // ..
 });
