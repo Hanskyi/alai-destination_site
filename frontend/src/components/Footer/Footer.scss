@@ -126,6 +126,10 @@
     @include mixins.lg {
       .container {
         flex-direction: column;
+
+        .block-subscribe {
+          margin-bottom: 36px;
+        }
       }
     }
   }

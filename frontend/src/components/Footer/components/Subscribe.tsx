@@ -1,7 +1,6 @@
 'use client'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Modal from "../../Modal/Modal";
-
 
 const Subscribe = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,9 +10,9 @@ const Subscribe = () => {
     };
 
     const closeModal = () => {
-        console.log(111)
         setIsModalOpen(false);
     };
+
     return (
         <div className="block-subscribe">
             <div className="select-block">
@@ -38,7 +37,7 @@ const Subscribe = () => {
                 </button>
 
                 {isModalOpen && (
-                    <Modal onClose={closeModal} />
+                    <Modal onClose={closeModal} isModalOpen={isModalOpen} />
                 )}
             </div>
         </div>
