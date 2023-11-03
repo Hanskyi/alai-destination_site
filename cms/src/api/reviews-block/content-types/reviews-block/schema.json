@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "reviews_blocks",
+  "info": {
+    "singularName": "reviews-block",
+    "pluralName": "reviews-blocks",
+    "displayName": "reviews-block",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "review": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.card",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
