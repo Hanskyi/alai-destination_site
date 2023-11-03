@@ -12,10 +12,22 @@ export interface SharedCard extends Schema.Component {
   };
 }
 
+export interface SharedLink extends Schema.Component {
+  collectionName: 'components_shared_links';
+  info: {
+    displayName: 'Link';
+  };
+  attributes: {
+    href: Attribute.String;
+    text: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'shared.card': SharedCard;
+      'shared.link': SharedLink;
     }
   }
 }
