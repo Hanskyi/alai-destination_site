@@ -21,6 +21,28 @@ a {
 .container{
   max-width: 1150px;
   margin: 0 auto;
+  padding: 0 25px;
 }
 
 
+.d-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}

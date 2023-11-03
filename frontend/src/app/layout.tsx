@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import './globals.scss'
+import './styles/globals.scss'
 import React, {PropsWithChildren} from "react";
 
 const montserrat  = Montserrat({ subsets: ['latin'],weight:['400','600','700','500'] })
