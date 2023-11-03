@@ -9,7 +9,6 @@ interface ModalData {
     country: string;
     email: string;
     isChecked: boolean;
-
 }
 
 interface ModalProps {
