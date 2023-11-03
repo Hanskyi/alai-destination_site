@@ -379,12 +379,6 @@ export interface ApiReviewsBlockReviewsBlock extends Schema.SingleType {
     };
   };
   attributes: {
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     review: Attribute.Component<'shared.card', true> &
       Attribute.SetPluginOptions<{
         i18n: {
