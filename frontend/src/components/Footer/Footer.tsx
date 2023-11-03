@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from "next/link";
-import Modal from "../Modal/Modal";
 import FooterLogo from '../../assets/footer/logo_footer.png';
 import Socials from "./components/Socials";
 import Subscribe from "./components/Subscribe";
