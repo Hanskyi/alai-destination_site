@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import './globals.scss'
+import './styles/globals.scss'
 import React, {PropsWithChildren} from "react";
 import Header from "@/components/Header/Header";
 
