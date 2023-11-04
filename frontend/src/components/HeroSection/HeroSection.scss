@@ -36,6 +36,9 @@
     @include mixins.xxl {
       height: 700px;
     }
+    @include mixins.lg {
+      height: 500px;
+    }
     @include mixins.md {
       height: 600px;
     }
@@ -52,6 +55,15 @@
     z-index: 1;
     max-width: 1150px;
     padding: 20px;
+    @include mixins.xxl {
+      transform: translate(-70%, -10%);
+    }
+    @include mixins.xl {
+      transform: translate(-70%, -10%);
+    }
+    @include mixins.lg {
+      transform: translate(-55%, -30%);
+    }
     @include mixins.md {
       width: 100%;
       transform: translate(-50%, -10%);
@@ -95,6 +107,12 @@
         width: 250px;
         @include mixins.xxl {
           margin-right: 5px;
+        }
+        @include mixins.xl {
+          width: 350px;
+        }
+        @include mixins.lg {
+          width: 350px;
         }
         @include mixins.md {
           margin-right: 0;

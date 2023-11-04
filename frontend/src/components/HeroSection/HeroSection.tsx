@@ -55,12 +55,14 @@ const MainBlock = () => {
                 IndicatorSeparator: () => null,
               }}
               styles={{
-                control: (baseStyles, state) => ({
-                  ...baseStyles,
-                  paddingLeft: '25px',
-                  fontSize: '16px',
-                  fontFamily: 'inherit',
-                }),
+                control: (baseStyles, state) => {
+                  return {
+                    ...baseStyles,
+                    paddingLeft: '25px',
+                    fontSize: '16px',
+                    fontFamily: 'inherit',
+                  }
+                },
               }}
             />
           </div>
