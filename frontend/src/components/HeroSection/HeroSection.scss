@@ -3,48 +3,13 @@
 .main-block {
   position: relative;
 
-  .bottom-ad {
-    padding: 5px 10px;
-    color: #fff;
-    background: #222;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    @include mixins.sm {
-      flex-direction: column;
-    }
-
-    .book-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      text-decoration: underline;
-    }
-
-    .book-link:hover {
-      text-decoration: none;
-    }
-  }
-
   .main-block-image {
     width: 100%;
-    height: auto;
+    max-height: 700px;
     object-fit: cover;
     overflow: hidden;
     vertical-align: middle;
-    @include mixins.xxl {
-      height: 700px;
-    }
-    @include mixins.lg {
-      height: 500px;
-    }
-    @include mixins.md {
-      height: 600px;
-    }
-    @include mixins.sm {
-      height: 400px;
-    }
+    object-position: right;
   }
 
   .main-block-container {
@@ -56,31 +21,33 @@
     max-width: 1150px;
     padding: 20px;
     @include mixins.xxl {
-      transform: translate(-70%, -10%);
+      transform: translate(-70%, -50%);
     }
     @include mixins.xl {
-      transform: translate(-70%, -10%);
+      transform: translate(-60%, -50%);
     }
     @include mixins.lg {
-      transform: translate(-55%, -30%);
+      transform: translate(-50%, -50%);
     }
     @include mixins.md {
-      width: 100%;
-      transform: translate(-50%, -10%);
+      width: 80%;
+      transform: translate(-60%, -10%);
     }
     @include mixins.sm {
-      max-width: 100%;
-      padding: 0 20px;
-      transform: translate(-50%, -50%);
+      width: 90%;
+      transform: translate(-55%, -10%);
     }
 
     .main-block-header {
       text-transform: capitalize;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: white;
-      font-size: 35px;
+      font-size: 45px;
       line-height: 40px;
+      @include mixins.sm {
+        font-size: 35px;
+      }
     }
 
     .form-block {
@@ -97,6 +64,7 @@
 
       .search-select-block {
         z-index: 5;
+        width: 100%;
         @include mixins.sm {
           width: 100%;
         }
@@ -104,97 +72,83 @@
 
       .search-input {
         position: relative;
-        width: 250px;
-        @include mixins.xxl {
-          margin-right: 5px;
-        }
-        @include mixins.xl {
-          width: 350px;
-        }
-        @include mixins.lg {
-          width: 350px;
-        }
+        width: 350px;
+        margin-right: 5px;
         @include mixins.md {
           margin-right: 0;
           margin-bottom: 5px;
-          width: 386px;
-        }
-        @include mixins.sm {
           width: 100%;
         }
       }
 
       .search-icon {
         position: absolute;
-        margin: 10px;
+        margin: 17px 10px;
         z-index: 2;
       }
 
       .datepicker-and-button {
         display: flex;
-        @include mixins.sm {
-          width: 100%;
-        }
-      }
 
-      .datepicker {
-        @include mixins.xxl {
+
+        .datepicker {
           margin-right: 5px;
+          .calendar-icon {
+            position: absolute;
+            margin: 17px 10px;
+            z-index: 2;
+          }
+
+          .date-input {
+            position: relative;
+            font-size: 16px;
+            font-family: inherit;
+            appearance: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 17px 30px 17px 35px;
+            outline: none;
+            width: 170px;
+            @include mixins.md {
+              width: 100%;
+            }
+            .date-input:focus {
+              border-color: #007bff;
+              box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+          }
         }
-      }
 
-      .calendar-icon {
-        position: absolute;
-        margin: 10px;
-        z-index: 2;
-      }
+        .main-block-search-button {
+          font-family: inherit;
+          font-size: inherit;
+          padding: 10px 50px 10px 20px;
+          background-color: #eb0000;
+          border-radius: 5px;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
+          background-size: 20px 20px;
+          background-position: right 15px center;
+          background-repeat: no-repeat;
 
-      .date-input {
-        position: relative;
-        font-size: 16px;
-        font-family: inherit;
-        appearance: none;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 9px 30px 9px 35px;
-        outline: none;
-        width: 170px;
-        @include mixins.md {
-          width: 100%;
+          @include mixins.sm {
+            font-size: 0;
+            padding: 10px 30px 10px 30px;
+            background-position: center;
+          }
+
+          .main-block-search-button:hover {
+            background-color: #bd0202;
+          }
+
+          .main-block-search-button:active {
+            background-color: #940101;
+            transform: translateY(2px);
+            box-shadow: 0 0 5px rgba(148, 1, 1, 0.5);
+          }
         }
-      }
-
-      .date-input:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-      }
-
-      .main-block-search-button {
-        font-family: inherit;
-        font-size: inherit;
-        padding: 10px 30px 10px 10px;
-        background-color: #eb0000;
-        border-radius: 5px;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
-        background-size: 20px 20px;
-        background-position: right 7px center;
-        background-repeat: no-repeat;
-        @include mixins.sm {
-          font-size: 0;
-        }
-      }
-
-      .main-block-search-button:hover {
-        background-color: #bd0202;
-      }
-
-      .main-block-search-button:active {
-        background-color: #940101;
-        transform: translateY(2px);
-        box-shadow: 0 0 5px rgba(148, 1, 1, 0.5);
       }
 
     }

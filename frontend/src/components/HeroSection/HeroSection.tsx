@@ -1,13 +1,11 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import originalImage from '../../../public/INT_homepage_1920x1285_GTO_1.jpg'
 import React, {useEffect, useState} from 'react';
 import AsyncSelect from 'react-select/async';
 import DatePicker from 'react-datepicker';
 import {PiMagnifyingGlassBold} from "react-icons/pi";
 import {FaCalendarAlt} from 'react-icons/fa';
-import {IoIosArrowForward} from "react-icons/io";
 import 'react-datepicker/dist/react-datepicker.css';
 import './HeroSection.scss';
 
@@ -66,6 +64,8 @@ const MainBlock = () => {
                     paddingLeft: '25px',
                     fontSize: '16px',
                     fontFamily: 'inherit',
+                    paddingTop: '8px',
+                    paddingBottom: '8px'
                   }
                 },
               }}
@@ -101,12 +101,6 @@ const MainBlock = () => {
         alt="Travellers and a leader walking down the street on an Intrepid trip."
       />
 
-      <div className="bottom-ad">
-        <p className="book-link-para">Explore our last-minute Alai travel deals!</p>
-        <Link href="#" className="book-link">Book Now
-          <IoIosArrowForward/>
-        </Link>
-      </div>
     </div>
   );
 };
