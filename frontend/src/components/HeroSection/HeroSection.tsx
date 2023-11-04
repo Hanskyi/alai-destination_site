@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import originalImage from '../../../public/INT_homepage_1920x1285_GTO_1.jpg'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AsyncSelect from 'react-select/async';
 import DatePicker from 'react-datepicker';
 import {PiMagnifyingGlassBold} from "react-icons/pi";
@@ -18,6 +18,11 @@ interface Option {
 
 const MainBlock = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
+  const [showSelect, setShowSelect] = useState(false);
+
+  useEffect(() => {
+    setShowSelect(true);
+  }, []);
 
   const filterOptions = (inputValue: string) => {
     const options: Option[] = [
@@ -43,7 +48,7 @@ const MainBlock = () => {
 
           <div className="search-select-block">
             <PiMagnifyingGlassBold className="search-icon"/>
-            <AsyncSelect
+            {showSelect && <AsyncSelect
               isMulti={false}
               className="search-input"
               isClearable
@@ -64,7 +69,7 @@ const MainBlock = () => {
                   }
                 },
               }}
-            />
+            />}
           </div>
 
           <div className="datepicker-and-button">
@@ -74,9 +79,8 @@ const MainBlock = () => {
               <DatePicker
                 className="date-input"
                 selected={startDate}
-                onChange={(date: Date) => setStartDate(date)}
+                onChange={(date: Date | null) => setStartDate(date)}
                 placeholderText={startDate ? '' : 'Anytime'}
-                startDate={null}
                 dateFormat="dd/MM/yyyy"
                 isClearable
               />
