@@ -4,6 +4,7 @@ import './styles/globals.scss'
 import React, {PropsWithChildren} from "react";
 import Header from "@/components/Header/Header";
 
+
 const montserrat  = Montserrat({ subsets: ['latin'],weight:['400','600','700','500'] })
 
 export const metadata: Metadata = {
