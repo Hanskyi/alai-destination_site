@@ -10,13 +10,6 @@ const Footer = () => {
 
     return (
         <div className="footer d-flex flex-column">
-            <div className="footer__top">
-                <div className="container d-flex">
-                    <Subscribe/>
-                    <FooterNav/>
-                </div>
-            </div>
-
             <div className="footer__bottom">
                 <div className="container d-flex justify-between align-center">
                     <div className="footer__logo">
