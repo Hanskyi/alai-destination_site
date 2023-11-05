@@ -75,7 +75,7 @@ const Header = () => {
         </div>
         <div className="header-bottom">
           <a className="logo" href="#">
-            <Image src={logo} alt="logo" width={165} height={80} priority={true} />
+            <Image src={logo} alt="logo" width={165} height={70} priority={true} />
           </a>
           <div className="links-bottom">
             {navLinks.map((link, index) => (
