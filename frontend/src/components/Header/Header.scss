@@ -25,11 +25,9 @@
 }
 
 .header-link {
-    display: none;
     margin: 0 25px;
     color: #222222;
     font-size: 16px;
-    font-weight: 500;
 
     @include mixins.xl {
         display: block;
@@ -42,22 +40,8 @@
     }
 }
 
-.header-link-large {
-    margin: 0 25px;
-    color: #222222;
-    font-size: 16px;
-
-    @include mixins.xl {
-        display: none;
-    }
-}
-
 .largeScreen-links {
-    margin-left: 100px;
-
-    @include mixins.xl {
-        display: none;
-    }
+    padding-top: 30px;
 }
 
 .header-top {
@@ -68,6 +52,8 @@
 .header-bottom {
     display: flex;
     align-items: center;
+    padding-bottom: 10px;
+    justify-content: space-evenly;
 
     @include mixins.xl {
         margin-top: -20px;
@@ -89,7 +75,7 @@
 }
 
 .links-bottom {
-    padding-top: 20px;
+    padding-top: 30px;
     display: flex;
     align-items: center;
 
@@ -99,8 +85,6 @@
 }
 
 .logo {
-    margin-right: 65px;
-
     @include mixins.lg {
         display: none;
     }
@@ -167,10 +151,6 @@
 .links-responsive.open {
     right: 0;
 }
-
-
-
-
 
 .backdrop {
     background: rgba(0, 0, 0, .55);
