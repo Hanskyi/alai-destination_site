@@ -1,6 +1,7 @@
 import React from 'react';
 import "./TravelSlider.scss"
-import SwiperBundle from "@/components/travelSliderBlog/Components/SwiperBundle";
+import SwiperBundleWaysToTravel from "@/components/travelSliderBlog/Components/SwiperBundleWaysToTravel";
+import SwiperBundleGoodTrips from "@/components/travelSliderBlog/Components/SwiperBundleGoodTrips";
 
 
 const TravelSliderBlog = () => {
@@ -11,12 +12,12 @@ const TravelSliderBlog = () => {
 
             <div className='travelSliderBlog__first'>
                 <p className="travelSliderBlog__description"> Ways to travel</p>
-                <SwiperBundle/>
+                <SwiperBundleWaysToTravel />
             </div>
 
             <div className="travelSliderBlog__second">
                 <p className="travelSliderBlog__description"> Good Trips Only for 2023</p>
-                <SwiperBundle/>
+                <SwiperBundleGoodTrips/>
             </div>
         </div>
     );
