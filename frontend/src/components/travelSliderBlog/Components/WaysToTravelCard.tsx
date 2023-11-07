@@ -1,15 +1,12 @@
 import React from 'react';
-import '../TravelSlider.scss';
 
 const WaysToTravelCard = () => {
     return (
         <div className="card">
             <div className="card__image__box">
-                <img className="card__image__box__content__two" src='https://core-renderer-tiles.maps.yandex.net/tiles?l=map&v=23.11.01-1-b231030182430&x=6&y=3&z=3&scale=2.625&lang=ru_RU&client_id=yandex-web-maps&&ads=enabled' alt='#'/>
+                <img className="card__image__box__content" src="https://kartinki.pics/src.php?src=https://kartinki.pics/uploads/posts/2022-02/1645764570_1-kartinkin-net-p-na-profil-kartinki-1.jpg&w=315&h=455" alt="#"/>
             </div>
-            <h4 className="card__days">11 Days · Comfort</h4>
-            <p className="card__description">Best of Antarctica: A White Christmas (Ocean Endeavour)</p>
-            <p className="card__price">From <span className="card__price__span">USD $9,990</span></p>
+            <h4 className="card__title"> Walking & Trekking tours</h4>
         </div>
     );
 };

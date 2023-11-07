@@ -1,17 +1,16 @@
 "use client"
 import React from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import '../TravelSlider.scss';
 
-import { Pagination, Navigation } from 'swiper/modules';
-import TravelSliderCard from "@/components/travelSliderBlog/Components/TravelSliderCard";
+import {Navigation, Pagination} from 'swiper/modules';
 import WaysToTravelCard from "@/components/travelSliderBlog/Components/WaysToTravelCard";
 
-const SwiperBundle= () => {
 
+const SwiperBundleWaysToTravel= () => {
     return (
             <Swiper
                 slidesPerView={4.5}
@@ -25,44 +24,56 @@ const SwiperBundle= () => {
                 className="mySwiper"
                 breakpoints={{
                     1600: {
-                        slidesPerView: 4.5
+                        slidesPerView: 4.3
                     },
                     1400: {
-                        slidesPerView: 4.5
+                        slidesPerView: 4.2
                     },
                     1200: {
                         slidesPerView: 4.1,
-                        width: 1024
                     },
                     992: {
-                        slidesPerView: 4
+                        slidesPerView: 3.9,
                     },
-                    768: {
+                    780: {
                         slidesPerView: 3
                     },
-                    576: {
-                        slidesPerView: 1.5
+                    700: {
+                        slidesPerView: 2.6
                     },
-                    320: {
+                    630: {
+                        slidesPerView: 2.3
+                    },
+                    573: {
+                        slidesPerView: 2.1
+                    },
+                    541: {
+                        slidesPerView: 2
+                    },
+                    500: {
+                        slidesPerView: 1.8
+                    },
+                    450: {
+                        slidesPerView: 1.6
+                    },
+                    380: {
                         slidesPerView: 1.3
+                    },
+                    350: {
+                        slidesPerView: 1.2
                     },
                     110: {
                         slidesPerView: 1
                     }
                 }}
             >
-                <SwiperSlide><WaysToTravelCard/></SwiperSlide>
-                <SwiperSlide><WaysToTravelCard/></SwiperSlide>
-                <SwiperSlide><WaysToTravelCard/></SwiperSlide>
-                <SwiperSlide><WaysToTravelCard/></SwiperSlide>
-                <SwiperSlide><WaysToTravelCard/></SwiperSlide>
-                <SwiperSlide><WaysToTravelCard/></SwiperSlide>
+                {Array.from(Array(10)).map((_,index)=>(
+                    <SwiperSlide key={index}>
+                         <WaysToTravelCard/>
+                    </SwiperSlide>
+                ))}
 
-                <SwiperSlide><TravelSliderCard/></SwiperSlide>
-                <SwiperSlide><TravelSliderCard/></SwiperSlide>
-                <SwiperSlide><TravelSliderCard/></SwiperSlide>
-                <SwiperSlide><TravelSliderCard/></SwiperSlide>
-                <SwiperSlide><TravelSliderCard/></SwiperSlide>
+                <SwiperSlide> <a className='swiper-btn'>View more themes</a></SwiperSlide>
                 <div className='mySwiper__btns'>
                     <div className='mySwiper__btns__prev'></div>
                     <div className='mySwiper__btns__next'></div>
@@ -71,4 +82,4 @@ const SwiperBundle= () => {
     );
 };
 
-export default SwiperBundle;
+export default SwiperBundleWaysToTravel;
