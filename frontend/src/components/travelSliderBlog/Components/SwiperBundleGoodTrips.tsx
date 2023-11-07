@@ -4,7 +4,6 @@ import React from 'react';
 import GoodTripsCard from "@/components/travelSliderBlog/Components/GoodTripsCard";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import RippleCard from "@/components/travelSliderBlog/Components/RippleCard";
 
 const SwiperBundleGoodTrips = () => {
            return (

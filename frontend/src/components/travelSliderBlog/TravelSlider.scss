@@ -146,10 +146,8 @@
   align-items: center;
   overflow: hidden;
   justify-content: center;
-  //background: transparent;
   vertical-align: middle;
   transition: background-color 0.3s ease 0s;
-  background-image: url("");
   &:hover {
     background-color: #BEBEBE;
   }
