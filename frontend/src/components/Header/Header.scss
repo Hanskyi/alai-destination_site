@@ -42,6 +42,10 @@
 
 .largeScreen-links {
     padding-top: 30px;
+
+    @include mixins.lg {
+       display: none;
+    }
 }
 
 .header-top {
