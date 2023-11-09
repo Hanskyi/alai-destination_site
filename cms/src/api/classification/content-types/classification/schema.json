@@ -40,6 +40,12 @@
           "localized": false
         }
       }
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour.tour",
+      "mappedBy": "classification"
     }
   }
 }

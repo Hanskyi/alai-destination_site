@@ -660,6 +660,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    reviews: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::review.review'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -708,6 +713,11 @@ export interface ApiClassificationClassification extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    tours: Attribute.Relation<
+      'api::classification.classification',
+      'oneToMany',
+      'api::tour.tour'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -908,6 +918,53 @@ export interface ApiPurposeBlockPurposeBlock extends Schema.SingleType {
   };
 }
 
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    review: Attribute.String & Attribute.Required;
+    rating: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 5;
+      }>;
+    users_permissions_user: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    tour: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::tour.tour'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiReviewsBlockReviewsBlock extends Schema.SingleType {
   collectionName: 'reviews_blocks';
   info: {
@@ -962,6 +1019,119 @@ export interface ApiReviewsBlockReviewsBlock extends Schema.SingleType {
   };
 }
 
+export interface ApiTourTour extends Schema.CollectionType {
+  collectionName: 'tours';
+  info: {
+    singularName: 'tour';
+    pluralName: 'tours';
+    displayName: 'tour';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    classification: Attribute.Relation<
+      'api::tour.tour',
+      'manyToOne',
+      'api::classification.classification'
+    >;
+    reviews: Attribute.Relation<
+      'api::tour.tour',
+      'oneToMany',
+      'api::review.review'
+    >;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    images: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    mainImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    price: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 0;
+      }>;
+    duration: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 30;
+      }>;
+    startDate: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    endDate: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    previewDescription: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'previewDescription'>;
+    tourSchedule: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tour.tour', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tour.tour', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::tour.tour',
+      'oneToMany',
+      'api::tour.tour'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -982,7 +1152,9 @@ declare module '@strapi/types' {
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::location.location': ApiLocationLocation;
       'api::purpose-block.purpose-block': ApiPurposeBlockPurposeBlock;
+      'api::review.review': ApiReviewReview;
       'api::reviews-block.reviews-block': ApiReviewsBlockReviewsBlock;
+      'api::tour.tour': ApiTourTour;
     }
   }
 }
