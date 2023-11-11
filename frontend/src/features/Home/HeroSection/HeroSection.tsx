@@ -1,4 +1,3 @@
-'use client';
 import Image from 'next/image';
 import originalImage from '../../../assets/header/INT_homepage_1920x1285_GTO_1.jpg';
 import React, { useEffect, useState } from 'react';
@@ -14,7 +13,7 @@ interface Option {
   label: string;
 }
 
-const MainBlock = () => {
+const HeroSection = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [showSelect, setShowSelect] = useState(false);
 
@@ -53,7 +52,7 @@ const MainBlock = () => {
                   IndicatorSeparator: () => null,
                 }}
                 styles={{
-                  control: (baseStyles, state) => {
+                  control: (baseStyles) => {
                     return {
                       ...baseStyles,
                       paddingLeft: '25px',
@@ -91,12 +90,12 @@ const MainBlock = () => {
       <Image
         width={1150}
         height={500}
-        className="main-block-image"
+        className={style.mainBlockImage}
         src={originalImage}
-        alt="Travellers and a leader walking down the street on an Intrepid trip."
+        alt="Travellers and a leader walking down the street."
       />
     </div>
   );
 };
 
-export default MainBlock;
+export default HeroSection;
