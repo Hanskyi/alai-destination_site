@@ -1,9 +1,9 @@
 @use '../../../styles/mixins';
 
-.main-block {
+.mainBlock {
   position: relative;
 
-  .main-block-image {
+  .mainBlockImage {
     width: 100%;
     height: 100vh;
     object-fit: cover;
@@ -12,7 +12,7 @@
     object-position: right;
   }
 
-  .main-block-container {
+  .mainBlockContainer {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -38,7 +38,7 @@
       transform: translate(-55%, -30%);
     }
 
-    .main-block-header {
+    .mainBlockHeader {
       text-transform: capitalize;
       font-weight: bold;
       margin-bottom: 32px;
@@ -58,7 +58,7 @@
       }
     }
 
-    .form-block {
+    .formBlock {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -70,7 +70,7 @@
         margin-bottom: 35px;
       }
 
-      .search-select-block {
+      .searchSelectBlock {
         z-index: 5;
         width: 100%;
         @include mixins.sm {
@@ -78,7 +78,7 @@
         }
       }
 
-      .search-input {
+      .searchInput {
         position: relative;
         width: 350px;
         margin-right: 5px;
@@ -89,24 +89,24 @@
         }
       }
 
-      .search-icon {
+      .searchIcon {
         position: absolute;
         margin: 17px 10px;
         z-index: 2;
       }
 
-      .datepicker-and-button {
+      .datepickerAndButton {
         display: flex;
 
         .datepicker {
           margin-right: 5px;
-          .calendar-icon {
+          .calendarIcon {
             position: absolute;
             margin: 17px 10px;
             z-index: 2;
           }
 
-          .date-input {
+          .dateInput {
             position: relative;
             font-size: 16px;
             font-family: inherit;
@@ -119,14 +119,14 @@
             @include mixins.md {
               width: 100%;
             }
-            .date-input:focus {
+            .dateInput:focus {
               border-color: #007bff;
               box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
             }
           }
         }
 
-        .main-block-search-button {
+        .mainBlockSearchButton {
           font-family: inherit;
           font-size: inherit;
           padding: 10px 50px 10px 20px;
@@ -146,11 +146,11 @@
             background-position: center;
           }
 
-          .main-block-search-button:hover {
+          .mainBlockSearchButton:hover {
             background-color: #bd0202;
           }
 
-          .main-block-search-button:active {
+          .mainBlockSearchButton:active {
             background-color: #940101;
             transform: translateY(2px);
             box-shadow: 0 0 5px rgba(148, 1, 1, 0.5);
