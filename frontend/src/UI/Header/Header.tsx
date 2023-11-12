@@ -1,4 +1,3 @@
-'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,12 +41,23 @@ const Header = () => {
 
   return (
     <header className={header.header}>
-      <div className={header.container}>
+      <div className={header.headerContainer}>
         <div className={header.headerTop}>
           <Link className={header.logoSmall} href="#">
             <Image src={logoSmall} alt="#" width={100} height={24} priority={true} />
           </Link>
           <div className={header.links}>
+            <>
+              {renderHeaderTopLinks.map((link, index) => (
+                <Link key={index} className={header.headerTopLinks} href={link.href}>
+                  <Image
+                    className={header.headerImg}
+                    src={link.imgSrc}
+                    alt={link.imgAlt}
+                    priority={true}
+                  />
+                </Link>
+              ))}</>
             <div
               className={`${header.burgerMenu} ${menuOpen ? header.open : ''}`}
               onClick={toggleMenu}

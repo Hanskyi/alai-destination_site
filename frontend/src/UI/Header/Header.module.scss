@@ -15,16 +15,26 @@
   }
 }
 
-.container {
+.headerContainer {
   padding: 0 15px;
 }
 
-.header-top-link {
+.headerTopLink {
   margin: 0 10px;
   color: #222222;
 }
 
-.header-link {
+.headerTopLinks {
+  margin: 0 10px;
+  color: #222222;
+  display: none;
+
+  @include mixins.lg {
+   display: block;
+  }
+}
+
+.headerLink {
   margin: 0 25px;
   color: #222222;
   font-size: 16px;
@@ -40,7 +50,7 @@
   }
 }
 
-.largeScreen-links {
+.largeScreenLinks {
   padding-top: 30px;
 
   @include mixins.lg {
@@ -48,12 +58,12 @@
   }
 }
 
-.header-top {
+.headerTop {
   display: flex;
   align-items: center;
 }
 
-.header-bottom {
+.headerBottom {
   display: flex;
   align-items: center;
   padding-bottom: 10px;
@@ -78,10 +88,11 @@
   }
 }
 
-.links-bottom {
+.linksBottom {
   padding-top: 30px;
   display: flex;
   align-items: center;
+  font-size: 16px;
 
   @include mixins.lg {
     display: none;
@@ -94,7 +105,7 @@
   }
 }
 
-.logo-small {
+.logoSmall {
   display: none;
 
   @include mixins.lg {
@@ -103,7 +114,7 @@
   }
 }
 
-.header-img {
+.headerImg {
   margin-bottom: -7px;
   margin-right: 5px;
 
@@ -112,7 +123,7 @@
   }
 }
 
-.burger-menu {
+.burgerMenu {
   display: none;
   flex-direction: column;
   cursor: pointer;
@@ -122,24 +133,24 @@
   }
 }
 
-.burger-menu.open {
+.burgerMenu.open {
   display: flex;
 }
 
-.close-button {
+.closeButton {
   font-weight: 600;
   cursor: pointer;
   margin: 20px 0 31px 236px;
 }
 
-.burger-menu .bar {
+.burgerMenu .bar {
   background-color: #222222;
   height: 2px;
   width: 18px;
   margin: 2px 0;
 }
 
-.links-responsive {
+.linksResponsive {
   background: #ffffff;
   position: fixed;
   top: 0;
@@ -152,7 +163,7 @@
   flex-direction: column;
 }
 
-.links-responsive.open {
+.linksResponsive.open {
   right: 0;
 }
 
@@ -170,7 +181,7 @@
   display: block;
 }
 
-.top-text {
+.topText {
   @include mixins.lg {
     display: none;
   }
