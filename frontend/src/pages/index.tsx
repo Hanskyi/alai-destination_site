@@ -6,14 +6,14 @@ import Blogs from '@/features/Home/Blogs/Blogs';
 import Reviews from '@/features/Home/Reviews/Reviews';
 
 export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <TravelSliderBlog />
-      <Purpose />
-      <Blogs />
-      <Reviews />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <HeroSection/>
+            <TravelSliderBlog/>
+            <Purpose/>
+            <Blogs/>
+            <Reviews/>
+            <Footer/>
+        </>
+    );
 }
