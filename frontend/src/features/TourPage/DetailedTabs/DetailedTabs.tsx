@@ -34,11 +34,12 @@ const DetailedTabs = () => {
     );
 
     return (
-        <div className="container">
-            <div className={`${style.tabs} ${style.tabs_mode_tab}`}>
+        <div className={`container ${style.tab_container}`}>
+
+            <div className={style.tabs}>
                 <h2>Detailed Tour Information about the Best of Alay Mountains Trek</h2>
                 {renderTabs()}
-                <div className="tabs_wrap">
+                <div className={style.tabs_wrap}>
                     {activeTab === 'overview' && <Overview/>}
                     {activeTab === 'detaileditinerary' && <DetailedItinerary/>}
                     {activeTab === 'booknow' && <BookNow/>}

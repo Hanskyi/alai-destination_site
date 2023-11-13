@@ -1,4 +1,20 @@
+@use '../../styles/mixins';
+
 .tour_page {
+
+
+  .tour_container {
+    max-width: 860px;
+    padding: 70px 60px;
+    width: 100%;
+    background: #fff;
+
+    @include mixins.md {
+      padding: 20px;
+    }
+
+
+  }
 
   .banner {
     height: 100vh;
@@ -11,12 +27,6 @@
     margin-bottom: 90px;
   }
 
-  .tour_container {
-    max-width: 860px;
-    padding: 70px 60px;
-    width: 100%;
-    background: #fff;
-  }
 
   .gallery_placeholder {
     height: 300px;
