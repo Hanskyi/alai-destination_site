@@ -1,17 +1,19 @@
 import React from 'react';
 import BlogItem from './BlogItem';
-import blog from './Blogs.module.scss';
+import style from './Blogs.module.scss';
 
 const Blogs = () => {
   return (
-    <div className={`${blog.blogs} container`}>
-      <h3 className={blog.blogs__title}>How your travel makes a difference</h3>
+    <div className={`${style.blogs} container`}>
+      <div className={style.blogs}>
+        <h3 className={style.blogs_title}>How your travel makes a difference</h3>
 
-      <div className={blog.blogs__cards}>
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
+        <div className={style.blogs_cards}>
+          <BlogItem />
+          <BlogItem />
+          <BlogItem />
+          <BlogItem />
+        </div>
       </div>
     </div>
   );
