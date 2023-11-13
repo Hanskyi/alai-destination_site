@@ -16,10 +16,11 @@ export interface SharedLink extends Schema.Component {
   collectionName: 'components_shared_links';
   info: {
     displayName: 'Link';
+    description: '';
   };
   attributes: {
-    href: Attribute.String;
-    text: Attribute.String;
+    href: Attribute.String & Attribute.Required;
+    icon: Attribute.Media & Attribute.Required;
   };
 }
 
