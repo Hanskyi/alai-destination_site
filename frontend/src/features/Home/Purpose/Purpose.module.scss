@@ -4,7 +4,7 @@
   background: #0a6e50;
   color: #ffffff;
 
-  &__card {
+  &_card {
     padding: 96px 22px 113px;
     display: flex;
     justify-content: space-between;
@@ -15,12 +15,12 @@
       justify-content: flex-start;
     }
 
-    &__information-wrap {
+    &_information-wrap {
       display: flex;
       flex-direction: column;
     }
 
-    &__title {
+    &_title {
       font-weight: 400;
       font-size: 40px;
       line-height: 56px;
@@ -33,7 +33,7 @@
       }
     }
 
-    &__text {
+    &_text {
       font-size: 16px;
       line-height: 24px;
       max-width: 440px;
@@ -41,7 +41,7 @@
       margin-right: 30px;
     }
 
-    &__button {
+    &_button {
       color: #ffffff;
       font-weight: 500;
       font-size: 16px;
@@ -53,7 +53,7 @@
       margin-right: auto;
     }
 
-    &__img-wrap {
+    &_imgWrap {
       max-width: 620px;
       height: 420px;
 
@@ -69,7 +69,7 @@
       }
     }
 
-    &__img {
+    &_img {
       max-width: 100%;
       height: 100%;
       object-fit: cover;
