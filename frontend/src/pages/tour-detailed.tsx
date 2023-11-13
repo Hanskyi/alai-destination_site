@@ -11,7 +11,6 @@ const TourPage = () => {
 
             <div className="container">
 
-
                 <div className={style.tour_container}>
                     <div style={{marginBottom: '50px'}}>
                         <h4>Description</h4>
