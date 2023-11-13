@@ -1,0 +1,52 @@
+@use '../../../styles/mixins';
+
+.headlineContent {
+  background-image: url(https://visitalay.com/wp-content/uploads/2018/12/cover-photo.jpg);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
+  vertical-align: middle;
+  object-position: right;
+  color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  @include mixins.sm {
+    text-align: center;
+    height: auto;
+    padding: 20px;
+  }
+
+  .headlineText {
+    .entryTitle {
+      word-wrap: break-word;
+      margin: 0;
+      font-size: 60px;
+      line-height: 66px;
+      font-weight: 100;
+      font-style: normal;
+      text-transform: none;
+      text-decoration: none;
+      letter-spacing: 3px;
+      padding: 0;
+    }
+
+    .entrySubtitle {
+      text-transform: uppercase;
+      line-height: 26px;
+      font-weight: normal;
+      font-style: normal;
+      margin: 20px 0 0;
+      font-size: 18px;
+    }
+  }
+}
+
+
+

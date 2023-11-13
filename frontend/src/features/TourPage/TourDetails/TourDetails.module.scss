@@ -1,0 +1,40 @@
+@use '../../../styles/mixins';
+
+.tourDetails {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 60px);
+  overflow: auto;
+  flex-basis: 30%;
+  padding: 40px 32px 0;
+  font-family: "Open Sans", sans-serif;
+  @include mixins.lg {
+    top: 50px;
+  }
+  @include mixins.md {
+    flex-basis: auto;
+    position: relative;
+    height: auto;
+    overflow: initial;
+    float: none;
+    width: 100%;
+    padding: 40px 0 0;
+  }
+
+  .tourDetailsTitle {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 14px;
+
+    .value {
+      color: #75706B;
+    }
+  }
+}
