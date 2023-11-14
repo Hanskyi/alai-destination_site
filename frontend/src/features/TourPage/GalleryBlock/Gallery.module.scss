@@ -10,7 +10,7 @@
   }
 
   &_imageWrap {
-    max-width: 340px;
+    max-width: 270px;
     height: 168px;
 
     @include mixins.sm {
@@ -30,10 +30,9 @@
 .gallery_block {
   padding-left: 22px;
 
-  @include mixins.sm {
-    padding: 0;
+  @include mixins.md {
+    padding-left: 0;
   }
-
 
   &_title {
     margin-bottom: 20px;
@@ -45,25 +44,6 @@
   &_cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  &_button {
-    text-align: center;
-    margin: 40px 0;
-
-    &_inner {
-      padding: 15px 65px;
-      font-size: 16px;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      background: #24C358;
-      border: none;
-      border-radius: 4px;
-
-      &:hover {
-        background: #00A0F7;
-      }
-    }
+    gap: 8px;
   }
 }

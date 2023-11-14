@@ -16,12 +16,6 @@ const Gallery = () => {
           <GalleryItem />
           <GalleryItem />
         </div>
-
-        <div className={style.gallery_block_button}>
-          <button className={style.gallery_block_button_inner} type="button">
-            Book now
-          </button>
-        </div>
       </div>
     </div>
   );
