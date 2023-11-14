@@ -70,7 +70,7 @@ const SwiperBundleGoodTrips = () => {
 
       <SwiperSlide>
         {' '}
-        <a className={style.swiperBtn}>See all trips</a>
+        <a className={style.swiper__btn}>See all trips</a>
       </SwiperSlide>
       <div className={style.mySwiper__btns}>
         <div className={`${style.mySwiper__btns__prev} mySwiper__btns__prev`}></div>

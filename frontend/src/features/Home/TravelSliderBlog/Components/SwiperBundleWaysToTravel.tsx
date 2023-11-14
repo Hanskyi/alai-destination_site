@@ -74,7 +74,7 @@ const SwiperBundleWaysToTravel = () => {
 
       <SwiperSlide>
         {' '}
-        <a className={style.swiperBtn}>View more themes</a>
+      <a className={style.swiper__btn}>View more themes</a>
       </SwiperSlide>
       <div className={style.mySwiper__btns}>
         <div className={`${style.mySwiper__btns__prev} mySwiper__btns__prev`}></div>
