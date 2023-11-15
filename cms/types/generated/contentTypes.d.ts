@@ -729,6 +729,16 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<'by alay destinations'>;
     tours: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tour.tour'>;
+    previewDescription: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -886,6 +896,59 @@ export interface ApiHeroSectionHeroSection extends Schema.SingleType {
   };
 }
 
+export interface ApiHomeArticleHomeArticle extends Schema.SingleType {
+  collectionName: 'home_articles';
+  info: {
+    singularName: 'home-article';
+    pluralName: 'home-articles';
+    displayName: 'Home-article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    blogs: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToMany',
+      'api::home-article.home-article'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomeClassificationHomeClassification
   extends Schema.SingleType {
   collectionName: 'home_classifications';
@@ -987,6 +1050,60 @@ export interface ApiHomeTourHomeTour extends Schema.SingleType {
       'api::home-tour.home-tour',
       'oneToMany',
       'api::home-tour.home-tour'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiInfoInfo extends Schema.SingleType {
+  collectionName: 'infos';
+  info: {
+    singularName: 'info';
+    pluralName: 'infos';
+    displayName: 'Info';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    mainPhoneNumber: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    socialLinks: Attribute.Component<'shared.link', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::info.info',
+      'oneToMany',
+      'api::info.info'
     >;
     locale: Attribute.String;
   };
@@ -1377,8 +1494,10 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::classification.classification': ApiClassificationClassification;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::home-article.home-article': ApiHomeArticleHomeArticle;
       'api::home-classification.home-classification': ApiHomeClassificationHomeClassification;
       'api::home-tour.home-tour': ApiHomeTourHomeTour;
+      'api::info.info': ApiInfoInfo;
       'api::location.location': ApiLocationLocation;
       'api::purpose-block.purpose-block': ApiPurposeBlockPurposeBlock;
       'api::review.review': ApiReviewReview;

@@ -62,6 +62,16 @@
       "relation": "manyToMany",
       "target": "api::tour.tour",
       "inversedBy": "blogs"
+    },
+    "previewDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "maxLength": 300
     }
   }
 }
