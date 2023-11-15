@@ -25,11 +25,13 @@ const Articles = () => {
                 <h3 className={style.articlesBanner__title}>THE GOOD STORIES</h3>
             </div>
 
-            <div>
-
-                {Array.from({ length: 6 }, (_, index) => (
-                    <ArticlesCard key={index} />
-                ))}
+            <div className='d-flex flex-column align-center'>
+                <div className={`${style.articleCardContainer} container d-flex f-wrap justify-center`}>
+                    {Array.from({ length: 6 }, (_, index) => (
+                        <ArticlesCard key={index} />
+                    ))}
+                </div>
+                <button className={style.articleCardBtn}>view all</button>
             </div>
         </>
     );
