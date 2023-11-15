@@ -4,7 +4,7 @@ import style from './Reviews.module.scss';
 const ReviewItem = () => {
   return (
     <div className={style.review}>
-      <div className={style.review__avatarWrap}>
+      <div className={style.review__avatar__wrap}>
         <img
           className={style.review__avatar}
           src="https://herpackinglist.com/wp-content/uploads/2015/04/solo-female-traveler.jpeg"

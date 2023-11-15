@@ -12,12 +12,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/*<HeroSection />*/}
-      {/*<TravelSliderBlog />*/}
-      {/*<Purpose />*/}
-      {/*<Blogs />*/}
-      {/*<Reviews />*/}
-      <Tour />
+      <HeroSection />
+      <TravelSliderBlog />
+      <Purpose />
+      <Blogs />
+      <Reviews />
+      {/*<Tour />*/}
       <Footer />
     </>
   );
