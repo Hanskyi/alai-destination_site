@@ -32,9 +32,7 @@ const Overview = () => {
                     ))}
                 </ul>
                 <div className={style.tour_map}>
-                    <iframe
-                        src="https://www.google.com/maps/d/u/0/embed?mid=18qtNLDVksNCxSJoIMp4MFbEwVRfyReQ&ehbc=2E312F"
-                        width="640" height="480"></iframe>
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=18qtNLDVksNCxSJoIMp4MFbEwVRfyReQ&ehbc=2E312F"/>
                 </div>
             </div>
         </div>

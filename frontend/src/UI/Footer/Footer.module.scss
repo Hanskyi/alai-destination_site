@@ -141,14 +141,19 @@
 
     &> div {
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
       gap: 15px;
+
+      @include mixins.sm {
+        justify-content: center;
+      }
     }
     .social {
       &__list {
         gap: 16px;
         flex-wrap: wrap;
         justify-content: center;
+
 
         &-item {
           width: 32px;
