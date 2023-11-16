@@ -1,7 +1,7 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
-import loginImage from "@/assets/images/login_block_images/loginImage.jpg";
-import Image from "next/image";
-import loginStyle from "@/features/Login/LoginPage.module.scss";
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import loginImage from '@/assets/images/login_block_images/loginImage.jpg';
+import Image from 'next/image';
+import loginStyle from '@/features/Login/LoginPage.module.scss';
 
 interface Login {
   username: string;
@@ -11,7 +11,7 @@ interface Login {
 const Login = () => {
   const [login, setLogin] = useState<Login>({
     username: '',
-    password: ''
+    password: '',
   });
 
   const submitFormHandler = async (e: FormEvent) => {
@@ -25,8 +25,8 @@ const Login = () => {
   };
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {name, value} = e.target;
-    setLogin((prevState) => ({...prevState, [name]: value}));
+    const { name, value } = e.target;
+    setLogin((prevState) => ({ ...prevState, [name]: value }));
   };
 
   return (

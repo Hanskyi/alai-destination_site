@@ -1,10 +1,8 @@
 import React from 'react';
-import ArticlesPage from "@/pages/articles";
+import ArticlesPage from '@/pages/articles';
 
 const article = () => {
-    return (
-        <ArticlesPage/>
-    );
+  return <ArticlesPage />;
 };
 
-    export default article;
+export default article;

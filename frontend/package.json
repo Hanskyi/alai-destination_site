@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "format-all": "prettier --write .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noemit",
+    "prepare": "cd .. && npm i"
   },
   "dependencies": {
     "axios": "^1.6.1",

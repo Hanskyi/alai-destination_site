@@ -1,17 +1,11 @@
 @use '@/styles/mixins';
 @use '@/styles/variabels';
 
-
 @include mixins.md {
-
   .tab_container {
     padding: 0;
   }
-
-
-
 }
-
 
 .tabs_list {
   display: flex;
@@ -35,19 +29,17 @@
     border: none;
     padding: 10px;
     color: #fff;
-    background: #00A0F7;
+    background: #00a0f7;
     font-size: 16px;
     font-weight: 400;
     border-radius: 4px;
   }
 
   .current_tab {
-
   }
 }
 
 .tabs_list_btn {
-
 }
 
 .tabs {
@@ -68,7 +60,6 @@
 
 //Tab Overview
 .tab_overview {
-
   ul {
     list-style: none;
     font-size: 16px;
@@ -79,7 +70,7 @@
       margin-bottom: 28px;
 
       strong {
-        color: #47268D;
+        color: #47268d;
         margin-right: 5px;
         font-weight: 700;
       }
@@ -93,7 +84,6 @@
 
 //Detailed Trek info per Day
 .detailed_itinerary {
-
   .day_detailed {
     margin-bottom: 24px;
     border-bottom: 1px solid #75706b;
@@ -113,7 +103,6 @@
     }
 
     img {
-
     }
 
     .img_title {
@@ -124,7 +113,6 @@
       margin-bottom: 0;
     }
   }
-
 }
 
 //Book Now
@@ -158,7 +146,6 @@
         height: 48px;
         outline: none;
       }
-
     }
 
     button {
@@ -174,7 +161,6 @@
       color: #fff;
       background: #24c358;
       outline: none;
-
     }
   }
 }
