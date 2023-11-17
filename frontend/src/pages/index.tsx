@@ -7,6 +7,7 @@ import Reviews from '@/features/Home/Reviews/Reviews';
 import Header from '@/UI/Header/Header';
 import TourPage from '@/pages/tour-detailed';
 import Tour from '@/pages/tours/[id]';
+import ClassificationReviews from '@/components/ClassificationReviews/ClassificationReviews';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Reviews />
       {/*<Tour />*/}
       <Footer />
+      <ClassificationReviews />
     </>
   );
 }
