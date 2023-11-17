@@ -1,0 +1,42 @@
+.reviewsFilter {
+
+  &__title {
+    font-size: 50px;
+  }
+
+  &__rating {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.86);
+  }
+
+  &__item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  &__button_nonactive, &__button_active {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__button_active:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 11px;
+    height: 11px;
+    background-color: #008cff;
+    border-radius: 50%;
+  }
+}
