@@ -7,7 +7,7 @@
   overflow: auto;
   flex-basis: 30%;
   padding: 40px 32px 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   @include mixins.lg {
     top: 50px;
   }
@@ -34,7 +34,7 @@
     font-size: 14px;
 
     .value {
-      color: #75706B;
+      color: #75706b;
     }
   }
 }

@@ -1,15 +1,12 @@
 import React from 'react';
-import Articles from "@/features/Articles/Articles";
-import Header from "@/UI/Header/Header";
-import Footer from "@/UI/Footer/Footer";
+import Articles from '@/features/Articles/Articles';
 
 const ArticlesPage = () => {
-    return (
-        <>
-            <Header/>
-            <Articles/>
-            <Footer/></>
-    );
+  return (
+    <>
+      <Articles />
+    </>
+  );
 };
 
 export default ArticlesPage;

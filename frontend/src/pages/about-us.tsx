@@ -1,14 +1,10 @@
 import React from 'react';
-import AboutUsPage from "@/features/AboutUs/AboutUsPage";
-import Header from "@/UI/Header/Header";
-import Footer from "@/UI/Footer/Footer";
+import AboutUsPage from '@/features/AboutUs/AboutUsPage';
 
 const AboutUs = () => {
   return (
     <>
-      <Header />
-      <AboutUsPage/>
-      <Footer/>
+      <AboutUsPage />
     </>
   );
 };

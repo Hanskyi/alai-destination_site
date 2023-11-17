@@ -1,15 +1,15 @@
 @use '../../styles/mixins';
 
 .articlesBanner {
- position: relative;
+  position: relative;
   text-align: center;
-&__bacdrop {
-  height: 550px;
-  width: 100%;
-  background-color: #000;
-  opacity: 0.35;
-  position: absolute;
-}
+  &__bacdrop {
+    height: 550px;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.35;
+    position: absolute;
+  }
   &__image {
     height: 550px;
     width: 100%;
@@ -85,8 +85,8 @@
       height: auto;
     }
   }
-  &__content{
-    &__title{
+  &__content {
+    &__title {
       color: #313131;
       font-size: 18px;
       font-weight: 600;
