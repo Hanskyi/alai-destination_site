@@ -10,7 +10,8 @@ const populate = {
     fields: ["name", "url"]
   },
   localizations: {
-    populate: true
+    populate: true,
+    fields:['locale'],
   },
 };
 

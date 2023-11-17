@@ -11,6 +11,7 @@ interface DetailedDays {
 }
 
 const daysDetailed: { detailed: DetailedDays } = {
+
   detailed: {
     day_1: {
       title: 'DAY 1: DEPART OSH TO SARY MOGUL VILLAGE',
