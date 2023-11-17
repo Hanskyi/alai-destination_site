@@ -3,6 +3,14 @@ interface IReviewsCount {
   count: number;
 }
 
+export interface IReviewTest {
+  rating: number;
+  author: string;
+  tourDate: string;
+  reviewText: string;
+  creationDate: string;
+}
+
 export const REVIEWS_COUNT: IReviewsCount[] = [
   { rating: 5, count: 715 },
   { rating: 4, count: 38 },

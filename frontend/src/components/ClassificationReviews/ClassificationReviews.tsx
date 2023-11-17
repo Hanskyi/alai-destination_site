@@ -3,6 +3,7 @@ import styles from './ClassificationReviews.module.scss';
 import Rating from '@/components/Rating/Rating';
 import { REVIEWS_COUNT } from '@/dummyData';
 import FilterByRating from '@/components/ClassificationReviews/components/FilterByRating/FilterByRating';
+import ClientReview from '@/components/ClassificationReviews/components/ClientReview/ClientReview';
 
 const ClassificationReviews = () => {
   const [rate, setRate] = useState<number>(5);
@@ -50,6 +51,21 @@ const ClassificationReviews = () => {
               rate={rate}
             />
           ))}
+        </div>
+
+        <div className="clientsReviews">
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
+          <ClientReview />
         </div>
       </div>
     </div>

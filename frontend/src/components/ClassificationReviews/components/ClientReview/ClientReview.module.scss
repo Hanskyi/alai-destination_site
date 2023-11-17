@@ -1,0 +1,36 @@
+.clientReview {
+  margin-bottom: 30px;
+
+  &__header {
+    margin: 16px 0 21px;
+  }
+
+  &__travelerName {
+    padding-right: 16px;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      right: 5px;
+      top: 7px;
+      display: block;
+      width: 5px;
+      height: 5px;
+      background-color: black;
+      border-radius: 50%;
+    }
+  }
+
+  &__travelDate {
+    color: #757575;
+  }
+
+  &__review {
+    margin-bottom: 24px;
+  }
+
+  &__submittedDate {
+    font-size: 12px;
+  }
+}
