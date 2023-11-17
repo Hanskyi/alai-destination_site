@@ -59,7 +59,9 @@ const DetailedItinerary = () => {
                 {day.Accommodation}
               </p>
               <p dangerouslySetInnerHTML={{ __html: day.description }}></p>
-              <img
+              <Image
+                width={1200}
+                height={1200}
                 className={style.img}
                 src={day.img}
                 alt={`Day ${dayKey} Image`}
