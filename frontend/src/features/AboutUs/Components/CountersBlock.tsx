@@ -3,7 +3,7 @@ import {animate, motion, useMotionValue, useTransform} from 'framer-motion';
 import Image from "next/image";
 import aboutUsStyle from "@/features/AboutUs/AboutUs.module.scss";
 
-import Icon1 from "../../../assets/icon/about-us/icon-1.1.svg";
+import Icon1 from '../../../assets/icon/about-us/icon-1.1.svg';
 import Icon2 from "../../../assets/icon/about-us/icon-2.2.svg";
 import Icon3 from "../../../assets/icon/about-us/icon-3.3.svg";
 
