@@ -43,7 +43,6 @@ const AboutUsPage = () => {
             <CountersBlock/>
           </div>
         </div>
-
       </div>
     </>
   );

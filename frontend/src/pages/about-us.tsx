@@ -6,7 +6,7 @@ import Footer from "@/UI/Footer/Footer";
 const AboutUs = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <AboutUsPage/>
       <Footer/>
     </>

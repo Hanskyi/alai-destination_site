@@ -36,6 +36,7 @@ const ValuesBlock = () => {
       <div className={aboutUsStyle.block__boxes}>
         {boxes.map((box, index) => (
           <motion.div
+            key={index}
             className={aboutUsStyle.block__boxes_box}
           >
             <motion.div
