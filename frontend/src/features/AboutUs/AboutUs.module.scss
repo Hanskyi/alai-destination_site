@@ -1,7 +1,6 @@
 @use '../../styles/mixins';
 
 .aboutUs {
-
   &__content {
     background-image: url(https://s3-alpha-sig.figma.com/img/5666/e5e4/c8009e15e4fc31e895483a628a23a144?Expires=1701043200&Signature=ZUXUcGgP-iAqXbWeEi5D1nh1FJqv80E44bJwo~m9soXSqud7Wccs2k9xL3GWBQhT-LSCAvLV3Mkr-J8OdZDPfao7BitguVxs2LGsxZgTgVFjv0Vi6Ax8vgwXgdlaQw5r9-L0GkOl3cACnOdlOcZ9myT0~RYJMtih6OBEeK2jctpW3Zwqa-9Oe~EZSibhESyQPvGEEHVXbONS2rwvNzuAw9iyVEhXtJKv5WtyWXdxRocQjfG5Q~LHQHDpRY3k5LXMg-QrU2w9RIioW4KS91~tuJ2ndeQKmAg7ZsKir5Vtsjp7rIChUcHvs1hqm7WfEDlE78OCZQ3E3KgKsXm6NOQCAQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
     width: 100%;
@@ -49,7 +48,7 @@
 
   &__title::before {
     content: '';
-    background: url("../../assets/icon/Icon-i.svg") no-repeat;
+    background: url('../../assets/icon/Icon-i.svg') no-repeat;
     line-height: 1em;
     width: 65px;
     height: 65px;
@@ -71,12 +70,11 @@
 }
 
 .middleBlock {
-
   &__title {
     padding-left: 80px;
     margin: 53px 0 43px 0;
     position: relative;
-    color: #00266D;
+    color: #00266d;
     font-size: 60px;
     font-style: normal;
     font-weight: 100;
@@ -86,7 +84,7 @@
 
   &__title::before {
     content: '';
-    background: url("../../assets/icon/i-mission.svg") no-repeat;
+    background: url('../../assets/icon/i-mission.svg') no-repeat;
     width: 60px;
     height: 60px;
     flex-shrink: 0;
@@ -109,14 +107,14 @@
 }
 
 .valueBlock {
-  background: #20212D;
+  background: #20212d;
 }
 
 .block {
-  color: #FFF;
+  color: #fff;
 
   &__title {
-    color: #FFF;
+    color: #fff;
     font-size: 60px;
     font-style: normal;
     font-weight: 400;
@@ -192,7 +190,7 @@
 
   &__card {
     text-align: center;
-    color: #FFF;
+    color: #fff;
     margin-bottom: 30px;
 
     &__title {
@@ -213,6 +211,3 @@
     }
   }
 }
-
-
-

@@ -57,7 +57,8 @@ const Header = () => {
                     priority={true}
                   />
                 </Link>
-              ))}</>
+              ))}
+            </>
             <div
               className={`${header.burgerMenu} ${menuOpen ? header.open : ''}`}
               onClick={toggleMenu}
