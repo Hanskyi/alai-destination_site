@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import Image from "next/image";
-import aboutUsStyle from "@/features/AboutUs/AboutUs.module.scss";
+import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
 
 import Icon1 from "../../../assets/icon/about-us/icon-1.svg";
 import Icon2 from "../../../assets/icon/about-us/icon-2.svg";
@@ -40,15 +40,15 @@ const ValuesBlock = () => {
             className={aboutUsStyle.block__boxes_box}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0, 0.71, 0.2, 3] }}
+              initial={{opacity: 0, scale: 0.5}}
+              animate={{opacity: 1, scale: 1}}
+              transition={{duration: 1, ease: [0, 0.71, 0.2, 3]}}
             >
-              <Image  className={aboutUsStyle.block__boxes_img}
-                      width={94}
-                      height={94}
-                      src={icons[index]}
-                      alt={`Icon for ${box.title}`}
+              <Image className={aboutUsStyle.block__boxes_img}
+                     width={94}
+                     height={94}
+                     src={icons[index]}
+                     alt={`Icon for ${box.title}`}
               />
             </motion.div>
             <h2 className={aboutUsStyle.block__boxes_subTitle}>{box.title}</h2>
