@@ -9,7 +9,7 @@ const populate = {
       populate: true,
       fields: ["name", "url"]
     },
-    sertifiedIcon: {
+    certifiedIcon: {
       populate: true,
       fields: ["name", "url"]
     },

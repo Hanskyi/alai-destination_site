@@ -688,6 +688,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'blog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -728,6 +729,16 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<'by alay destinations'>;
     tours: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tour.tour'>;
+    previewDescription: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -780,6 +791,32 @@ export interface ApiClassificationClassification extends Schema.CollectionType {
       'oneToMany',
       'api::tour.tour'
     >;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    videoLink: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bannerImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    reviews: Attribute.Relation<
+      'api::classification.classification',
+      'oneToMany',
+      'api::review.review'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -810,6 +847,7 @@ export interface ApiHeroSectionHeroSection extends Schema.SingleType {
     singularName: 'hero-section';
     pluralName: 'hero-sections';
     displayName: 'hero-section';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -828,6 +866,7 @@ export interface ApiHeroSectionHeroSection extends Schema.SingleType {
         };
       }>;
     image: Attribute.Media &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -852,6 +891,219 @@ export interface ApiHeroSectionHeroSection extends Schema.SingleType {
       'api::hero-section.hero-section',
       'oneToMany',
       'api::hero-section.hero-section'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeArticleHomeArticle extends Schema.SingleType {
+  collectionName: 'home_articles';
+  info: {
+    singularName: 'home-article';
+    pluralName: 'home-articles';
+    displayName: 'Home-article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    blogs: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-article.home-article',
+      'oneToMany',
+      'api::home-article.home-article'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeClassificationHomeClassification
+  extends Schema.SingleType {
+  collectionName: 'home_classifications';
+  info: {
+    singularName: 'home-classification';
+    pluralName: 'home-classifications';
+    displayName: 'home-classification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    classifications: Attribute.Relation<
+      'api::home-classification.home-classification',
+      'oneToMany',
+      'api::classification.classification'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-classification.home-classification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-classification.home-classification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-classification.home-classification',
+      'oneToMany',
+      'api::home-classification.home-classification'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeTourHomeTour extends Schema.SingleType {
+  collectionName: 'home_tours';
+  info: {
+    singularName: 'home-tour';
+    pluralName: 'home-tours';
+    displayName: 'Home-tour';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tours: Attribute.Relation<
+      'api::home-tour.home-tour',
+      'oneToMany',
+      'api::tour.tour'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-tour.home-tour',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-tour.home-tour',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-tour.home-tour',
+      'oneToMany',
+      'api::home-tour.home-tour'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiInfoInfo extends Schema.SingleType {
+  collectionName: 'infos';
+  info: {
+    singularName: 'info';
+    pluralName: 'infos';
+    displayName: 'Info';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    mainPhoneNumber: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    socialLinks: Attribute.Component<'shared.link', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::info.info',
+      'oneToMany',
+      'api::info.info'
     >;
     locale: Attribute.String;
   };
@@ -1009,6 +1261,11 @@ export interface ApiReviewReview extends Schema.CollectionType {
       'manyToOne',
       'api::tour.tour'
     >;
+    classification: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::classification.classification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1045,6 +1302,7 @@ export interface ApiReviewsBlockReviewsBlock extends Schema.SingleType {
   };
   attributes: {
     review: Attribute.Component<'shared.card', true> &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1192,6 +1450,15 @@ export interface ApiTourTour extends Schema.CollectionType {
       'oneToOne',
       'api::location.location'
     >;
+    seats: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<{
+        min: 1;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1227,6 +1494,10 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::classification.classification': ApiClassificationClassification;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::home-article.home-article': ApiHomeArticleHomeArticle;
+      'api::home-classification.home-classification': ApiHomeClassificationHomeClassification;
+      'api::home-tour.home-tour': ApiHomeTourHomeTour;
+      'api::info.info': ApiInfoInfo;
       'api::location.location': ApiLocationLocation;
       'api::purpose-block.purpose-block': ApiPurposeBlockPurposeBlock;
       'api::review.review': ApiReviewReview;

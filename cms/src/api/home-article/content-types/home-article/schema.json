@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "hero_sections",
+  "collectionName": "home_articles",
   "info": {
-    "singularName": "hero-section",
-    "pluralName": "hero-sections",
-    "displayName": "hero-section",
+    "singularName": "home-article",
+    "pluralName": "home-articles",
+    "displayName": "Home-article",
     "description": ""
   },
   "options": {
@@ -25,18 +25,10 @@
       "type": "string",
       "required": true
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
     }
   }
 }

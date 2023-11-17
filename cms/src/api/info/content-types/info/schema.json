@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "hero_sections",
+  "collectionName": "infos",
   "info": {
-    "singularName": "hero-section",
-    "pluralName": "hero-sections",
-    "displayName": "hero-section",
+    "singularName": "info",
+    "pluralName": "infos",
+    "displayName": "Info",
     "description": ""
   },
   "options": {
@@ -16,16 +16,28 @@
     }
   },
   "attributes": {
-    "title": {
+    "mainPhoneNumber": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "shared.link",
       "required": true
     },
-    "image": {
+    "logo": {
       "type": "media",
       "multiple": false,
       "required": true,
