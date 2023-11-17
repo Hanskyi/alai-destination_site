@@ -5,12 +5,17 @@ import DetailedItinerary from './DetailedItinerary/DetailedItinerary';
 import BookNow from './BookNow/BookNow';
 import style from './DetailedTabs.module.scss';
 
-const DetailedTabs = () => {
+interface TabLinkProps {
+  tabName: string;
+  label: string;
+}
+
+const DetailedTabs: React.FC = () => {
   const router = useRouter();
   const { tab } = router.query;
   const [activeTab, setActiveTab] = useState(tab || 'overview');
 
-  const handleTabClick = (tabName) => {
+  const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
   };
 
@@ -24,7 +29,7 @@ const DetailedTabs = () => {
     );
   };
 
-  const TabLink = ({ tabName, label }) => (
+  const TabLink: React.FC<TabLinkProps> = ({ tabName, label }: TabLinkProps) => (
     <li className={`${style.tabs_list_item} ${activeTab === tabName ? style.current_tab : ''}   `}>
       <button className={style.tabs_list_btn} onClick={() => handleTabClick(tabName)}>
         {label}

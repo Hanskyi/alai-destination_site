@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Purpose.module.scss';
+import Image from 'next/image';
 
 const Purpose = () => {
   return (
@@ -19,7 +20,10 @@ const Purpose = () => {
           </div>
 
           <div className={style.purpose_card_imgWrap}>
-            <img
+            <Image
+              width={1000}
+              height={100}
+              unoptimized
               className={style.purpose_card_img}
               src="https://i.pinimg.com/originals/0c/5a/14/0c5a140e7ff19f285439e3b3dd439a15.jpg"
               alt="Purpose image"

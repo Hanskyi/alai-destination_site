@@ -3,8 +3,9 @@ import TravelSliderBlog from '@/features/Home/TravelSliderBlog/TravelSliderBlog'
 import Purpose from '@/features/Home/Purpose/Purpose';
 import Blogs from '@/features/Home/Blogs/Blogs';
 import Reviews from '@/features/Home/Reviews/Reviews';
+import { wrapper } from '@/store/store';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <HeroSection />
@@ -15,4 +16,11 @@ export default function Home() {
       {/*<Tour />*/}
     </>
   );
-}
+};
+
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+  // await store.dispatch(fetchProducts());
+  return { props: {} };
+});
+
+export default Home;
