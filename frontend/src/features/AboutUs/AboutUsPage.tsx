@@ -1,6 +1,7 @@
 import React from 'react';
 import aboutUsStyle from "@/features/AboutUs/AboutUs.module.scss";
 import ValuesBlock from "@/features/AboutUs/Components/ValuesBlock";
+import CountersBlock from "@/features/AboutUs/Components/CountersBlock";
 
 const AboutUsPage = () => {
   return (
@@ -14,8 +15,8 @@ const AboutUsPage = () => {
             </h4>
           </div>
         </div>
-
       </div>
+
       <div className={aboutUsStyle.middleBlock}>
         <div className="container">
           <h1 className={aboutUsStyle.middleBlock__title}>
@@ -30,13 +31,19 @@ const AboutUsPage = () => {
             creating thousands of jobs.
           </p>
         </div>
+
         <div className={aboutUsStyle.valueBlock}>
           <div className="container">
             <ValuesBlock/>
           </div>
         </div>
+
         <div className={aboutUsStyle.countsBlock}>
+          <div className="container">
+            <CountersBlock/>
+          </div>
         </div>
+
       </div>
     </>
   );
