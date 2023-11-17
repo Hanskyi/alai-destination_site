@@ -1,13 +1,16 @@
 import React from 'react';
 import style from '../Articles.module.scss';
+import Image from 'next/image';
 
 const ArticlesCard = () => {
   return (
     <div className={style.articleCard}>
       <div className={style.articleCard__image}>
-        <img
+        <Image
           src="https://static-cse.canva.com/blob/847132/paulskorupskas7KLaxLbSXAunsplash2.jpg"
           alt="#"
+          width={400}
+          height={400}
           className={style.articleCard__image__content}
         />
       </div>

@@ -17,7 +17,7 @@ export default function Home() {
       <Purpose />
       <Blogs />
       <Reviews />
-      {/*<Tour />*/}
+      <Tour />
       <Footer />
     </>
   );

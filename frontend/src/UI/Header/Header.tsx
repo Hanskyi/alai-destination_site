@@ -51,6 +51,8 @@ const Header = () => {
               {renderHeaderTopLinks.map((link, index) => (
                 <Link key={index} className={header.headerTopLinks} href={link.href}>
                   <Image
+                    width={1200}
+                    height={1200}
                     className={header.headerImg}
                     src={link.imgSrc}
                     alt={link.imgAlt}

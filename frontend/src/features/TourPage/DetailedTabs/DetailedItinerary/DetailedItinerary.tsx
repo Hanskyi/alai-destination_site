@@ -1,7 +1,16 @@
 import React from 'react';
 import style from '../DetailedTabs.module.scss';
+import Image from 'next/image';
 
-const daysDetailed = {
+interface DayDetails {
+  title: string;
+  [key: string]: string;
+}
+interface DetailedDays {
+  [key: string]: DayDetails;
+}
+
+const daysDetailed: { detailed: DetailedDays } = {
   detailed: {
     day_1: {
       title: 'DAY 1: DEPART OSH TO SARY MOGUL VILLAGE',
