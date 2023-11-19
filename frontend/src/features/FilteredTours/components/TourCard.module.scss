@@ -1,0 +1,17 @@
+@use '../../../styles/mixins';
+
+.addToWishList {
+  padding: 10px 0;
+
+  .addToWishListButton {
+    border: 1px solid #222;
+    background: none;
+    padding: 5px 25px;
+    border-radius: 3px;
+
+    .addToWishListButton:hover {
+      background: #222222;
+      color: white;
+    }
+  }
+}
