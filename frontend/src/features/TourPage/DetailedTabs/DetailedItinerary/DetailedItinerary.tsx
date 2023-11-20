@@ -67,6 +67,8 @@ const DetailedItinerary = () => {
                 src={day.img}
                 alt={`Day ${dayKey} Image`}
                 style={{ maxWidth: '100%' }}
+                layout="responsive"
+                objectFit={"cover"}
               />
               <p className={style.img_title}>{day.imgTitle}</p>
             </div>
