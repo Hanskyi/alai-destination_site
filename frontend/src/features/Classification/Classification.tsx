@@ -9,7 +9,14 @@ const Classification = () => {
   return (
     <>
       <div className={style.classificationBanner}>
-        <Image className={style.classificationBanner__image} src={classificationBanner} alt="#" />
+        <Image
+          priority={true}
+          className={style.classificationBanner__image}
+          src={classificationBanner}
+          width={1200}
+          height={1200}
+          alt="#"
+        />
         <div className={style.classificationBanner__wrapper}>
           <h3 className={style.classificationBanner__title}>Walking & Trekking Tours</h3>
         </div>
@@ -28,7 +35,7 @@ const Classification = () => {
           the other.
         </p>
         <div className={style.classificationInfo__video}>
-          <Image src={classificationBanner} alt="#" />
+          <Image priority={true} src={classificationBanner} alt="#" width={1200} height={1200} />
           <button className={style.classificationInfo__video__button}>
             <Image src={playIcon} alt="#" />
             Play
