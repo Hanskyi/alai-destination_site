@@ -13,6 +13,7 @@ const Home = () => {
       <Purpose />
       <Blogs />
       <Reviews />
+      {/*<FilteredTours />*/}
       {/*<Tour />*/}
     </>
   );
