@@ -28,8 +28,7 @@ export default function NextJsImage({ slide, rect }: Pick<RenderSlideProps, 'sli
   return (
     <div style={{ position: 'relative', width, height }}>
       <Image
-        width={1200}
-        height={1200}
+        fill
         alt="#"
         src={slide}
         loading="eager"
