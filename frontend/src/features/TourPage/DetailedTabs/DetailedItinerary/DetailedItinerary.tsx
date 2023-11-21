@@ -11,7 +11,6 @@ interface DetailedDays {
 }
 
 const daysDetailed: { detailed: DetailedDays } = {
-
   detailed: {
     day_1: {
       title: 'DAY 1: DEPART OSH TO SARY MOGUL VILLAGE',
@@ -68,7 +67,7 @@ const DetailedItinerary = () => {
                 alt={`Day ${dayKey} Image`}
                 style={{ maxWidth: '100%' }}
                 layout="responsive"
-                objectFit={"cover"}
+                objectFit={'cover'}
               />
               <p className={style.img_title}>{day.imgTitle}</p>
             </div>
