@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import originalImage from '../../../assets/header/INT_homepage_1920x1285_GTO_1.jpg';
+import originalImage from '@/assets/toolbar/INT_homepage_1920x1285_GTO_1.jpg';
 import React, { useEffect, useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import DatePicker from 'react-datepicker';
@@ -88,6 +88,7 @@ const HeroSection = () => {
       </div>
 
       <Image
+        priority={true}
         width={1150}
         height={500}
         className={style.mainBlockImage}
