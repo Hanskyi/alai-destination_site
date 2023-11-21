@@ -10,13 +10,8 @@
   }
 
   &_imageWrap {
-    max-width: 270px;
-    height: 168px;
-
-    @include mixins.sm {
-      max-width: 600px;
-      height: 206px;
-    }
+    width: auto;
+    height: auto;
   }
 
   &_image {

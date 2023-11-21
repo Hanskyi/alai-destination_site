@@ -14,8 +14,9 @@ const GalleryItem = () => {
     <div className={style.gallery_card} onClick={() => setOpen(true)}>
       <div className={style.gallery_card_imageWrap}>
         <Image
-          width={1200}
-          height={1200}
+          width={270}
+          height={168}
+          priority={true}
           className={style.gallery_card_image}
           src="https://photos.thetrek.co/wp-content/uploads/2019/08/03125439/dsc06577.jpg"
           alt="Gallery image"
