@@ -4,7 +4,6 @@ import Purpose from '@/features/Home/Purpose/Purpose';
 import Blogs from '@/features/Home/Blogs/Blogs';
 import Reviews from '@/features/Home/Reviews/Reviews';
 import { wrapper } from '@/store/store';
-import Tour from "@/pages/tours/[id]";
 
 const Home = () => {
   return (
@@ -15,7 +14,6 @@ const Home = () => {
       <Blogs />
       <Reviews />
       {/*<FilteredTours />*/}
-      {/*<Tour />*/}
     </>
   );
 };
