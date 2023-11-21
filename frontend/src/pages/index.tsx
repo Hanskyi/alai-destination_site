@@ -15,7 +15,7 @@ const Home = () => {
       <Blogs />
       <Reviews />
       {/*<FilteredTours />*/}
-      <Tour />
+      {/*<Tour />*/}
     </>
   );
 };
