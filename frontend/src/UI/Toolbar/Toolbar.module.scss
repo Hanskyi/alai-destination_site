@@ -72,6 +72,11 @@
   @include mixins.xl {
     margin-top: -20px;
   }
+
+  @include mixins.lg {
+    margin-top: -54px;
+    display: block;
+  }
 }
 
 .links {
@@ -101,16 +106,8 @@
 
 .logo {
   @include mixins.lg {
-    display: none;
-  }
-}
-
-.logoSmall {
-  display: none;
-
-  @include mixins.lg {
-    display: block;
-    padding-top: 20px;
+   width: 100px;
+    height: 24px;
   }
 }
 
@@ -124,6 +121,7 @@
 }
 
 .burgerMenu {
+  margin-top: 2px;
   display: none;
   flex-direction: column;
   cursor: pointer;
