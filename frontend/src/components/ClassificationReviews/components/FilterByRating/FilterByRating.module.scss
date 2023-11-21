@@ -1,5 +1,4 @@
 .reviewsFilter {
-
   &__title {
     font-size: 50px;
   }
@@ -17,7 +16,8 @@
     align-items: center;
   }
 
-  &__button_nonactive, &__button_active {
+  &__button_nonactive,
+  &__button_active {
     width: 20px;
     height: 20px;
     border-radius: 50%;
