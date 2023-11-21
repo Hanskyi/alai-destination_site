@@ -10,7 +10,7 @@ export default function App({ Component, ...rest }: AppProps) {
   return (
     <Provider store={store}>
       <Toolbar />
-       <Component {...props.pageProps} />
+      <Component {...props.pageProps} />
       <Footer />
     </Provider>
   );

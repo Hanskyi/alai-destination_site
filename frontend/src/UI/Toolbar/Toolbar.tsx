@@ -52,7 +52,6 @@ const Toolbar = () => {
                     alt={link.imgAlt}
                     priority={true}
                   />
-
                 </Link>
               ))}
             </>
@@ -82,11 +81,7 @@ const Toolbar = () => {
           <div className={toolbar.largeScreenLinks}>
             {renderHeaderTopLinks.map((link, index) => (
               <Link key={index} className={toolbar.headerTopLink} href={link.href}>
-                <Image
-                  className={toolbar.headerImg}
-                  src={link.imgSrc}
-                  alt={link.imgAlt}
-                />
+                <Image className={toolbar.headerImg} src={link.imgSrc} alt={link.imgAlt} />
                 <span className={toolbar.topText}>{link.text}</span>
               </Link>
             ))}
