@@ -211,3 +211,48 @@
     }
   }
 }
+
+.partnersBlock {
+  text-align: center;
+
+  &__cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 62px 0 142px 0;
+  }
+
+  &__title {
+    color: #454545;
+    text-align: center;
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40.7px;
+    text-transform: capitalize;
+    margin: 138px 0 27px 0;
+  }
+
+  &__text {
+    color: #727272;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    max-width: 676px;
+  }
+
+  &__partner {
+    width: 200px;
+    height: 130px;
+    flex-shrink: 0;
+    margin:0 20px 20px 0;
+    background: #faf7f7 0 0 / 100% 100% no-repeat;
+  }
+
+  &__img {
+    margin-top: 30px;
+  }
+}
