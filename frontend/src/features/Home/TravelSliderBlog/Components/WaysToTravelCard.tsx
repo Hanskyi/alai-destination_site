@@ -1,9 +1,11 @@
 import React from 'react';
 import style from '../TravelSliderBlog.module.scss';
 import Image from 'next/image';
-import { auto } from '@popperjs/core';
 
-const WaysToTravelCard = () => {
+interface Props {
+  item?: string;
+}
+const WaysToTravelCard: React.FC<Props> = ({ item }) => {
   return (
     <div className={style.card}>
       <div className={style.card__image__box}>
@@ -15,7 +17,9 @@ const WaysToTravelCard = () => {
           alt="#"
         />
       </div>
-      <h4 className={style.card__title}> Walking & Trekking tours</h4>
+      <div className={style.card__body}>
+        <h4 className={style.card__title}> Walking & Trekking tours</h4>
+      </div>
     </div>
   );
 };

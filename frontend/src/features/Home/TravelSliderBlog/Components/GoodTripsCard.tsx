@@ -2,7 +2,10 @@ import React from 'react';
 import style from '../TravelSliderBlog.module.scss';
 import Image from 'next/image';
 
-const GoodTripsCard = () => {
+interface Props {
+  item?: string;
+}
+const GoodTripsCard: React.FC<Props> = ({ item }) => {
   return (
     <div className={style.card}>
       <div className={style.card__image__box}>
@@ -14,13 +17,15 @@ const GoodTripsCard = () => {
           alt="#"
         />
       </div>
-      <h4 className={style.card__days}>11 Days · Comfort</h4>
-      <p className={style.card__description}>
-        Best of Antarctica: A White Christmas (Ocean Endeavour)
-      </p>
-      <p className={style.card__price}>
-        From <span className={style.card__price__span}>USD $9,990</span>
-      </p>
+      <div className={style.card__body}>
+        <h4 className={style.card__days}>11 Days · Comfort</h4>
+        <p className={style.card__description}>
+          Best of Antarctica: A White Christmas (Ocean Endeavour)
+        </p>
+        <p className={style.card__price}>
+          From <span className={style.card__price__span}>USD $9,990</span>
+        </p>
+      </div>
     </div>
   );
 };
