@@ -1,0 +1,14 @@
+.wrapper {
+  margin-left: auto;
+  max-width: 200px;
+}
+
+.flagsSelect {
+  max-width: 200px;
+  padding-bottom: 0 !important;
+}
+.flagsSelect button {
+  border: 1px solid #ccc;
+}
+
+/*# sourceMappingURL=LanguageSwitcher.module.css.map */
