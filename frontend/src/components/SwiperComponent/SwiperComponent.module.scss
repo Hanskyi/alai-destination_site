@@ -1,0 +1,77 @@
+.mySwiper {
+  .swiper {
+    width: 100% !important;
+  }
+  &__btns {
+    display: flex;
+    margin-top: 16px;
+    &__next {
+      top: auto;
+      left: auto;
+      bottom: 10px;
+      color: #222222;
+      width: 40px;
+      height: 40px;
+      background: url('../../assets/toolbar/right.svg') no-repeat center center;
+      background-size: 21px 21px;
+      border: 1px solid black;
+      border-radius: 50%;
+      &:hover {
+        background-color: #bebebe;
+        border: 1px solid #bebebe;
+        opacity: 50%;
+      }
+      &:active {
+        background-color: #bebebe;
+        border: 1px solid #bebebe;
+      }
+    }
+
+    &__prev {
+      top: auto;
+      bottom: 10px;
+      color: #222222;
+      width: 40px;
+      height: 40px;
+      background: url('../../assets/toolbar/left.svg') no-repeat center center;
+      background-size: 21px 21px;
+      border: 1px solid black;
+      border-radius: 50%;
+      margin-right: 12px;
+      margin-left: auto;
+      &:hover {
+        background-color: #bebebe;
+        border: 1px solid #bebebe;
+        opacity: 50%;
+      }
+      &:active {
+        background-color: #bebebe;
+        border: 1px solid #bebebe;
+      }
+    }
+  }
+}
+
+.swiper__btn {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  width: 240px;
+  height: 420px;
+  border-radius: 0.25rem;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  vertical-align: middle;
+  transition: background-color 0.3s ease 0s;
+  &:hover {
+    background-color: #bebebe;
+  }
+  &:after {
+    content: '\2794';
+    margin-left: 10px;
+  }
+}
+.swiper__slide {
+  width: 240px !important;
+}
