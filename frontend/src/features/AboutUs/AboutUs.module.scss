@@ -211,3 +211,111 @@
     }
   }
 }
+
+.partnersBlock {
+  text-align: center;
+
+  &__cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 62px 0 142px 0;
+  }
+
+  &__title {
+    color: #454545;
+    text-align: center;
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40.7px;
+    text-transform: capitalize;
+    margin: 138px 0 27px 0;
+  }
+
+  &__text {
+    color: #727272;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+  }
+
+  &__partner {
+    width: 200px;
+    height: 130px;
+    flex-shrink: 0;
+    margin: 0 20px 20px 0;
+    background: #faf7f7 0 0 / 100% 100% no-repeat;
+  }
+
+  &__img {
+    margin-top: 30px;
+  }
+}
+
+.awardsBlock {
+  text-align: center;
+  color: #00266d;
+  --effect-scale: 1.1;
+  background-color: #f2f2f2;
+  padding: 60px 0 60px;
+
+  &__title {
+    font-size: 60px;
+    font-weight: 500;
+    margin: 60px auto 100px;
+    word-wrap: break-word;
+  }
+
+  &__cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+    flex-shrink: 0;
+    margin: 0 40px 40px 0;
+  }
+}
+
+.contactsBlock {
+  padding: 94px 0 40px;
+  background: #20212d;
+  color: #fff;
+
+  &__card {
+    margin: 0 40px 60px 0;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 1px;
+  }
+
+  &__text {
+    margin: 23px 0 23px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+  }
+
+  &__link {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  &__link:hover {
+    color: #24c358;
+  }
+}

@@ -35,7 +35,7 @@ const Toolbar = () => {
   const largeLinks = [
     { text: 'Destinations', href: '#' },
     { text: 'Ways to travel', href: '#' },
-    { text: 'About us', href: '#' },
+    { text: 'About us', href: '/about-us' },
   ];
 
   return (
@@ -67,9 +67,9 @@ const Toolbar = () => {
         </div>
         <div className={toolbar.headerBottom}>
           <div>
-            <a className={toolbar.logo} href="#">
+            <Link className={toolbar.logo} href="/">
               <Image src={logo} alt="logo" width={165} height={70} />
-            </a>
+            </Link>
           </div>
           <div className={toolbar.linksBottom}>
             {largeLinks.map((link, index) => (
