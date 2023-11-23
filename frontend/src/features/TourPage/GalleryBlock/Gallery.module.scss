@@ -4,6 +4,7 @@
   width: 32%;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 
   @include mixins.sm {
     width: 100%;
