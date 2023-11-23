@@ -3,9 +3,9 @@ import style from '../TravelSliderBlog.module.scss';
 import Image from 'next/image';
 
 interface Props {
-    item?: string
+  item?: string;
 }
-const WaysToTravelCard: React.FC<Props> = ({item}) => {
+const WaysToTravelCard: React.FC<Props> = ({ item }) => {
   return (
     <div className={style.card}>
       <div className={style.card__image__box}>
@@ -18,7 +18,7 @@ const WaysToTravelCard: React.FC<Props> = ({item}) => {
         />
       </div>
       <div className={style.card__body}>
-          <h4 className={style.card__title}> Walking & Trekking tours</h4>
+        <h4 className={style.card__title}> Walking & Trekking tours</h4>
       </div>
     </div>
   );
