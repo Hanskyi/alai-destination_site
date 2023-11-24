@@ -16,7 +16,7 @@ const TravelSliderBlog = () => {
 
       <div className={style.travelSliderBlog__first}>
         <p className={style.travelSliderBlog__description}> Ways to travel</p>
-        <SwiperComponent content={content}>
+        <SwiperComponent content={content} link="/classifications">
           <WaysToTravelCard />
         </SwiperComponent>
       </div>

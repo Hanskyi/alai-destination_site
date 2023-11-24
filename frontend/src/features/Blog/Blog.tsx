@@ -3,6 +3,7 @@ import style from './Blog.module.scss';
 import Image from 'next/image';
 import GoodTripsCard from '@/features/Home/TravelSliderBlog/Components/GoodTripsCard';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
+import Link from 'next/link';
 
 const Blog = () => {
   const content = ['qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq'];
@@ -10,9 +11,9 @@ const Blog = () => {
   return (
     <div className={`${style.blog} container`}>
       <div className={style.blog_header}>
-        <a className={style.blog_header_link} href="#">
-          The good stories
-        </a>
+        <Link href="/articles">
+          <span className={style.blog_header_link}>The good stories</span>
+        </Link>
         <h1 className={style.blog_header_title}>
           Over 20 years of the Intrepid Foundation: A community of travellers creating positive
           change
