@@ -11,7 +11,7 @@ interface Props {
 const WaysToTravelCard: React.FC<Props> = ({ item }) => {
   return (
     <div className={style.card}>
-      <Link href="/classifications/1">
+      <Link href={'/classifications/1'}>
         <div className={style.card__image__box}>
           <Image
             width={1200}

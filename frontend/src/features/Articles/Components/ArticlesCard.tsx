@@ -6,7 +6,7 @@ import Link from 'next/link';
 const ArticlesCard = () => {
   return (
     <div className={style.articleCard}>
-      <Link href="/articles/1">
+      <Link href={'/articles/1'}>
         <div className={style.articleCard__image}>
           <Image
             src="https://static-cse.canva.com/blob/847132/paulskorupskas7KLaxLbSXAunsplash2.jpg"
