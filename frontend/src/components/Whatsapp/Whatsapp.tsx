@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import whatsapp from '../../assets/icon/social/wa-whatsapp-icon.svg';
-import styles from './Whatsapp.module.scss';
 import { motion, Variants } from 'framer-motion';
+import styles from './Whatsapp.module.scss';
 
 const Whatsapp = () => {
   const bounceVariants: Variants = {
@@ -21,7 +21,7 @@ const Whatsapp = () => {
       transition={{ duration: 0.5 }}
     >
       <a
-        href="https://wa.me/996553342428?text=Здравствуйте."
+        href="https://wa.me/996553342428?text=Здравствуйте." // в зависимости от locale менять русский-англ
         target="_blank"
         title="click to contact us"
       >

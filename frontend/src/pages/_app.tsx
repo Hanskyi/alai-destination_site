@@ -1,10 +1,10 @@
 import type { AppProps } from 'next/app';
-import '../styles/globals.scss';
 import { wrapper } from '@/store/store';
 import { Provider } from 'react-redux';
 import Toolbar from '@/UI/Toolbar/Toolbar';
-import Footer from '@/UI/Footer/Footer';
 import Whatsapp from '@/components/Whatsapp/Whatsapp';
+import Footer from '@/UI/Footer/Footer';
+import '../styles/globals.scss';
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
