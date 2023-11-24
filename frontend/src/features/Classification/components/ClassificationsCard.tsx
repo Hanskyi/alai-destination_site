@@ -7,10 +7,12 @@ const ClassificationsCard = () => {
   return (
     <div className={style.classificationCard}>
       <div className={style.classificationCard__image}>
-        <img
+        <Image
           src="https://static-cse.canva.com/blob/847132/paulskorupskas7KLaxLbSXAunsplash2.jpg"
-          alt="#"
           className={style.classificationCard__image__content}
+          width={1200}
+          height={1200}
+          alt="#"
         />
       </div>
       <div className={style.classificationCard__content}>

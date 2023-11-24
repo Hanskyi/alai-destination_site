@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  i18n: {
+    locales: ['en', 'ru'],
+    defaultLocale: 'en',
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'herpackinglist\\.com' },
+      { protocol: 'http', hostname: 'localhost', port: '1337' },
       { protocol: 'https', hostname: 'kartinki\\.pics' },
       { protocol: 'https', hostname: 'i\\.pinimg\\.com' },
       { protocol: 'https', hostname: 'visitalay\\.com' },

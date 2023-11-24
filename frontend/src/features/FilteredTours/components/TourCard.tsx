@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../Home/TravelSliderBlog/TravelSliderBlog.module.scss';
+import style from '@/features/Home/TravelSliderBlock/TravelSliderBlog.module.scss';
 import card from './TourCard.module.scss';
 import Image from 'next/image';
 

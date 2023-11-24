@@ -1,0 +1,62 @@
+.blog {
+  width: 33%;
+  border: 1px solid #bebebe;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+}
+.blog:hover {
+  background-color: #bebebe;
+}
+@media screen and (max-width: 768px) {
+  .blog {
+    width: 48%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .blog {
+    width: 100%;
+  }
+}
+.blog_date {
+  font-weight: 700;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5490196078);
+}
+.blog_text {
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8588235294);
+  margin-bottom: 25px;
+  line-height: 24px;
+}
+.blog_subtext {
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5490196078);
+  margin-top: auto;
+}
+
+.blogs {
+  padding: 60px 22px;
+}
+.blogs_title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  color: rgba(0, 0, 0, 0.8588235294);
+  text-transform: uppercase;
+}
+.blogs_cards {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 768px) {
+  .blogs_cards {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+/*# sourceMappingURL=Blogs.module.css.map */

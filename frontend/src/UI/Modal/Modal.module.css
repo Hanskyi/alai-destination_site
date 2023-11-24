@@ -1,0 +1,61 @@
+.modal {
+  max-width: 600px;
+  width: 100%;
+  background: #ffffff;
+  padding: 48px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+}
+.modal__heading {
+  position: relative;
+  margin-bottom: 32px;
+}
+.modal .close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.modal .close-btn svg {
+  width: 20px;
+  height: 20px;
+}
+.modal .form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.modal .form-control input,
+.modal .form-control select {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  border-width: 0 0 1px 0;
+  border-color: #222222;
+  width: 100%;
+  padding: 5px 0;
+  height: 40px;
+  outline: none;
+}
+.modal .backdrop {
+  background: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.modal .backdrop.open {
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 24px 16px 16px;
+  }
+}
+
+/*# sourceMappingURL=Modal.module.css.map */

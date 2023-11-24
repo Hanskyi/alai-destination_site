@@ -27,7 +27,7 @@ const CountersBlock = () => {
       animation2.stop();
       animation3.stop();
     };
-  }, []);
+  }, [count1, count2, count3]);
 
   return (
     <div className={aboutUsStyle.cards}>
