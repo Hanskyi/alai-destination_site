@@ -5,10 +5,10 @@ import React, { PropsWithChildren } from 'react';
 import 'swiper/css';
 
 interface Props {
-  content: string[];
+  swiperLink?: string;
 }
 
-const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, content }) => {
+const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, swiperLink }) => {
   return (
     <Swiper
       slidesPerView="auto"
@@ -21,20 +21,12 @@ const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, content
       modules={[Pagination, Navigation]}
       className={style.mySwiper}
     >
-      {content.map((item, index) => {
-        return (
-          <SwiperSlide className={style.swiper__slide} key={index}>
-            {React.cloneElement(children as React.ReactElement, { item })}
-          </SwiperSlide>
-        );
-      })}
-
+      {children}
       <SwiperSlide className={style.swiper__slide}>
         <div className={style.swiper__default}>
           <a className={style.swiper__btn}>See all trips</a>
         </div>
       </SwiperSlide>
-
       <div className={style.mySwiper__btns}>
         <div className={`${style.mySwiper__btns__prev} mySwiper__btns__prev`}></div>
         <div className={`${style.mySwiper__btns__next} mySwiper__btns__next`}></div>

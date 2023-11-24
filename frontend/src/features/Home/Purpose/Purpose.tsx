@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Purpose.module.scss';
 import Image from 'next/image';
 import { useAppSelector } from '@/store/hooks';
+import articleBanner from '@/assets/articlesImages/articlesBanner.png';
 
 const Purpose = () => {
   const purposeBlock = useAppSelector((state) => state.products.homeData?.purposeBlock);
@@ -24,7 +25,11 @@ const Purpose = () => {
               priority
               unoptimized
               className={style.purpose_card_img}
-              src={'http://localhost:1337' + purposeBlock?.data.purposeImage.url}
+              src={
+                purposeBlock?.data.purposeImage.url
+                  ? 'http://localhost:1337' + purposeBlock?.data.purposeImage.url
+                  : articleBanner.src
+              }
               alt="Purpose image"
             />
           </div>

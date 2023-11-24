@@ -19,14 +19,16 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <ReactFlagsSelect
-      className={style.flagsSelect}
-      countries={['GB', 'RU']}
-      customLabels={{ GB: 'English', RU: 'Russian' }}
-      placeholder="Select Language"
-      onSelect={(countryCode) => switchLanguage(countryCode)}
-      selected={router.locale === 'ru' ? 'RU' : 'GB'}
-    />
+    <div className={style.wrapper}>
+      <ReactFlagsSelect
+        className={style.flagsSelect}
+        countries={['GB', 'RU']}
+        customLabels={{ GB: 'English', RU: 'Russian' }}
+        placeholder="Select Language"
+        onSelect={(countryCode) => switchLanguage(countryCode)}
+        selected={router.locale === 'ru' ? 'RU' : 'GB'}
+      />
+    </div>
   );
 };
 

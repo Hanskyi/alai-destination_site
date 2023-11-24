@@ -40,12 +40,18 @@
 
     .mainBlockHeader {
       text-transform: capitalize;
+      background: rgba(0, 0, 0, 0.51);
+      // обязательно сделать затемняющий фон для читабельности на белом фоне, сделать аккуратно
+      width: min-content;
+      // с свойством content нужно будет разобраться, оно здесь просто для примера.
+      border-radius: 4px;
+      padding: 10px;
       font-weight: bold;
       margin-bottom: 32px;
+      max-width: 500px;
       color: white;
       font-size: 64px;
       line-height: 64px;
-      width: 400px;
       @include mixins.md {
         width: 100%;
         margin-bottom: 15px;

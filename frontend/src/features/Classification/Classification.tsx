@@ -4,6 +4,7 @@ import classificationBanner from '@/assets/classificationsImages/classification-
 import ClassificationsCard from '@/features/Classification/components/ClassificationsCard';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
+import Reviews from '@/components/ClassificationReviews/Reviews';
 
 const Classification = () => {
   return (
@@ -50,6 +51,7 @@ const Classification = () => {
           </div>
           <button className={style.classificationCards__button}>Show more trips</button>
         </div>
+        <Reviews />
       </div>
     </>
   );

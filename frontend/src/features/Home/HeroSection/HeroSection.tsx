@@ -8,6 +8,7 @@ import { FaCalendarAlt } from 'react-icons/fa';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './HeroSection.module.scss';
 import { useAppSelector } from '@/store/hooks';
+import articleBanner from '@/assets/articlesImages/articlesBanner.png';
 
 interface Option {
   value: string;
@@ -82,7 +83,9 @@ const HeroSection = () => {
               />
             </div>
 
-            <button type="submit" className={style.mainBlockSearchButton}></button>
+            <button type="submit" className={style.mainBlockSearchButton}>
+              Search
+            </button>
           </div>
         </form>
       </div>
@@ -92,7 +95,11 @@ const HeroSection = () => {
         width={1150}
         height={500}
         className={style.mainBlockImage}
-        src={'http://localhost:1337' + heroSection?.data.image.url}
+        src={
+          heroSection?.data.image.url
+            ? 'http://localhost:1337' + heroSection?.data.image.url
+            : articleBanner.src
+        }
         alt="Travellers and a leader walking down the street."
       />
     </div>

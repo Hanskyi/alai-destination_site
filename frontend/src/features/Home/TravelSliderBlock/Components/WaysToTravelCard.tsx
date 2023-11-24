@@ -1,10 +1,12 @@
 import React from 'react';
-import style from '../TravelSliderBlog.module.scss';
+import style from '../TravelSliderBlock.module.scss';
 import Image from 'next/image';
+import { ClassificationMutation } from '@/type';
 
 interface Props {
-  item?: string;
+  item?: ClassificationMutation;
 }
+
 const WaysToTravelCard: React.FC<Props> = ({ item }) => {
   return (
     <div className={style.card}>
@@ -13,12 +15,12 @@ const WaysToTravelCard: React.FC<Props> = ({ item }) => {
           width={1200}
           height={1000}
           className={style.card__image__box__content}
-          src="https://kartinki.pics/src.php?src=https://kartinki.pics/uploads/posts/2022-02/1645764570_1-kartinkin-net-p-na-profil-kartinki-1.jpg&w=315&h=455"
+          src={'http://localhost:1337' + item?.image.url}
           alt="#"
         />
       </div>
       <div className={style.card__body}>
-        <h4 className={style.card__title}> Walking & Trekking tours</h4>
+        <h4 className={style.card__title}> {item?.title}</h4>
       </div>
     </div>
   );

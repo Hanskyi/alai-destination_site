@@ -1,16 +1,18 @@
 import React from 'react';
-import style from './TravelSliderBlog.module.scss';
+import style from './TravelSliderBlock.module.scss';
 import { useAppSelector } from '@/store/hooks';
-import GoodTripsCard from '@/features/Home/TravelSliderBlog/Components/GoodTripsCard';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
-import WaysToTravelCard from '@/features/Home/TravelSliderBlog/Components/WaysToTravelCard';
+import { SwiperSlide } from 'swiper/react';
+import WaysToTravelCard from './Components/WaysToTravelCard';
+import GoodTripsCard from './Components/GoodTripsCard';
+import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+import 'swiper/css';
 
-const TravelSliderBlog = () => {
+const TravelSliderBlock = () => {
   const homeClassifications = useAppSelector(
     (state) => state.products.homeData?.homeClassification,
   );
   const homeTour = useAppSelector((state) => state.products.homeData?.homeTour);
-  const content = ['qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq'];
 
   return (
     <div className={`${style.travelSliderBlog} container`}>
@@ -21,19 +23,27 @@ const TravelSliderBlog = () => {
 
       <div className={style.travelSliderBlog__first}>
         <p className={style.travelSliderBlog__description}>{homeClassifications?.data.title}</p>
-        <SwiperComponent content={content}>
-          <WaysToTravelCard />
+        <SwiperComponent>
+          {homeClassifications?.data.classifications.map((category) => (
+            <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>
+              <WaysToTravelCard item={category} />
+            </SwiperSlide>
+          ))}
         </SwiperComponent>
       </div>
 
       <div className="travelSliderBlog__second">
         <p className={style.travelSliderBlog__description}>{homeTour?.data.title}</p>
-        <SwiperComponent content={content}>
-          <GoodTripsCard />
+        <SwiperComponent>
+          {homeTour?.data.tours.map((tour) => (
+            <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
+              <GoodTripsCard item={tour} />
+            </SwiperSlide>
+          ))}
         </SwiperComponent>
       </div>
     </div>
   );
 };
 
-export default TravelSliderBlog;
+export default TravelSliderBlock;

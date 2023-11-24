@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import styles from './ClassificationReviews.module.scss';
+import styles from './Reviews.module.scss';
 import Rating from '@/components/Rating/Rating';
 import { REVIEWS_COUNT } from '@/dummyData';
 import FilterByRating from '@/components/ClassificationReviews/components/FilterByRating/FilterByRating';
 import ClientReview from '@/components/ClassificationReviews/components/ClientReview/ClientReview';
 
-const ClassificationReviews = () => {
+const Reviews = () => {
   const [rate, setRate] = useState<number>(5);
   const roundedToOneSymbolForStars = (roundedNumber: number): number => {
     return Math.floor(Math.round(roundedNumber) * 10) / 10;
@@ -72,4 +72,4 @@ const ClassificationReviews = () => {
   );
 };
 
-export default ClassificationReviews;
+export default Reviews;
