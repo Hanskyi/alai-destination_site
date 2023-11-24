@@ -21,9 +21,9 @@ const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, content
       modules={[Pagination, Navigation]}
       className={style.mySwiper}
     >
-      {content.map((item) => {
+      {content.map((item, index) => {
         return (
-          <SwiperSlide className={style.swiper__slide} key={item}>
+          <SwiperSlide className={style.swiper__slide} key={index}>
             {React.cloneElement(children as React.ReactElement, { item })}
           </SwiperSlide>
         );

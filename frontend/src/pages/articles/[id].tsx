@@ -1,8 +1,8 @@
 import React from 'react';
-import ArticlesPage from '@/pages/articles';
+import Blog from '@/features/Blog/Blog';
 
-const article = () => {
-  return <ArticlesPage />;
+const Article = () => {
+  return <Blog />;
 };
 
-export default article;
+export default Article;
