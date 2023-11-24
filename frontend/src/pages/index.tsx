@@ -5,8 +5,7 @@ import Reviews from '@/features/Home/Reviews/Reviews';
 import { wrapper } from '@/store/store';
 import { fetchHomeData } from '@/features/Home/homeThunk';
 import Purpose from '@/features/Home/Purpose/Purpose';
-import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
-import { useRouter } from 'next/router';
+
 const Home = () => {
   return (
     <>

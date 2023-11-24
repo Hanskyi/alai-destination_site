@@ -8,7 +8,7 @@ interface Props {
   swiperLink?: string;
 }
 
-const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, swiperLink }) => {
+const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children }) => {
   return (
     <Swiper
       slidesPerView="auto"
