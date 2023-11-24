@@ -1,11 +1,14 @@
 import React from 'react';
 import style from './Blog.module.scss';
 import Image from 'next/image';
-import GoodTripsCard from '@/features/Home/TravelSliderBlog/Components/GoodTripsCard';
+import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
+import { useAppSelector } from '@/store/hooks';
+import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+import { SwiperSlide } from 'swiper/react';
 
 const Blog = () => {
-  const content = ['qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq'];
+  const trips = useAppSelector((state) => state.products.homeData?.homeTour.data);
 
   return (
     <div className={`${style.blog} container`}>
@@ -181,8 +184,14 @@ const Blog = () => {
       </div>
       <h3 className={style.blog_title}>Feeling inspired?</h3>
       <div className={style.blog_tour_cards}>
-        <SwiperComponent content={content}>
-          <GoodTripsCard />
+        <SwiperComponent>
+          <SwiperComponent>
+            {trips?.tours.map((tour) => (
+              <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
+                <GoodTripsCard item={tour} />
+              </SwiperSlide>
+            ))}
+          </SwiperComponent>
         </SwiperComponent>
       </div>
     </div>

@@ -1,7 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
+import { homeSlice } from '@/features/Home/homeSlice';
 
-const reducers = {};
+const reducers = {
+  [homeSlice.name]: homeSlice.reducer,
+};
 
 const reducer = combineReducers(reducers);
 

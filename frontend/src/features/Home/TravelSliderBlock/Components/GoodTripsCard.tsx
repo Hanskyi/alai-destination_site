@@ -1,10 +1,12 @@
 import React from 'react';
-import style from '../TravelSliderBlog.module.scss';
+import style from '../TravelSliderBlock.module.scss';
 import Image from 'next/image';
+import { Tour } from '@/type';
 
 interface Props {
-  item?: string;
+  item: Tour;
 }
+
 const GoodTripsCard: React.FC<Props> = ({ item }) => {
   return (
     <div className={style.card}>
@@ -13,17 +15,18 @@ const GoodTripsCard: React.FC<Props> = ({ item }) => {
           width={1200}
           height={1200}
           className={style.card__image__box__content__two}
-          src="https://core-renderer-tiles.maps.yandex.net/tiles?l=map&v=23.11.01-1-b231030182430&x=6&y=3&z=3&scale=2.625&lang=ru_RU&client_id=yandex-web-maps&&ads=enabled"
+          src={'http://localhost:1337' + item?.mainImage.url}
           alt="#"
         />
       </div>
       <div className={style.card__body}>
-        <h4 className={style.card__days}>11 Days · Comfort</h4>
-        <p className={style.card__description}>
-          Best of Antarctica: A White Christmas (Ocean Endeavour)
-        </p>
+        <span className={style.card__days}>
+          {item?.duration} days
+          <span> {item?.classification.title}</span>
+        </span>
+        <h4 className={style.card__description}>{item?.title}</h4>
         <p className={style.card__price}>
-          From <span className={style.card__price__span}>USD $9,990</span>
+          From <span className={style.card__price__span}>${item?.price} USD</span>
         </p>
       </div>
     </div>

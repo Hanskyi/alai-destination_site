@@ -1,16 +1,20 @@
 import React from 'react';
 import style from './Blogs.module.scss';
+import { Blog } from '@/type';
 import Link from 'next/link';
+import dayjs from 'dayjs';
 
-const BlogItem = () => {
+interface Props {
+  blog: Blog;
+}
+
+const BlogItem: React.FC<Props> = ({ blog }) => {
   return (
     <div className={style.blog}>
       <Link href="/articles/1">
-        <span className={style.blog_date}>21 Mar 2023</span>
-        <p className={style.blog_text}>
-          Walking the talk: 22 highlights from Intrepid’s 2022 Impact Report
-        </p>
-        <span className={style.blog_subtext}>The Good Times</span>
+        <span className={style.blog_date}>{dayjs(blog.createdAt).format('D MMM YYYY')}</span>
+        <p className={style.blog_text}>{blog.title}</p>
+        <span className={style.blog_subtext}>{blog.author}</span>
       </Link>
     </div>
   );
