@@ -4,6 +4,7 @@ import { wrapper } from '@/store/store';
 import { Provider } from 'react-redux';
 import Toolbar from '@/UI/Toolbar/Toolbar';
 import Footer from '@/UI/Footer/Footer';
+import Whatsapp from '@/components/Whatsapp/Whatsapp';
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -11,6 +12,7 @@ export default function App({ Component, ...rest }: AppProps) {
     <Provider store={store}>
       <Toolbar />
       <Component {...props.pageProps} />
+      <Whatsapp />
       <Footer />
     </Provider>
   );
