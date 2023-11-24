@@ -34,7 +34,7 @@ const Toolbar = () => {
 
   const largeLinks = [
     { text: 'Destinations', href: '#' },
-    { text: 'Ways to travel', href: '#' },
+    { text: 'Ways to travel', href: '/classifications' },
     { text: 'About us', href: '/about-us' },
   ];
 

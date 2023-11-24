@@ -1,15 +1,16 @@
 import React from 'react';
-import style from './Blogs.module.scss';
+import BlogItem from './BlogItem';
 import { useAppSelector } from '@/store/hooks';
-import BlogItem from '@/features/Home/Blogs/BlogItem';
+import Link from 'next/link';
+import style from './Blogs.module.scss';
 
 const Blogs = () => {
   const article = useAppSelector((state) => state.products.homeData?.homeArticle);
-
   return (
     <div className={`${style.blogs} container`}>
-      <h3 className={style.blogs_title}>{article?.data.title}</h3>
-
+      <Link href="/articles">
+        <h3 className={style.blogs_title}>{article?.data.title}</h3>
+      </Link>
       <div className={style.blogs_cards}>
         {article?.data.blogs.map((blog) => <BlogItem key={blog.id} blog={blog} />)}
       </div>

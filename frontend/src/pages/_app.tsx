@@ -10,7 +10,6 @@ import Footer from '@/UI/Footer/Footer';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import '../styles/globals.scss';
 
-
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();

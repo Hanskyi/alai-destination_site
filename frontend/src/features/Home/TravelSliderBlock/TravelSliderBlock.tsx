@@ -23,7 +23,7 @@ const TravelSliderBlock = () => {
 
       <div className={style.travelSliderBlog__first}>
         <p className={style.travelSliderBlog__description}>{homeClassifications?.data.title}</p>
-        <SwiperComponent>
+        <SwiperComponent link="/classifications/1">
           {homeClassifications?.data.classifications.map((category) => (
             <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>
               <WaysToTravelCard item={category} />
@@ -34,7 +34,7 @@ const TravelSliderBlock = () => {
 
       <div className="travelSliderBlog__second">
         <p className={style.travelSliderBlog__description}>{homeTour?.data.title}</p>
-        <SwiperComponent>
+        <SwiperComponent link="/tours/1">
           {homeTour?.data.tours.map((tour) => (
             <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
               <GoodTripsCard item={tour} />
