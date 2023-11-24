@@ -7,6 +7,7 @@ import { PiMagnifyingGlassBold } from 'react-icons/pi';
 import { FaCalendarAlt } from 'react-icons/fa';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './HeroSection.module.scss';
+import { useAppSelector } from '@/store/hooks';
 
 interface Option {
   value: string;
@@ -16,6 +17,7 @@ interface Option {
 const HeroSection = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [showSelect, setShowSelect] = useState(false);
+  const heroSection = useAppSelector((state) => state.products.homeData?.heroSection);
 
   useEffect(() => {
     setShowSelect(true);
@@ -34,7 +36,7 @@ const HeroSection = () => {
   return (
     <div className={style.mainBlock}>
       <div className={style.mainBlockContainer}>
-        <h1 className={style.mainBlockHeader}>good trips only.</h1>
+        <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
 
         <form onSubmit={(e) => e.preventDefault()} className={style.formBlock}>
           <div className={style.searchSelectBlock}>
@@ -80,9 +82,7 @@ const HeroSection = () => {
               />
             </div>
 
-            <button type="submit" className={style.mainBlockSearchButton}>
-              Search
-            </button>
+            <button type="submit" className={style.mainBlockSearchButton}></button>
           </div>
         </form>
       </div>
@@ -92,7 +92,7 @@ const HeroSection = () => {
         width={1150}
         height={500}
         className={style.mainBlockImage}
-        src={originalImage}
+        src={'http://localhost:1337' + heroSection?.data.image.url}
         alt="Travellers and a leader walking down the street."
       />
     </div>

@@ -1,21 +1,19 @@
 import React from 'react';
 import style from './Purpose.module.scss';
 import Image from 'next/image';
+import { useAppSelector } from '@/store/hooks';
 
 const Purpose = () => {
+  const purposeBlock = useAppSelector((state) => state.products.homeData?.purposeBlock);
   return (
     <div className={style.purpose}>
       <div className="container">
         <div className={style.purpose_card}>
           <div className={style.purpose_card_informationWrap}>
-            <h2 className={style.purpose_card_title}>We’re here to do good</h2>
-            <p className={style.purpose_card_text}>
-              Responsible travel has always been at the core of what we do. Travelling with us means
-              not just better trips for you, it’s better for local communities, better for wildlife
-              and better for the planet.
-            </p>
+            <h2 className={style.purpose_card_title}>{purposeBlock?.data.title}</h2>
+            <p className={style.purpose_card_text}>{purposeBlock?.data.description}</p>
             <button type="button" className={style.purpose_card_button}>
-              Travel with purpose
+              {purposeBlock?.data.buttonText}
             </button>
           </div>
 
@@ -26,7 +24,7 @@ const Purpose = () => {
               priority
               unoptimized
               className={style.purpose_card_img}
-              src="https://i.pinimg.com/originals/0c/5a/14/0c5a140e7ff19f285439e3b3dd439a15.jpg"
+              src={'http://localhost:1337' + purposeBlock?.data.purposeImage.url}
               alt="Purpose image"
             />
           </div>

@@ -1,8 +1,13 @@
 import React from 'react';
 import style from './Reviews.module.scss';
 import Image from 'next/image';
+import { Review } from '@/type';
 
-const ReviewItem = () => {
+interface Props {
+  review: Review;
+}
+
+const ReviewItem: React.FC<Props> = ({ review }) => {
   return (
     <div className={style.review}>
       <div className={style.review__avatar__wrap}>
@@ -10,17 +15,14 @@ const ReviewItem = () => {
           width={160}
           height={160}
           className={style.review__avatar}
-          src="https://herpackinglist.com/wp-content/uploads/2015/04/solo-female-traveler.jpeg"
+          src={'http://localhost:1337' + review.profileImage.url}
           alt="avatar"
         />
       </div>
 
-      <h5 className={style.review__title}>Flexible Bookings</h5>
+      <h5 className={style.review__title}>{review.title}</h5>
 
-      <p className="review__description">
-        Travel plans change. We get it – and we re here to help! Learn all about our flexible
-        booking options.
-      </p>
+      <p className="review__description">{review.review}</p>
     </div>
   );
 };

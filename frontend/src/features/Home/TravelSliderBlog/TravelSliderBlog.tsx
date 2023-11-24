@@ -1,10 +1,15 @@
 import React from 'react';
 import style from './TravelSliderBlog.module.scss';
+import { useAppSelector } from '@/store/hooks';
 import GoodTripsCard from '@/features/Home/TravelSliderBlog/Components/GoodTripsCard';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 import WaysToTravelCard from '@/features/Home/TravelSliderBlog/Components/WaysToTravelCard';
 
 const TravelSliderBlog = () => {
+  const homeClassifications = useAppSelector(
+    (state) => state.products.homeData?.homeClassification,
+  );
+  const homeTour = useAppSelector((state) => state.products.homeData?.homeTour);
   const content = ['qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq', 'qwd', 'dwq'];
 
   return (
@@ -15,14 +20,14 @@ const TravelSliderBlog = () => {
       </p>
 
       <div className={style.travelSliderBlog__first}>
-        <p className={style.travelSliderBlog__description}> Ways to travel</p>
+        <p className={style.travelSliderBlog__description}>{homeClassifications?.data.title}</p>
         <SwiperComponent content={content}>
           <WaysToTravelCard />
         </SwiperComponent>
       </div>
 
       <div className="travelSliderBlog__second">
-        <p className={style.travelSliderBlog__description}> Good Trips Only for 2023</p>
+        <p className={style.travelSliderBlog__description}>{homeTour?.data.title}</p>
         <SwiperComponent content={content}>
           <GoodTripsCard />
         </SwiperComponent>
