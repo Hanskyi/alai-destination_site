@@ -5,10 +5,10 @@ import React, { PropsWithChildren } from 'react';
 import 'swiper/css';
 
 interface Props {
-  swiperLink?: string;
+  link?: string;
 }
 
-const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children }) => {
+const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, link }) => {
   return (
     <Swiper
       slidesPerView="auto"
@@ -24,7 +24,9 @@ const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children }) => {
       {children}
       <SwiperSlide className={style.swiper__slide}>
         <div className={style.swiper__default}>
-          <a className={style.swiper__btn}>See all trips</a>
+          <a className={style.swiper__btn} href={`${link}`}>
+            See all trips
+          </a>
         </div>
       </SwiperSlide>
       <div className={style.mySwiper__btns}>

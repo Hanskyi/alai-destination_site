@@ -1,11 +1,12 @@
 import React from 'react';
-import style from './Blog.module.scss';
 import Image from 'next/image';
 import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 import { useAppSelector } from '@/store/hooks';
 import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
 import { SwiperSlide } from 'swiper/react';
+import Link from 'next/link';
+import style from './Blog.module.scss';
 
 const Blog = () => {
   const trips = useAppSelector((state) => state.products.homeData?.homeTour.data);
@@ -13,9 +14,9 @@ const Blog = () => {
   return (
     <div className={`${style.blog} container`}>
       <div className={style.blog_header}>
-        <a className={style.blog_header_link} href="#">
-          The good stories
-        </a>
+        <Link href="/articles">
+          <span className={style.blog_header_link}>The good stories</span>
+        </Link>
         <h1 className={style.blog_header_title}>
           Over 20 years of the Intrepid Foundation: A community of travellers creating positive
           change
@@ -184,14 +185,12 @@ const Blog = () => {
       </div>
       <h3 className={style.blog_title}>Feeling inspired?</h3>
       <div className={style.blog_tour_cards}>
-        <SwiperComponent>
-          <SwiperComponent>
-            {trips?.tours.map((tour) => (
-              <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
-                <GoodTripsCard item={tour} />
-              </SwiperSlide>
-            ))}
-          </SwiperComponent>
+        <SwiperComponent link="/tours">
+          {trips?.tours.map((tour) => (
+            <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
+              <GoodTripsCard item={tour} />
+            </SwiperSlide>
+          ))}
         </SwiperComponent>
       </div>
     </div>
