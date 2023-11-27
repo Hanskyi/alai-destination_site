@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import bookingIcon from '@/assets/toolbar/booking-icon.png';
@@ -37,10 +37,10 @@ const Toolbar = () => {
     },
   ];
 
-    const largeLinks = [
-        { text: 'Ways to travel', href: '/classifications' },
-        {text: 'About us', href: '/about-us'},
-    ];
+  const largeLinks = [
+    { text: 'Ways to travel', href: '/classifications' },
+    { text: 'About us', href: '/about-us' },
+  ];
 
   const regionLinks = [
     {
