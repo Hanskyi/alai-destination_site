@@ -1422,28 +1422,6 @@ export interface ApiTourTour extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    previewDescription: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<'previewDescription'>;
-    tourSchedule: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    overview: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     blogs: Attribute.Relation<'api::tour.tour', 'manyToMany', 'api::blog.blog'>;
     location: Attribute.Relation<
       'api::tour.tour',
@@ -1458,6 +1436,72 @@ export interface ApiTourTour extends Schema.CollectionType {
       }> &
       Attribute.SetMinMax<{
         min: 1;
+      }>;
+    overviewCK: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    detailedDays: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tourPrice: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tourScheduleCK: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    previewDescription: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

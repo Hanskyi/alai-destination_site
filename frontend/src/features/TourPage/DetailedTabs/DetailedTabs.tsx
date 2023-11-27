@@ -1,8 +1,11 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Overview from './Overview/Overview';
 import DetailedItinerary from './DetailedItinerary/DetailedItinerary';
 import BookNow from './BookNow/BookNow';
+import TourDates from './TourDates/TourDates';
+import TourPrice from './TourPrice/TourPrice';
+import axios from 'axios';
 import style from './DetailedTabs.module.scss';
 
 interface TabLinkProps {
@@ -10,10 +13,38 @@ interface TabLinkProps {
   label: string;
 }
 
-const DetailedTabs: React.FC = () => {
+interface TourData {
+  overviewCK: string | null;
+  detailedDays: string | null;
+  tourScheduleCK: string | null;
+  tourPrice: string | null;
+}
+
+const DetailedTabs = () => {
   const router = useRouter();
   const { tab } = router.query;
   const [activeTab, setActiveTab] = useState(tab || 'overview');
+  const [tourData, setTourData] = useState<TourData>({
+    overviewCK: null,
+    detailedDays: null,
+    tourScheduleCK: null,
+    tourPrice: null,
+  });
+
+  useEffect(() => {
+    const fetchTourData = async () => {
+      try {
+        const response = await axios.get('http://localhost:1337/api/tours/5');
+        const data = response.data.data;
+
+        setTourData(data);
+      } catch (error) {
+        console.error('Error fetching tour data:', error);
+      }
+    };
+
+    fetchTourData();
+  }, []);
 
   const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
@@ -24,6 +55,8 @@ const DetailedTabs: React.FC = () => {
       <ul className={style.tabs_list}>
         <TabLink tabName="overview" label="Overview" />
         <TabLink tabName="detaileditinerary" label="Detailed Itinerary" />
+        <TabLink tabName="tourprice" label="Tour Price" />
+        <TabLink tabName="tourdates" label="Tour Dates" />
         <TabLink tabName="booknow" label="Book Now" />
       </ul>
     );
@@ -43,8 +76,19 @@ const DetailedTabs: React.FC = () => {
         <h2>Detailed Tour Information about the Best of Alay Mountains Trek</h2>
         {renderTabs()}
         <div className={style.tabs_wrap}>
-          {activeTab === 'overview' && <Overview />}
-          {activeTab === 'detaileditinerary' && <DetailedItinerary />}
+          {activeTab === 'overview' && tourData.overviewCK !== null && (
+            <Overview data={tourData.overviewCK} />
+          )}
+          {activeTab === 'detaileditinerary' && tourData.detailedDays !== null && (
+            <DetailedItinerary data={tourData.detailedDays} />
+          )}
+          {activeTab === 'tourprice' && tourData.tourPrice !== null && (
+            <TourPrice data={tourData.tourPrice} />
+          )}
+          {activeTab === 'tourdates' && tourData.tourScheduleCK !== null && (
+            <TourDates data={tourData.tourScheduleCK} />
+          )}
+
           {activeTab === 'booknow' && <BookNow />}
         </div>
       </div>

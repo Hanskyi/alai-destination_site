@@ -1,14 +1,25 @@
 import React from 'react';
 import tourStyle from './TourHeroSection.module.scss';
+import { GALLERY } from '../../../constants';
 
-const TourHeroSection = () => {
+interface Props {
+  title: string;
+  subTitle: string;
+  mainImage: string;
+}
+
+const TourHeroSection: React.FC<Props> = ({ title, subTitle, mainImage }) => {
+  const bannerLink = `url(${GALLERY}${mainImage})`;
+  console.log(bannerLink);
+
   return (
-    <div className={tourStyle.headlineContent}>
+    <div
+      className={tourStyle.headlineContent}
+      style={{ backgroundImage: bannerLink, backgroundSize: 'cover' }}
+    >
       <div className={tourStyle.headlineText}>
-        <h1 className={tourStyle.entryTitle}>Best of Alay Mountains Trek</h1>
-        <h4 className={tourStyle.entrySubtitle}>
-          8 Days Trek in the Pamir-Alay Mountains in Kyrgyzstan
-        </h4>
+        <h1 className={tourStyle.entryTitle}>{title}</h1>
+        <h4 className={tourStyle.entrySubtitle}>{subTitle}</h4>
       </div>
     </div>
   );
