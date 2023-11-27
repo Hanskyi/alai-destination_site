@@ -15,18 +15,23 @@ interface Option {
 
 const FilteredTours = () => {
   const [select, setSelect] = useState(false);
+
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
   const [startDuration, setStartDuration] = useState('Any');
   const [endDuration, setEndDuration] = useState('Any');
 
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedPriceSort, setSelectedPriceSort] = useState('');
+
   const handleDurationReset = () => {
     setStartDuration('Any');
     setEndDuration('Any');
   };
 
-  const durationOptions = Array.from({ length: 21 }, (_, index) => index);
+  const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
 
   const handleReset = () => {
     setStartDate(null);
@@ -39,7 +44,6 @@ const FilteredTours = () => {
 
   const filterOptions = (inputValue: string) => {
     const options: Option[] = [{ value: 'near-me', label: 'Near Me' }];
-
     return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
@@ -94,6 +98,7 @@ const FilteredTours = () => {
                     border: 'none',
                     appearance: 'none',
                     boxShadow: '0 4px 24px 0 rgba(0, 0, 0, 0.14)',
+                    whiteSpace: 'nowrap',
                   };
                 },
               }}
@@ -108,14 +113,75 @@ const FilteredTours = () => {
 
       <div className={`${style.filteringBlock} container`}>
         <div className={style.filteringTools}>
-          <label htmlFor="sort-by-select" className={style.sortLabel}>
-            Sort by
-          </label>
-          <select id="sort-by-select" name="sortBySelect" className={style.sortInput}>
-            <option value="relevance">Relevance</option>
-            <option value="price">Price (lowest to highest)</option>
-            <option value="duration">Duration (shortest to longest)</option>
-          </select>
+          <div className={style.selectBox}>
+            <select
+              className={style.sortInput}
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
+            >
+              <option value="" disabled>
+                Location
+              </option>
+              <option>Osh</option>
+              <option>Jalal-Abad</option>
+              <option>Batken</option>
+            </select>
+            {selectedLocation && (
+              <button
+                className={`${style.clearButton} ${style.additionalClass}`}
+                onClick={() => setSelectedLocation('')}
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          <div className={style.selectBox}>
+            <select
+              className={style.sortInput}
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="" disabled>
+                Categories
+              </option>
+              <option>Walking</option>
+              <option>Horse Trek</option>
+              <option>Car rent</option>
+            </select>
+            {selectedCategory && (
+              <button
+                className={`${style.clearButton} ${style.additionalClass}`}
+                onClick={() => setSelectedCategory('')}
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          <div className={style.selectBox}>
+            <select
+              name="sortByPrice"
+              className={style.sortInput}
+              value={selectedPriceSort}
+              onChange={(e) => setSelectedPriceSort(e.target.value)}
+            >
+              <option value="" disabled>
+                Sort by Price
+              </option>
+              <option value="lowToHigh">Low to High</option>
+              <option value="highToLow">High to Low</option>
+            </select>
+
+            {selectedPriceSort && (
+              <button
+                className={`${style.clearButton} ${style.additionalClass}`}
+                onClick={() => setSelectedPriceSort('')}
+              >
+                Clear
+              </button>
+            )}
+          </div>
 
           <div className={style.travelDates}>
             <h5>Travel Dates</h5>
@@ -127,6 +193,7 @@ const FilteredTours = () => {
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
+                className={style.datepickerInput}
               />
               <label className={style.datepickerLabel}>Eg. 01 Jan 2021</label>
             </div>
@@ -140,11 +207,15 @@ const FilteredTours = () => {
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
+                className={style.datepickerInput}
               />
               <label className={style.datepickerLabel}>Eg. 01 Jan 2021</label>
             </div>
 
-            <button className={style.resetDatesButton} onClick={handleReset}>
+            <button
+              className={`${style.resetDatesButton} ${style.additionalClass}`}
+              onClick={handleReset}
+            >
               Clear Dates
             </button>
           </div>
@@ -155,40 +226,67 @@ const FilteredTours = () => {
               <div className={style.durationPicker}>
                 <label className={style.durationLabel}>Min</label>
                 <select
-                  className={style.durationSelect}
+                  className={`${style.sortInput} ${style.sortDuration}`}
                   value={startDuration}
-                  onChange={(e) => setStartDuration(e.target.value)}
+                  onChange={(e) => {
+                    const selectedValue = e.target.value;
+                    const parsedValue = parseInt(selectedValue, 10);
+                    if (
+                      !isNaN(parsedValue) &&
+                      parsedValue >= 1 &&
+                      (endDuration === 'Any' || parsedValue <= parseInt(endDuration, 10))
+                    ) {
+                      setStartDuration(selectedValue);
+                    }
+                  }}
                 >
                   <option value="Any">Any</option>
-                  {durationOptions.map((day) => (
-                    <option key={day} value={day}>
-                      {day} {day === 1 ? 'day' : 'days'}
-                    </option>
-                  ))}
+                  {durationOptions
+                    .filter((day) => endDuration === 'Any' || day <= parseInt(endDuration, 10))
+                    .map((day) => (
+                      <option key={day} value={day}>
+                        {day} {day === 1 ? 'day' : 'days'}
+                      </option>
+                    ))}
                 </select>
               </div>
 
-              <span>to</span>
+              <span className={style.spanDuration}>to</span>
 
               <div className={style.durationPicker}>
                 <label className={style.durationLabel}>Max</label>
                 <select
-                  className={style.durationSelect}
+                  className={`${style.sortInput} ${style.sortDuration}`}
                   value={endDuration}
-                  onChange={(e) => setEndDuration(e.target.value)}
+                  onChange={(e) => {
+                    const selectedValue = e.target.value;
+                    const parsedValue = parseInt(selectedValue, 10);
+                    if (
+                      !isNaN(parsedValue) &&
+                      parsedValue >= 1 &&
+                      (startDuration === 'Any' || parsedValue >= parseInt(startDuration, 10))
+                    ) {
+                      setEndDuration(selectedValue);
+                    }
+                  }}
                 >
                   <option value="Any">Any</option>
-                  {durationOptions.map((day) => (
-                    <option key={day} value={day}>
-                      {day} {day === 1 ? 'day' : 'days'}
-                    </option>
-                  ))}
+                  {durationOptions
+                    .filter((day) => startDuration === 'Any' || day >= parseInt(startDuration, 10))
+                    .map((day) => (
+                      <option key={day} value={day}>
+                        {day} {day === 1 ? 'day' : 'days'}
+                      </option>
+                    ))}
                 </select>
               </div>
             </div>
 
-            <button className={style.resetDuration} onClick={handleDurationReset}>
-              Clear Durations
+            <button
+              className={`${style.resetDuration} ${style.additionalClass}`}
+              onClick={handleDurationReset}
+            >
+              Clear Duration
             </button>
           </div>
         </div>

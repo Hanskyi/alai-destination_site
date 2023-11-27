@@ -54,11 +54,14 @@
 
 .formBlock {
   display: flex;
+  align-items: center;
   @include mixins.sm {
     margin-bottom: 35px;
   }
 
   .searchSelectBlock {
+    display: flex;
+    align-items: center;
     flex-basis: 60%;
     z-index: 5;
     @include mixins.md {
@@ -67,13 +70,12 @@
     @include mixins.sm {
       flex-basis: 100%;
     }
+
     .searchInput {
+      align-items: center;
       position: relative;
       margin-right: 5px;
       flex-grow: 1;
-      @include mixins.sm {
-        margin-bottom: 5px;
-      }
     }
 
     .searchIcon {
@@ -84,10 +86,9 @@
   }
 
   .searchButton {
-    margin-right: 5px;
     font-family: inherit;
     font-size: inherit;
-    padding: 10px 50px 10px 20px;
+    padding: 15px 50px 15px 20px;
     background-color: #222;
     border-radius: 5px;
     color: #fff;
@@ -99,11 +100,8 @@
     background-repeat: no-repeat;
     @include mixins.md {
       font-size: 0;
-      padding: 10px 25px;
+      padding: 25px 25px;
       background-position: center;
-    }
-    @include mixins.sm {
-      padding: 0 25px;
     }
   }
 
@@ -139,17 +137,23 @@
 .filteringBlock {
   margin-top: 20px;
   display: flex;
-  flex-wrap: wrap;
-  @include mixins.lg {
+  justify-content: space-between;
+  @include mixins.sm {
     flex-direction: column;
   }
 
   .filteringTools {
     margin-right: 10px;
     margin-bottom: 25px;
-    flex-basis: 30%;
+    flex-basis: 25%;
     display: flex;
     flex-direction: column;
+
+    .selectBox {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
     .sortLabel {
       margin-bottom: 8px;
@@ -157,11 +161,12 @@
     }
 
     .sortInput {
+      margin-bottom: 35px;
+      flex-grow: 1;
       border: none;
       border-bottom: 1px solid #ddd;
       padding: 8px;
       font-size: 14px;
-      margin-bottom: 32px;
     }
 
     .travelDates {
@@ -169,21 +174,23 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       .datepicker {
         display: flex;
         flex-direction: column;
+
+        .datepickerInput {
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid #ddd;
+          padding: 8px;
+          font-size: 14px;
+        }
       }
+
       .datepickerLabel {
         font-size: 12px;
         color: #333333;
-      }
-
-      .startDate {
-      }
-
-      .resetDatesButton {
-        margin-top: 15px;
-        margin-left: auto;
       }
     }
 
@@ -194,35 +201,62 @@
 
       .durationInner {
         display: flex;
-        align-items: end;
-        justify-content: space-between;
+        align-items: center;
+
         .durationPicker {
           display: flex;
           flex-direction: column;
 
-          .durationSelect {
-          }
           .durationLabel {
             font-size: 12px;
             color: #333333;
           }
         }
-      }
-      .resetDuration {
-        margin-top: 15px;
-        margin-left: auto;
+
+        .spanDuration {
+          margin: 0 5px;
+        }
       }
     }
   }
 
   .tourCards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 75%;
     margin-bottom: 50px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 16px;
+    justify-content: center;
+    align-items: center;
     @include mixins.sm {
-      grid-template-columns: repeat(1, 1fr);
+      flex-basis: 100%;
     }
   }
+}
+
+.clearButton {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  align-self: flex-end;
+  margin: 5px 0 5px auto;
+}
+
+.resetDatesButton {
+  margin: 5px 0 5px auto;
+}
+
+.resetDuration {
+  margin: 5px 0 5px auto;
+}
+
+.additionalClass {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: none;
+  border: 2px solid #333333;
+}
+
+.additionalClass:hover {
+  background: #333333;
+  color: white;
 }
