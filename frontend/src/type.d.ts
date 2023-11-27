@@ -142,3 +142,8 @@ export interface Localization {
   id: number;
   locale: string;
 }
+
+export interface IFaq {
+  question: string;
+  answer: string;
+}

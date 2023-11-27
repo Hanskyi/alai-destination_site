@@ -1,0 +1,87 @@
+@use '../../styles/mixins';
+@use '../../styles/variabels';
+
+.accordion {
+  list-style: none;
+  margin: 16px 0;
+  padding: 10px;
+  background-color: #dcdcdc;
+  border-radius: variabels.$accordion-br;
+
+  &__open {
+    height: auto;
+  }
+
+  &__item {
+    margin-bottom: 16px;
+    background-color: variabels.$color-white;
+    border-radius: variabels.$accordion-br;
+  }
+
+  &__header {
+    font-family: Montserat, sans-serif;
+    position: relative;
+    width: 100%;
+    padding: 20px 60px 20px 15px;
+    background-color: variabels.$color-white;
+    border: none;
+    border-radius: variabels.$accordion-br;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: rgb(17, 150, 221);
+
+      @include mixins.lg {
+        color: inherit;
+      }
+    }
+
+    @include mixins.sm {
+      overflow: hidden;
+    }
+  }
+
+  &__body {
+    padding: 30px 60px 30px 30px;
+    background-color: #f1f1f1;
+    border-bottom-left-radius: variabels.$accordion-br;
+    border-bottom-right-radius: variabels.$accordion-br;
+    color: #75706b;;
+  }
+
+  &__toggler {
+    position: absolute;
+    display: inline-block;
+    width: 2px;
+    height: 10px;
+    background-color: black;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      transform: rotate(90deg);
+      width: 2px;
+      height: 10px;
+      background-color: #000000;
+    }
+  }
+}
+
+.accordionCollapse {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.7s;
+}
+
+.accordion__togglerOpen {
+  transform: translateY(-50%) rotate(45deg);
+}

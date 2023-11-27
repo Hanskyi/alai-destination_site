@@ -6,6 +6,8 @@ import DescriptionBlock from '@/features/TourPage/DescriptionBlock/DescriptionBl
 import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
 import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
 import axios from 'axios';
+import FaqList from '@/components/FaqList/FaqList';
+import { FAQLIST } from '@/dummyData';
 
 interface TourData {
   title: string;
@@ -29,7 +31,7 @@ const TourPage = () => {
       }
     };
 
-    fetchTourData();
+    void fetchTourData();
   }, []);
 
   console.log();
@@ -48,6 +50,7 @@ const TourPage = () => {
             <DescriptionBlock data={tourData?.previewDescription || ''} />
             <DetailedTabs />
             <Gallery />
+            <FaqList faqList={FAQLIST} />
           </div>
           <TourDetails />
         </div>
