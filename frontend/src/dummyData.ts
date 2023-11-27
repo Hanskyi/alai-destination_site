@@ -1,4 +1,4 @@
-import {IFaq} from "@/type";
+import { IFaq } from '@/type';
 
 interface IReviewsCount {
   rating: number;
