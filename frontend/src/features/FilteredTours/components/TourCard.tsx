@@ -1,6 +1,5 @@
 import React from 'react';
-import style from '@/features/Home/TravelSliderBlock/TravelSliderBlog.module.scss';
-import card from './TourCard.module.scss';
+import style from '@/features/Home/TravelSliderBlock/TravelSliderBlock.module.scss';
 import Image from 'next/image';
 
 const GoodTripsCard = () => {
@@ -8,6 +7,7 @@ const GoodTripsCard = () => {
     <div className={style.card}>
       <div className={style.card__image__box}>
         <Image
+          priority={true}
           width={1200}
           height={1200}
           className={style.card__image__box__content__two}
@@ -22,9 +22,6 @@ const GoodTripsCard = () => {
       <p className={style.card__price}>
         From <span className={style.card__price__span}>USD $9,990</span>
       </p>
-      <div className={card.addToWishList}>
-        <button className={card.addToWishListButton}>Add to my wishlist</button>
-      </div>
     </div>
   );
 };

@@ -6,8 +6,8 @@ import locationsBanner from '@/assets/locationImage/locationsBanner.jpg';
 import classificationBanner from '@/assets/locationImage/locationsBanner.jpg';
 import playIcon from '@/assets/icon/icon-play.svg';
 import ClassificationsCard from '@/features/Classification/components/ClassificationsCard';
-import ClassificationReviews from '@/components/ClassificationReviews/Reviews';
 import { useParams } from 'next/navigation';
+import Reviews from '@/components/ClassificationReviews/Reviews';
 
 const LocationsRegion = () => {
   const { id } = useParams();
@@ -54,7 +54,7 @@ const LocationsRegion = () => {
           Show more trips
         </button>
       </div>
-      <ClassificationReviews />
+      <Reviews />
     </>
   );
 };
