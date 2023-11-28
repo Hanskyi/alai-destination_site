@@ -713,13 +713,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     author: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -738,6 +731,19 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       }> &
       Attribute.SetMinMaxLength<{
         maxLength: 300;
+      }>;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

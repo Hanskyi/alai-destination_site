@@ -38,15 +38,6 @@
         }
       }
     },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
-    },
     "author": {
       "pluginOptions": {
         "i18n": {
@@ -72,6 +63,19 @@
       "type": "text",
       "required": true,
       "maxLength": 300
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5video.CKEditor"
     }
   }
 }
