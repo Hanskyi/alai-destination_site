@@ -14,7 +14,7 @@ const Toolbar = () => {
   const [destinationsDropdown, setDestinationsDropdown] = useState(false);
   const [backdropOpen, setBackdropOpen] = useState(false);
 
-  const {data: session} = useSession();
+  const { data: session } = useSession();
 
   const handleGoogleSignIn = async () => {
     const googleSignIn = await signIn('google');
@@ -33,39 +33,39 @@ const Toolbar = () => {
 
   const renderHeaderTopLinks = session
     ? [
-      {
-        text: 'Logout',
-        onClick: () => signOut(),
-        href: '#',
-        imgSrc: logout,
-        imgAlt: 'logout',
-      },
-      {
-        text: '+613 94732673',
-        href: 'tel:+61394732673',
-        imgSrc: phoneIcon,
-        imgAlt: '+613 94732673',
-      },
-    ]
+        {
+          text: 'Logout',
+          onClick: () => signOut(),
+          href: '#',
+          imgSrc: logout,
+          imgAlt: 'logout',
+        },
+        {
+          text: '+613 94732673',
+          href: 'tel:+61394732673',
+          imgSrc: phoneIcon,
+          imgAlt: '+613 94732673',
+        },
+      ]
     : [
-      {
-        text: 'Log in',
-        onClick: handleGoogleSignIn,
-        href: '#',
-        imgSrc: enter,
-        imgAlt: 'login',
-      },
-      {
-        text: '+613 94732673',
-        href: 'tel:+61394732673',
-        imgSrc: phoneIcon,
-        imgAlt: '+613 94732673',
-      },
-    ];
+        {
+          text: 'Log in',
+          onClick: handleGoogleSignIn,
+          href: '#',
+          imgSrc: enter,
+          imgAlt: 'login',
+        },
+        {
+          text: '+613 94732673',
+          href: 'tel:+61394732673',
+          imgSrc: phoneIcon,
+          imgAlt: '+613 94732673',
+        },
+      ];
 
   const largeLinks = [
-    {text: 'Ways to travel', href: '/classifications'},
-    {text: 'About us', href: '/about-us'},
+    { text: 'Ways to travel', href: '/classifications' },
+    { text: 'About us', href: '/about-us' },
   ];
 
   const regionLinks = [
@@ -114,21 +114,26 @@ const Toolbar = () => {
         <div className={toolbar.headerContainer}>
           <div className={toolbar.headerTop}>
             <div className={toolbar.links}>
-
               <>
                 {renderHeaderTopLinks.map((link, index) => (
                   <Link key={index} className={toolbar.headerTopLink} href={link.href}>
-                    <Image height={25} width={25} className={toolbar.headerImg} onClick={link.onClick} src={link.imgSrc}
-                           alt={link.imgAlt}/>
+                    <Image
+                      height={25}
+                      width={25}
+                      className={toolbar.headerImg}
+                      onClick={link.onClick}
+                      src={link.imgSrc}
+                      alt={link.imgAlt}
+                    />
                     <span className={toolbar.topText}>
-                {link.onClick ? (
-                  <button className={toolbar.headerButton} onClick={link.onClick}>
-                    {link.text}
-                  </button>
-                ) : (
-                  link.text
-                )}
-              </span>
+                      {link.onClick ? (
+                        <button className={toolbar.headerButton} onClick={link.onClick}>
+                          {link.text}
+                        </button>
+                      ) : (
+                        link.text
+                      )}
+                    </span>
                   </Link>
                 ))}
               </>
@@ -147,7 +152,7 @@ const Toolbar = () => {
           <div className={toolbar.headerBottom}>
             <div>
               <Link className={toolbar.logo} href="/">
-                <Image src={logo} alt="logo" width={165} height={70}/>
+                <Image src={logo} alt="logo" width={165} height={70} />
               </Link>
             </div>
 
@@ -177,7 +182,6 @@ const Toolbar = () => {
                     </div>
                   </div>
                 )}
-
               </div>
               {largeLinks.map((link, index) => (
                 <Link href="#" key={index} className={toolbar.headerLink}>
@@ -189,17 +193,23 @@ const Toolbar = () => {
             <div className={toolbar.largeScreenLinks}>
               {renderHeaderTopLinks.map((link, index) => (
                 <Link key={index} className={toolbar.headerTopLink} href={link.href}>
-                  <Image height={25} width={25} className={toolbar.headerImg} onClick={link.onClick} src={link.imgSrc}
-                         alt={link.imgAlt}/>
+                  <Image
+                    height={25}
+                    width={25}
+                    className={toolbar.headerImg}
+                    onClick={link.onClick}
+                    src={link.imgSrc}
+                    alt={link.imgAlt}
+                  />
                   <span className={toolbar.topText}>
-                {link.onClick ? (
-                  <button className={toolbar.headerButton} onClick={link.onClick}>
-                    {link.text}
-                  </button>
-                ) : (
-                  link.text
-                )}
-              </span>
+                    {link.onClick ? (
+                      <button className={toolbar.headerButton} onClick={link.onClick}>
+                        {link.text}
+                      </button>
+                    ) : (
+                      link.text
+                    )}
+                  </span>
                 </Link>
               ))}
             </div>
@@ -249,9 +259,9 @@ const Toolbar = () => {
             </div>
           </div>
         </div>
-        {menuOpen && <Backdrop close={closeMenu} background={'0, 0, 0, 0.55'}/>}
+        {menuOpen && <Backdrop close={closeMenu} background={'0, 0, 0, 0.55'} />}
       </header>
-      {backdropOpen && <Backdrop close={closeMenu} background={'0, 0, 0, 0'}/>}
+      {backdropOpen && <Backdrop close={closeMenu} background={'0, 0, 0, 0'} />}
     </>
   );
 };

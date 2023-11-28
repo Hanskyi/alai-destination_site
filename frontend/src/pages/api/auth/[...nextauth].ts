@@ -1,6 +1,6 @@
-import {NextApiRequest, NextApiResponse} from "next";
-import NextAuth, {NextAuthOptions} from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import { NextApiRequest, NextApiResponse } from 'next';
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -9,23 +9,23 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET!,
       authorization: {
         params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code"
-        }
-      }
+          prompt: 'consent',
+          access_type: 'offline',
+          response_type: 'code',
+        },
+      },
     }),
   ],
 
   callbacks: {
-    async jwt({token, account}) {
+    async jwt({ token, account }) {
       if (account) {
         try {
           const res = await fetch(
-            `${process.env.STRAPI_BACKEND_URL}/api/auth/${account.provider}/callback?access_token=${account.access_token}`
+            `${process.env.STRAPI_BACKEND_URL}/api/auth/${account.provider}/callback?access_token=${account.access_token}`,
           );
           const data = await res.json();
-          const {jwt, user} = data;
+          const { jwt, user } = data;
           token.accessToken = jwt;
           token.userId = user.id;
         } catch (e) {
@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
 
-    async session({session, token}) {
+    async session({ session, token }) {
       session.user.accessToken = token.accessToken as string;
       session.user.userId = token.userId as number;
       return session;
@@ -43,13 +43,12 @@ export const authOptions: NextAuthOptions = {
   },
 
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
 
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-const auth = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, authOptions);
+const auth = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);
 
 export default auth;
