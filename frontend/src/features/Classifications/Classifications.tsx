@@ -1,11 +1,17 @@
 import React from 'react';
+import style from './Classifications.module.scss';
 import Image from 'next/image';
 import classificationsBanner from '@/assets/classificationsImages/classification-banner.png';
 import playIcon from '@/assets/icon/icon-play.svg';
 import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
-import style from './Classifications.module.scss';
+import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
+import { useAppSelector } from '@/store/hooks';
+import { SwiperSlide } from 'swiper/react';
 
 const Classifications = () => {
+  const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);
+
   return (
     <>
       <div className={style.classificationsBanner}>
@@ -39,9 +45,13 @@ const Classifications = () => {
             Our walking, hiking & trekking trips
           </h3>
           <div className={style.classificationsCards__content}>
-            {Array.from({ length: 8 }, (_, index) => (
-              <WaysToTravelCard key={index} />
-            ))}
+            <SwiperComponent link="/classifications/1">
+              {homeClassifications?.data.classifications.map((category) => (
+                <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>
+                  <WaysToTravelCard item={category} />
+                </SwiperSlide>
+              ))}
+            </SwiperComponent>
           </div>
           <button className={style.classificationsCards__button}>Show all trips</button>
         </div>
