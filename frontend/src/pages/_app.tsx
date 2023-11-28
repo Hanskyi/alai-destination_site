@@ -9,6 +9,7 @@ import Whatsapp from '@/components/Whatsapp/Whatsapp';
 import Footer from '@/UI/Footer/Footer';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import '../styles/globals.scss';
+import {SessionProvider} from "next-auth/react";
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -16,6 +17,7 @@ export default function App({ Component, ...rest }: AppProps) {
 
   return (
     <Provider store={store}>
+      <SessionProvider session={...props.pageProps.session}>
       <NextIntlClientProvider
         locale={router.locale}
         timeZone="Europe/Vienna"
@@ -27,6 +29,7 @@ export default function App({ Component, ...rest }: AppProps) {
         <Whatsapp />
         <Footer />
       </NextIntlClientProvider>
+      </SessionProvider>
     </Provider>
   );
 }
