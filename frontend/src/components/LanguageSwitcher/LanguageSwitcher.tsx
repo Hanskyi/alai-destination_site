@@ -15,6 +15,10 @@ const LanguageSwitcher = () => {
       query: currentQuery,
     };
 
+    if (router.locale?.toLowerCase() === locale.toLowerCase()) {
+      return;
+    }
+
     void router.push(href, undefined, { locale: locale === 'RU' && 'ru' });
   };
 

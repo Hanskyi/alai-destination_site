@@ -10,6 +10,8 @@ import Footer from '@/UI/Footer/Footer';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import '../styles/globals.scss';
 import { SessionProvider } from 'next-auth/react';
+import {fetchHomeData} from "@/features/Home/homeThunk";
+import {fetchHFData} from "@/features/HeaderFooter/headerFooterThunk";
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -33,3 +35,11 @@ export default function App({ Component, ...rest }: AppProps) {
     </Provider>
   );
 }
+
+export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {
+  await store.dispatch(fetchHFData());
+  return {
+    props: {
+    },
+  };
+});

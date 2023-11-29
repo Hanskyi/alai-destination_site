@@ -8,6 +8,8 @@ import IconTiktok from '../../../assets/icon/social/i_tiktok.png';
 import IconTwitter from '../../../assets/icon/social/i_twitter.png';
 import IconYoutube from '../../../assets/icon/social/i_youtube.png';
 import footer from '../Footer.module.scss';
+import { useAppSelector } from '@/store/hooks';
+import { selectHFData } from '@/features/HeaderFooter/headerFooterSlice';
 
 const socials = [
   IconBlog,
@@ -20,10 +22,12 @@ const socials = [
 ];
 
 const Socials = () => {
+  const hfData = useAppSelector(selectHFData);
+
   return (
     <div className={`${footer.social__list} d-flex`}>
-      {socials.map((icon) => (
-        <SocialsItem key={icon.src} icon={icon.src} />
+      {hfData?.data.socialLinks.map((icon, idx) => (
+        <SocialsItem key={idx} icon={icon} />
       ))}
     </div>
   );

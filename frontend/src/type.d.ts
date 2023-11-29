@@ -152,3 +152,37 @@ export interface ITable {
   heading: string;
   body: string;
 }
+
+//--------------------
+
+export interface IHeaderFooterInfo {
+  data: IHeaderFooterData;
+}
+
+export interface IHeaderFooterData {
+  id: number;
+  mainPhoneNumber: string;
+  locale: string;
+  socialLinks: ISocialLink[];
+  logo: ILogo;
+}
+
+export interface ISocialLink {
+  id: number;
+  href: string;
+  icon: IIcon;
+}
+
+export interface IIcon {
+  id: number;
+  name: string;
+  url: string;
+}
+
+export interface ILogo {
+  id: number;
+  name: string;
+  url: string;
+}
+
+//---------------------
