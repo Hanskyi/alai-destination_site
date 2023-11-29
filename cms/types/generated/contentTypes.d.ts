@@ -1160,11 +1160,6 @@ export interface ApiLocationLocation extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    tours: Attribute.Relation<
-      'api::location.location',
-      'oneToMany',
-      'api::tour.tour'
-    >;
     title: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
