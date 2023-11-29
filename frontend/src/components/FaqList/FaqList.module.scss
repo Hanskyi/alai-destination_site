@@ -45,8 +45,8 @@
   }
 
   &__body {
-    padding: 30px 60px 30px 30px;
-    background-color: #f1f1f1;
+    padding: 10px;
+    background-color: #fff;
     border-bottom-left-radius: variabels.$accordion-br;
     border-bottom-right-radius: variabels.$accordion-br;
     color: #75706b;
@@ -74,6 +74,35 @@
       background-color: #000000;
     }
   }
+
+  figure {
+    width: 100% !important;
+    min-height: 150px !important;
+
+    table {
+      table-layout: auto !important;
+
+      td {
+        width: auto !important;
+      }
+
+      @include mixins.lg {
+        tbody {
+          display: flex !important;
+
+          tr {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    @include mixins.lg {
+      height: fit-content !important;
+    }
+  }
 }
 
 .accordionCollapse {
@@ -84,4 +113,5 @@
 
 .accordion__togglerOpen {
   transform: translateY(-50%) rotate(45deg);
+  height: fit-content !important;
 }

@@ -1508,18 +1508,6 @@ export interface ApiTourTour extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    tourScheduleCK: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5video.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     subTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1539,6 +1527,13 @@ export interface ApiTourTour extends Schema.CollectionType {
         };
       }>;
     scheduleTable: Attribute.Component<'tour.table-el', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    faqList: Attribute.Component<'tour.table-el', true> &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

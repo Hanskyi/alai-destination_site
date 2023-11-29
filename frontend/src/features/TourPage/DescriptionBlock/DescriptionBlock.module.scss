@@ -6,6 +6,11 @@
   padding: 20px 20px 50px;
   margin: 0 10px;
 
+  & div {
+    width: 100% !important;
+    padding: 0;
+  }
+
   .headPara {
     font-size: 14pt;
     padding: 0 0 20px 0;

@@ -5,15 +5,17 @@ import Gallery from '@/features/TourPage/GalleryBlock/Gallery';
 import DescriptionBlock from '@/features/TourPage/DescriptionBlock/DescriptionBlock';
 import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
 import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
-import axios from 'axios';
 import FaqList from '@/components/FaqList/FaqList';
-import { FAQLIST } from '@/dummyData';
+import axios from 'axios';
+import {IFaq} from "../type";
+
 
 interface TourData {
   title: string;
   subTitle: string;
   mainImage?: { url: string };
   previewDescription: string;
+  faqList: IFaq[];
 }
 
 const TourPage = () => {
@@ -22,7 +24,7 @@ const TourPage = () => {
   useEffect(() => {
     const fetchTourData = async () => {
       try {
-        const response = await axios.get('http://localhost:1337/api/tours/5');
+        const response = await axios.get('http://localhost:1337/api/tours/3');
         const data = response.data.data;
 
         setTourData(data);
@@ -34,7 +36,7 @@ const TourPage = () => {
     void fetchTourData();
   }, []);
 
-  console.log(tourData);
+  console.log(tourData, 'tour page');
 
   return (
     <div className={style.tour_page}>
@@ -50,7 +52,7 @@ const TourPage = () => {
             <DescriptionBlock data={tourData?.previewDescription || ''} />
             <DetailedTabs />
             <Gallery />
-            <FaqList faqList={FAQLIST} />
+            <FaqList faqList={tourData?.faqList || []} />
           </div>
           <TourDetails />
         </div>
