@@ -6,7 +6,6 @@ interface Props {
 }
 
 const DescriptionBlock: React.FC<Props> = ({ data }) => {
-  console.log('DescriptionBlock', data);
   return (
     <div className={`${descriptionStyle.descriptionBlock} container`}>
       <div dangerouslySetInnerHTML={{ __html: data }} />

@@ -1,0 +1,20 @@
+.tour_schedule {
+
+  & > ul > li  div {
+    background: #fff;
+  }
+
+  figure {
+    width: 100% !important;
+    height: 150px !important;
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}

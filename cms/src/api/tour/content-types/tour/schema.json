@@ -189,6 +189,16 @@
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5video.CKEditor"
+    },
+    "scheduleTable": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "tour.table-el"
     }
   }
 }

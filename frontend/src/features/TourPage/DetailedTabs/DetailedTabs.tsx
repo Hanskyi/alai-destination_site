@@ -7,6 +7,7 @@ import TourDates from './TourDates/TourDates';
 import TourPrice from './TourPrice/TourPrice';
 import axios from 'axios';
 import style from './DetailedTabs.module.scss';
+import { ITable } from '@/type';
 
 interface TabLinkProps {
   tabName: string;
@@ -18,6 +19,7 @@ interface TourData {
   detailedDays: string | null;
   tourScheduleCK: string | null;
   tourPrice: string | null;
+  scheduleTable: ITable[] | null;
 }
 
 const DetailedTabs = () => {
@@ -29,6 +31,7 @@ const DetailedTabs = () => {
     detailedDays: null,
     tourScheduleCK: null,
     tourPrice: null,
+    scheduleTable: null,
   });
 
   useEffect(() => {
@@ -37,7 +40,10 @@ const DetailedTabs = () => {
         const response = await axios.get('http://localhost:1337/api/tours/5');
         const data = response.data.data;
 
-        setTourData(data);
+        setTourData((prevData) => ({
+          ...prevData,
+          scheduleTable: data.scheduleTable as ITable[],
+        }));
       } catch (error) {
         console.error('Error fetching tour data:', error);
       }
@@ -70,11 +76,14 @@ const DetailedTabs = () => {
     </li>
   );
 
+  console.log(tourData);
+
   return (
     <div className={`container ${style.tab_container}`}>
       <div className={style.tabs}>
         <h2>Detailed Tour Information about the Best of Alay Mountains Trek</h2>
         {renderTabs()}
+
         <div className={style.tabs_wrap}>
           {activeTab === 'overview' && tourData.overviewCK !== null && (
             <Overview data={tourData.overviewCK} />
@@ -85,8 +94,8 @@ const DetailedTabs = () => {
           {activeTab === 'tourprice' && tourData.tourPrice !== null && (
             <TourPrice data={tourData.tourPrice} />
           )}
-          {activeTab === 'tourdates' && tourData.tourScheduleCK !== null && (
-            <TourDates data={tourData.tourScheduleCK} />
+          {activeTab === 'tourdates' && tourData.scheduleTable !== null && (
+            <TourDates data={tourData.scheduleTable} />
           )}
 
           {activeTab === 'booknow' && <BookNow />}

@@ -144,6 +144,11 @@ export interface Localization {
 }
 
 export interface IFaq {
-  question: string;
-  answer: string;
+  heading: string;
+  body: string;
+}
+
+export interface ITable {
+  heading: string;
+  body: string;
 }

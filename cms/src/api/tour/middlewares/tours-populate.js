@@ -27,6 +27,10 @@ const populate = {
   localizations: {
     populate: true
   },
+  scheduleTable: {
+    populate:true,
+    fields: ["heading", "body"],
+  }
 };
 
 module.exports = (config, { strapi }) => {

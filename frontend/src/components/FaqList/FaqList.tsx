@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { IFaq } from '@/type';
 import FaqItem from '@/components/FaqList/FaqItem';
 import styles from './FaqList.module.scss';
+import { IFaq } from '../../type';
 
 interface IProps {
   faqList: IFaq[];
@@ -9,6 +9,8 @@ interface IProps {
 
 const FaqList: React.FC<IProps> = ({ faqList }) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+
+  console.log(faqList);
 
   return (
     <ul className={styles.accordion}>

@@ -1503,6 +1503,12 @@ export interface ApiTourTour extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    scheduleTable: Attribute.Component<'tour.table-el', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
