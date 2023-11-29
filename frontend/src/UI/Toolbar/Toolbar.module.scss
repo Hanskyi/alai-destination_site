@@ -195,26 +195,29 @@
     background-size: cover;
     width: 6px;
     height: 10px;
-    left: 94px;
-    top: 5px;
+    right: -29px;
+    top: 8px;
+
+    transform: rotate(90deg);
+
     @include mixins.xxl {
-      top: 5px;
+      top: 8px;
     }
     @include mixins.xl {
-      top: 5px;
+      top: 8px;
     }
     @include mixins.xl {
-      top: 5px;
+      top: 8px;
     }
 
     &__active {
       top: 6px;
-      rotate: 90deg;
+      rotate: 180deg;
     }
 
     &__burger {
       top: 146px;
-      left: 110px;
+      left: 128px;
     }
   }
 }
