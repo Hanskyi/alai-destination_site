@@ -56,12 +56,6 @@
       "type": "string",
       "required": true
     },
-    "tours": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tour.tour",
-      "mappedBy": "tour"
-    },
     "title": {
       "pluginOptions": {
         "i18n": {
