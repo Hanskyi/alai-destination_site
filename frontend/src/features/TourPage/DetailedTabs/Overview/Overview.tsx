@@ -5,7 +5,6 @@ interface Props {
 }
 
 const Overview: React.FC<Props> = ({ data }) => {
-
   return (
     <div className="container">
       <div dangerouslySetInnerHTML={{ __html: data }} />

@@ -20,7 +20,6 @@
 
     @include mixins.sm {
       min-height: 75vh;
-
     }
   }
 }
@@ -265,7 +264,6 @@
     @include mixins.sm {
       margin-bottom: 70px;
     }
-
   }
 
   &__title {
@@ -325,7 +323,6 @@
       line-height: 42px;
       margin: 30px auto 30px;
     }
-
   }
 
   &__cards {
@@ -382,6 +379,4 @@
   &__link:hover {
     color: #24c358;
   }
-
-
 }

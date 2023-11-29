@@ -8,7 +8,6 @@ interface Props {
 }
 
 const TourDates: React.FC<Props> = ({ data }) => {
-
   return (
     <div className={style.tour_schedule}>
       <FaqList faqList={data} />
