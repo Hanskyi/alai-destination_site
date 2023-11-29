@@ -44,6 +44,24 @@ export interface SharedLink extends Schema.Component {
   };
 }
 
+export interface TourTableEl extends Schema.Component {
+  collectionName: 'components_tour_table_els';
+  info: {
+    displayName: 'TableEl';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    body: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -51,6 +69,7 @@ declare module '@strapi/types' {
       'shared.card': SharedCard;
       'shared.contacts': SharedContacts;
       'shared.link': SharedLink;
+      'tour.table-el': TourTableEl;
     }
   }
 }

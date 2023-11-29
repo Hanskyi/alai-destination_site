@@ -1,15 +1,18 @@
 import React from 'react';
-import style from '../DetailedTabs.module.scss';
+import FaqList from '../../../../components/FaqList/FaqList';
+import { ITable } from '../../../../type';
+import style from './TourDates.module.scss';
 
 interface Props {
-  data: string;
+  data: ITable[];
 }
 
 const TourDates: React.FC<Props> = ({ data }) => {
+  console.log(data, 'previewDescription');
+
   return (
     <div className={style.tour_schedule}>
-      <h3>Price for Lenin Peak Base Camp Trek Guided Tour (8 days)</h3>
-      <div dangerouslySetInnerHTML={{ __html: data }} />
+      <FaqList faqList={data} />
     </div>
   );
 };

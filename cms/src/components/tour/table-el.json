@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_tour_table_els",
+  "info": {
+    "displayName": "TableEl",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "body": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5video.CKEditor"
+    }
+  }
+}

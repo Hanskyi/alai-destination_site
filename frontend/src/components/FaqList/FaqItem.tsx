@@ -13,7 +13,7 @@ const FaqItem: React.FC<IProps> = ({ faqItem, isOpen, clickHandler }) => {
   return (
     <li className={styles.accordion__item}>
       <button className={styles.accordion__header} onClick={clickHandler}>
-        {faqItem.question}
+        {faqItem.heading}
         <span
           className={`${styles.accordion__toggler} ${isOpen ? styles.accordion__togglerOpen : ''}`}
         />
@@ -24,7 +24,7 @@ const FaqItem: React.FC<IProps> = ({ faqItem, isOpen, clickHandler }) => {
         style={isOpen ? { height: itemRef.current?.scrollHeight } : { height: '0px' }}
       >
         <div className={styles.accordion__body} ref={itemRef}>
-          {faqItem.answer}
+          <div dangerouslySetInnerHTML={{ __html: faqItem.body }} />
         </div>
       </div>
     </li>

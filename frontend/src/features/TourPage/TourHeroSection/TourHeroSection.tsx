@@ -10,7 +10,6 @@ interface Props {
 
 const TourHeroSection: React.FC<Props> = ({ title, subTitle, mainImage }) => {
   const bannerLink = `url(${GALLERY}${mainImage})`;
-  console.log(bannerLink);
 
   return (
     <div
