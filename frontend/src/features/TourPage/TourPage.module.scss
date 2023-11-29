@@ -12,11 +12,15 @@
 
     .tour_container {
       flex-grow: 1;
-      flex-basis: 70%;
-      padding: 70px 60px;
+      max-width: 75%;
+      padding: 40px;
       background: #fff;
       border-radius: 5px;
       box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+
+      @include mixins.lg {
+        max-width: 100%;
+      }
 
       @include mixins.md {
         padding: 20px;

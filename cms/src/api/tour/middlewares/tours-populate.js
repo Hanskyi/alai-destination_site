@@ -30,6 +30,10 @@ const populate = {
   scheduleTable: {
     populate:true,
     fields: ["heading", "body"],
+  },
+  faqList: {
+    populate:true,
+    fields: ["heading", "body"],
   }
 };
 

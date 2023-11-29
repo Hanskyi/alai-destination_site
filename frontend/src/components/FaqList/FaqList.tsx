@@ -12,14 +12,20 @@ const FaqList: React.FC<IProps> = ({ faqList }) => {
 
   return (
     <ul className={styles.accordion}>
-      {faqList.map((f, idx) => (
-        <FaqItem
-          key={idx}
-          faqItem={f}
-          isOpen={idx === currentIndex}
-          clickHandler={() => (idx === currentIndex ? setCurrentIndex(null) : setCurrentIndex(idx))}
-        />
-      ))}
+      {faqList && faqList.length > 0 ? (
+        faqList.map((f, idx) => (
+          <FaqItem
+            key={idx}
+            faqItem={f}
+            isOpen={idx === currentIndex}
+            clickHandler={() =>
+              idx === currentIndex ? setCurrentIndex(null) : setCurrentIndex(idx)
+            }
+          />
+        ))
+      ) : (
+        <p>No FAQs available</p>
+      )}
     </ul>
   );
 };

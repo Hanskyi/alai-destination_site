@@ -26,7 +26,7 @@ const DetailedTabs = () => {
   const router = useRouter();
   const { tab } = router.query;
   const [activeTab, setActiveTab] = useState(tab || 'overview');
-  const [tourData, setTourData] = useState<TourData>({
+  const [tabData, setTabData] = useState<TourData>({
     overviewCK: null,
     detailedDays: null,
     tourScheduleCK: null,
@@ -37,19 +37,16 @@ const DetailedTabs = () => {
   useEffect(() => {
     const fetchTourData = async () => {
       try {
-        const response = await axios.get('http://localhost:1337/api/tours/5');
+        const response = await axios.get('http://localhost:1337/api/tours/3');
         const data = response.data.data;
 
-        setTourData((prevData) => ({
-          ...prevData,
-          scheduleTable: data.scheduleTable as ITable[],
-        }));
+        setTabData(data);
       } catch (error) {
         console.error('Error fetching tour data:', error);
       }
     };
 
-    fetchTourData();
+    void fetchTourData();
   }, []);
 
   const handleTabClick = (tabName: string) => {
@@ -83,17 +80,17 @@ const DetailedTabs = () => {
         {renderTabs()}
 
         <div className={style.tabs_wrap}>
-          {activeTab === 'overview' && tourData.overviewCK !== null && (
-            <Overview data={tourData.overviewCK} />
+          {activeTab === 'overview' && tabData.overviewCK !== null && (
+            <Overview data={tabData.overviewCK} />
           )}
-          {activeTab === 'detaileditinerary' && tourData.detailedDays !== null && (
-            <DetailedItinerary data={tourData.detailedDays} />
+          {activeTab === 'detaileditinerary' && tabData.detailedDays !== null && (
+            <DetailedItinerary data={tabData.detailedDays} />
           )}
-          {activeTab === 'tourprice' && tourData.tourPrice !== null && (
-            <TourPrice data={tourData.tourPrice} />
+          {activeTab === 'tourprice' && tabData.tourPrice !== null && (
+            <TourPrice data={tabData.tourPrice} />
           )}
-          {activeTab === 'tourdates' && tourData.scheduleTable !== null && (
-            <TourDates data={tourData.scheduleTable} />
+          {activeTab === 'tourdates' && tabData.scheduleTable !== null && (
+            <TourDates data={tabData.scheduleTable} />
           )}
 
           {activeTab === 'booknow' && <BookNow />}

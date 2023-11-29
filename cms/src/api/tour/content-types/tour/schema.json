@@ -158,18 +158,6 @@
       },
       "customField": "plugin::ckeditor5video.CKEditor"
     },
-    "tourScheduleCK": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "customField",
-      "options": {
-        "preset": "toolbar"
-      },
-      "customField": "plugin::ckeditor5video.CKEditor"
-    },
     "subTitle": {
       "pluginOptions": {
         "i18n": {
@@ -199,6 +187,17 @@
         }
       },
       "component": "tour.table-el"
+    },
+    "faqList": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "tour.table-el",
+      "required": true
     }
   }
 }
