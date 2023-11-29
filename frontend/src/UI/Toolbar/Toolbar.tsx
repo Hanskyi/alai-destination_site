@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import phoneIcon from '@/assets/toolbar/phone-icon.png';
 import enter from '@/assets/toolbar/enter1.png';
 import logout from '@/assets/toolbar/logout.png';
-import logo from '@/assets/toolbar/logo.svg';
 import toolbar from './Toolbar.module.scss';
 import Backdrop from '@/components/Backdrop/Backdrop';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { fetchHFData } from '@/features/HeaderFooter/headerFooterThunk';
+import { selectHFData } from '@/features/HeaderFooter/headerFooterSlice';
+import { GALLERY } from '@/constants';
+import { useRouter } from 'next/router';
 
 const Toolbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [destinationsDropdown, setDestinationsDropdown] = useState(false);
   const [backdropOpen, setBackdropOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const hfData = useAppSelector(selectHFData);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    dispatch(fetchHFData());
+  }, [dispatch, router.locale]);
 
   const { data: session } = useSession();
 
@@ -41,10 +53,10 @@ const Toolbar = () => {
           imgAlt: 'logout',
         },
         {
-          text: '+613 94732673',
-          href: 'tel:+61394732673',
+          text: hfData?.data.mainPhoneNumber,
+          href: `tel:${hfData?.data.mainPhoneNumber}`,
           imgSrc: phoneIcon,
-          imgAlt: '+613 94732673',
+          imgAlt: hfData?.data.mainPhoneNumber,
         },
       ]
     : [
@@ -56,15 +68,15 @@ const Toolbar = () => {
           imgAlt: 'login',
         },
         {
-          text: '+613 94732673',
-          href: 'tel:+61394732673',
+          text: hfData?.data.mainPhoneNumber,
+          href: `tel:${hfData?.data.mainPhoneNumber}`,
           imgSrc: phoneIcon,
-          imgAlt: '+613 94732673',
+          imgAlt: hfData?.data.mainPhoneNumber,
         },
       ];
 
   const largeLinks = [
-    { text: 'Ways to travel', href: '/classifications' },
+    { text: 'Destinations', href: '/classifications' },
     { text: 'About us', href: '/about-us' },
   ];
 
@@ -123,7 +135,7 @@ const Toolbar = () => {
                       className={toolbar.headerImg}
                       onClick={link.onClick}
                       src={link.imgSrc}
-                      alt={link.imgAlt}
+                      alt={link.imgAlt || 'icon'}
                     />
                     <span className={toolbar.topText}>
                       {link.onClick ? (
@@ -142,9 +154,9 @@ const Toolbar = () => {
                 className={`${toolbar.burgerMenu} ${menuOpen ? toolbar.open : ''}`}
                 onClick={toggleMenu}
               >
-                <div className={toolbar.bar}></div>
-                <div className={toolbar.bar}></div>
-                <div className={toolbar.bar}></div>
+                <div className={toolbar.bar} />
+                <div className={toolbar.bar} />
+                <div className={toolbar.bar} />
               </div>
             </div>
           </div>
@@ -152,7 +164,9 @@ const Toolbar = () => {
           <div className={toolbar.headerBottom}>
             <div>
               <Link className={toolbar.logo} href="/">
-                <Image src={logo} alt="logo" width={165} height={70} />
+                {hfData?.data && (
+                  <Image src={GALLERY + hfData?.data.logo.url} alt="logo" width={165} height={70} />
+                )}
               </Link>
             </div>
 
@@ -163,7 +177,7 @@ const Toolbar = () => {
                   href="#"
                   onClick={() => onClickLinkHeader()}
                 >
-                  Destinations{' '}
+                  Destinations
                   <span
                     className={`${toolbar.destinations__image} ${
                       destinationsDropdown && toolbar.destinations__image__active
@@ -184,7 +198,7 @@ const Toolbar = () => {
                 )}
               </div>
               {largeLinks.map((link, index) => (
-                <Link href="#" key={index} className={toolbar.headerLink}>
+                <Link href={link.href} key={index} className={toolbar.headerLink}>
                   {link.text}
                 </Link>
               ))}
@@ -199,7 +213,7 @@ const Toolbar = () => {
                     className={toolbar.headerImg}
                     onClick={link.onClick}
                     src={link.imgSrc}
-                    alt={link.imgAlt}
+                    alt={link.imgAlt || 'icon'}
                   />
                   <span className={toolbar.topText}>
                     {link.onClick ? (

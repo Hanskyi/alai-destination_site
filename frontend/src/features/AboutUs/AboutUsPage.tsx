@@ -1,16 +1,17 @@
 import React from 'react';
-import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
 import ValuesBlock from '@/features/AboutUs/Components/ValuesBlock';
 import CountersBlock from '@/features/AboutUs/Components/CountersBlock';
 import Image from 'next/image';
-
 import Kato from '../../assets/icon/about-us/kato.png';
+
 import Alay from '../../assets/icon/about-us/visit_alay.png';
 import Osh from '../../assets/icon/about-us/osh.png';
 import Karakol from '../../assets/icon/about-us/karakol.png';
 import Jyrgalan from '../../assets/icon/about-us/jyrgalan.png';
 import Award from '../../assets/icon/about-us/award.png';
 import Link from 'next/link';
+import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
+
 const AboutUsPage = () => {
   return (
     <>
@@ -166,7 +167,7 @@ const AboutUsPage = () => {
           </div>
         </div>
         <div className={aboutUsStyle.contactsBlock}>
-          <div className="container d-flex f-wrap justify-between">
+          <div className="container d-flex f-wrap justify-between flex-wrap">
             <div className={aboutUsStyle.contactsBlock__card}>
               <h2 className={aboutUsStyle.contactsBlock__title}>Destinations</h2>
               <p className={aboutUsStyle.contactsBlock__text}>

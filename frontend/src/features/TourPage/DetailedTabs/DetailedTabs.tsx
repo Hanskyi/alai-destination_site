@@ -73,8 +73,6 @@ const DetailedTabs = () => {
     </li>
   );
 
-  console.log(tabData, 'Tabs');
-
   return (
     <div className={`container ${style.tab_container}`}>
       <div className={style.tabs}>

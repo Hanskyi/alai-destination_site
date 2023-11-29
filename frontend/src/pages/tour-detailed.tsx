@@ -35,8 +35,6 @@ const TourPage = () => {
     void fetchTourData();
   }, []);
 
-  console.log(tourData, 'tour page');
-
   return (
     <div className={style.tour_page}>
       <TourHeroSection
