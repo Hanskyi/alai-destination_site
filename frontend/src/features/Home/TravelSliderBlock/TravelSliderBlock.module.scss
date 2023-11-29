@@ -40,15 +40,21 @@
   justify-content: center;
   align-items: center;
   width: 240px;
-  height: auto;
-  margin-right: 16px;
-  margin-bottom: 16px;
+  //height: auto;
+  //margin-right: 16px;
+  //margin-bottom: 16px;
   overflow: hidden;
   border-radius: 0.25rem;
   cursor: pointer;
   border: 1px solid #bebebe;
+  height: 100%;
+
+  &> a {
+    height: 100%;
+  }
   &__body {
     padding: 0 0 15px;
+    flex: 1;
   }
   &:hover {
     background-color: #bebebe;
@@ -66,7 +72,7 @@
     }
   }
   &__title {
-    margin-top: 26px;
+    padding: 24px 16px;
     max-width: 170px;
     text-align: left;
     font-size: 16px;

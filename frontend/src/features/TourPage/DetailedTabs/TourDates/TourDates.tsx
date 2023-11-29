@@ -8,7 +8,6 @@ interface Props {
 }
 
 const TourDates: React.FC<Props> = ({ data }) => {
-  console.log(data, 'previewDescription');
 
   return (
     <div className={style.tour_schedule}>

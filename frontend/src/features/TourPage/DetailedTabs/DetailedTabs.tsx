@@ -76,8 +76,6 @@ const DetailedTabs = () => {
     </li>
   );
 
-  console.log(tourData);
-
   return (
     <div className={`container ${style.tab_container}`}>
       <div className={style.tabs}>

@@ -1,9 +1,9 @@
 import React from 'react';
-import style from './Classifications.module.scss';
 import Image from 'next/image';
 import classificationsBanner from '@/assets/classificationsImages/classification-banner.png';
 import playIcon from '@/assets/icon/icon-play.svg';
 import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
+import style from './Classifications.module.scss';
 
 const Classifications = () => {
   return (

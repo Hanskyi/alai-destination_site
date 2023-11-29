@@ -184,7 +184,7 @@ const Toolbar = () => {
                 )}
               </div>
               {largeLinks.map((link, index) => (
-                <Link href="#" key={index} className={toolbar.headerLink}>
+                <Link href={link.href} key={index} className={toolbar.headerLink}>
                   {link.text}
                 </Link>
               ))}

@@ -10,8 +10,6 @@ interface IProps {
 const FaqList: React.FC<IProps> = ({ faqList }) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  console.log(faqList);
-
   return (
     <ul className={styles.accordion}>
       {faqList.map((f, idx) => (

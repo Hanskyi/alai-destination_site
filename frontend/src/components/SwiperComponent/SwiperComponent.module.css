@@ -62,6 +62,7 @@
   justify-content: center;
   vertical-align: middle;
   transition: background-color 0.3s ease 0s;
+  box-sizing: border-box;
 }
 .swiper__btn:hover {
   background-color: #bebebe;
@@ -73,6 +74,7 @@
 
 .swiper__slide {
   width: 240px !important;
+  height: auto!important;
 }
 
 /*# sourceMappingURL=SwiperComponent.module.css.map */

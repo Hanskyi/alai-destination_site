@@ -57,13 +57,14 @@
   cursor: pointer;
   display: flex;
   width: 240px;
-  height: 420px;
+  height: 395px;
   border-radius: 0.25rem;
   align-items: center;
   overflow: hidden;
   justify-content: center;
   vertical-align: middle;
   transition: background-color 0.3s ease 0s;
+  box-sizing: border-box;
   &:hover {
     background-color: #bebebe;
   }
@@ -74,4 +75,5 @@
 }
 .swiper__slide {
   width: 240px !important;
+  height: auto!important;
 }

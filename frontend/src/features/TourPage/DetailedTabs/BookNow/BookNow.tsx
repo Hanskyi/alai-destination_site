@@ -20,7 +20,7 @@ const BookNow = () => {
     e.preventDefault();
 
     try {
-      console.log(data);
+
     } catch (e) {
       alert('Error in Field');
     }
