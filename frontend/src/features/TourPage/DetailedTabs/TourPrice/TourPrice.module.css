@@ -1,0 +1,14 @@
+.tour_price figure {
+  width: 100% !important;
+  height: 110px !important;
+}
+.tour_price .table {
+  width: 100%;
+  background: red;
+}
+.tour_price table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/*# sourceMappingURL=TourPrice.module.css.map */

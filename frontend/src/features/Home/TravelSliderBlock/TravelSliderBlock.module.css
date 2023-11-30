@@ -1,0 +1,103 @@
+.travelSliderBlog {
+  max-width: 1104px;
+  text-align: center;
+  padding: 144px 24px 24px;
+  margin-bottom: 64px;
+  color: #000000;
+}
+.travelSliderBlog__title {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 32px;
+  opacity: 88%;
+  margin-bottom: 24px;
+  line-height: 40px;
+}
+.travelSliderBlog__text {
+  font-weight: 600;
+  font-size: 12px;
+  opacity: 55%;
+  letter-spacing: 0.8px;
+  margin-bottom: 104px;
+  line-height: 24px;
+}
+.travelSliderBlog__description {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  opacity: 86%;
+  margin-bottom: 16px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.travelSliderBlog__first {
+  margin-bottom: 64px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid #bebebe;
+  height: 100%;
+}
+.card > a {
+  height: 100%;
+}
+.card__body {
+  padding: 0 0 15px;
+  flex: 1;
+}
+.card:hover {
+  background-color: #bebebe;
+}
+.card__image__box {
+  width: 238px;
+  overflow: hidden;
+}
+.card__image__box__content {
+  width: 238px;
+  height: 297.5px;
+}
+.card__image__box__content__two {
+  width: 238px;
+  height: 238.5px;
+}
+.card__title {
+  padding: 24px 16px;
+  max-width: 170px;
+  text-align: left;
+  font-size: 16px;
+}
+.card__days {
+  font-weight: 700;
+  font-size: 12px;
+  opacity: 55%;
+  margin: 28px auto 5px 11px;
+}
+.card__description {
+  max-width: 197px;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+  opacity: 86%;
+}
+.card__price {
+  font-weight: 400;
+  font-size: 12px;
+  color: #757575;
+  margin-left: auto;
+  margin-right: 5px;
+}
+.card__price__span {
+  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=TravelSliderBlock.module.css.map */

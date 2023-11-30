@@ -1,0 +1,252 @@
+.breadcrumbList {
+  padding: 0;
+  margin: 32px 0 0;
+  display: flex;
+  font-size: 14px;
+}
+.breadcrumbList .breadcrumbLink {
+  margin-right: 10px;
+  text-decoration: underline;
+  color: #333;
+}
+.breadcrumbList .breadcrumbLink:hover {
+  text-decoration: none;
+}
+.breadcrumbList .breadcrumbActiveLink {
+  color: black;
+}
+
+.titleBlock {
+  text-align: center;
+}
+.titleBlock :first-child {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 3rem;
+  margin: 48px 0 16px;
+  padding: 0 20px;
+}
+@media screen and (max-width: 768px) {
+  .titleBlock :first-child {
+    margin-bottom: 25px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .titleBlock :first-child {
+    font-size: 40px;
+    text-align: left;
+  }
+}
+.titleBlock :last-child {
+  margin: 24px 0;
+  padding: 24px 0;
+  background: #f6f4f0;
+}
+@media screen and (max-width: 768px) {
+  .titleBlock :last-child {
+    display: none;
+  }
+}
+
+.formBlock {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 576px) {
+  .formBlock {
+    margin-bottom: 35px;
+  }
+}
+.formBlock .searchSelectBlock {
+  display: flex;
+  align-items: center;
+  flex-basis: 60%;
+  z-index: 5;
+}
+@media screen and (max-width: 768px) {
+  .formBlock .searchSelectBlock {
+    flex-basis: 70%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .formBlock .searchSelectBlock {
+    flex-basis: 100%;
+  }
+}
+.formBlock .searchSelectBlock .searchInput {
+  align-items: center;
+  position: relative;
+  margin-right: 5px;
+  flex-grow: 1;
+}
+.formBlock .searchSelectBlock .searchIcon {
+  position: absolute;
+  margin: 17px 10px;
+  z-index: 2;
+}
+.formBlock .searchButton {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 15px 50px 15px 20px;
+  background-color: #222;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background-image: url("https://cdn-icons-png.flaticon.com/128/8213/8213522.png");
+  background-size: 20px 20px;
+  background-position: right 15px center;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 768px) {
+  .formBlock .searchButton {
+    font-size: 0;
+    padding: 25px 25px;
+    background-position: center;
+  }
+}
+.formBlock .searchButton:hover {
+  background-color: #333232;
+}
+.formBlock .searchButton:active {
+  background-color: #424242;
+  transform: translateY(2px);
+  box-shadow: 0 0 5px rgba(0, 1, 1, 0.5);
+}
+.formBlock .filterButton {
+  font-size: 20px;
+  border: 1px solid #bebebe;
+  background: none;
+  border-radius: 0.25rem;
+  padding: 0 26px;
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .formBlock .filterButton {
+    display: block;
+  }
+}
+.formBlock .filterButton:hover {
+  background: #222222;
+  color: white;
+}
+
+.filteringBlock {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 576px) {
+  .filteringBlock {
+    flex-direction: column;
+  }
+}
+.filteringBlock .filteringTools {
+  margin-right: 10px;
+  margin-bottom: 25px;
+  flex-basis: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.filteringBlock .filteringTools .selectBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.filteringBlock .filteringTools .sortLabel {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.filteringBlock .filteringTools .sortInput {
+  margin-bottom: 35px;
+  flex-grow: 1;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  font-size: 14px;
+}
+.filteringBlock .filteringTools .travelDates {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.filteringBlock .filteringTools .travelDates .datepicker {
+  display: flex;
+  flex-direction: column;
+}
+.filteringBlock .filteringTools .travelDates .datepicker .datepickerInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  font-size: 14px;
+}
+.filteringBlock .filteringTools .travelDates .datepickerLabel {
+  font-size: 12px;
+  color: #333333;
+}
+.filteringBlock .filteringTools .duration {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.filteringBlock .filteringTools .duration .durationInner {
+  display: flex;
+  align-items: center;
+}
+.filteringBlock .filteringTools .duration .durationInner .durationPicker {
+  display: flex;
+  flex-direction: column;
+}
+.filteringBlock .filteringTools .duration .durationInner .durationPicker .durationLabel {
+  font-size: 12px;
+  color: #333333;
+}
+.filteringBlock .filteringTools .duration .durationInner .spanDuration {
+  margin: 0 5px;
+}
+.filteringBlock .tourCards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 75%;
+  margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 576px) {
+  .filteringBlock .tourCards {
+    flex-basis: 100%;
+  }
+}
+
+.clearButton {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  align-self: flex-end;
+  margin: 5px 0 5px auto;
+}
+
+.resetDatesButton {
+  margin: 5px 0 5px auto;
+}
+
+.resetDuration {
+  margin: 5px 0 5px auto;
+}
+
+.additionalClass {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: none;
+  border: 2px solid #333333;
+}
+
+.additionalClass:hover {
+  background: #333333;
+  color: white;
+}
+
+/*# sourceMappingURL=FilteredTours.module.css.map */

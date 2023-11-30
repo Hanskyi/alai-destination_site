@@ -1,0 +1,107 @@
+.accordion {
+  list-style: none;
+  margin: 16px 0;
+  padding: 10px;
+  background-color: #dcdcdc;
+  border-radius: 7px;
+}
+.accordion__open {
+  height: auto;
+}
+.accordion__item {
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  border-radius: 7px;
+}
+.accordion__header {
+  font-family: Montserat, sans-serif;
+  position: relative;
+  width: 100%;
+  padding: 20px 60px 20px 15px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 18px;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.accordion__header:hover {
+  color: rgb(17, 150, 221);
+}
+@media screen and (max-width: 992px) {
+  .accordion__header:hover {
+    color: inherit;
+  }
+}
+@media screen and (max-width: 576px) {
+  .accordion__header {
+    overflow: hidden;
+  }
+}
+.accordion__body {
+  padding: 10px;
+  background-color: #fff;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  color: #75706b;
+}
+.accordion__toggler {
+  position: absolute;
+  display: inline-block;
+  width: 2px;
+  height: 10px;
+  background-color: black;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.accordion__toggler:before {
+  content: "";
+  position: absolute;
+  display: block;
+  transform: rotate(90deg);
+  width: 2px;
+  height: 10px;
+  background-color: #000000;
+}
+.accordion figure {
+  width: 100% !important;
+  min-height: 150px !important;
+}
+.accordion figure table {
+  table-layout: auto !important;
+}
+.accordion figure table td {
+  width: auto !important;
+}
+@media screen and (max-width: 992px) {
+  .accordion figure table tbody {
+    display: flex !important;
+  }
+  .accordion figure table tbody tr {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .accordion figure {
+    height: fit-content !important;
+  }
+}
+
+.accordionCollapse {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.7s;
+}
+
+.accordion__togglerOpen {
+  transform: translateY(-50%) rotate(45deg);
+  height: fit-content !important;
+}
+
+/*# sourceMappingURL=FaqList.module.css.map */

@@ -141,13 +141,7 @@
     width: 100%;
   }
 }
-.mainBlock
-  .mainBlockContainer
-  .formBlock
-  .datepickerAndButton
-  .datepicker
-  .dateInput
-  .dateInput:focus {
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .dateInput .dateInput:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
@@ -160,7 +154,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
+  background-image: url("https://cdn-icons-png.flaticon.com/128/8213/8213522.png");
   background-size: 20px 20px;
   background-position: right 15px center;
   background-repeat: no-repeat;
@@ -172,20 +166,10 @@
     background-position: center;
   }
 }
-.mainBlock
-  .mainBlockContainer
-  .formBlock
-  .datepickerAndButton
-  .mainBlockSearchButton
-  .mainBlockSearchButton:hover {
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .mainBlockSearchButton .mainBlockSearchButton:hover {
   background-color: #bd0202;
 }
-.mainBlock
-  .mainBlockContainer
-  .formBlock
-  .datepickerAndButton
-  .mainBlockSearchButton
-  .mainBlockSearchButton:active {
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .mainBlockSearchButton .mainBlockSearchButton:active {
   background-color: #940101;
   transform: translateY(2px);
   box-shadow: 0 0 5px rgba(148, 1, 1, 0.5);

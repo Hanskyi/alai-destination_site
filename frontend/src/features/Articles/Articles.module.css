@@ -1,0 +1,116 @@
+.articlesBanner {
+  position: relative;
+  text-align: center;
+}
+.articlesBanner__bacdrop {
+  height: auto;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.35;
+  position: absolute;
+}
+.articlesBanner__image {
+  height: auto;
+  width: 100%;
+}
+.articlesBanner__image__big {
+  display: block;
+}
+@media screen and (max-width: 1200px) {
+  .articlesBanner__image__big {
+    display: none;
+  }
+}
+.articlesBanner__image__small {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  .articlesBanner__image__small {
+    display: block;
+  }
+}
+@media screen and (max-width: 576px) {
+  .articlesBanner__image__small {
+    height: 290px;
+  }
+}
+.articlesBanner__title {
+  font-weight: 600;
+  font-size: 80px;
+  color: #fff;
+  position: absolute;
+  top: 40%;
+  line-height: 80px;
+  left: 30%;
+}
+@media screen and (max-width: 1200px) {
+  .articlesBanner__title {
+    left: 20%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .articlesBanner__title {
+    font-size: 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .articlesBanner__title {
+    left: 10%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .articlesBanner__title {
+    left: 5%;
+  }
+}
+
+.articleCardContainer {
+  margin-top: 91px;
+  gap: 10px;
+}
+
+.articleCardBtn {
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  text-transform: uppercase;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 1px;
+  margin-top: 52px;
+  margin-bottom: 150px;
+}
+@media screen and (max-width: 768px) {
+  .articleCardBtn {
+    margin-top: 38px;
+    margin-bottom: 50px;
+  }
+}
+
+.articleCard {
+  width: 350px;
+  height: 506px;
+  overflow: hidden;
+}
+.articleCard__image__content {
+  width: 374px;
+  height: auto;
+}
+.articleCard__content__title {
+  color: #313131;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25.2px;
+  margin-bottom: 30px;
+  margin-top: 25px;
+}
+.articleCard__content__text {
+  color: #222;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28.8px;
+}
+
+/*# sourceMappingURL=Articles.module.css.map */
