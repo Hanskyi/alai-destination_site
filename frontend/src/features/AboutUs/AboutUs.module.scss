@@ -164,15 +164,14 @@
     flex-wrap: wrap;
     text-align: center;
 
-    @include mixins.md {
-      flex-direction: column;
-      align-items: center;
-    }
-
     &_box {
       flex: 1;
-      max-width: 500px;
-      margin: 0 10px;
+      max-width: 400px;
+      padding: 0 10px;
+
+      @include mixins.xl {
+        flex: none;
+      }
 
       @include mixins.md {
         margin-bottom: 50px;
