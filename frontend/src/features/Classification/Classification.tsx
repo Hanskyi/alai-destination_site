@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './Classification.module.scss';
 import classificationBanner from '@/assets/classificationsImages/classification-banner.png';
-import ClassificationsCard from '@/features/Classification/components/ClassificationsCard';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
 import Reviews from '@/components/ClassificationReviews/Reviews';
+import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
 
 const Classification = () => {
   return (

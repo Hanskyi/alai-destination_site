@@ -9,10 +9,8 @@ import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTrip
 import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
 
 const TravelSliderBlock = () => {
-  const homeClassifications = useAppSelector(
-    (state) => state.products.homeData?.homeClassification,
-  );
-  const homeTour = useAppSelector((state) => state.products.homeData?.homeTour);
+  const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);
+  const homeTour = useAppSelector((state) => state.home.homeData?.homeTour);
 
   return (
     <div className={`${style.travelSliderBlog} container`}>

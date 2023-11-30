@@ -17,7 +17,7 @@ interface Option {
 const HeroSection = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [showSelect, setShowSelect] = useState(false);
-  const heroSection = useAppSelector((state) => state.products.homeData?.heroSection);
+  const heroSection = useAppSelector((state) => state.home.homeData?.heroSection);
 
   useEffect(() => {
     setShowSelect(true);

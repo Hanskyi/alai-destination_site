@@ -6,7 +6,7 @@ import Link from 'next/link';
 import style from './Purpose.module.scss';
 
 const Purpose = () => {
-  const purposeBlock = useAppSelector((state) => state.products.homeData?.purposeBlock);
+  const purposeBlock = useAppSelector((state) => state.home.homeData?.purposeBlock);
   return (
     <div className={style.purpose}>
       <div className="container">

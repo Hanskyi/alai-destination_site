@@ -5,9 +5,9 @@ import Image from 'next/image';
 import locationsBanner from '@/assets/locationImage/locationsBanner.jpg';
 import classificationBanner from '@/assets/locationImage/locationsBanner.jpg';
 import playIcon from '@/assets/icon/icon-play.svg';
-import ClassificationsCard from '@/features/Classification/components/ClassificationsCard';
 import { useParams } from 'next/navigation';
 import Reviews from '@/components/ClassificationReviews/Reviews';
+import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
 
 const LocationsRegion = () => {
   const { id } = useParams();
