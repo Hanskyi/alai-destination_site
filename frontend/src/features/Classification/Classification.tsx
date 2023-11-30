@@ -5,6 +5,7 @@ import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
 import Reviews from '@/components/ClassificationReviews/Reviews';
 import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 const Classification = () => {
   return (
@@ -18,6 +19,7 @@ const Classification = () => {
           height={1200}
           alt="#"
         />
+        <BackdropForBanner />
         <div className={style.classificationBanner__wrapper}>
           <h3 className={style.classificationBanner__title}>Walking & Trekking Tours</h3>
         </div>

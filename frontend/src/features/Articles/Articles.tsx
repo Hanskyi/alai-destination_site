@@ -4,12 +4,13 @@ import articlesBanner from '../../assets/articlesImages/articlesBanner.png';
 import articlesSmall from '../../assets/articlesImages/articlessSmall.png';
 import Image from 'next/image';
 import ArticlesCard from '@/features/Articles/Components/ArticlesCard';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 const Articles = () => {
   return (
     <>
       <div className={style.articlesBanner}>
-        <div className={style.articlesBanner__bacdrop}></div>
+        <BackdropForBanner />
 
         <Image
           className={`${style.articlesBanner__image} ${style.articlesBanner__image__big}`}

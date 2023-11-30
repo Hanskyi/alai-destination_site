@@ -8,6 +8,7 @@ import playIcon from '@/assets/icon/icon-play.svg';
 import { useParams } from 'next/navigation';
 import Reviews from '@/components/ClassificationReviews/Reviews';
 import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 const LocationsRegion = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const LocationsRegion = () => {
         <div className={style.locationBanner__wrapper}>
           <h3 className={style.locationBanner__title}>{id} region</h3>
         </div>
-        <div className={style.backdrop}></div>
+        <BackdropForBanner />
       </div>
       <div className={style.locationDescription}>
         <h2 className={style.locationDescription__title}>

@@ -11,6 +11,7 @@ import Jyrgalan from '../../assets/icon/about-us/jyrgalan.png';
 import Award from '../../assets/icon/about-us/award.png';
 import Link from 'next/link';
 import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 const AboutUsPage = () => {
   return (
@@ -20,6 +21,7 @@ const AboutUsPage = () => {
           <div className={aboutUsStyle.text}>
             <h1 className={aboutUsStyle.text__title}>Visit Alay</h1>
             <h4 className={aboutUsStyle.text__subtitle}>ADVENTURE TRAVEL & TOURS</h4>
+            <BackdropForBanner />
           </div>
         </div>
       </div>

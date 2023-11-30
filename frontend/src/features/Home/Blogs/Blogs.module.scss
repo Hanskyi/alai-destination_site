@@ -5,7 +5,11 @@
   border: 1px solid #bebebe;
   padding: 25px 18px;
   display: flex;
-  flex-direction: column;
+
+  &_link {
+    display: flex;
+    flex-direction: column;
+  }
 
   &:hover {
     background-color: #bebebe;
@@ -51,6 +55,10 @@
     letter-spacing: 0.8px;
     color: #000000db;
     text-transform: uppercase;
+
+    &:hover {
+      color: #818181;
+    }
   }
 
   &_cards {

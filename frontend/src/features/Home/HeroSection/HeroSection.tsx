@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import style from './HeroSection.module.scss';
 import { useAppSelector } from '@/store/hooks';
 import articleBanner from '@/assets/articlesImages/articlesBanner.png';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 interface Option {
   value: string;
@@ -35,6 +36,7 @@ const HeroSection = () => {
 
   return (
     <div className={style.mainBlock}>
+      <BackdropForBanner />
       <div className={style.mainBlockContainer}>
         <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
 

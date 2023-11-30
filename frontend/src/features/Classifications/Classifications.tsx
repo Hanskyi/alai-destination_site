@@ -1,23 +1,31 @@
 import React from 'react';
 import style from './Classifications.module.scss';
 import Image from 'next/image';
-import classificationsBanner from '@/assets/classificationsImages/classification-banner.png';
 import playIcon from '@/assets/icon/icon-play.svg';
-import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
-import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 import { useAppSelector } from '@/store/hooks';
-import { SwiperSlide } from 'swiper/react';
+import classificationsBanner from '@/assets/classificationsImages/classification-banner.png';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
+// import Reviews from '@/components/ClassificationReviews/Reviews';
+// import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
+// import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+// import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
+// import { SwiperSlide } from 'swiper/react';
 
 const Classifications = () => {
-  const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);
-
   return (
     <>
       <div className={style.classificationsBanner}>
-        <Image className={style.classificationsBanner__image} src={classificationsBanner} alt="#" />
+        <Image
+          priority={true}
+          className={style.classificationsBanner__image}
+          src={classificationsBanner}
+          width={1200}
+          height={1200}
+          alt="#"
+        />
+        <BackdropForBanner />
         <div className={style.classificationsBanner__wrapper}>
-          <h3 className={style.classificationsBanner__title}>Explore Kyrgyzstan</h3>
+          <h3 className={style.classificationsBanner__title}>Walking & Trekking Tours</h3>
         </div>
       </div>
       <div className={style.classificationsInfo}>
@@ -34,7 +42,7 @@ const Classifications = () => {
           the other.
         </p>
         <div className={style.classificationsInfo__video}>
-          <Image src={classificationsBanner} alt="#" />
+          <Image priority={true} src={classificationsBanner} alt="#" width={1200} height={1200} />
           <button className={style.classificationsInfo__video__button}>
             <Image src={playIcon} alt="#" />
             Play
@@ -45,15 +53,14 @@ const Classifications = () => {
             Our walking, hiking & trekking trips
           </h3>
           <div className={style.classificationsCards__content}>
-            <SwiperComponent link="/classifications/1">
-              {homeClassifications?.data.classifications.map((category) => (
-                <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>
-                  <WaysToTravelCard item={category} />
-                </SwiperSlide>
-              ))}
-            </SwiperComponent>
+            {/*<SwiperComponent>*/}
+            {/*  {homeClassifications?.data.classifications.map((category) => (*/}
+            {/*    <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>*/}
+            {/*      <WaysToTravelCard item={category} />*/}
+            {/*    </SwiperSlide>*/}
+            {/*  ))}*/}
+            {/*</SwiperComponent>*/}
           </div>
-          <button className={style.classificationsCards__button}>Show all trips</button>
         </div>
       </div>
     </>
