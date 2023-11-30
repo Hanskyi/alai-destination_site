@@ -13,10 +13,16 @@ import { selectHFData } from '@/features/HeaderFooter/headerFooterSlice';
 import { GALLERY } from '@/constants';
 import { useRouter } from 'next/router';
 
+const initialMenuState = false;
+const initialDestinationsDropdownState = false;
+const initialBackdropState = false;
+
 const Toolbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [destinationsDropdown, setDestinationsDropdown] = useState(false);
-  const [backdropOpen, setBackdropOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(initialMenuState);
+  const [destinationsDropdown, setDestinationsDropdown] = useState(
+    initialDestinationsDropdownState,
+  );
+  const [backdropOpen, setBackdropOpen] = useState(initialBackdropState);
   const dispatch = useAppDispatch();
   const hfData = useAppSelector(selectHFData);
 
@@ -29,12 +35,11 @@ const Toolbar = () => {
   const { data: session } = useSession();
 
   const handleGoogleSignIn = async () => {
-    const googleSignIn = await signIn('google');
-    console.log('Google Sign-In Result:', googleSignIn);
+    await signIn('google');
   };
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen((prevState) => !prevState);
   };
 
   const closeMenu = () => {

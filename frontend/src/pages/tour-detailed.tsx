@@ -7,7 +7,7 @@ import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
 import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
 import FaqList from '@/components/FaqList/FaqList';
 import axios from 'axios';
-import { IFaq } from '../type';
+import { IFaq } from '@/type';
 
 interface TourData {
   title: string;

@@ -8,16 +8,13 @@ interface ArticleArgument {
   locale: string;
 }
 
-export const fetchOneArticle = createAsyncThunk<OneArticle, ArticleArgument, { state: RootState }>(
+export const fetchOneArticle = createAsyncThunk<OneArticle, ArticleArgument>(
   'article/fetchOne',
-  async ({ id, locale }, { getState }) => {
-    const previousLang = getState().articles.article?.data.locale;
+  async ({ id, locale }) => {
     const responseEng = await axiosApi.get<OneArticle>(`blogs/${id}`);
     const engBlog = responseEng.data;
-    console.log(previousLang, locale);
 
-    if (locale !== previousLang) {
-      console.log(locale);
+    if (locale !== engBlog.data.locale) {
       const responseRu = await axiosApi.get<OneArticle>(
         `blogs/${engBlog.data.localizations[0].id}`,
       );
