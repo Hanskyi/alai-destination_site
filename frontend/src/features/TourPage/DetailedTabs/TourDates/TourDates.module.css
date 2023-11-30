@@ -1,0 +1,12 @@
+.tour_schedule > ul > li div {
+  background: #fff;
+}
+.tour_schedule .table {
+  width: 100%;
+}
+.tour_schedule table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/*# sourceMappingURL=TourDates.module.css.map */

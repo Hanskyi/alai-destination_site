@@ -8,7 +8,8 @@ import Blogs from '@/features/Home/Blogs/Blogs';
 import Reviews from '@/features/Home/Reviews/Reviews';
 
 const HomePage = () => {
-  const loading = useAppSelector((state) => state.products.fetchLoading);
+  const loading = useAppSelector((state) => state.home.fetchLoading);
+
   return (
     <>
       {loading ? (

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+.descriptionBlock {
+  flex-grow: 1;
+  color: #000000;
+  padding: 20px 0 50px;
+  margin: 0 10px;
+}
+.descriptionBlock div {
+  width: 100% !important;
+  padding: 0 !important;
+}
+.descriptionBlock .headPara {
+  font-size: 14pt;
+  padding: 0 0 20px 0;
+}
+.descriptionBlock .highlightTitle {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 28px;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.descriptionBlock .listOfHighlights {
+  margin-bottom: 20px;
+  list-style: none;
+}
+.descriptionBlock .listOfHighlights .itemOfHighlight:before {
+  content: '›';
+  color: grey;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  padding: 0;
+  margin: 0 5px 0 0;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  position: relative;
+}
+.descriptionBlock .listOfHighlights .itemOfHighlight:not(:first-child) {
+  padding-top: 10px;
+}
+
+/*# sourceMappingURL=DescriptionBlock.module.css.map */
