@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { OneArticle } from '@/type';
 import axiosApi from '@/axiosApi';
-import { RootState } from '@/store/store';
 
 interface ArticleArgument {
   id: string;
