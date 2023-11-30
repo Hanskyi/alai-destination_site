@@ -193,6 +193,7 @@
 .destinations {
   position: relative;
   width: 85px;
+  cursor: pointer;
 }
 .destinations__image {
   position: absolute;

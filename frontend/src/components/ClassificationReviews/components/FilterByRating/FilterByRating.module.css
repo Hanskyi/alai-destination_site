@@ -12,7 +12,8 @@
   gap: 15px;
   align-items: center;
 }
-.reviewsFilter__button_nonactive, .reviewsFilter__button_active {
+.reviewsFilter__button_nonactive,
+.reviewsFilter__button_active {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -22,7 +23,7 @@
   cursor: pointer;
 }
 .reviewsFilter__button_active:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   top: 50%;

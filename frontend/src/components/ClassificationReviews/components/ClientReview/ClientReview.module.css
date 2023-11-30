@@ -10,7 +10,7 @@
 }
 .clientReview__travelerName:after {
   position: absolute;
-  content: "";
+  content: '';
   right: 5px;
   top: 7px;
   display: block;

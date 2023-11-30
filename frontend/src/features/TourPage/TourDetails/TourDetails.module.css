@@ -5,7 +5,7 @@
   overflow: auto;
   flex-basis: 30%;
   padding: 40px 32px 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 @media screen and (max-width: 992px) {
   .tourDetails {
