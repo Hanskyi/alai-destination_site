@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
@@ -19,7 +19,7 @@ const CountersBlock = () => {
 
   const countersRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const element = countersRef.current;
 
     if (element) {
@@ -32,14 +32,14 @@ const CountersBlock = () => {
         animate(count3, 300, { duration: 2 });
       }
     }
-  };
+  }, [count1, count2, count3]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [count1, count2, count3]);
+  }, [handleScroll]);
 
   const imgAnimation = {
     hidden: {
