@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
@@ -17,44 +17,69 @@ const CountersBlock = () => {
   const count3 = useMotionValue(0);
   const rounded3 = useTransform(count3, Math.round);
 
-  useEffect(() => {
-    const animation1 = animate(count1, 5000, { duration: 2 });
-    const animation2 = animate(count2, 64, { duration: 2 });
-    const animation3 = animate(count3, 300, { duration: 2 });
+  const countersRef = useRef<HTMLDivElement>(null);
 
+  const handleScroll = () => {
+    const element = countersRef.current;
+
+    if (element) {
+      const rect = element.getBoundingClientRect() as DOMRect;
+      const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+
+      if (isInViewport) {
+        animate(count1, 5000, { duration: 2 });
+        animate(count2, 64, { duration: 2 });
+        animate(count3, 300, { duration: 2 });
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      animation1.stop();
-      animation2.stop();
-      animation3.stop();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [count1, count2, count3]);
 
+  const imgAnimation = {
+    hidden: {
+      x: -100,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className={aboutUsStyle.cards}>
-      <div className={aboutUsStyle.cards__card}>
-        <Image width={70} height={70} src={Icon1} alt="Icon 1" />
-        <span className={aboutUsStyle.cards__card__counter}>
-          <motion.h1>{rounded1}</motion.h1>
-        </span>
-        <h2 className={aboutUsStyle.cards__card__title}>Number of Customers</h2>
-      </div>
+    <motion.div initial="hidden" whileInView="visible" viewport={{ amount: 1 }}>
+      <div className={aboutUsStyle.cards} ref={countersRef}>
+        <div className={aboutUsStyle.cards__card}>
+          <Image width={70} height={70} src={Icon1} alt="Icon 1" />
+          <span className={aboutUsStyle.cards__card__counter}>
+            <motion.h1 variants={imgAnimation}>{rounded1}</motion.h1>
+          </span>
+          <h2 className={aboutUsStyle.cards__card__title}>Number of Customers</h2>
+        </div>
 
-      <div className={aboutUsStyle.cards__card}>
-        <Image width={70} height={70} src={Icon2} alt="Icon 1" />
-        <span className={aboutUsStyle.cards__card__counter}>
-          <motion.h1>{rounded2}</motion.h1>
-        </span>
-        <h2 className={aboutUsStyle.cards__card__title}>Number of Trips</h2>
-      </div>
+        <div className={aboutUsStyle.cards__card}>
+          <Image width={70} height={70} src={Icon2} alt="Icon 1" />
+          <span className={aboutUsStyle.cards__card__counter}>
+            <motion.h1 variants={imgAnimation}>{rounded2}</motion.h1>
+          </span>
+          <h2 className={aboutUsStyle.cards__card__title}>Number of Trips</h2>
+        </div>
 
-      <div className={aboutUsStyle.cards__card}>
-        <Image width={70} height={70} src={Icon3} alt="Icon 1" />
-        <span className={aboutUsStyle.cards__card__counter}>
-          <motion.h1>{rounded3}</motion.h1>
-        </span>
-        <h2 className={aboutUsStyle.cards__card__title}>Number of Workers</h2>
+        <div className={aboutUsStyle.cards__card}>
+          <Image width={70} height={70} src={Icon3} alt="Icon 1" />
+          <span className={aboutUsStyle.cards__card__counter}>
+            <motion.h1 variants={imgAnimation}>{rounded3}</motion.h1>
+          </span>
+          <h2 className={aboutUsStyle.cards__card__title}>Number of Workers</h2>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
