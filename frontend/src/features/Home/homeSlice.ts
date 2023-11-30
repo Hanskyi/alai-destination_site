@@ -36,3 +36,5 @@ export const homeSlice = createSlice({
     });
   },
 });
+
+export const fetchLoadingSelector = (state: RootState) => state.products.fetchLoading;

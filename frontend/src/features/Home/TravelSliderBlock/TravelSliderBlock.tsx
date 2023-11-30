@@ -2,11 +2,11 @@ import React from 'react';
 import { useAppSelector } from '@/store/hooks';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 import { SwiperSlide } from 'swiper/react';
-import WaysToTravelCard from './Components/WaysToTravelCard';
-import GoodTripsCard from './Components/GoodTripsCard';
 import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
 import 'swiper/css';
 import style from './TravelSliderBlock.module.scss';
+import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
+import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
 
 const TravelSliderBlock = () => {
   const homeClassifications = useAppSelector(
@@ -23,7 +23,7 @@ const TravelSliderBlock = () => {
 
       <div className={style.travelSliderBlog__first}>
         <p className={style.travelSliderBlog__description}>{homeClassifications?.data.title}</p>
-        <SwiperComponent link="/classifications/1">
+        <SwiperComponent>
           {homeClassifications?.data.classifications.map((category) => (
             <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>
               <WaysToTravelCard item={category} />
@@ -34,7 +34,7 @@ const TravelSliderBlock = () => {
 
       <div className="travelSliderBlog__second">
         <p className={style.travelSliderBlog__description}>{homeTour?.data.title}</p>
-        <SwiperComponent link="/tours/1">
+        <SwiperComponent>
           {homeTour?.data.tours.map((tour) => (
             <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
               <GoodTripsCard item={tour} />

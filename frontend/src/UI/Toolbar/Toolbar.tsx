@@ -172,9 +172,8 @@ const Toolbar = () => {
 
             <div className={toolbar.linksBottom}>
               <div>
-                <Link
+                <div
                   className={`${toolbar.headerLink} ${toolbar.destinations}`}
-                  href="#"
                   onClick={() => onClickLinkHeader()}
                 >
                   Destinations
@@ -183,8 +182,7 @@ const Toolbar = () => {
                       destinationsDropdown && toolbar.destinations__image__active
                     }`}
                   ></span>
-                </Link>
-
+                </div>
                 {destinationsDropdown && (
                   <div className={toolbar.dropdown}>
                     <div className={toolbar.dropdown__links}>
@@ -236,9 +234,8 @@ const Toolbar = () => {
                 Home
               </Link>
 
-              <Link
+              <div
                 className={`${toolbar.headerLink} ${toolbar.destinations}}`}
-                href="#"
                 onClick={() => onClickLinkBurger()}
               >
                 Destinations
@@ -247,8 +244,7 @@ const Toolbar = () => {
                     toolbar.destinations__image__burger
                   } ${destinationsDropdown && toolbar.destinations__image__active}`}
                 ></span>
-              </Link>
-
+              </div>
               {destinationsDropdown && (
                 <div className={`${toolbar.dropdown} ${toolbar.dropdown__burger}`}>
                   <div className={toolbar.dropdown__links}>

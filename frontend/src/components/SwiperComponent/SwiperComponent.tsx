@@ -3,6 +3,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import style from './SwiperComponent.module.scss';
 import React, { PropsWithChildren } from 'react';
 import 'swiper/css';
+import Link from 'next/link';
 
 interface Props {
   link?: string;
@@ -20,14 +21,13 @@ const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, link })
       }}
       modules={[Pagination, Navigation]}
       className={style.mySwiper}
+      style={{ overflow: 'visible' }}
     >
       {children}
-      <SwiperSlide className={style.swiper__slide}>
-        <div className={style.swiper__default}>
-          <a className={style.swiper__btn} href={`${link}`}>
-            See all trips
-          </a>
-        </div>
+      <SwiperSlide className={style.mySwiper__slide}>
+        <Link className={style.swiper__btn} href={`${link}`}>
+          See all trips
+        </Link>
       </SwiperSlide>
       <div className={style.mySwiper__btns}>
         <div className={`${style.mySwiper__btns__prev} mySwiper__btns__prev`}></div>
