@@ -1,8 +1,8 @@
 import React from 'react';
 import style from '../TravelSliderBlock.module.scss';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ClassificationMutation } from '@/type';
+import Link from 'next/link';
 
 interface Props {
   item?: ClassificationMutation;
@@ -10,22 +10,22 @@ interface Props {
 
 const WaysToTravelCard: React.FC<Props> = ({ item }) => {
   return (
-    <div className={style.card}>
-      <Link href={'/classifications/1'}>
-        <div className={style.card__image__box}>
+    <>
+      <Link href="#" className={style.waysToTravelCard__link}>
+        <div className={style.cardWaysToTravelCard}>
           <Image
             width={1200}
             height={1000}
-            className={style.card__image__box__content}
+            className={style.cardWaysToTravelCard__image}
             src={'http://localhost:1337' + item?.image.url}
             alt="#"
           />
         </div>
-        <div className={style.card__body}>
-          <h4 className={style.card__title}> {item?.title}</h4>
+        <div className={style.cardWaysToTravelCard__body}>
+          <h4 className={style.cardWaysToTravelCard__title}>{item?.title}</h4>
         </div>
       </Link>
-    </div>
+    </>
   );
 };
 

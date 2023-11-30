@@ -1,19 +1,11 @@
-import HeroSection from '@/features/Home/HeroSection/HeroSection';
-import TravelSliderBlock from '@/features/Home/TravelSliderBlock/TravelSliderBlock';
-import Blogs from '@/features/Home/Blogs/Blogs';
-import Reviews from '@/features/Home/Reviews/Reviews';
 import { wrapper } from '@/store/store';
 import { fetchHomeData } from '@/features/Home/homeThunk';
-import Purpose from '@/features/Home/Purpose/Purpose';
+import HomePage from '@/features/Home/HomePage';
 
 const Home = () => {
   return (
     <>
-      <HeroSection />
-      <TravelSliderBlock />
-      <Purpose />
-      <Blogs />
-      <Reviews />
+      <HomePage />
     </>
   );
 };
