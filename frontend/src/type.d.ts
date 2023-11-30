@@ -153,7 +153,23 @@ export interface ITable {
   body: string;
 }
 
-//--------------------
+export interface OneArticle {
+  data: OneArticleData;
+}
+
+export interface OneArticleData {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  previewDescription: string;
+  mainImage: Image;
+  localizations: Localization[];
+}
 
 export interface IHeaderFooterInfo {
   data: IHeaderFooterData;
@@ -184,5 +200,3 @@ export interface ILogo {
   name: string;
   url: string;
 }
-
-//---------------------

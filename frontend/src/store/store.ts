@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import { homeSlice } from '@/features/Home/homeSlice';
+import { articlesSlice } from '@/features/Articles/ArticlesSlice';
 import { headerFooterSlice } from '@/features/HeaderFooter/headerFooterSlice';
 
 const reducers = {
   [homeSlice.name]: homeSlice.reducer,
+  [articlesSlice.name]: articlesSlice.reducer,
   [headerFooterSlice.name]: headerFooterSlice.reducer,
 };
 

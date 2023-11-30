@@ -9,10 +9,8 @@ import 'swiper/css';
 import style from './TravelSliderBlock.module.scss';
 
 const TravelSliderBlock = () => {
-  const homeClassifications = useAppSelector(
-    (state) => state.products.homeData?.homeClassification,
-  );
-  const homeTour = useAppSelector((state) => state.products.homeData?.homeTour);
+  const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);
+  const homeTour = useAppSelector((state) => state.home.homeData?.homeTour);
 
   return (
     <div className={`${style.travelSliderBlog} container`}>

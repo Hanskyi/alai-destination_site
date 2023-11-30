@@ -1,10 +1,10 @@
 .blog {
   max-width: 800px;
+  margin-bottom: 20px;
 }
 @media screen and (max-width: 992px) {
   .blog {
-    max-width: 800px;
-    padding: 0 60px;
+    padding: 0 15px;
   }
 }
 .blog_header {
@@ -45,35 +45,6 @@
 .blog_imageWrap_image {
   max-width: 100%;
   height: 100%;
-}
-.blog_text_block_inner_text {
-  margin: 10px 0;
-  line-height: 28px;
-  font-size: 16px;
-  color: #222222;
-}
-.blog_text_block_inner_imageWrap {
-  width: auto;
-  height: auto;
-}
-.blog_text_block_inner_imageWrap_image {
-  max-width: 100%;
-  height: 100%;
-}
-.blog_text_block_inner_imageWrap_caption {
-  text-align: center;
-  color: #555;
-  font-size: 13px;
-}
-.blog_text_block_inner_title {
-  margin: 10px 0;
-}
-.blog_title {
-  margin: 25px 0;
-  font-size: 22px;
-}
-.blog_tour_cards {
-  margin-bottom: 25px;
 }
 
 /*# sourceMappingURL=Blog.module.css.map */

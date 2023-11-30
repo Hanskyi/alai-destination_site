@@ -5,7 +5,7 @@ import Link from 'next/link';
 import style from './Blogs.module.scss';
 
 const Blogs = () => {
-  const article = useAppSelector((state) => state.products.homeData?.homeArticle);
+  const article = useAppSelector((state) => state.home.homeData?.homeArticle);
   return (
     <div className={`${style.blogs} container`}>
       <Link href="/articles">

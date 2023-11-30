@@ -1,41 +1,41 @@
-import { HomeData } from '@/type';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/store/store';
-import { fetchHomeData } from './homeThunk';
 import { HYDRATE } from 'next-redux-wrapper';
+import { OneArticle } from '@/type';
+import { fetchOneArticle } from '@/features/Articles/ArticlesThunk';
 
 interface ProductsState {
-  homeData: HomeData | null;
+  article: OneArticle | null;
   fetchLoading: boolean;
   error: boolean;
 }
 
 const initialState: ProductsState = {
-  homeData: null,
+  article: null,
   fetchLoading: false,
   error: false,
 };
 
-export const homeSlice = createSlice({
-  name: 'home',
+export const articlesSlice = createSlice({
+  name: 'articles',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase<typeof HYDRATE, PayloadAction<RootState, typeof HYDRATE>>(
       HYDRATE,
       (state, action) => {
-        return { ...state, ...action.payload.home };
+        return { ...state, ...action.payload.articles };
       },
     );
 
-    builder.addCase(fetchHomeData.pending, (state) => {
+    builder.addCase(fetchOneArticle.pending, (state) => {
       state.fetchLoading = true;
     });
-    builder.addCase(fetchHomeData.fulfilled, (state, { payload: data }) => {
+    builder.addCase(fetchOneArticle.fulfilled, (state, { payload: data }) => {
       state.fetchLoading = false;
-      state.homeData = data;
+      state.article = data;
     });
-    builder.addCase(fetchHomeData.rejected, (state) => {
+    builder.addCase(fetchOneArticle.rejected, (state) => {
       state.fetchLoading = false;
       state.error = true;
     });
