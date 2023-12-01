@@ -3,13 +3,7 @@
 .articlesBanner {
   position: relative;
   text-align: center;
-  &__bacdrop {
-    height: auto;
-    width: 100%;
-    background-color: #000;
-    opacity: 0.35;
-    position: absolute;
-  }
+
   &__image {
     height: auto;
     width: 100%;
@@ -34,6 +28,7 @@
     font-size: 80px;
     color: #fff;
     position: absolute;
+    z-index: 50;
     top: 40%;
     line-height: 80px;
     left: 30%;
