@@ -94,7 +94,7 @@
     "valuesTitle": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string",

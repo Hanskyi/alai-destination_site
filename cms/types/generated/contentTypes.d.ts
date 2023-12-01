@@ -752,7 +752,7 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     coreValues: Attribute.Relation<
