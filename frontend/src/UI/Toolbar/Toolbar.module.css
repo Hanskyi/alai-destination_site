@@ -197,7 +197,7 @@
 }
 .destinations__image {
   position: absolute;
-  background-image: url('../../assets/toolbar/toolbarNextImage.svg');
+  background-image: url("../../assets/toolbar/toolbarNextImage.svg");
   background-size: cover;
   width: 6px;
   height: 10px;

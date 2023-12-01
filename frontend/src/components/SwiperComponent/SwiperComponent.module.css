@@ -13,7 +13,7 @@
   color: #222222;
   width: 40px;
   height: 40px;
-  background: url('../../assets/toolbar/right.svg') no-repeat center center;
+  background: url("../../assets/toolbar/right.svg") no-repeat center center;
   background-size: 21px 21px;
   border: 1px solid black;
   border-radius: 50%;
@@ -33,7 +33,7 @@
   color: #222222;
   width: 40px;
   height: 40px;
-  background: url('../../assets/toolbar/left.svg') no-repeat center center;
+  background: url("../../assets/toolbar/left.svg") no-repeat center center;
   background-size: 21px 21px;
   border: 1px solid black;
   border-radius: 50%;
@@ -68,7 +68,7 @@
   width: 238px;
 }
 .swiper__btn:after {
-  content: '➔';
+  content: "➔";
   margin-left: 10px;
 }
 
