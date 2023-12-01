@@ -3,10 +3,13 @@ import type { Schema, Attribute } from '@strapi/strapi';
 export interface SharedAddress extends Schema.Component {
   collectionName: 'components_shared_addresses';
   info: {
-    displayName: 'address';
+    displayName: 'counter';
+    description: '';
   };
   attributes: {
-    address: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    counter: Attribute.Integer & Attribute.Required;
+    icon: Attribute.Media & Attribute.Required;
   };
 }
 

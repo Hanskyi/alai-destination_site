@@ -1,12 +1,25 @@
 {
   "collectionName": "components_shared_addresses",
   "info": {
-    "displayName": "address"
+    "displayName": "counter",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "address": {
+    "title": {
       "type": "string",
+      "required": true
+    },
+    "counter": {
+      "required": true,
+      "type": "integer"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
       "required": true
     }
   }
