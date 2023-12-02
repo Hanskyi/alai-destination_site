@@ -1,16 +1,16 @@
 import React from 'react';
 import style from '../TravelSliderBlock.module.scss';
 import Image from 'next/image';
-import { Tour } from '@/type';
+import { TourCard } from '@/type';
 import Link from 'next/link';
 
 interface Props {
-  item: Tour;
+  item: TourCard;
 }
 
 const GoodTripsCard: React.FC<Props> = ({ item }) => {
   return (
-    <Link href={'/tours/1'} className={style.card}>
+    <Link href={'/tours/3'} className={style.card}>
       <div className={style.card__image__box}>
         <Image
           width={1200}

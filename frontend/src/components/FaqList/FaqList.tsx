@@ -24,7 +24,7 @@ const FaqList: React.FC<IProps> = ({ faqList }) => {
           />
         ))
       ) : (
-        <p>No FAQs available</p>
+        <p>No Data available</p>
       )}
     </ul>
   );

@@ -61,15 +61,6 @@ export interface HomeTourData {
   localizations: Localization[];
 }
 
-export interface Tour {
-  id: number;
-  title: string;
-  duration: number;
-  price: number;
-  mainImage: Image;
-  classification: Classification;
-}
-
 export interface Classification {
   id: number;
   title: string;
@@ -186,3 +177,39 @@ export interface ILogo {
 }
 
 //---------------------
+
+export interface TourCard {
+  id: number;
+  title: string;
+  duration: number;
+  price: number;
+  mainImage: Image;
+  classification: Classification;
+}
+
+export interface TourData {
+  classification: Classification;
+  review: Review[];
+  title: string;
+  images: Image[];
+  mainImage: Image;
+  price: number;
+  duration: number;
+  startDate: string;
+  endDate: string;
+  blogs: Blog[];
+  location: string;
+  seats: number;
+  overviewCK: string;
+  detailedDays: string;
+  tourPrice: string;
+  subTitle: string;
+  scheduleTable: ITable[];
+  previewDescription: string;
+  faqList: ITable[];
+}
+
+export interface ITour {
+  id: number;
+  tourData: TourData;
+}

@@ -1,15 +1,21 @@
 import React from 'react';
 import Lightbox from 'yet-another-react-lightbox';
-import slides from '@/features/TourPage/GalleryBlock/slides';
 import NextJsImage from '@/features/TourPage/GalleryBlock/NextJsImage';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/styles.css';
 import style from './Gallery.module.scss';
 import Image from 'next/image';
+import { GALLERY } from '../../../constants';
 
-const GalleryItem = () => {
+interface GalleryItemProps {
+  imageUrl: string;
+  alt: string;
+}
+
+const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt }) => {
   const [open, setOpen] = React.useState(false);
 
+  console.log(imageUrl);
   return (
     <div className={style.gallery_card} onClick={() => setOpen(true)}>
       <div className={style.gallery_card_imageWrap}>
@@ -18,17 +24,19 @@ const GalleryItem = () => {
           height={168}
           priority={true}
           className={style.gallery_card_image}
-          src="https://photos.thetrek.co/wp-content/uploads/2019/08/03125439/dsc06577.jpg"
-          alt="Gallery image"
+          src={`${GALLERY}${imageUrl}`}
+          alt={alt}
         />
       </div>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={slides}
-        render={{ slide: NextJsImage }}
-      />
+      {open && (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={[{ src: imageUrl, alt }]}
+          render={{ slide: NextJsImage }}
+        />
+      )}
     </div>
   );
 };
