@@ -1,20 +1,14 @@
 import { GetServerSideProps } from 'next';
-import { ITour, TourData } from '../../type'; // Import both interfaces
+import { TourData } from '../../type';
 import axiosApi from '../../axiosApi';
 import TourPage from '../tour-detailed';
 
-type Props = {
-  tourData: TourData | null; // Change the type to TourData here
-};
+interface Props {
+  tourData: TourData | null;
+}
 
 const Tour = ({ tourData }: Props) => {
-  // Check if tourData exists before accessing its properties
-  return (
-      <>
-        {tourData && <TourPage tourData={tourData} />} {/* Pass tourData property */}
-        {/* You might add conditional rendering or an error message for when tourData is null */}
-      </>
-  );
+  return <>{tourData && <TourPage tourData={tourData} />}</>;
 };
 
 export default Tour;
@@ -27,10 +21,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
   }
 
   try {
-    const { data } = await axiosApi.get<ITour>(`tours/${id}`);
+    const { data } = await axiosApi.get<TourData>(`tours/${id}`);
     return {
       props: {
-        tourData: data ? data.tourData : null, // Pass the tourData property
+        tourData: data,
       },
     };
   } catch (error) {

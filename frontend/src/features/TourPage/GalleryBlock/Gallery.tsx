@@ -13,8 +13,6 @@ interface Props {
 }
 
 const Gallery = ({ images = [] }: Props) => {
-  console.log(images);
-
   return (
     <div className="container">
       <div className={style.gallery_block}>

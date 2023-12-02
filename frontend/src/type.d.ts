@@ -188,6 +188,7 @@ export interface TourCard {
 }
 
 export interface TourData {
+  id: number;
   classification: Classification;
   review: Review[];
   title: string;
@@ -209,7 +210,9 @@ export interface TourData {
   faqList: ITable[];
 }
 
+/*
 export interface ITour {
-  id: number;
+
   tourData: TourData;
 }
+*/
