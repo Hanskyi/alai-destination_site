@@ -89,6 +89,27 @@ export interface HomeClassificationData {
   localizations: Localization[];
 }
 
+export interface IClassificationData {
+  id: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  description: string;
+  videoLink: string;
+  image: Image;
+  localizations: Localization[];
+}
+
+export interface IClassification {
+  data: IClassificationData;
+}
+
+export interface IClassificationDataData {
+  data: IClassificationData[];
+}
+
 export interface ClassificationMutation {
   id: number;
   title: string;

@@ -5,13 +5,13 @@ import playIcon from '@/assets/icon/icon-play.svg';
 import { useAppSelector } from '@/store/hooks';
 import classificationsBanner from '@/assets/classificationsImages/classification-banner.png';
 import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
-// import Reviews from '@/components/ClassificationReviews/Reviews';
-// import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
-// import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-// import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
-// import { SwiperSlide } from 'swiper/react';
+import { selectClassifications } from '@/features/Classifications/ClassificationsSlice';
+import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
+import Reviews from '@/components/ClassificationReviews/Reviews';
 
 const Classifications = () => {
+  const classifications = useAppSelector(selectClassifications);
+
   return (
     <>
       <div className={style.classificationsBanner}>
@@ -53,14 +53,13 @@ const Classifications = () => {
             Our walking, hiking & trekking trips
           </h3>
           <div className={style.classificationsCards__content}>
-            {/*<SwiperComponent>*/}
-            {/*  {homeClassifications?.data.classifications.map((category) => (*/}
-            {/*    <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>*/}
-            {/*      <WaysToTravelCard item={category} />*/}
-            {/*    </SwiperSlide>*/}
-            {/*  ))}*/}
-            {/*</SwiperComponent>*/}
+            {classifications.map((category) => (
+              <div className={style.classificationsCards__content__box} key={category.id}>
+                <WaysToTravelCard item={category} />
+              </div>
+            ))}
           </div>
+          <Reviews />
         </div>
       </div>
     </>
