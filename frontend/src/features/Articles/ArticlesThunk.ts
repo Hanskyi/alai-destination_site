@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { OneArticle } from '@/type';
+import { IArticle, OneArticle, OneArticleData } from '@/type';
 import axiosApi from '@/axiosApi';
 
 interface ArticleArgument {
@@ -21,5 +21,13 @@ export const fetchOneArticle = createAsyncThunk<OneArticle, ArticleArgument>(
     }
 
     return engBlog;
+  },
+);
+
+export const fetchAllArticles = createAsyncThunk<OneArticleData[], string>(
+  'articles/fetchAll',
+  async (locale) => {
+    const { data: articlesResponse } = await axiosApi.get<IArticle>(`blogs?locale=${locale}`);
+    return articlesResponse.data;
   },
 );

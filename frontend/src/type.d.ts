@@ -171,6 +171,10 @@ export interface OneArticleData {
   localizations: Localization[];
 }
 
+export interface IArticle {
+  data: OneArticleData[];
+}
+
 export interface IHeaderFooterInfo {
   data: IHeaderFooterData;
 }

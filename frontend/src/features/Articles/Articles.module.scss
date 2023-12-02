@@ -9,15 +9,18 @@
     width: 100%;
     &__big {
       display: block;
+
       @include mixins.xl {
         display: none;
       }
     }
     &__small {
       display: none;
+
       @include mixins.xl {
         display: block;
       }
+
       @include mixins.sm {
         height: 290px;
       }
@@ -32,15 +35,19 @@
     top: 40%;
     line-height: 80px;
     left: 30%;
+
     @include mixins.xl {
       left: 20%;
     }
+
     @include mixins.lg {
       font-size: 50px;
     }
+
     @include mixins.md {
       left: 10%;
     }
+
     @include mixins.md {
       left: 5%;
     }
@@ -64,6 +71,7 @@
   letter-spacing: 1px;
   margin-top: 52px;
   margin-bottom: 150px;
+
   @include mixins.md {
     margin-top: 38px;
     margin-bottom: 50px;
@@ -71,29 +79,55 @@
 }
 
 .articleCard {
-  width: 350px;
   height: 506px;
   overflow: hidden;
+  align-items: center;
+  max-width: 340px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid #bebebe;
+
   &__image {
+    width: 374px;
+    height: 270px;
+
     &__content {
       width: 374px;
-      height: auto;
+      height: 270px;
     }
   }
   &__content {
+    display: flex;
+
+    &__box {
+      width: 100%;
+      padding: 20px;
+    }
+
     &__title {
       color: #313131;
       font-size: 18px;
       font-weight: 600;
       line-height: 25.2px;
       margin-bottom: 30px;
-      margin-top: 25px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
     }
+
     &__text {
       color: #222;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       line-height: 28.8px;
+      margin-top: auto;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 4;
     }
   }
 }
