@@ -198,6 +198,23 @@ export interface OneArticleData {
   localizations: Localization[];
 }
 
+export interface OneClassification {
+  data: OneClassificationData;
+}
+
+export interface OneClassificationData {
+  id: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  description: string;
+  videoLink: string;
+  image: Image;
+  localizations: Localization[];
+}
+
 export interface IArticle {
   data: OneArticleData[];
 }
