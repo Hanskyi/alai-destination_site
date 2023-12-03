@@ -1,5 +1,5 @@
 .aboutUs__content {
-  background-image: url('../../assets/icon/about-us/about_us_banner.png');
+  background-image: url("../../assets/icon/about-us/about_us_banner.png");
   width: 100%;
   min-height: calc(100vh - 87px);
   background-repeat: no-repeat;
@@ -14,6 +14,7 @@
   display: inline-block;
   align-items: center;
   padding: 0 20px;
+  position: relative;
 }
 @media screen and (max-width: 576px) {
   .aboutUs__content {
@@ -34,6 +35,7 @@
 }
 .text__title {
   position: relative;
+  z-index: 50;
   word-wrap: break-word;
   margin: 0;
   line-height: 66px;
@@ -50,8 +52,8 @@
   }
 }
 .text__title::before {
-  content: '';
-  background: url('../../assets/icon/Icon-i.svg') no-repeat;
+  content: "";
+  background: url("../../assets/icon/Icon-i.svg") no-repeat;
   line-height: 1em;
   width: 65px;
   height: 65px;
@@ -70,6 +72,8 @@
   }
 }
 .text__subtitle {
+  position: relative;
+  z-index: 50;
   margin: 20px 0 0;
   font-size: 18px;
   font-style: normal;
@@ -102,8 +106,8 @@
   }
 }
 .middleBlock__title::before {
-  content: '';
-  background: url('../../assets/icon/i-mission.svg') no-repeat;
+  content: "";
+  background: url("../../assets/icon/i-mission.svg") no-repeat;
   width: 60px;
   height: 60px;
   flex-shrink: 0;
@@ -202,7 +206,7 @@
 
 .countsBlock {
   position: relative;
-  background-image: url('../../assets/icon/about-us/about_us_counter_bg.png');
+  background-image: url("../../assets/icon/about-us/about_us_counter_bg.png");
   padding: 135px 42.22px 90px 42.22px;
   background-position: center bottom;
   width: 100%;

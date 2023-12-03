@@ -49,6 +49,10 @@
   margin-top: auto;
   margin-right: auto;
 }
+.purpose_card_button:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
 .purpose_card_imgWrap {
   width: auto;
   height: auto;

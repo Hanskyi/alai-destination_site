@@ -1,11 +1,11 @@
 "use strict";
 
 /**
- * `classifications-populate` middleware
+ * `locations-populate` middleware
  */
 
 const populate = {
-  image: {
+  bannerImage: {
     populate: true,
     fields: ["name", "url"],
   },
@@ -27,7 +27,7 @@ const populate = {
 module.exports = (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info("In classifications-populate middleware.");
+    strapi.log.info("In locations-populate middleware.");
 
     ctx.query = {
       populate,

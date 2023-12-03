@@ -33,12 +33,6 @@
       "relation": "manyToOne",
       "target": "api::tour.tour",
       "inversedBy": "reviews"
-    },
-    "classification": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::classification.classification",
-      "inversedBy": "reviews"
     }
   }
 }

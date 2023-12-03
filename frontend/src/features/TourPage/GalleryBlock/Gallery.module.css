@@ -11,7 +11,7 @@
 }
 .gallery_card_imageWrap {
   width: auto;
-  height: auto;
+  height: 100%;
 }
 .gallery_card_image {
   width: 100%;

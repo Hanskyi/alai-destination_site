@@ -966,11 +966,6 @@ export interface ApiClassificationClassification extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    reviews: Attribute.Relation<
-      'api::classification.classification',
-      'oneToMany',
-      'api::review.review'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1348,11 +1343,11 @@ export interface ApiLocationLocation extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    bannerImage: Attribute.Media &
+    title: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     description: Attribute.Text &
@@ -1362,18 +1357,23 @@ export interface ApiLocationLocation extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    tours: Attribute.Relation<
+      'api::location.location',
+      'oneToMany',
+      'api::tour.tour'
+    >;
+    bannerImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     videoLink: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-      }>;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1537,11 +1537,6 @@ export interface ApiReviewReview extends Schema.CollectionType {
       'manyToOne',
       'api::tour.tour'
     >;
-    classification: Attribute.Relation<
-      'api::review.review',
-      'manyToOne',
-      'api::classification.classification'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1699,11 +1694,6 @@ export interface ApiTourTour extends Schema.CollectionType {
         };
       }>;
     blogs: Attribute.Relation<'api::tour.tour', 'manyToMany', 'api::blog.blog'>;
-    location: Attribute.Relation<
-      'api::tour.tour',
-      'oneToOne',
-      'api::location.location'
-    >;
     seats: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1780,6 +1770,11 @@ export interface ApiTourTour extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    location: Attribute.Relation<
+      'api::tour.tour',
+      'manyToOne',
+      'api::location.location'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

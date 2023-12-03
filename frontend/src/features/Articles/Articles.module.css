@@ -2,13 +2,6 @@
   position: relative;
   text-align: center;
 }
-.articlesBanner__bacdrop {
-  height: auto;
-  width: 100%;
-  background-color: #000;
-  opacity: 0.35;
-  position: absolute;
-}
 .articlesBanner__image {
   height: auto;
   width: 100%;
@@ -39,6 +32,7 @@
   font-size: 80px;
   color: #fff;
   position: absolute;
+  z-index: 50;
   top: 40%;
   line-height: 80px;
   left: 30%;
@@ -90,13 +84,30 @@
 }
 
 .articleCard {
-  width: 350px;
   height: 506px;
   overflow: hidden;
+  align-items: center;
+  max-width: 340px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid #bebebe;
+}
+.articleCard__image {
+  width: 374px;
+  height: 270px;
 }
 .articleCard__image__content {
   width: 374px;
-  height: auto;
+  height: 270px;
+}
+.articleCard__content {
+  display: flex;
+}
+.articleCard__content__box {
+  width: 100%;
+  padding: 20px;
 }
 .articleCard__content__title {
   color: #313131;
@@ -104,13 +115,21 @@
   font-weight: 600;
   line-height: 25.2px;
   margin-bottom: 30px;
-  margin-top: 25px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
 }
 .articleCard__content__text {
   color: #222;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 28.8px;
+  margin-top: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
 }
 
 /*# sourceMappingURL=Articles.module.css.map */

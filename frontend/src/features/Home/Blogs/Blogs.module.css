@@ -3,6 +3,9 @@
   border: 1px solid #bebebe;
   padding: 25px 18px;
   display: flex;
+}
+.blog_link {
+  display: flex;
   flex-direction: column;
 }
 .blog:hover {
@@ -47,6 +50,9 @@
   letter-spacing: 0.8px;
   color: rgba(0, 0, 0, 0.8588235294);
   text-transform: uppercase;
+}
+.blogs_title:hover {
+  color: #818181;
 }
 .blogs_cards {
   display: flex;

@@ -108,11 +108,6 @@
       "target": "api::blog.blog",
       "mappedBy": "tours"
     },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
-    },
     "seats": {
       "pluginOptions": {
         "i18n": {
@@ -198,6 +193,12 @@
       },
       "component": "tour.table-el",
       "required": true
+    },
+    "location": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "tours"
     }
   }
 }

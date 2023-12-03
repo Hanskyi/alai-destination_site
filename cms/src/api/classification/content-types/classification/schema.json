@@ -63,23 +63,17 @@
       "required": true
     },
     "bannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
-    },
-    "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review",
-      "mappedBy": "classification"
+      }
     }
   }
 }

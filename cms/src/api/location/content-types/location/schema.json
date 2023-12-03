@@ -25,6 +25,30 @@
       "type": "string",
       "required": true
     },
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour.tour",
+      "mappedBy": "location"
+    },
     "bannerImage": {
       "type": "media",
       "multiple": false,
@@ -38,28 +62,10 @@
         }
       }
     },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text",
-      "required": true
-    },
     "videoLink": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "string",
