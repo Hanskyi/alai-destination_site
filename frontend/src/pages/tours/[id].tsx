@@ -1,13 +1,15 @@
 import { GetServerSideProps } from 'next';
-import { TourData } from '../../type';
+import {TourData, TourDataDetailed} from '../../type';
 import axiosApi from '../../axiosApi';
 import TourPage from '../tour-detailed';
 
 interface Props {
-  tourData: TourData | null;
+  tourData: TourDataDetailed | null;
 }
 
 const Tour = ({ tourData }: Props) => {
+  console.log(tourData);
+
   return <>{tourData && <TourPage tourData={tourData} />}</>;
 };
 
@@ -21,10 +23,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
   }
 
   try {
-    const { data } = await axiosApi.get<TourData>(`tours/${id}`);
+    const { data } = await axiosApi.get<any>(`tours/${id}`);
+
+    const tData = data.data;
     return {
       props: {
-        tourData: data,
+        tourData: tData,
       },
     };
   } catch (error) {
