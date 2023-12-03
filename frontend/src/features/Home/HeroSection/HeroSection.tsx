@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import style from './HeroSection.module.scss';
 import { useAppSelector } from '@/store/hooks';
 import articleBanner from '@/assets/articlesImages/articlesBanner.png';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 interface Option {
   value: string;
@@ -17,7 +18,7 @@ interface Option {
 const HeroSection = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [showSelect, setShowSelect] = useState(false);
-  const heroSection = useAppSelector((state) => state.products.homeData?.heroSection);
+  const heroSection = useAppSelector((state) => state.home.homeData?.heroSection);
 
   useEffect(() => {
     setShowSelect(true);
@@ -35,6 +36,7 @@ const HeroSection = () => {
 
   return (
     <div className={style.mainBlock}>
+      <BackdropForBanner />
       <div className={style.mainBlockContainer}>
         <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
 

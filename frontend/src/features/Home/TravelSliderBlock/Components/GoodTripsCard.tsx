@@ -10,26 +10,31 @@ interface Props {
 
 const GoodTripsCard: React.FC<Props> = ({ item }) => {
   return (
-    <Link href={'/tours/3'} className={style.card}>
-      <div className={style.card__image__box}>
-        <Image
-          width={1200}
-          height={1200}
-          className={style.card__image__box__content__two}
-          src={'http://localhost:1337' + item?.mainImage.url}
-          alt="#"
-        />
-      </div>
-      <div className={style.card__body}>
-        <span className={style.card__days}>
-          {item?.duration} days
-          <span> {item?.classification.title}</span>
-        </span>
-        <h4 className={style.card__description}>{item?.title}</h4>
-        <p className={style.card__price}>
-          From <span className={style.card__price__span}>${item?.price} USD</span>
-        </p>
-      </div>
+    <Link href={'#'} className={style.card}>
+      <>
+        <div className={style.goodTripsCard}>
+          <Image
+            width={1200}
+            height={1200}
+            className={style.goodTripsCard__image}
+            src={'http://localhost:1337' + item?.mainImage.url}
+            alt="#"
+          />
+        </div>
+        <div className={style.goodTripsCard__body}>
+          <div className={style.goodTripsCard__body__wrapper}>
+            <span className={style.goodTripsCard__body__days}>{item?.duration} days</span>
+            <span className={style.goodTripsCard__body__classification}>
+              {item?.classification.title}
+            </span>
+          </div>
+
+          <span className={style.goodTripsCard__body__title}>{item?.title}</span>
+          <p className={style.goodTripsCard__body__price}>
+            From <span className={style.goodTripsCard__body__price__span}>${item?.price} USD</span>
+          </p>
+        </div>
+      </>
     </Link>
   );
 };

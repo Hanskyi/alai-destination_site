@@ -1,0 +1,84 @@
+@use '../../styles/mixins';
+
+.classificationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 340px;
+  height: auto;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid #bebebe;
+
+  &:hover {
+    background-color: #bebebe;
+  }
+
+  @include mixins.md {
+    max-width: 320px;
+    max-height: 520px;
+  }
+
+  &__image {
+    max-width: 350px;
+    height: 233px;
+
+    &__content {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  &__content {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+
+    &__title {
+      color: #222;
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 32px;
+      margin-bottom: 15px;
+    }
+
+    &__text {
+      color: #222;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    &__button {
+      font-family: inherit;
+      margin-top: auto;
+      font-size: inherit;
+      padding: 15px 37px 15px 20px;
+      background-color: #222;
+      border-radius: 5px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
+      background-size: 16px 16px;
+      background-position: right 16px center;
+      background-repeat: no-repeat;
+    }
+
+    &__button:hover {
+      background-color: #333232;
+    }
+
+    &__button:active {
+      background-color: #424242;
+      transform: translateY(2px);
+      box-shadow: 0 0 5px rgba(0, 1, 1, 0.5);
+    }
+  }
+}

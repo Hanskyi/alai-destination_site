@@ -11,7 +11,7 @@ interface Props {
 const BlogItem: React.FC<Props> = ({ blog }) => {
   return (
     <div className={style.blog}>
-      <Link href="/articles/1">
+      <Link href={`/articles/${blog.id}`} className={style.blog_link}>
         <span className={style.blog_date}>{dayjs(blog.createdAt).format('D MMM YYYY')}</span>
         <p className={style.blog_text}>{blog.title}</p>
         <span className={style.blog_subtext}>{blog.author}</span>

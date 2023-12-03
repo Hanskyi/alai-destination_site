@@ -1,0 +1,9 @@
+.whatsapp {
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+  background-color: transparent;
+  z-index: 500;
+}
+
+/*# sourceMappingURL=Whatsapp.module.css.map */

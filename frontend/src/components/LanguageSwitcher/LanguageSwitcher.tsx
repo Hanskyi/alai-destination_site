@@ -19,6 +19,10 @@ const LanguageSwitcher = () => {
       return;
     }
 
+    if (locale.toLowerCase() === router.locale || (locale === 'GB' && router.locale === 'en')) {
+      return;
+    }
+
     void router.push(href, undefined, { locale: locale === 'RU' && 'ru' });
   };
 

@@ -33,17 +33,33 @@ const boxes = [
   },
 ];
 
+const imgAnimation = {
+  hidden: {
+    opacity: 0.5,
+    scale: 0,
+    duration: 0,
+    ease: 0,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    ease: [0, 0.71, 0.2, 3],
+  },
+};
+
 const ValuesBlock = () => {
   return (
     <div className={aboutUsStyle.block}>
       <h1 className={aboutUsStyle.block__title}>Our Core Values</h1>
       <div className={aboutUsStyle.block__boxes}>
         {boxes.map((box, index) => (
-          <motion.div key={index} className={aboutUsStyle.block__boxes_box}>
+          <div key={index} className={aboutUsStyle.block__boxes_box}>
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0, 0.71, 0.2, 3] }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 1 }}
+              variants={imgAnimation}
             >
               <Image
                 className={aboutUsStyle.block__boxes_img}
@@ -55,7 +71,7 @@ const ValuesBlock = () => {
             </motion.div>
             <h2 className={aboutUsStyle.block__boxes_subTitle}>{box.title}</h2>
             <p className={aboutUsStyle.block__boxes_text}>{box.description}</p>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

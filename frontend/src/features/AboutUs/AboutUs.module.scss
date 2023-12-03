@@ -17,6 +17,7 @@
     display: inline-block;
     align-items: center;
     padding: 0 20px;
+    position: relative;
 
     @include mixins.sm {
       min-height: 75vh;
@@ -36,6 +37,7 @@
 
   &__title {
     position: relative;
+    z-index: 50;
     word-wrap: break-word;
     margin: 0;
     line-height: 66px;
@@ -72,6 +74,8 @@
   }
 
   &__subtitle {
+    position: relative;
+    z-index: 50;
     margin: 20px 0 0;
     font-size: 18px;
     font-style: normal;
@@ -164,15 +168,14 @@
     flex-wrap: wrap;
     text-align: center;
 
-    @include mixins.md {
-      flex-direction: column;
-      align-items: center;
-    }
-
     &_box {
       flex: 1;
-      max-width: 500px;
-      margin: 0 10px;
+      max-width: 400px;
+      padding: 0 10px;
+
+      @include mixins.xl {
+        flex: none;
+      }
 
       @include mixins.md {
         margin-bottom: 50px;

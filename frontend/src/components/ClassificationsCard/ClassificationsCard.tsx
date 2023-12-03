@@ -1,14 +1,14 @@
 import React from 'react';
-import style from '../Classification.module.scss';
-import arrowIcon from '@/assets/icon/icon-arrow.svg';
+import style from './ClassificationsCard.module.scss';
 import Image from 'next/image';
+import galleryImage from '@/assets/images/gallery_block_images/gallery_image_1.jpg';
 
 const ClassificationsCard = () => {
   return (
     <div className={style.classificationCard}>
       <div className={style.classificationCard__image}>
         <Image
-          src="https://static-cse.canva.com/blob/847132/paulskorupskas7KLaxLbSXAunsplash2.jpg"
+          src={galleryImage.src}
           className={style.classificationCard__image__content}
           width={1200}
           height={1200}
@@ -21,10 +21,7 @@ const ClassificationsCard = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque delectus earum, illum
           molestias possimus quam soluta.
         </p>
-        <button className={style.classificationCard__content__button}>
-          Learn More
-          <Image src={arrowIcon} alt="#" />
-        </button>
+        <button className={style.classificationCard__content__button}>Learn More</button>
       </div>
     </div>
   );

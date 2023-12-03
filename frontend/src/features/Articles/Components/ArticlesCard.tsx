@@ -2,14 +2,19 @@ import React from 'react';
 import style from '../Articles.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import { OneArticleData } from '@/type';
 
-const ArticlesCard = () => {
+interface Props {
+  article: OneArticleData;
+}
+
+const ArticlesCard: React.FC<Props> = ({ article }) => {
   return (
     <div className={style.articleCard}>
       <Link href={'/articles/1'}>
         <div className={style.articleCard__image}>
           <Image
-            src="https://static-cse.canva.com/blob/847132/paulskorupskas7KLaxLbSXAunsplash2.jpg"
+            src={'http://localhost:1337' + article.mainImage.url}
             alt="#"
             width={400}
             height={400}
@@ -17,14 +22,17 @@ const ArticlesCard = () => {
           />
         </div>
         <div className={style.articleCard__content}>
-          <p className={style.articleCard__content__title}>
-            This couple is exploring the world one podcast episode at a time 
-          </p>
-          <p className={style.articleCard__content__text}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores aspernatur
-            blanditiis dolore dolorem doloremque doloribus facilis fuga illo magni minima molestiae,
-            officia optio praesentium quaerat quo reprehenderit sequi soluta?
-          </p>
+          <div className={style.articleCard__content__box}>
+            <h3 className={style.articleCard__content__title}>{article.title}</h3>
+            {/*<div*/}
+            {/*  className={style.articleCard__content__title}*/}
+            {/*  dangerouslySetInnerHTML={{ __html: article.title }}*/}
+            {/*/>*/}
+            <div
+              className={style.articleCard__content__text}
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          </div>
         </div>
       </Link>
     </div>

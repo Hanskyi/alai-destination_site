@@ -18,6 +18,7 @@
 
   &__title {
     position: absolute;
+    z-index: 50;
     bottom: 20px;
     color: #fff;
     text-shadow: 0 0 10px #000;
@@ -116,71 +117,6 @@
     font-weight: 400;
     line-height: 26.67px;
     display: block;
-    margin: 0 auto 40px;
-  }
-}
-
-.classificationCard {
-  max-width: 350px;
-  max-height: 520px;
-  overflow: hidden;
-  border-right: 1px solid #bebebe;
-  border-bottom: 1px solid #bebebe;
-  border-left: 1px solid #bebebe;
-  margin-bottom: 25px;
-
-  @include mixins.md {
-    max-width: 320px;
-    max-height: 520px;
-  }
-
-  &__image {
-    max-width: 350px;
-    height: 233px;
-
-    &__content {
-      height: auto;
-      width: 100%;
-    }
-  }
-
-  &__content {
-    padding: 15px;
-
-    &__title {
-      color: #222;
-      font-size: 27px;
-      font-weight: 600;
-      line-height: 32px;
-      margin-bottom: 15px;
-    }
-
-    &__text {
-      color: #222;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 27.86px;
-      margin-bottom: 20px;
-    }
-
-    &__button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #222;
-      padding: 11px 14px;
-      background: #222;
-      cursor: pointer;
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 26.67px;
-
-      img {
-        width: 10px;
-        height: auto;
-        margin-left: 4px;
-      }
-    }
+    margin: 0 auto;
   }
 }

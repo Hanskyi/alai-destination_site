@@ -1,6 +1,7 @@
 import React from 'react';
 import tourStyle from './TourHeroSection.module.scss';
 import { GALLERY } from '../../../constants';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 interface Props {
   title: string;
@@ -16,6 +17,7 @@ const TourHeroSection: React.FC<Props> = ({ title, subTitle, mainImage }) => {
       className={tourStyle.headlineContent}
       style={{ backgroundImage: bannerLink, backgroundSize: 'cover' }}
     >
+      <BackdropForBanner />
       <div className={tourStyle.headlineText}>
         <h1 className={tourStyle.entryTitle}>{title}</h1>
         <h4 className={tourStyle.entrySubtitle}>{subTitle}</h4>

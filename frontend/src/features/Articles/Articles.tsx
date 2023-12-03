@@ -3,13 +3,18 @@ import style from './Articles.module.scss';
 import articlesBanner from '../../assets/articlesImages/articlesBanner.png';
 import articlesSmall from '../../assets/articlesImages/articlessSmall.png';
 import Image from 'next/image';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
+import { useAppSelector } from '@/store/hooks';
+import { selectArticles } from '@/features/Articles/ArticlesSlice';
 import ArticlesCard from '@/features/Articles/Components/ArticlesCard';
 
 const Articles = () => {
+  const articles = useAppSelector(selectArticles);
+
   return (
     <>
       <div className={style.articlesBanner}>
-        <div className={style.articlesBanner__bacdrop}></div>
+        <BackdropForBanner />
 
         <Image
           className={`${style.articlesBanner__image} ${style.articlesBanner__image__big}`}
@@ -30,8 +35,8 @@ const Articles = () => {
 
       <div className="d-flex flex-column align-center">
         <div className={`${style.articleCardContainer} container d-flex f-wrap justify-center`}>
-          {Array.from({ length: 6 }, (_, index) => (
-            <ArticlesCard key={index} />
+          {articles.map((article) => (
+            <ArticlesCard key={article.id} article={article} />
           ))}
         </div>
         <button className={style.articleCardBtn}>view all</button>

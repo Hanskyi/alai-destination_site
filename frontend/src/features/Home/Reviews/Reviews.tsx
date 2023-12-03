@@ -4,7 +4,7 @@ import style from './Reviews.module.scss';
 import { useAppSelector } from '@/store/hooks';
 
 const Reviews = () => {
-  const reviewBlock = useAppSelector((state) => state.products.homeData?.reviewsBlock);
+  const reviewBlock = useAppSelector((state) => state.home.homeData?.reviewsBlock);
 
   return (
     <div className={`${style.reviews} container`}>

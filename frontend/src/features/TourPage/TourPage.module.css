@@ -1,0 +1,33 @@
+.tour_page {
+  background: #f7f7f7;
+}
+.tour_page .parentContainer {
+  padding: 40px 0;
+  display: flex;
+}
+@media screen and (max-width: 992px) {
+  .tour_page .parentContainer {
+    flex-direction: column;
+    padding-bottom: 80px;
+  }
+}
+.tour_page .parentContainer .tour_container {
+  flex-grow: 1;
+  max-width: 75%;
+  padding: 40px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 992px) {
+  .tour_page .parentContainer .tour_container {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .tour_page .parentContainer .tour_container {
+    padding: 20px;
+  }
+}
+
+/*# sourceMappingURL=TourPage.module.css.map */

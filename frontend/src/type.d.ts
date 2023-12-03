@@ -61,6 +61,15 @@ export interface HomeTourData {
   localizations: Localization[];
 }
 
+export interface Tour {
+  id: number;
+  title: string;
+  duration: number;
+  price: number;
+  mainImage: Image;
+  classification: Classification;
+}
+
 export interface Classification {
   id: number;
   title: string;
@@ -144,7 +153,27 @@ export interface ITable {
   body: string;
 }
 
-//--------------------
+export interface OneArticle {
+  data: OneArticleData;
+}
+
+export interface OneArticleData {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  previewDescription: string;
+  mainImage: Image;
+  localizations: Localization[];
+}
+
+export interface IArticle {
+  data: OneArticleData[];
+}
 
 export interface IHeaderFooterInfo {
   data: IHeaderFooterData;
@@ -235,8 +264,3 @@ export interface TourDataDetailed {
   faqList: ITable[];
 }
 
-/*
-export interface ITour {
-  tourData: TourData;
-}
-*/
