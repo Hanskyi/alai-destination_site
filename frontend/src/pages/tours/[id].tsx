@@ -1,12 +1,42 @@
-import React from 'react';
-import TourPage from '@/pages/tour-detailed';
+import { GetServerSideProps } from 'next';
+import { TourData, TourDataDetailed } from '../../type';
+import axiosApi from '../../axiosApi';
+import TourPage from '../tour-detailed';
 
-const Tour = () => {
-  return (
-    <>
-      <TourPage />
-    </>
-  );
+interface Props {
+  tourData: TourDataDetailed | null;
+}
+
+const Tour = ({ tourData }: Props) => {
+  console.log(tourData);
+
+  return <>{tourData && <TourPage tourData={tourData} />}</>;
 };
 
 export default Tour;
+
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  const { id } = context.query || {};
+
+  if (!id || Array.isArray(id)) {
+    throw new Error('Param id must be a string');
+  }
+
+  try {
+    const { data } = await axiosApi.get<any>(`tours/${id}`);
+
+    const tData = data.data;
+    return {
+      props: {
+        tourData: tData,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching tour data:', error);
+    return {
+      props: {
+        tourData: null,
+      },
+    };
+  }
+};

@@ -225,3 +225,63 @@ export interface ILogo {
   name: string;
   url: string;
 }
+
+//---------------------
+
+export interface TourCard {
+  id: number;
+  title: string;
+  duration: number;
+  price: number;
+  mainImage: Image;
+  classification: Classification;
+}
+
+export interface TourData {
+  data: {
+    id: number;
+    classification: Classification;
+    review: Review[];
+    title: string;
+    images: Image[];
+    mainImage: Image;
+    price: number;
+    duration: number;
+    startDate: string;
+    endDate: string;
+    blogs: Blog[];
+    location: string;
+    seats: number;
+    overviewCK: string;
+    detailedDays: string;
+    tourPrice: string;
+    subTitle: string;
+    scheduleTable: ITable[];
+    previewDescription: string;
+    faqList: ITable[];
+  };
+}
+
+export interface TourDataDetailed {
+  id: number;
+  classification: Classification;
+  review: Review[];
+  title: string;
+  images: Image[];
+  mainImage: Image;
+  price: number;
+  duration: number;
+  startDate: string;
+  endDate: string;
+  blogs: Blog[];
+  location: string;
+  seats: number;
+  overviewCK: string;
+  detailedDays: string;
+  tourPrice: string;
+  subTitle: string;
+  scheduleTable: ITable[];
+  previewDescription: string;
+  faqList: ITable[];
+}
+

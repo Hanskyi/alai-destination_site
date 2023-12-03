@@ -1,11 +1,11 @@
 import React from 'react';
 import style from '../TravelSliderBlock.module.scss';
 import Image from 'next/image';
-import { Tour } from '@/type';
+import { TourCard } from '@/type';
 import Link from 'next/link';
 
 interface Props {
-  item: Tour;
+  item: TourCard;
 }
 
 const GoodTripsCard: React.FC<Props> = ({ item }) => {

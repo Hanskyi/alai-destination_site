@@ -84,6 +84,7 @@
 
       td {
         width: auto !important;
+        font-size: 12px !important;
       }
 
       @include mixins.lg {
@@ -113,5 +114,5 @@
 
 .accordion__togglerOpen {
   transform: translateY(-50%) rotate(45deg);
-  height: fit-content !important;
+  //height: fit-content !important;
 }
