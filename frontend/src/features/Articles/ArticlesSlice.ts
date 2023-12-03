@@ -4,14 +4,14 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { OneArticle, OneArticleData } from '@/type';
 import { fetchAllArticles, fetchOneArticle } from '@/features/Articles/ArticlesThunk';
 
-interface ProductsState {
+interface ArticlesState {
   articles: OneArticleData[];
   article: OneArticle | null;
   fetchLoading: boolean;
   error: boolean;
 }
 
-const initialState: ProductsState = {
+const initialState: ArticlesState = {
   articles: [],
   article: null,
   fetchLoading: false,

@@ -3,10 +3,12 @@ import { createWrapper } from 'next-redux-wrapper';
 import { homeSlice } from '@/features/Home/homeSlice';
 import { articlesSlice } from '@/features/Articles/ArticlesSlice';
 import { headerFooterSlice } from '@/features/HeaderFooter/headerFooterSlice';
+import { classificationsSlice } from '@/features/Classifications/ClassificationsSlice';
 
 const reducers = {
   [homeSlice.name]: homeSlice.reducer,
   [articlesSlice.name]: articlesSlice.reducer,
+  [classificationsSlice.name]: classificationsSlice.reducer,
   [headerFooterSlice.name]: headerFooterSlice.reducer,
 };
 
