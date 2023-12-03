@@ -6,13 +6,15 @@ import DescriptionBlock from '@/features/TourPage/DescriptionBlock/DescriptionBl
 import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
 import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
 import FaqList from '@/components/FaqList/FaqList';
-import { TourData } from '../type';
+import { TourDataDetailed } from '../type';
 
 interface Props {
-  tourData: TourData;
+  tourData: TourDataDetailed;
 }
 
 const TourPage: React.FC<Props> = ({ tourData }) => {
+  console.log(tourData, 'Det');
+
   return (
     <div className={style.tour_page}>
       <TourHeroSection

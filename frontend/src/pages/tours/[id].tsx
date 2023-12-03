@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import {TourData, TourDataDetailed} from '../../type';
+import { TourData, TourDataDetailed } from '../../type';
 import axiosApi from '../../axiosApi';
 import TourPage from '../tour-detailed';
 
