@@ -59,7 +59,7 @@
   transition: transform 0.3s ease;
 }
 .accordion__toggler:before {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   transform: rotate(90deg);

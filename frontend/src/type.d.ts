@@ -291,3 +291,28 @@ export interface TourDataDetailed {
   faqList: ITable[];
 }
 
+export interface ILocationsRegion {
+  id: number;
+  name: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  description: string;
+  videoLink: string;
+  bannerImage: Image;
+  localizations: Localization[];
+  tours: TourLocationRegion[];
+}
+
+export interface TourLocationRegion {
+  id: number;
+  title: string;
+  previewDescription: string;
+  mainImage: Image;
+}
+
+export interface locationsRegionData {
+  data: ILocationsRegion;
+}
