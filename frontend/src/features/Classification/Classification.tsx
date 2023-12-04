@@ -70,11 +70,17 @@ const Classification = () => {
         <div className={style.classificationCards}>
           <h3 className={style.classificationCards__title}>Our walking, hiking & trekking trips</h3>
           <div className={style.classificationCards__content}>
-            {/*{Array.from({ length: 6 }, (_, index) => (*/}
-            {/*  // <ClassificationsCard key={index} />*/}
-            {/*))}*/}
+            {classification?.data?.tours.length! > 0 ? (
+              classification?.data?.tours.map((item) => (
+                <ClassificationsCard key={item.id} tour={item} />
+              ))
+            ) : (
+              <h3 className={style.classificationCards__title}>No tours yet!</h3>
+            )}
           </div>
-          <button className={style.classificationCards__button}>Show more trips</button>
+          {classification?.data.tours.length! > 6 && (
+            <button className={style.classificationCards__button}>Show more trips</button>
+          )}
         </div>
         <Reviews />
       </div>

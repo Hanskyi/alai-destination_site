@@ -214,6 +214,7 @@ export interface OneClassificationData {
   videoLink: string;
   image: Image;
   localizations: Localization[];
+  tours: TourLocationRegion[];
 }
 
 export interface IArticle {

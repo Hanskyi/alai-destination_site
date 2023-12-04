@@ -18,7 +18,6 @@ const LocationsRegion = () => {
   const handlePlayButtonClick = () => {
     setIsVideoPlaying(true);
   };
-  console.log(content?.videoLink);
 
   return (
     <>
@@ -73,11 +72,17 @@ const LocationsRegion = () => {
       <div className={style.toursBlog}>
         <h3 className={style.toursBlog__title}>all tours in the Chui region</h3>
         <div className={style.toursBlog__cards}>
-          {content?.tours.map((item) => <ClassificationsCard key={item.id} tour={item} />)}
+          {content?.tours.length! > 0 ? (
+            content?.tours.map((item) => <ClassificationsCard key={item.id} tour={item} />)
+          ) : (
+            <h3 className={style.toursBlog__title}>Not tours yet</h3>
+          )}
         </div>
-        <button className={classificationsStyle.classificationCards__button}>
-          Show more trips
-        </button>
+        {content?.tours.length! > 6 && (
+          <button className={classificationsStyle.classificationCards__button}>
+            Show more trips
+          </button>
+        )}
       </div>
       <Reviews />
     </>
