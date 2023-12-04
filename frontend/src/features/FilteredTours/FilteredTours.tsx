@@ -11,18 +11,7 @@ interface Props {
   tours: Tour[];
 }
 
-//
-// interface Option {
-//   value: string;
-//   label: string;
-// }
-
 const FilteredTours: React.FC<Props> = ({ tours }) => {
-  // const [select, setSelect] = useState(false);
-
-  // const [startDate, setStartDate] = useState<Date | null>(null);
-  // const [endDate, setEndDate] = useState<Date | null>(null);
-
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
@@ -36,24 +25,6 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
   };
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
-  //
-  // const handleReset = () => {
-  //   setStartDate(null);
-  //   setEndDate(null);
-  // };
-  //
-  // useEffect(() => {
-  //   setSelect(true);
-  // }, []);
-  //
-  // const filterOptions = (inputValue: string) => {
-  //   const options: Option[] = [{ value: 'near-me', label: 'Near Me' }];
-  //   return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
-  // };
-  //
-  // const loadOptions = (inputValue: string, callback: (options: Option[]) => void) => {
-  //   callback(filterOptions(inputValue));
-  // };
 
   const filteredByLocationAndCategory = tours.filter((tour) => {
     if (!selectedLocation && !selectedCategory) {
@@ -108,23 +79,6 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
     if (storedPriceSort) setSelectedPriceSort(storedPriceSort);
     if (storedStartDuration) setStartDuration(parseInt(storedStartDuration, 10) || null);
     if (storedEndDuration) setEndDuration(parseInt(storedEndDuration, 10) || null);
-    //
-    // const parsedStartDuration =
-    //   storedStartDuration === 'Any'
-    //     ? null
-    //     : storedStartDuration !== null
-    //     ? parseInt(storedStartDuration, 10)
-    //     : null;
-    // const parsedEndDuration =
-    //   storedEndDuration === 'Any'
-    //     ? null
-    //     : storedEndDuration !== null
-    //     ? parseInt(storedEndDuration, 10)
-    //     : null;
-    //
-    // // Update state directly with parsed values
-    // setStartDuration(parsedStartDuration);
-    // setEndDuration(parsedEndDuration);
   }, []);
 
   useEffect(() => {
@@ -158,46 +112,6 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
         </div>
       </div>
 
-      {/*<form onSubmit={(e) => e.preventDefault()} className={`${style.formBlock} container`}>*/}
-      {/*  <div className={style.searchSelectBlock}>*/}
-      {/*    <PiMagnifyingGlassBold className={style.searchIcon} />*/}
-      {/*    {select && (*/}
-      {/*      <AsyncSelect*/}
-      {/*        isMulti={false}*/}
-      {/*        className={style.searchInput}*/}
-      {/*        isClearable*/}
-      {/*        placeholder="Where do you want to go?"*/}
-      {/*        loadOptions={loadOptions}*/}
-      {/*        defaultOptions*/}
-      {/*        components={{*/}
-      {/*          DropdownIndicator: () => null,*/}
-      {/*          IndicatorSeparator: () => null,*/}
-      {/*        }}*/}
-      {/*        styles={{*/}
-      {/*          control: (baseStyles) => {*/}
-      {/*            return {*/}
-      {/*              ...baseStyles,*/}
-      {/*              paddingLeft: '25px',*/}
-      {/*              fontSize: '16px',*/}
-      {/*              fontFamily: 'inherit',*/}
-      {/*              paddingTop: '8px',*/}
-      {/*              paddingBottom: '8px',*/}
-      {/*              border: 'none',*/}
-      {/*              appearance: 'none',*/}
-      {/*              boxShadow: '0 4px 24px 0 rgba(0, 0, 0, 0.14)',*/}
-      {/*              whiteSpace: 'nowrap',*/}
-      {/*            };*/}
-      {/*          },*/}
-      {/*        }}*/}
-      {/*      />*/}
-      {/*    )}*/}
-      {/*  </div>*/}
-
-      {/*  <button type="submit" className={style.searchButton}>*/}
-      {/*    Search*/}
-      {/*  </button>*/}
-      {/*</form>*/}
-
       <div className={`${style.filteringBlock} container`}>
         <div className={style.filteringTools}>
           <div className={style.selectBox}>
@@ -209,9 +123,13 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               <option value="" disabled>
                 Location
               </option>
-              <option>Osh</option>
-              <option>Jalal-Abad</option>
               <option>Batken</option>
+              <option>Chui</option>
+              <option>Issyk-Kul</option>
+              <option>Jalal-Abad</option>
+              <option>Naryn</option>
+              <option>Osh</option>
+              <option>Talas</option>
             </select>
             {selectedLocation && (
               <button
@@ -235,6 +153,8 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               <option>Cycling tours</option>
               <option>Food tours</option>
               <option>Active adventures tour</option>
+              <option>Kyrgyzstan Cultural Tours</option>
+              <option>Horse Treks</option>
             </select>
             {selectedCategory && (
               <button
@@ -269,43 +189,6 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               </button>
             )}
           </div>
-
-          {/*<div className={style.travelDates}>*/}
-          {/*  <h5>Travel Dates</h5>*/}
-          {/*  <div className={style.datepicker}>*/}
-          {/*    <DatePicker*/}
-          {/*      placeholderText="Departing"*/}
-          {/*      selected={startDate}*/}
-          {/*      onChange={(date: Date | null) => setStartDate(date)}*/}
-          {/*      selectsStart*/}
-          {/*      startDate={startDate}*/}
-          {/*      endDate={endDate}*/}
-          {/*      className={style.datepickerInput}*/}
-          {/*    />*/}
-          {/*    <label className={style.datepickerLabel}>Eg. 01 Jan 2021</label>*/}
-          {/*  </div>*/}
-
-          {/*  <div className={style.datepicker}>*/}
-          {/*    <DatePicker*/}
-          {/*      placeholderText="Finishing"*/}
-          {/*      selected={endDate}*/}
-          {/*      onChange={(date: Date | null) => setEndDate(date)}*/}
-          {/*      selectsEnd*/}
-          {/*      startDate={startDate}*/}
-          {/*      endDate={endDate}*/}
-          {/*      minDate={startDate}*/}
-          {/*      className={style.datepickerInput}*/}
-          {/*    />*/}
-          {/*    <label className={style.datepickerLabel}>Eg. 01 Jan 2021</label>*/}
-          {/*  </div>*/}
-
-          {/*  <button*/}
-          {/*    className={`${style.resetDatesButton} ${style.additionalClass}`}*/}
-          {/*    onClick={handleReset}*/}
-          {/*  >*/}
-          {/*    Clear Dates*/}
-          {/*  </button>*/}
-          {/*</div>*/}
 
           <div className={style.duration}>
             <h5>Duration</h5>
