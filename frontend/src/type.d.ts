@@ -80,6 +80,7 @@ export interface Classification {
   id: number;
   title: string;
 }
+
 export interface HomeClassification {
   data: HomeClassificationData;
 }
