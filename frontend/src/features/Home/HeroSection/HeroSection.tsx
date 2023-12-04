@@ -34,13 +34,17 @@ const HeroSection = () => {
     callback(filterOptions(inputValue));
   };
 
+  const goToTours = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <div className={style.mainBlock}>
       <BackdropForBanner />
       <div className={style.mainBlockContainer}>
         <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
 
-        <form onSubmit={(e) => e.preventDefault()} className={style.formBlock}>
+        <form onSubmit={goToTours} className={style.formBlock}>
           <div className={style.searchSelectBlock}>
             <PiMagnifyingGlassBold className={style.searchIcon} />
             {showSelect && (
