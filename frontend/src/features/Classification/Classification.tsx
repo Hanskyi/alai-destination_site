@@ -47,9 +47,9 @@ const Classification = () => {
         <div className={style.classificationCards}>
           <h3 className={style.classificationCards__title}>Our walking, hiking & trekking trips</h3>
           <div className={style.classificationCards__content}>
-            {Array.from({ length: 6 }, (_, index) => (
-              <ClassificationsCard key={index} />
-            ))}
+            {/*{Array.from({ length: 6 }, (_, index) => (*/}
+            {/*  // <ClassificationsCard key={index} />*/}
+            {/*))}*/}
           </div>
           <button className={style.classificationCards__button}>Show more trips</button>
         </div>
