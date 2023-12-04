@@ -68,6 +68,12 @@ export interface Tour {
   price: number;
   mainImage: Image;
   classification: Classification;
+  location: Location;
+}
+
+export interface Location {
+  id: number;
+  name: string;
 }
 
 export interface Classification {

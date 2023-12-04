@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import AsyncSelect from 'react-select/async';
-import DatePicker from 'react-datepicker';
-import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { IoNavigate } from 'react-icons/io5';
+import { IoBicycle } from 'react-icons/io5';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './HeroSection.module.scss';
 import { useAppSelector } from '@/store/hooks';
 import articleBanner from '@/assets/articlesImages/articlesBanner.png';
 import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
+import { useRouter } from 'next/router';
 
 interface Option {
   value: string;
@@ -16,22 +16,64 @@ interface Option {
 }
 
 const HeroSection = () => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
+  const router = useRouter();
+
   const [showSelect, setShowSelect] = useState(false);
+
+  const [selectedLocation, setSelectedLocation] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+
   const heroSection = useAppSelector((state) => state.home.homeData?.heroSection);
 
   useEffect(() => {
     setShowSelect(true);
   }, []);
 
-  const filterOptions = (inputValue: string) => {
-    const options: Option[] = [{ value: 'near-me', label: 'Near Me' }];
+  const filterLocationOptions = (inputValue: string) => {
+    const locationOptions = [
+      { value: 'Batken', label: 'Batken' },
+      { value: 'Chui', label: 'Chui' },
+      { value: 'Issyk-Kul', label: 'Issyk-Kul' },
+      { value: 'Jalal-Abad', label: 'Jalal-Abad' },
+      { value: 'Naryn', label: 'Naryn' },
+      { value: 'Osh', label: 'Osh' },
+      { value: 'Talas', label: 'Talas' },
+    ];
+    return locationOptions.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
+  };
 
+  const filterClassificationOptions = (inputValue: string) => {
+    const options: Option[] = [
+      { value: 'Cycling tours', label: 'Cycling tours' },
+      { value: 'Food tours', label: 'Food tours' },
+      { value: 'Active adventures tour', label: 'Active adventures tour' },
+      { value: 'Kyrgyzstan Cultural Tours', label: 'Kyrgyzstan Cultural Tours' },
+      { value: 'Horse Treks', label: 'Horse Treks' },
+    ];
     return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
-  const loadOptions = (inputValue: string, callback: (options: Option[]) => void) => {
-    callback(filterOptions(inputValue));
+  const handleLocationChange = (selectedOption: Option | null) => {
+    setSelectedLocation(selectedOption ? selectedOption.label : '');
+  };
+
+  const handleClassificationChange = (selectedOption: Option | null) => {
+    setSelectedCategory(selectedOption ? selectedOption.label : '');
+  };
+
+  const loadLocationOptions = (inputValue: string, callback: (options: Option[]) => void) => {
+    callback(filterLocationOptions(inputValue));
+  };
+
+  const loadClassificationOptions = (inputValue: string, callback: (options: Option[]) => void) => {
+    callback(filterClassificationOptions(inputValue));
+  };
+
+  const goToTours = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('selectedLocation', selectedLocation);
+    localStorage.setItem('selectedCategory', selectedCategory);
+    window.location.href = '/tours';
   };
 
   return (
@@ -40,16 +82,17 @@ const HeroSection = () => {
       <div className={style.mainBlockContainer}>
         <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
 
-        <form onSubmit={(e) => e.preventDefault()} className={style.formBlock}>
+        <form onSubmit={goToTours} className={style.formBlock}>
           <div className={style.searchSelectBlock}>
-            <PiMagnifyingGlassBold className={style.searchIcon} />
+            <IoNavigate className={style.searchIcon} />
             {showSelect && (
               <AsyncSelect
+                onChange={handleLocationChange}
                 isMulti={false}
                 className={style.searchInput}
                 isClearable
-                placeholder="Anywhere"
-                loadOptions={loadOptions}
+                placeholder={router.locale === 'ru' ? 'Выберите Место' : 'Choose Location'}
+                loadOptions={loadLocationOptions}
                 defaultOptions
                 components={{
                   DropdownIndicator: () => null,
@@ -73,19 +116,38 @@ const HeroSection = () => {
 
           <div className={style.datepickerAndButton}>
             <div className={style.datepicker}>
-              <FaCalendarAlt className={style.calendarIcon} />
-              <DatePicker
-                className={style.dateInput}
-                selected={startDate}
-                onChange={(date: Date | null) => setStartDate(date)}
-                placeholderText={startDate ? '' : 'Anytime'}
-                dateFormat="dd/MM/yyyy"
-                isClearable
-              />
+              <IoBicycle className={style.bicycleIcon} />
+              {showSelect && (
+                <AsyncSelect
+                  onChange={handleClassificationChange}
+                  isMulti={false}
+                  className={`${style.searchInput} ${style.searchInputCategory}`}
+                  isClearable
+                  placeholder={router.locale === 'ru' ? 'Выберите Категорию' : 'Choose Category'}
+                  loadOptions={loadClassificationOptions}
+                  defaultOptions
+                  components={{
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                  styles={{
+                    control: (baseStyles) => {
+                      return {
+                        ...baseStyles,
+                        paddingLeft: '25px',
+                        fontSize: '16px',
+                        fontFamily: 'inherit',
+                        paddingTop: '8px',
+                        paddingBottom: '8px',
+                      };
+                    },
+                  }}
+                />
+              )}
             </div>
 
             <button type="submit" className={style.mainBlockSearchButton}>
-              Search
+              {router.locale === 'ru' ? 'Найти' : 'Search'}
             </button>
           </div>
         </form>
