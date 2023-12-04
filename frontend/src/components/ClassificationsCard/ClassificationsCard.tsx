@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import style from './ClassificationsCard.module.scss';
 import Image from 'next/image';
 import { TourLocationRegion } from '@/type';
-import { apiUrl, GALLERY } from '@/constants';
+import { GALLERY } from '@/constants';
 import Link from 'next/link';
 
 interface Props {
@@ -21,7 +21,7 @@ const ClassificationsCard: React.FC<Props> = ({ tour }) => {
       setPlainText(tempDiv.innerText);
     }
   }, [tour.previewDescription]);
-  console.log(tour.id);
+
   return (
     <div className={style.classificationCard}>
       <div className={style.classificationCard__image}>

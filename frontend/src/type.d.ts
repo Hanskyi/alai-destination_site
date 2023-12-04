@@ -80,6 +80,7 @@ export interface Classification {
   id: number;
   title: string;
 }
+
 export interface HomeClassification {
   data: HomeClassificationData;
 }
@@ -196,6 +197,24 @@ export interface OneArticleData {
   previewDescription: string;
   mainImage: Image;
   localizations: Localization[];
+}
+
+export interface OneClassification {
+  data: OneClassificationData;
+}
+
+export interface OneClassificationData {
+  id: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  description: string;
+  videoLink: string;
+  image: Image;
+  localizations: Localization[];
+  tours: TourLocationRegion[];
 }
 
 export interface IArticle {
