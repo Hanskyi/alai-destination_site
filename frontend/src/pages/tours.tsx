@@ -8,11 +8,7 @@ import { selectTours } from '@/features/FilteredTours/toursSlice';
 const Tours = () => {
   const tours = useAppSelector(selectTours);
 
-  return (
-    <div>
-      <FilteredTours tours={tours} />
-    </div>
-  );
+  return <FilteredTours tours={tours} />;
 };
 
 export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {

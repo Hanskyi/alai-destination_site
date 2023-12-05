@@ -184,7 +184,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                 <div>
                   <div
                     className={`${toolbar.headerLink} ${toolbar.destinations}`}
-                    onClick={() => onClickLinkHeader()}
+                    onClick={onClickLinkHeader}
                   >
                     {t('item_1')}
                     <span

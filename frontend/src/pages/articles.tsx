@@ -28,13 +28,12 @@ const ArticlesPage = () => {
   );
 };
 
-// export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {
-//   await store.dispatch(fetchAllArticles(context.locale ? context.locale : 'en'));
-//   return {
-//     props: {
-//       messages: (await import(`../../lang/${context.locale}.json`)).default,
-//     },
-//   };
-// });
+export const getStaticProps = async (context: { locale: any }) => {
+  return {
+    props: {
+      messages: (await import(`../../lang/${context.locale}.json`)).default,
+    },
+  };
+};
 
 export default ArticlesPage;

@@ -3,11 +3,7 @@ import { fetchHomeData } from '@/features/Home/homeThunk';
 import HomePage from '@/features/Home/HomePage';
 
 const Home = () => {
-  return (
-    <>
-      <HomePage />
-    </>
-  );
+  return <HomePage />;
 };
 
 export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {

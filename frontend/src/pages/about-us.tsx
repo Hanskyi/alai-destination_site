@@ -3,11 +3,7 @@ import AboutUsPage from '@/features/AboutUs/AboutUsPage';
 import { GetStaticPropsContext } from 'next';
 
 const AboutUs = () => {
-  return (
-    <>
-      <AboutUsPage />
-    </>
-  );
+  return <AboutUsPage />;
 };
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {

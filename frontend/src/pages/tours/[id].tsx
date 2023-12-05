@@ -1,15 +1,13 @@
 import { GetServerSideProps } from 'next';
 import { TourDataDetailed } from '@/type';
 import axiosApi from '../../axiosApi';
-import TourPage from '../tour-detailed';
+import TourPage from '../../features/TourPage/tour-detailed';
 
 interface Props {
   tourData: TourDataDetailed | null;
 }
 
 const Tour = ({ tourData }: Props) => {
-  console.log(tourData);
-
   return <>{tourData && <TourPage tourData={tourData} />}</>;
 };
 

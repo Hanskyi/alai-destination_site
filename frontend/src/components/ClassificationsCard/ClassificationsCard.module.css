@@ -10,6 +10,7 @@
   border-radius: 0.25rem;
   cursor: pointer;
   border: 1px solid #bebebe;
+  position: relative;
 }
 .classificationCard:hover {
   background-color: #bebebe;
@@ -23,17 +24,20 @@
 .classificationCard__image {
   max-width: 350px;
   height: 233px;
+  overflow: hidden;
 }
 .classificationCard__image__content {
-  height: auto;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .classificationCard__content {
-  padding: 10px;
-  flex-grow: 1;
+  padding: 10px 10px 50px;
+  max-width: 330px;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  overflow: hidden;
+  height: 320px;
 }
 .classificationCard__content__title {
   color: #222;
@@ -46,10 +50,13 @@
   color: #222;
   font-size: 18px;
   font-weight: 400;
-  margin-bottom: 20px;
   flex-grow: 1;
+  max-height: 145px;
+  overflow: hidden;
 }
 .classificationCard__content__button {
+  position: absolute;
+  bottom: 20px;
   font-family: inherit;
   margin-top: auto;
   font-size: inherit;
@@ -63,6 +70,11 @@
   background-size: 16px 16px;
   background-position: right 16px center;
   background-repeat: no-repeat;
+  width: 90%;
+  text-decoration: none;
+  display: block;
+  letter-spacing: 0.3px;
+  text-align: center;
 }
 .classificationCard__content__button:hover {
   background-color: #333232;

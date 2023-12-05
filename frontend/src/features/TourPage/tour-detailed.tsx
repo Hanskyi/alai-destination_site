@@ -1,12 +1,12 @@
 import React from 'react';
-import DetailedTabs from '../features/TourPage/DetailedTabs/DetailedTabs';
-import style from '../features/TourPage/TourPage.module.scss';
+import DetailedTabs from './DetailedTabs/DetailedTabs';
+import style from './TourPage.module.scss';
 import Gallery from '@/features/TourPage/GalleryBlock/Gallery';
 import DescriptionBlock from '@/features/TourPage/DescriptionBlock/DescriptionBlock';
 import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
 import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
 import FaqList from '@/components/FaqList/FaqList';
-import { TourDataDetailed } from '../type';
+import { TourDataDetailed } from '@/type';
 
 interface Props {
   tourData: TourDataDetailed;

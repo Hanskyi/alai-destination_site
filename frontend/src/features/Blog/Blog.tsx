@@ -14,7 +14,7 @@ const Blog = () => {
     <div className={`${style.blog} container`}>
       <div className={style.blog_header}>
         <Link href="/articles">
-          <span className={style.blog_header_link}>{article?.data.author}</span>
+          <span className={style.blog_header_link}>Good Stories</span>
         </Link>
         <h1 className={style.blog_header_title}>{article?.data.title}</h1>
       </div>
