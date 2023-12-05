@@ -8,18 +8,19 @@ import toolbar from './Toolbar.module.scss';
 import Backdrop from '@/components/Backdrop/Backdrop';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { GALLERY } from '@/constants';
-import { IHeaderFooterInfo } from '@/type';
+import { IHeaderFooterInfo, ILocationListShortInfo } from '@/type';
 import { useTranslations } from 'next-intl';
 
 interface IProps {
   hfData: IHeaderFooterInfo | null;
+  locations: ILocationListShortInfo | null;
 }
 
 const initialMenuState = false;
 const initialDestinationsDropdownState = false;
 const initialBackdropState = false;
 
-const Toolbar: React.FC<IProps> = ({ hfData }) => {
+const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
   const [menuOpen, setMenuOpen] = useState(initialMenuState);
   const [destinationsDropdown, setDestinationsDropdown] = useState(
     initialDestinationsDropdownState,

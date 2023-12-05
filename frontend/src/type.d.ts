@@ -339,3 +339,19 @@ export interface TourLocationRegion {
 export interface locationsRegionData {
   data: ILocationsRegion;
 }
+
+export interface ILocationListShortInfo {
+  data: Data[];
+}
+
+export interface Data {
+  id: number;
+  name: string;
+  locale: string;
+  localizations: Localization[];
+}
+
+export interface Localization {
+  id: number;
+  locale: string;
+}
