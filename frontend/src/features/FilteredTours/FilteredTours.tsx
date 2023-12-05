@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import style from './FilteredTours.module.scss';
-import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 import 'react-datepicker/dist/react-datepicker.css';
 import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
