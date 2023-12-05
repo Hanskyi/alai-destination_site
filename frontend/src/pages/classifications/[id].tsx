@@ -21,7 +21,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
       }
 
       await store.dispatch(fetchOneClassification({ id, locale: locale || 'en' }));
-      return { props: {} };
+      return {
+        props: {
+          messages: (await import(`../../../lang/${locale}.json`)).default,
+        },
+      };
     },
 );
 

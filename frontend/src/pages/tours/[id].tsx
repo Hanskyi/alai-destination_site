@@ -29,6 +29,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     return {
       props: {
         tourData: tData,
+        messages: (await import(`../../../lang/${context.locale}.json`)).default,
       },
     };
   } catch (error) {
@@ -36,6 +37,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     return {
       props: {
         tourData: null,
+        messages: (await import(`../../../lang/${context.locale}.json`)).default,
       },
     };
   }
