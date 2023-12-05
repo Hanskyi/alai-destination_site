@@ -245,7 +245,7 @@ const Toolbar: React.FC<IProps> = ({ hfData }) => {
                   className={`${toolbar.headerLink} ${toolbar.destinations}}`}
                   onClick={() => onClickLinkBurger()}
                 >
-                  Destinations
+                  {t('item_1')}
                   <span
                     className={`${toolbar.destinations__image} ${
                       toolbar.destinations__image__burger
