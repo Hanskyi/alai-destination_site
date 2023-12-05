@@ -40,9 +40,9 @@
 
     .mainBlockHeader {
       text-transform: capitalize;
-      background: rgba(0, 0, 0, 0.51);
+      //background: rgba(0, 0, 0, 0.51);
       // обязательно сделать затемняющий фон для читабельности на белом фоне, сделать аккуратно
-      width: min-content;
+      //width: min-content;
       // с свойством content нужно будет разобраться, оно здесь просто для примера.
       border-radius: 4px;
       padding: 10px;
@@ -52,6 +52,9 @@
       color: white;
       font-size: 64px;
       line-height: 64px;
+      @include mixins.lg {
+        width: 100%;
+      }
       @include mixins.md {
         width: 100%;
         margin-bottom: 15px;
@@ -103,32 +106,23 @@
 
       .datepickerAndButton {
         display: flex;
-
+        justify-content: space-between;
         .datepicker {
-          margin-right: 5px;
-          .calendarIcon {
+          display: flex;
+          align-items: center;
+          .searchInputCategory {
+            position: relative;
+            margin-right: 5px;
+            width: 250px;
+            @include mixins.sm {
+              margin-right: 2px;
+            }
+          }
+
+          .bicycleIcon {
             position: absolute;
             margin: 17px 10px;
             z-index: 2;
-          }
-
-          .dateInput {
-            position: relative;
-            font-size: 16px;
-            font-family: inherit;
-            appearance: none;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 17px 30px 17px 35px;
-            outline: none;
-            width: 170px;
-            @include mixins.md {
-              width: 100%;
-            }
-            .dateInput:focus {
-              border-color: #007bff;
-              box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-            }
           }
         }
 

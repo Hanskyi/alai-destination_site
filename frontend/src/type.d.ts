@@ -262,6 +262,10 @@ export interface TourCard {
   classification: Classification;
 }
 
+export interface ToursPage {
+  data: Tour[];
+}
+
 export interface TourData {
   data: {
     id: number;

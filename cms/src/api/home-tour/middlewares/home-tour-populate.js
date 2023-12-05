@@ -15,8 +15,12 @@ const populate = {
         populate:true,
         fields:['title']
       },
+      location:{
+        populate:true,
+        fields:['name']
+      },
     },
-    fields:['title','duration','price']
+    fields:['title','duration','price', 'classification', 'location']
   },
   localizations:{
     populate:true,
