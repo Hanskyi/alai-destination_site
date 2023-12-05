@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FilteredTours from '@/features/FilteredTours/FilteredTours';
 import axios from 'axios';
 import { Tour } from '@/type';
+import { GetStaticPropsContext } from 'next';
 
 const Tours = () => {
   const [tours, setTours] = useState<Tour[]>([]);
@@ -26,5 +27,13 @@ const Tours = () => {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../../lang/${locale}.json`)).default,
+    },
+  };
+}
 
 export default Tours;
