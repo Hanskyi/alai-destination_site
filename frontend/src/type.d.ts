@@ -341,17 +341,12 @@ export interface locationsRegionData {
 }
 
 export interface ILocationListShortInfo {
-  data: Data[];
+  data: ILocalizationShortInfo[];
 }
 
-export interface Data {
+export interface ILocalizationShortInfo {
   id: number;
   name: string;
   locale: string;
   localizations: Localization[];
-}
-
-export interface Localization {
-  id: number;
-  locale: string;
 }
