@@ -21,44 +21,46 @@ const HeroSection = () => {
   const [showSelect, setShowSelect] = useState(false);
 
   const [selectedLocation, setSelectedLocation] = useState<string>('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedClassification] = useState('');
 
   const heroSection = useAppSelector((state) => state.home.homeData?.heroSection);
+  const classifications = useAppSelector((state) => state.home.homeData?.homeClassification);
+  const tours = useAppSelector((state) => state.home.homeData?.homeTour.data.tours);
 
   useEffect(() => {
     setShowSelect(true);
   }, []);
 
   const filterLocationOptions = (inputValue: string) => {
-    const locationOptions = [
-      { value: 'Batken', label: 'Batken' },
-      { value: 'Chui', label: 'Chui' },
-      { value: 'Issyk-Kul', label: 'Issyk-Kul' },
-      { value: 'Jalal-Abad', label: 'Jalal-Abad' },
-      { value: 'Naryn', label: 'Naryn' },
-      { value: 'Osh', label: 'Osh' },
-      { value: 'Talas', label: 'Talas' },
-    ];
+    if (!tours) {
+      return [];
+    }
+
+    const locationOptions = Array.from(new Set(tours.map((tour) => tour.location.name))).map(
+      (locationName) => ({
+        value: locationName,
+        label: locationName,
+      }),
+    );
+
     return locationOptions.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
   const filterClassificationOptions = (inputValue: string) => {
-    const options: Option[] = [
-      { value: 'Cycling tours', label: 'Cycling tours' },
-      { value: 'Food tours', label: 'Food tours' },
-      { value: 'Active adventures tour', label: 'Active adventures tour' },
-      { value: 'Kyrgyzstan Cultural Tours', label: 'Kyrgyzstan Cultural Tours' },
-      { value: 'Horse Treks', label: 'Horse Treks' },
-    ];
+    if (!classifications) {
+      return [];
+    }
+
+    const uniqueClassifications = Array.from(
+      new Set(classifications.data.classifications.map((classification) => classification.title)),
+    );
+
+    const options: Option[] = uniqueClassifications.map((classificationName) => ({
+      value: classificationName,
+      label: classificationName,
+    }));
+
     return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
-  };
-
-  const handleLocationChange = (selectedOption: Option | null) => {
-    setSelectedLocation(selectedOption ? selectedOption.label : '');
-  };
-
-  const handleClassificationChange = (selectedOption: Option | null) => {
-    setSelectedCategory(selectedOption ? selectedOption.label : '');
   };
 
   const loadLocationOptions = (inputValue: string, callback: (options: Option[]) => void) => {
@@ -67,6 +69,14 @@ const HeroSection = () => {
 
   const loadClassificationOptions = (inputValue: string, callback: (options: Option[]) => void) => {
     callback(filterClassificationOptions(inputValue));
+  };
+
+  const handleLocationChange = (selectedOption: Option | null) => {
+    setSelectedLocation(selectedOption ? selectedOption.label : '');
+  };
+
+  const handleClassificationChange = (selectedOption: Option | null) => {
+    setSelectedClassification(selectedOption ? selectedOption.label : '');
   };
 
   const goToTours = (e: React.FormEvent) => {

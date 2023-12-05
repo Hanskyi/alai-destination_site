@@ -6,6 +6,7 @@ import { headerFooterSlice } from '@/features/HeaderFooter/headerFooterSlice';
 import { classificationsSlice } from '@/features/Classifications/ClassificationsSlice';
 import { classificationSlice } from '@/features/Classification/ClassificationSlice';
 import { locationsRegionSlice } from '@/features/LocationsRegion/LocationsRegionSlice';
+import { toursSlice } from '@/features/FilteredTours/toursSlice';
 
 const reducers = {
   [homeSlice.name]: homeSlice.reducer,
@@ -14,6 +15,7 @@ const reducers = {
   [classificationSlice.name]: classificationSlice.reducer,
   [headerFooterSlice.name]: headerFooterSlice.reducer,
   [locationsRegionSlice.name]: locationsRegionSlice.reducer,
+  [toursSlice.name]: toursSlice.reducer,
 };
 
 const reducer = combineReducers(reducers);

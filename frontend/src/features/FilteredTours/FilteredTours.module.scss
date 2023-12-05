@@ -1,4 +1,10 @@
 @use '../../styles/mixins';
+.notFound {
+  padding: 30px;
+  font-weight: lighter;
+  font-style: italic;
+  color: #00a0f7;
+}
 
 .breadcrumbList {
   padding: 0;

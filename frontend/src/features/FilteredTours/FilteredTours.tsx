@@ -12,6 +12,13 @@ interface Props {
 }
 
 const FilteredTours: React.FC<Props> = ({ tours }) => {
+  const notFound = (
+    <p className={style.notFound}>
+      No tours were found with these settings. Please adjust your search parameters to view
+      available tours.
+    </p>
+  );
+
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
@@ -94,22 +101,9 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
 
   return (
     <>
-      <div>
-        <div className="container">
-          <div className={style.breadcrumbList}>
-            <Link href="/" className={style.breadcrumbLink}>
-              Home
-            </Link>
-            <Link href="/" className={style.breadcrumbActiveLink}>
-              Search
-            </Link>
-          </div>
-        </div>
-
-        <div className={style.titleBlock}>
-          <h1>Search</h1>
-          <h2>Discover your next adventure</h2>
-        </div>
+      <div className={style.titleBlock}>
+        <h1>Search</h1>
+        <h2>Discover your next adventure</h2>
       </div>
 
       <div className={`${style.filteringBlock} container`}>
@@ -267,13 +261,17 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
           </div>
         </div>
 
-        <div className={`${style.tourCards}`}>
-          {filteredByDurationTours.map((tour: Tour) => (
-            <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
-              <GoodTripsCard item={tour} />
-            </SwiperSlide>
-          ))}
-        </div>
+        {filteredByDurationTours.length === 0 ? (
+          notFound
+        ) : (
+          <div className={`${style.tourCards}`}>
+            {filteredByDurationTours.map((tour: Tour) => (
+              <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
+                <GoodTripsCard item={tour} />
+              </SwiperSlide>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
