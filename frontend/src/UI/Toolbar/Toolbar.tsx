@@ -9,6 +9,7 @@ import Backdrop from '@/components/Backdrop/Backdrop';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { GALLERY } from '@/constants';
 import { IHeaderFooterInfo } from '@/type';
+import { useTranslations } from 'next-intl';
 
 interface IProps {
   hfData: IHeaderFooterInfo | null;
@@ -26,6 +27,8 @@ const Toolbar: React.FC<IProps> = ({ hfData }) => {
   const [backdropOpen, setBackdropOpen] = useState(initialBackdropState);
 
   const { data: session } = useSession();
+
+  const t = useTranslations('Header.Navigation');
 
   const handleGoogleSignIn = async () => {
     await signIn('google');
@@ -74,8 +77,8 @@ const Toolbar: React.FC<IProps> = ({ hfData }) => {
       ];
 
   const largeLinks = [
-    { text: 'Destinations', href: '/classifications' },
-    { text: 'About us', href: '/about-us' },
+    { text: t('item_2'), href: '/classifications' },
+    { text: t('item_3'), href: '/about-us' },
   ];
 
   const regionLinks = [
@@ -180,7 +183,7 @@ const Toolbar: React.FC<IProps> = ({ hfData }) => {
                     className={`${toolbar.headerLink} ${toolbar.destinations}`}
                     onClick={() => onClickLinkHeader()}
                   >
-                    Destinations
+                    {t('item_1')}
                     <span
                       className={`${toolbar.destinations__image} ${
                         destinationsDropdown && toolbar.destinations__image__active
@@ -235,14 +238,14 @@ const Toolbar: React.FC<IProps> = ({ hfData }) => {
                   <div>X</div>
                 </div>
                 <Link className={toolbar.headerLink} href="#">
-                  Home
+                  {t('item_4')}
                 </Link>
 
                 <div
                   className={`${toolbar.headerLink} ${toolbar.destinations}}`}
                   onClick={() => onClickLinkBurger()}
                 >
-                  Destinations
+                  {t('item_1')}
                   <span
                     className={`${toolbar.destinations__image} ${
                       toolbar.destinations__image__burger

@@ -19,15 +19,17 @@ export default function App({ Component, ...rest }: AppProps) {
   const router = useRouter();
 
   const fetchData = useCallback(async () => {
-    const { data } = await axiosApi<IHeaderFooterInfo>(`info`);
-    setHeaderFooter(data);
+    try {
+      const { data } = await axiosApi<IHeaderFooterInfo>(`info`);
+      setHeaderFooter(data);
+    } catch (e) {
+      alert('Something went wrong. Please refresh the page!');
+    }
   }, []);
 
   useEffect(() => {
     void fetchData();
   }, [fetchData]);
-
-  // console.log(headerFooter, 'in app comp');
 
   return (
     <Provider store={store}>
