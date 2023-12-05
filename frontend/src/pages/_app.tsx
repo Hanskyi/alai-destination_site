@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import { wrapper } from '@/store/store';
 import { Provider } from 'react-redux';
@@ -10,10 +10,24 @@ import Footer from '@/UI/Footer/Footer';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import '../styles/globals.scss';
 import { SessionProvider } from 'next-auth/react';
+import { IHeaderFooterInfo } from '@/type';
+import axiosApi from '@/axiosApi';
 
 export default function App({ Component, ...rest }: AppProps) {
+  const [headerFooter, setHeaderFooter] = useState<IHeaderFooterInfo | null>(null);
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
+
+  const fetchData = useCallback(async () => {
+    const { data } = await axiosApi<IHeaderFooterInfo>(`info`);
+    setHeaderFooter(data);
+  }, []);
+
+  useEffect(() => {
+    void fetchData();
+  }, [fetchData]);
+
+  // console.log(headerFooter, 'in app comp');
 
   return (
     <Provider store={store}>
@@ -24,10 +38,10 @@ export default function App({ Component, ...rest }: AppProps) {
           messages={...props.pageProps.messages}
         >
           <LanguageSwitcher />
-          <Toolbar />
+          <Toolbar hfData={headerFooter} />
           <Component {...props.pageProps} />
           <Whatsapp />
-          <Footer />
+          <Footer hfData={headerFooter} />
         </NextIntlClientProvider>
       </SessionProvider>
     </Provider>
