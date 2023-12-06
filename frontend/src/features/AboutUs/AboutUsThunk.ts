@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {IAboutUs, IAboutUsPage} from '@/type';
+import { IAboutUs, IAboutUsPage } from '@/type';
 import axiosApi from '@/axiosApi';
 
 export const fetchAllAboutUsPage = createAsyncThunk<IAboutUsPage[], string>(
