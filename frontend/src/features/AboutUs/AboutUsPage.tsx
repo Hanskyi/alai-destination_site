@@ -21,7 +21,7 @@ const AboutUsPage = () => {
           <div className={aboutUsStyle.text}>
             <h1 className={aboutUsStyle.text__title}>Visit Alay</h1>
             <h4 className={aboutUsStyle.text__subtitle}>ADVENTURE TRAVEL & TOURS</h4>
-            <BackdropForBanner/>
+            <BackdropForBanner />
           </div>
         </div>
       </div>
@@ -42,13 +42,13 @@ const AboutUsPage = () => {
 
         <div className={aboutUsStyle.valueBlock}>
           <div className="container">
-            <ValuesBlock/>
+            <ValuesBlock />
           </div>
         </div>
 
         <div className={aboutUsStyle.countsBlock}>
           <div className="container">
-            <CountersBlock/>
+            <CountersBlock />
           </div>
         </div>
 
@@ -139,31 +139,31 @@ const AboutUsPage = () => {
             <h1 className={aboutUsStyle.awardsBlock__title}>AWARDS</h1>
             <div className={aboutUsStyle.awardsBlock__cards}>
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award"/>
+                <Image width={200} height={130} src={Award} alt="Award" />
               </div>
             </div>
           </div>

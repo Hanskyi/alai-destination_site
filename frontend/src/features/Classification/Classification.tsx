@@ -3,9 +3,9 @@ import style from './Classification.module.scss';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
 import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
+import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 import { useAppSelector } from '@/store/hooks';
 import { GALLERY } from '@/constants';
-import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 const Classification = () => {
   const { classification } = useAppSelector((state) => state.classification);
