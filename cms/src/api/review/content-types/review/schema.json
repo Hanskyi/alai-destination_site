@@ -34,5 +34,14 @@
       "target": "api::tour.tour",
       "inversedBy": "reviews"
     }
+  },
+  "populate": {
+    "users_permissions_user": {
+      "path": "users_permissions_user",
+      "populate": {
+        "path": "user",
+        "select": "email"
+      }
+    }
   }
 }

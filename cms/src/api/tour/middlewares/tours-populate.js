@@ -22,7 +22,13 @@ const populate = {
     fields: ["name", "url"]
   },
   reviews: {
-    populate: true,
+    populate: {
+      users_permissions_user:{
+        populate:true,
+        fields:["username"]
+      },
+    },
+    fields: ["review", "rating", "createdAt","users_permissions_user"],
   },
   localizations: {
     populate: true
@@ -34,7 +40,7 @@ const populate = {
   faqList: {
     populate:true,
     fields: ["heading", "body"],
-  }
+  },
 };
 
 module.exports = (config, { strapi }) => {

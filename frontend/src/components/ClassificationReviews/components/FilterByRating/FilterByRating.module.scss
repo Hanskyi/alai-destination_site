@@ -8,6 +8,7 @@
     font-weight: 400;
     line-height: 20px;
     color: rgba(0, 0, 0, 0.86);
+    width: 50px;
   }
 
   &__item {
@@ -38,5 +39,10 @@
     height: 11px;
     background-color: #008cff;
     border-radius: 50%;
+  }
+
+  .reviews_count {
+    width: 40px;
+    text-align: left;
   }
 }

@@ -237,11 +237,24 @@ export interface TourCard {
   classification: Classification;
 }
 
+export interface User {
+  username: string;
+}
+
+export interface TourReview {
+  id: number;
+  createdAt: string;
+  rating: number;
+  review: string;
+  profileImage: Image;
+  users_permissions_user: User;
+}
+
 export interface TourData {
   data: {
     id: number;
     classification: Classification;
-    review: Review[];
+    review: TourReview[];
     title: string;
     images: Image[];
     mainImage: Image;
@@ -265,7 +278,7 @@ export interface TourData {
 export interface TourDataDetailed {
   id: number;
   classification: Classification;
-  review: Review[];
+  reviews: TourReview[];
   title: string;
   images: Image[];
   mainImage: Image;
@@ -284,4 +297,3 @@ export interface TourDataDetailed {
   previewDescription: string;
   faqList: ITable[];
 }
-

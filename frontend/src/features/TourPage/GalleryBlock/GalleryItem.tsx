@@ -32,7 +32,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt }) => {
         <Lightbox
           open={open}
           close={() => setOpen(false)}
-          slides={[{ src: imageUrl, alt }]}
+          slides={[{ src: `${GALLERY}${imageUrl}`, alt }]}
           render={{ slide: NextJsImage }}
         />
       )}

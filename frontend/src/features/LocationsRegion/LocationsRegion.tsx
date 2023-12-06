@@ -55,7 +55,7 @@ const LocationsRegion = () => {
           Show more trips
         </button>
       </div>
-      <Reviews />
+      {/*<Reviews />*/}
     </>
   );
 };

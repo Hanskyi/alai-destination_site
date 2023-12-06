@@ -59,7 +59,7 @@ const Classifications = () => {
               </div>
             ))}
           </div>
-          <Reviews />
+          {/*<Reviews />*/}
         </div>
       </div>
     </>

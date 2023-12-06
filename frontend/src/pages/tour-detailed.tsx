@@ -7,14 +7,14 @@ import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
 import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
 import FaqList from '@/components/FaqList/FaqList';
 import { TourDataDetailed } from '../type';
+import Reviews from '../components/ClassificationReviews/Reviews';
+import ReviewForm from '../components/ReviewForm/ReviewForm';
 
 interface Props {
   tourData: TourDataDetailed;
 }
 
 const TourPage: React.FC<Props> = ({ tourData }) => {
-  console.log(tourData, 'Det');
-
   return (
     <div className={style.tour_page}>
       <TourHeroSection
@@ -35,6 +35,10 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
             />
             <Gallery images={tourData?.images} />
             <FaqList faqList={tourData?.faqList || []} />
+
+            <Reviews reviews={tourData?.reviews} />
+            <hr />
+            <ReviewForm tourId={tourData?.id} />
           </div>
           <TourDetails />
         </div>
