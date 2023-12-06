@@ -96,6 +96,9 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
     localStorage.setItem('endDuration', endDuration !== null ? endDuration.toString() : 'Any');
   }, [selectedLocation, selectedCategory, selectedPriceSort, startDuration, endDuration]);
 
+  const uniqueLocations = Array.from(new Set(tours.map((tour) => tour.location.id)));
+  const uniqueClassifications = Array.from(new Set(tours.map((tour) => tour.classification.id)));
+
   return (
     <>
       <div className={style.titleBlock}>
@@ -114,13 +117,14 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               <option value="" disabled>
                 Location
               </option>
-              <option>Batken</option>
-              <option>Chui</option>
-              <option>Issyk-Kul</option>
-              <option>Jalal-Abad</option>
-              <option>Naryn</option>
-              <option>Osh</option>
-              <option>Talas</option>
+              {uniqueLocations.map((locationId) => {
+                const location = tours.find((tour) => tour.location.id === locationId);
+                return (
+                  <option key={location?.location.id} value={location?.location.name}>
+                    {location?.location.name}
+                  </option>
+                );
+              })}
             </select>
             {selectedLocation && (
               <button
@@ -141,11 +145,17 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               <option value="" disabled>
                 Categories
               </option>
-              <option>Cycling tours</option>
-              <option>Food tours</option>
-              <option>Active adventures tour</option>
-              <option>Kyrgyzstan Cultural Tours</option>
-              <option>Horse Treks</option>
+              {uniqueClassifications.map((id) => {
+                const classification = tours.find((tour) => tour.classification.id === id);
+                return (
+                  <option
+                    key={classification?.classification.id}
+                    value={classification?.classification.title}
+                  >
+                    {classification?.classification.title}
+                  </option>
+                );
+              })}
             </select>
             {selectedCategory && (
               <button
