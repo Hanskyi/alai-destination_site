@@ -88,7 +88,9 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
         <div className={styles.filterByRating}>
           <h3 className={styles.filterByRating__title}>Filter by rating</h3>
 
-          <button className={styles.filterByRating__resetFilter} onClick={handleShowAllReviews}>Show All Reviews</button>
+          <button className={styles.filterByRating__resetFilter} onClick={handleShowAllReviews}>
+            Show All Reviews
+          </button>
 
           {REVIEWS_COUNT.map((review) => (
             <FilterByRating

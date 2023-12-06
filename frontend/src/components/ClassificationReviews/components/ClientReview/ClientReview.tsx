@@ -9,8 +9,7 @@ interface Props {
 }
 
 const ClientReview: React.FC<Props> = ({ review }) => {
-
-  console.log(review, "review")
+  console.log(review, 'review');
 
   return (
     <div className={styles.clientReview}>

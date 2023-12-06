@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Tour = ({ tourData }: Props) => {
-
   return <>{tourData && <TourPage tourData={tourData} />}</>;
 };
 
