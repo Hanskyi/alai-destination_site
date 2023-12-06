@@ -9,7 +9,8 @@ interface Props {
 }
 
 const ClientReview: React.FC<Props> = ({ review }) => {
-  console.log(review, '33');
+
+  console.log(review, "review")
 
   return (
     <div className={styles.clientReview}>
@@ -17,10 +18,7 @@ const ClientReview: React.FC<Props> = ({ review }) => {
       <div className={styles.clientReview__initials}>
         <div className={styles.clientReview__header}>
           <span className={styles.clientReview__travelerName}>
-            <strong>{review.users_permissions_user?.username as string}</strong>
-          </span>
-          <span className={styles.clientReview__travelDate}>
-            Traveled {dayjs('2023-06-15T21:55:59.526Z').format('MMMM YYYY')}
+            <strong>{review.displayName}</strong>
           </span>
         </div>
         <p className={styles.clientReview__review}>{review.review}</p>

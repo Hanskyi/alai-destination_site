@@ -244,6 +244,7 @@ export interface User {
 export interface TourReview {
   id: number;
   createdAt: string;
+  displayName:string;
   rating: number;
   review: string;
   profileImage: Image;

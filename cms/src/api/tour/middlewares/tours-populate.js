@@ -28,7 +28,7 @@ const populate = {
         fields:["username"]
       },
     },
-    fields: ["review", "rating", "createdAt","users_permissions_user"],
+    fields: ["review", "rating", "createdAt", "displayName", "users_permissions_user"],
   },
   localizations: {
     populate: true
