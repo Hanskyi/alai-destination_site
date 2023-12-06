@@ -84,7 +84,7 @@ const LocationsRegion = () => {
           </button>
         )}
       </div>
-      <Reviews />
+      {/*<Reviews />*/}
     </>
   );
 };

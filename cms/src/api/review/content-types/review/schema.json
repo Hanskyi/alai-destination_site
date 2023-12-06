@@ -13,8 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "review": {
-      "type": "string",
-      "required": true
+      "type": "text",
+      "required": true,
+      "maxLength": 300
     },
     "rating": {
       "type": "integer",
@@ -33,6 +34,11 @@
       "relation": "manyToOne",
       "target": "api::tour.tour",
       "inversedBy": "reviews"
+    },
+    "displayName": {
+      "type": "text",
+      "required": true,
+      "maxLength": 80
     }
   }
 }

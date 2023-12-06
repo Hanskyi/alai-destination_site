@@ -1520,7 +1520,11 @@ export interface ApiReviewReview extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    review: Attribute.String & Attribute.Required;
+    review: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
     rating: Attribute.Integer &
       Attribute.Required &
       Attribute.SetMinMax<{
@@ -1537,6 +1541,11 @@ export interface ApiReviewReview extends Schema.CollectionType {
       'manyToOne',
       'api::tour.tour'
     >;
+    displayName: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

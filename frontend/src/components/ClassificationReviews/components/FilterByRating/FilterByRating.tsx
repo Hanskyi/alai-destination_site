@@ -44,7 +44,7 @@ const FilterByRating: React.FC<IProps> = ({ fillWidth, rating, ratingCount, rate
           />
         </svg>
 
-        <span className="reviews-filter__count">{ratingCount}</span>
+        <span className={styles.reviews_count}>{ratingCount}</span>
       </div>
     </div>
   );

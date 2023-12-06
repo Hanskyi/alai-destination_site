@@ -82,7 +82,7 @@ const Classification = () => {
             <button className={style.classificationCards__button}>Show more trips</button>
           )}
         </div>
-        <Reviews />
+        {/*<Reviews />*/}
       </div>
     </>
   );

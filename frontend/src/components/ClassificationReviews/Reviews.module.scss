@@ -28,6 +28,14 @@
 .filterByRating {
   margin-bottom: 30px;
 
+  &__resetFilter {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
   &__title {
     color: variabels.$review-text-color;
     font-size: 16px;

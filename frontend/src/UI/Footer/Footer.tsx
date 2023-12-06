@@ -13,7 +13,7 @@ interface IProps {
 const Footer: React.FC<IProps> = ({ hfData }) => {
   return (
     hfData && (
-      <div className={`${footer.footer} d-flex flex-column"`}>
+      <footer className={`${footer.footer} d-flex flex-column"`}>
         <div className={footer.footer__bottom}>
           <div className="container d-flex justify-between align-center">
             <div>
@@ -24,7 +24,7 @@ const Footer: React.FC<IProps> = ({ hfData }) => {
             <Socials hfData={hfData} />
           </div>
         </div>
-      </div>
+      </footer>
     )
   );
 };

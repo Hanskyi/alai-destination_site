@@ -8,10 +8,10 @@ import Toolbar from '@/UI/Toolbar/Toolbar';
 import Whatsapp from '@/components/Whatsapp/Whatsapp';
 import Footer from '@/UI/Footer/Footer';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
-import '../styles/globals.scss';
 import { SessionProvider } from 'next-auth/react';
 import { IHeaderFooterInfo, ILocationListShortInfo } from '@/type';
 import axiosApi from '@/axiosApi';
+import '../styles/globals.scss';
 
 export default function App({ Component, ...rest }: AppProps) {
   const [headerFooter, setHeaderFooter] = useState<IHeaderFooterInfo | null>(null);
@@ -48,7 +48,9 @@ export default function App({ Component, ...rest }: AppProps) {
         >
           <LanguageSwitcher />
           <Toolbar hfData={headerFooter} locations={locations} />
-          <Component {...props.pageProps} />
+          <div className="content__wrapper">
+            <Component {...props.pageProps} />
+          </div>
           <Whatsapp />
           <Footer hfData={headerFooter} />
         </NextIntlClientProvider>

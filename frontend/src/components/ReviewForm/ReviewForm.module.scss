@@ -1,0 +1,64 @@
+.review_form {
+  .placeholder {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 25px 0;
+    border: 2px solid #dcdcdc;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 25px 0;
+    padding: 8px;
+    border-radius: 8px;
+
+    .rate_block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    input {
+      display: block;
+      height: 40px;
+      width: 200px;
+      outline: none;
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      resize: none;
+      padding: 8px 4px;
+    }
+
+    textarea {
+      display: block;
+      height: 80px;
+      width: 100%;
+      outline: none;
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      resize: none;
+      padding: 8px 4px;
+    }
+
+    button {
+      border: none;
+      background: none;
+      height: 40px;
+      padding: 8px 4px;
+      cursor: pointer;
+      background: #00a0f7;
+      color: #fff;
+    }
+  }
+}

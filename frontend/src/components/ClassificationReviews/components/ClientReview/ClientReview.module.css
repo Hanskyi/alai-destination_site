@@ -16,7 +16,7 @@
   display: block;
   width: 5px;
   height: 5px;
-  background-color: black;
+  background-color: red;
   border-radius: 50%;
 }
 .clientReview__travelDate {
