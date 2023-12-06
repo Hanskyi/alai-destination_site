@@ -1,59 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './locationRegion.module.scss';
 import classificationsStyle from '@/features/Classification/Classification.module.scss';
 import Image from 'next/image';
-import locationsBanner from '@/assets/locationImage/locationsBanner.jpg';
-import classificationBanner from '@/assets/locationImage/locationsBanner.jpg';
 import playIcon from '@/assets/icon/icon-play.svg';
-import { useParams } from 'next/navigation';
 import Reviews from '@/components/ClassificationReviews/Reviews';
 import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
 import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
+import { useAppSelector } from '@/store/hooks';
+import { selectLocationsRegion } from '@/features/LocationsRegion/LocationsRegionSlice';
+import { GALLERY } from '@/constants';
 
 const LocationsRegion = () => {
-  const { id } = useParams();
+  const content = useAppSelector(selectLocationsRegion);
+
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handlePlayButtonClick = () => {
+    setIsVideoPlaying(true);
+  };
 
   return (
     <>
       <div className={style.locationBanner}>
-        <Image className={style.locationBanner__image} src={locationsBanner} alt="#" />
+        <Image
+          width={2000}
+          height={2000}
+          priority
+          className={style.locationBanner__image}
+          src={GALLERY + content?.bannerImage.url}
+          alt={content?.bannerImage.name!}
+        />
         <div className={style.locationBanner__wrapper}>
-          <h3 className={style.locationBanner__title}>{id} region</h3>
+          <h3 className={style.locationBanner__title}>{content?.name} region</h3>
         </div>
         <BackdropForBanner />
       </div>
       <div className={style.locationDescription}>
-        <h2 className={style.locationDescription__title}>
-          The {id} region in Kyrgyzstan impresses with its alpine landscapes, historical monuments
-          and the hospitality of the local population.
-        </h2>
-        <p className={style.locationDescription__description}>
-          The {id} region in Kyrgyzstan provides unique tourism opportunities for lovers of active
-          recreation. The heart of the region is Lake Issyk-Kul, the splendor of which is surrounded
-          by mountain peaks. Here, tourists can enjoy swimming, water sports and camping in scenic
-          coastal locations.The Chui region in Kyrgyzstan provides unique tourism opportunities for
-          lovers of active recreation. The heart of the region is Lake Issyk-Kul, the splendor of
-          which is surrounded by mountain peaks. Here, tourists can enjoy swimming, water sports and
-          camping in scenic coastal locations.
-        </p>
+        <h2 className={style.locationDescription__title}>{content?.title}</h2>
+        <p className={style.locationDescription__description}>{content?.description}</p>
       </div>
-      <div className={classificationsStyle.classificationInfo__video}>
-        <Image src={classificationBanner} alt="#" />
-        <button className={classificationsStyle.classificationInfo__video__button}>
-          <Image src={playIcon} alt="#" />
-          Play
-        </button>
+      <div className={classificationsStyle.classificationInfo__video} style={{ height: '486px' }}>
+        {isVideoPlaying ? (
+          <iframe
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${content?.videoLink}?si=ELqKiwQhDaaWnzZ3`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <>
+            <Image
+              priority={true}
+              src={GALLERY + content?.bannerImage.url}
+              alt="#"
+              width={1200}
+              height={1200}
+            />
+            <button
+              className={classificationsStyle.classificationInfo__video__button}
+              onClick={handlePlayButtonClick}
+            >
+              <Image src={playIcon} alt="#" />
+              Play
+            </button>
+          </>
+        )}
       </div>
       <div className={style.toursBlog}>
         <h3 className={style.toursBlog__title}>all tours in the Chui region</h3>
         <div className={style.toursBlog__cards}>
-          {Array.from({ length: 6 }, (_, index) => (
-            <ClassificationsCard key={index} />
-          ))}
+          {content?.tours.length! > 0 ? (
+            content?.tours.map((item) => <ClassificationsCard key={item.id} tour={item} />)
+          ) : (
+            <h3 className={style.toursBlog__title}>Not tours yet</h3>
+          )}
         </div>
-        <button className={classificationsStyle.classificationCards__button}>
-          Show more trips
-        </button>
+        {content?.tours.length! > 6 && (
+          <button className={classificationsStyle.classificationCards__button}>
+            Show more trips
+          </button>
+        )}
       </div>
       {/*<Reviews />*/}
     </>

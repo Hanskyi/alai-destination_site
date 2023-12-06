@@ -1,115 +1,109 @@
 import React, { useEffect, useState } from 'react';
 import style from './FilteredTours.module.scss';
-import Link from 'next/link';
-import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import AsyncSelect from 'react-select/async';
 import { SwiperSlide } from 'swiper/react';
-import TourCard from '@/features/FilteredTours/components/TourCard';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
+import { Tour } from '@/type';
 
-interface Option {
-  value: string;
-  label: string;
+interface Props {
+  tours: Tour[];
 }
 
-const FilteredTours = () => {
-  const [select, setSelect] = useState(false);
-
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
-
-  const [startDuration, setStartDuration] = useState('Any');
-  const [endDuration, setEndDuration] = useState('Any');
+const FilteredTours: React.FC<Props> = ({ tours }) => {
+  const notFound = (
+    <p className={style.notFound}>
+      No tours were found with these settings. Please adjust your search parameters to view
+      available tours.
+    </p>
+  );
 
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
 
+  const [startDuration, setStartDuration] = useState<number | null>(null);
+  const [endDuration, setEndDuration] = useState<number | null>(null);
+
   const handleDurationReset = () => {
-    setStartDuration('Any');
-    setEndDuration('Any');
+    setStartDuration(null);
+    setEndDuration(null);
   };
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
 
-  const handleReset = () => {
-    setStartDate(null);
-    setEndDate(null);
-  };
+  const filteredByLocationAndCategory = tours.filter((tour) => {
+    if (!selectedLocation && !selectedCategory) {
+      return true;
+    }
+
+    const locationMatch =
+      !selectedLocation || tour.location.name.toLowerCase() === selectedLocation.toLowerCase();
+
+    const categoryMatch =
+      !selectedCategory ||
+      tour.classification.title.toLowerCase() === selectedCategory.toLowerCase();
+
+    return locationMatch && categoryMatch;
+  });
+
+  const sortedByPrice = filteredByLocationAndCategory.sort((tourA, tourB) => {
+    if (selectedPriceSort === 'lowToHigh') {
+      return tourA.price - tourB.price;
+    } else if (selectedPriceSort === 'highToLow') {
+      return tourB.price - tourA.price;
+    }
+    return 0;
+  });
+
+  const filteredByDurationTours = sortedByPrice.filter((tour) => {
+    if (startDuration === null && endDuration === null) {
+      return true;
+    }
+
+    const tourDuration = tour.duration;
+
+    const startDurationMatch =
+      startDuration === null || (tourDuration !== null && tourDuration >= startDuration);
+
+    const endDurationMatch =
+      endDuration === null ||
+      (tourDuration !== null && tourDuration <= endDuration! && tourDuration >= startDuration!);
+
+    return startDurationMatch && endDurationMatch;
+  });
 
   useEffect(() => {
-    setSelect(true);
+    const storedLocation = localStorage.getItem('selectedLocation');
+    const storedCategory = localStorage.getItem('selectedCategory');
+    const storedPriceSort = localStorage.getItem('selectedPriceSort');
+    const storedStartDuration = localStorage.getItem('startDuration');
+    const storedEndDuration = localStorage.getItem('endDuration');
+
+    if (storedLocation) setSelectedLocation(storedLocation);
+    if (storedCategory) setSelectedCategory(storedCategory);
+    if (storedPriceSort) setSelectedPriceSort(storedPriceSort);
+    if (storedStartDuration) setStartDuration(parseInt(storedStartDuration, 10) || null);
+    if (storedEndDuration) setEndDuration(parseInt(storedEndDuration, 10) || null);
   }, []);
 
-  const filterOptions = (inputValue: string) => {
-    const options: Option[] = [{ value: 'near-me', label: 'Near Me' }];
-    return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
-  };
-
-  const loadOptions = (inputValue: string, callback: (options: Option[]) => void) => {
-    callback(filterOptions(inputValue));
-  };
+  useEffect(() => {
+    localStorage.setItem('selectedLocation', selectedLocation);
+    localStorage.setItem('selectedCategory', selectedCategory);
+    localStorage.setItem('selectedPriceSort', selectedPriceSort);
+    localStorage.setItem(
+      'startDuration',
+      startDuration !== null ? startDuration.toString() : 'Any',
+    );
+    localStorage.setItem('endDuration', endDuration !== null ? endDuration.toString() : 'Any');
+  }, [selectedLocation, selectedCategory, selectedPriceSort, startDuration, endDuration]);
 
   return (
     <>
-      <div>
-        <div className="container">
-          <div className={style.breadcrumbList}>
-            <Link href="/" className={style.breadcrumbLink}>
-              Home
-            </Link>
-            <Link href="/" className={style.breadcrumbActiveLink}>
-              Search
-            </Link>
-          </div>
-        </div>
-
-        <div className={style.titleBlock}>
-          <h1>Search</h1>
-          <h2>Discover your next adventure</h2>
-        </div>
+      <div className={style.titleBlock}>
+        <h1>Search</h1>
+        <h2>Discover your next adventure</h2>
       </div>
-
-      <form onSubmit={(e) => e.preventDefault()} className={`${style.formBlock} container`}>
-        <div className={style.searchSelectBlock}>
-          <PiMagnifyingGlassBold className={style.searchIcon} />
-          {select && (
-            <AsyncSelect
-              isMulti={false}
-              className={style.searchInput}
-              isClearable
-              placeholder="Where do you want to go?"
-              loadOptions={loadOptions}
-              defaultOptions
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null,
-              }}
-              styles={{
-                control: (baseStyles) => {
-                  return {
-                    ...baseStyles,
-                    paddingLeft: '25px',
-                    fontSize: '16px',
-                    fontFamily: 'inherit',
-                    paddingTop: '8px',
-                    paddingBottom: '8px',
-                    border: 'none',
-                    appearance: 'none',
-                    boxShadow: '0 4px 24px 0 rgba(0, 0, 0, 0.14)',
-                    whiteSpace: 'nowrap',
-                  };
-                },
-              }}
-            />
-          )}
-        </div>
-
-        <button type="submit" className={style.searchButton}>
-          Search
-        </button>
-      </form>
 
       <div className={`${style.filteringBlock} container`}>
         <div className={style.filteringTools}>
@@ -122,9 +116,13 @@ const FilteredTours = () => {
               <option value="" disabled>
                 Location
               </option>
-              <option>Osh</option>
-              <option>Jalal-Abad</option>
               <option>Batken</option>
+              <option>Chui</option>
+              <option>Issyk-Kul</option>
+              <option>Jalal-Abad</option>
+              <option>Naryn</option>
+              <option>Osh</option>
+              <option>Talas</option>
             </select>
             {selectedLocation && (
               <button
@@ -145,9 +143,11 @@ const FilteredTours = () => {
               <option value="" disabled>
                 Categories
               </option>
-              <option>Walking</option>
-              <option>Horse Trek</option>
-              <option>Car rent</option>
+              <option>Cycling tours</option>
+              <option>Food tours</option>
+              <option>Active adventures tour</option>
+              <option>Kyrgyzstan Cultural Tours</option>
+              <option>Horse Treks</option>
             </select>
             {selectedCategory && (
               <button
@@ -183,43 +183,6 @@ const FilteredTours = () => {
             )}
           </div>
 
-          <div className={style.travelDates}>
-            <h5>Travel Dates</h5>
-            <div className={style.datepicker}>
-              <DatePicker
-                placeholderText="Departing"
-                selected={startDate}
-                onChange={(date: Date | null) => setStartDate(date)}
-                selectsStart
-                startDate={startDate}
-                endDate={endDate}
-                className={style.datepickerInput}
-              />
-              <label className={style.datepickerLabel}>Eg. 01 Jan 2021</label>
-            </div>
-
-            <div className={style.datepicker}>
-              <DatePicker
-                placeholderText="Finishing"
-                selected={endDate}
-                onChange={(date: Date | null) => setEndDate(date)}
-                selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                className={style.datepickerInput}
-              />
-              <label className={style.datepickerLabel}>Eg. 01 Jan 2021</label>
-            </div>
-
-            <button
-              className={`${style.resetDatesButton} ${style.additionalClass}`}
-              onClick={handleReset}
-            >
-              Clear Dates
-            </button>
-          </div>
-
           <div className={style.duration}>
             <h5>Duration</h5>
             <div className={style.durationInner}>
@@ -227,22 +190,24 @@ const FilteredTours = () => {
                 <label className={style.durationLabel}>Min</label>
                 <select
                   className={`${style.sortInput} ${style.sortDuration}`}
-                  value={startDuration}
+                  value={startDuration === null ? 'Any' : startDuration}
                   onChange={(e) => {
                     const selectedValue = e.target.value;
                     const parsedValue = parseInt(selectedValue, 10);
                     if (
                       !isNaN(parsedValue) &&
                       parsedValue >= 1 &&
-                      (endDuration === 'Any' || parsedValue <= parseInt(endDuration, 10))
+                      (endDuration === null || parsedValue <= parseInt(endDuration.toString(), 10))
                     ) {
-                      setStartDuration(selectedValue);
+                      setStartDuration(parsedValue);
                     }
                   }}
                 >
                   <option value="Any">Any</option>
                   {durationOptions
-                    .filter((day) => endDuration === 'Any' || day <= parseInt(endDuration, 10))
+                    .filter(
+                      (day) => endDuration === null || day <= parseInt(endDuration.toString(), 10),
+                    )
                     .map((day) => (
                       <option key={day} value={day}>
                         {day} {day === 1 ? 'day' : 'days'}
@@ -257,22 +222,26 @@ const FilteredTours = () => {
                 <label className={style.durationLabel}>Max</label>
                 <select
                   className={`${style.sortInput} ${style.sortDuration}`}
-                  value={endDuration}
+                  value={endDuration === null ? 'Any' : endDuration}
                   onChange={(e) => {
                     const selectedValue = e.target.value;
                     const parsedValue = parseInt(selectedValue, 10);
                     if (
                       !isNaN(parsedValue) &&
                       parsedValue >= 1 &&
-                      (startDuration === 'Any' || parsedValue >= parseInt(startDuration, 10))
+                      (startDuration === null ||
+                        parsedValue >= parseInt(startDuration.toString(), 10))
                     ) {
-                      setEndDuration(selectedValue);
+                      setEndDuration(parsedValue);
                     }
                   }}
                 >
                   <option value="Any">Any</option>
                   {durationOptions
-                    .filter((day) => startDuration === 'Any' || day >= parseInt(startDuration, 10))
+                    .filter(
+                      (day) =>
+                        startDuration === null || day >= parseInt(startDuration.toString(), 10),
+                    )
                     .map((day) => (
                       <option key={day} value={day}>
                         {day} {day === 1 ? 'day' : 'days'}
@@ -291,13 +260,17 @@ const FilteredTours = () => {
           </div>
         </div>
 
-        <div className={`${style.tourCards}`}>
-          {Array.from(Array(10)).map((_, index) => (
-            <SwiperSlide key={index}>
-              <TourCard />
-            </SwiperSlide>
-          ))}
-        </div>
+        {filteredByDurationTours.length === 0 ? (
+          notFound
+        ) : (
+          <div className={`${style.tourCards}`}>
+            {filteredByDurationTours.map((tour: Tour) => (
+              <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
+                <GoodTripsCard item={tour} />
+              </SwiperSlide>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

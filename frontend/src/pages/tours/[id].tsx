@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
-import { TourData, TourDataDetailed } from '../../type';
+import { TourDataDetailed } from '@/type';
 import axiosApi from '../../axiosApi';
-import TourPage from '../tour-detailed';
+import TourPage from '../../features/TourPage/tour-detailed';
 
 interface Props {
   tourData: TourDataDetailed | null;
@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     return {
       props: {
         tourData: tData,
+        messages: (await import(`../../../lang/${context.locale}.json`)).default,
       },
     };
   } catch (error) {
@@ -34,6 +35,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     return {
       props: {
         tourData: null,
+        messages: (await import(`../../../lang/${context.locale}.json`)).default,
       },
     };
   }

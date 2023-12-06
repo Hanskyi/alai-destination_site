@@ -47,8 +47,6 @@
 }
 .mainBlock .mainBlockContainer .mainBlockHeader {
   text-transform: capitalize;
-  background: rgba(0, 0, 0, 0.51);
-  width: min-content;
   border-radius: 4px;
   padding: 10px;
   font-weight: bold;
@@ -57,6 +55,11 @@
   color: white;
   font-size: 64px;
   line-height: 64px;
+}
+@media screen and (max-width: 992px) {
+  .mainBlock .mainBlockContainer .mainBlockHeader {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 768px) {
   .mainBlock .mainBlockContainer .mainBlockHeader {
@@ -116,40 +119,26 @@
 }
 .mainBlock .mainBlockContainer .formBlock .datepickerAndButton {
   display: flex;
+  justify-content: space-between;
 }
 .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker {
-  margin-right: 5px;
+  display: flex;
+  align-items: center;
 }
-.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .calendarIcon {
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .searchInputCategory {
+  position: relative;
+  margin-right: 5px;
+  width: 250px;
+}
+@media screen and (max-width: 576px) {
+  .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .searchInputCategory {
+    margin-right: 2px;
+  }
+}
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .bicycleIcon {
   position: absolute;
   margin: 17px 10px;
   z-index: 2;
-}
-.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .dateInput {
-  position: relative;
-  font-size: 16px;
-  font-family: inherit;
-  appearance: none;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 17px 30px 17px 35px;
-  outline: none;
-  width: 170px;
-}
-@media screen and (max-width: 768px) {
-  .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .dateInput {
-    width: 100%;
-  }
-}
-.mainBlock
-  .mainBlockContainer
-  .formBlock
-  .datepickerAndButton
-  .datepicker
-  .dateInput
-  .dateInput:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .mainBlockSearchButton {
   font-family: inherit;

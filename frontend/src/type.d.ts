@@ -68,12 +68,19 @@ export interface Tour {
   price: number;
   mainImage: Image;
   classification: Classification;
+  location: Location;
+}
+
+export interface Location {
+  id: number;
+  name: string;
 }
 
 export interface Classification {
   id: number;
   title: string;
 }
+
 export interface HomeClassification {
   data: HomeClassificationData;
 }
@@ -192,6 +199,24 @@ export interface OneArticleData {
   localizations: Localization[];
 }
 
+export interface OneClassification {
+  data: OneClassificationData;
+}
+
+export interface OneClassificationData {
+  id: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  description: string;
+  videoLink: string;
+  image: Image;
+  localizations: Localization[];
+  tours: TourLocationRegion[];
+}
+
 export interface IArticle {
   data: OneArticleData[];
 }
@@ -251,6 +276,10 @@ export interface TourReview {
   users_permissions_user: User;
 }
 
+export interface ToursPage {
+  data: Tour[];
+}
+
 export interface TourData {
   data: {
     id: number;
@@ -297,4 +326,41 @@ export interface TourDataDetailed {
   scheduleTable: ITable[];
   previewDescription: string;
   faqList: ITable[];
+}
+
+export interface ILocationsRegion {
+  id: number;
+  name: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  description: string;
+  videoLink: string;
+  bannerImage: Image;
+  localizations: Localization[];
+  tours: TourLocationRegion[];
+}
+
+export interface TourLocationRegion {
+  id: number;
+  title: string;
+  previewDescription: string;
+  mainImage: Image;
+}
+
+export interface locationsRegionData {
+  data: ILocationsRegion;
+}
+
+export interface ILocationListShortInfo {
+  data: ILocalizationShortInfo[];
+}
+
+export interface ILocalizationShortInfo {
+  id: number;
+  name: string;
+  locale: string;
+  localizations: Localization[];
 }
