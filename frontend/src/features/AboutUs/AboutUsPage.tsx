@@ -21,7 +21,7 @@ const AboutUsPage = () => {
           <div className={aboutUsStyle.text}>
             <h1 className={aboutUsStyle.text__title}>Visit Alay</h1>
             <h4 className={aboutUsStyle.text__subtitle}>ADVENTURE TRAVEL & TOURS</h4>
-            <BackdropForBanner />
+            <BackdropForBanner/>
           </div>
         </div>
       </div>
@@ -42,13 +42,13 @@ const AboutUsPage = () => {
 
         <div className={aboutUsStyle.valueBlock}>
           <div className="container">
-            <ValuesBlock />
+            <ValuesBlock/>
           </div>
         </div>
 
         <div className={aboutUsStyle.countsBlock}>
           <div className="container">
-            <CountersBlock />
+            <CountersBlock/>
           </div>
         </div>
 
@@ -139,103 +139,37 @@ const AboutUsPage = () => {
             <h1 className={aboutUsStyle.awardsBlock__title}>AWARDS</h1>
             <div className={aboutUsStyle.awardsBlock__cards}>
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
 
               <div className={aboutUsStyle.awardsBlock__card}>
-                <Image width={200} height={130} src={Award} alt="Award" />
+                <Image width={200} height={130} src={Award} alt="Award"/>
               </div>
             </div>
           </div>
         </div>
         <div className={aboutUsStyle.contactsBlock}>
           <div className="container d-flex f-wrap justify-between flex-wrap">
-            <div className={aboutUsStyle.contactsBlock__card}>
-              <h2 className={aboutUsStyle.contactsBlock__title}>Destinations</h2>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Issyk-Kul
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Chui
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Osh
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Batken
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Naryn
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Djalal-Abad
-                </Link>
-              </p>
-            </div>
-
-            <div className={aboutUsStyle.contactsBlock__card}>
-              <h2 className={aboutUsStyle.contactsBlock__title}>Tours</h2>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Treks and Hikes
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Horse Treks
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Pamir Highway Tours
-                </Link>
-              </p>
-              <p className={aboutUsStyle.contactsBlock__text}>
-                <Link className={aboutUsStyle.contactsBlock__link} href="#">
-                  Cultural Tours
-                </Link>
-              </p>
-            </div>
-
-            <div className={aboutUsStyle.contactsBlock__card}>
-              <h2 className={aboutUsStyle.contactsBlock__title}>Core Values</h2>
-              <p className={aboutUsStyle.contactsBlock__text}>Community Development Programs</p>
-              <p className={aboutUsStyle.contactsBlock__text}>Stay and Eat Local</p>
-              <p className={aboutUsStyle.contactsBlock__text}>Helping Travelers</p>
-              <p className={aboutUsStyle.contactsBlock__text}>Conserving Nature</p>
-            </div>
-
             <div className={aboutUsStyle.contactsBlock__card}>
               <h2 className={aboutUsStyle.contactsBlock__title}>Contact</h2>
               <p className={aboutUsStyle.contactsBlock__text}>Mob: + +996 550 339292</p>
