@@ -6,6 +6,7 @@
   font-weight: 400;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.86);
+  width: 50px;
 }
 .reviewsFilter__item {
   display: flex;
@@ -17,7 +18,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid rgb(128, 128, 128);
+  border: 2px solid gray;
   background-color: white;
   position: relative;
   cursor: pointer;
@@ -33,6 +34,10 @@
   height: 11px;
   background-color: #008cff;
   border-radius: 50%;
+}
+.reviewsFilter .reviews_count {
+  width: 40px;
+  text-align: left;
 }
 
 /*# sourceMappingURL=FilterByRating.module.css.map */
