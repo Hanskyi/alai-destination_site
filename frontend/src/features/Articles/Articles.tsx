@@ -1,36 +1,21 @@
 import React from 'react';
 import style from './Articles.module.scss';
 import articlesBanner from '../../assets/articlesImages/articlesBanner.png';
-import articlesSmall from '../../assets/articlesImages/articlessSmall.png';
-import Image from 'next/image';
-import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 import { useAppSelector } from '@/store/hooks';
 import { selectArticles } from '@/features/Articles/ArticlesSlice';
 import ArticlesCard from '@/features/Articles/Components/ArticlesCard';
+import Banner from '@/components/Banner/Banner';
 
 const Articles = () => {
   const articles = useAppSelector(selectArticles);
 
+  let title = 'The good stories';
+  title = 'The good stories'.toUpperCase();
+
   return (
     <>
       <div className={style.articlesBanner}>
-        <BackdropForBanner />
-
-        <Image
-          className={`${style.articlesBanner__image} ${style.articlesBanner__image__big}`}
-          width={1000}
-          height={100}
-          src={articlesBanner}
-          alt="#"
-        />
-        <Image
-          className={`${style.articlesBanner__image} ${style.articlesBanner__image__small}`}
-          width={1000}
-          height={100}
-          src={articlesSmall}
-          alt="#"
-        />
-        <h3 className={style.articlesBanner__title}>THE GOOD STORIES</h3>
+        <Banner src={articlesBanner} width={1200} height={1200} alt={'#'} title={title} />
       </div>
 
       <div className="d-flex flex-column align-center">
