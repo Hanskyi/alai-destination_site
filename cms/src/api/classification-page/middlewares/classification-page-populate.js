@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * `classifications-page-populate` middleware
+ * `classification-page-populate` middleware
  */
 
 const populate = {
@@ -18,7 +18,7 @@ const populate = {
 module.exports = (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info('In classifications-page-populate middleware.');
+    strapi.log.info('In classification-page-populate middleware.');
 
     ctx.query = {
       populate,

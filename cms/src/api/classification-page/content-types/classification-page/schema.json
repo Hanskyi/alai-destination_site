@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "classifications_pages",
+  "collectionName": "classification_pages",
   "info": {
-    "singularName": "classifications-page",
-    "pluralName": "classifications-pages",
-    "displayName": "classifications-page",
-    "description": ""
+    "singularName": "classification-page",
+    "pluralName": "classification-pages",
+    "displayName": "classification-page"
   },
   "options": {
     "draftAndPublish": true
@@ -16,63 +15,62 @@
     }
   },
   "attributes": {
-    "bannerImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
     "bannerTitle": {
-      "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "bannerImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
         }
       }
     },
     "title": {
-      "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
-    },
-    "videoLink": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      },
+      "type": "text",
+      "required": true
     },
     "subTitle": {
-      "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "string",
+      "required": true
+    },
+    "videoLink": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }
