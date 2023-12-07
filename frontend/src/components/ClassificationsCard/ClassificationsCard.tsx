@@ -28,6 +28,7 @@ const ClassificationsCard: React.FC<Props> = ({ tour }) => {
         <Image
           src={GALLERY + tour.mainImage.url}
           className={style.classificationCard__image__content}
+          priority
           width={1200}
           height={1200}
           alt="#"

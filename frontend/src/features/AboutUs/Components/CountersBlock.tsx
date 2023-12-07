@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
+import { ICounter } from '@/type';
+import { GALLERY } from '@/constants';
 
-import Icon1 from '../../../assets/icon/about-us/icon-1.1.svg';
-import Icon2 from '../../../assets/icon/about-us/icon-2.2.svg';
-import Icon3 from '../../../assets/icon/about-us/icon-3.3.svg';
+interface Props {
+  item: ICounter[];
+}
 
-const CountersBlock = () => {
+const CountersBlock: React.FC<Props> = ({ item }) => {
   const count1 = useMotionValue(0);
   const rounded1 = useTransform(count1, Math.round);
 
@@ -55,29 +57,23 @@ const CountersBlock = () => {
   return (
     <motion.div initial="hidden" whileInView="visible" viewport={{ amount: 1 }}>
       <div className={aboutUsStyle.cards} ref={countersRef}>
-        <div className={aboutUsStyle.cards__card}>
-          <Image width={70} height={70} src={Icon1} alt="Icon 1" />
-          <span className={aboutUsStyle.cards__card__counter}>
-            <motion.h1 variants={imgAnimation}>{rounded1}</motion.h1>
-          </span>
-          <h2 className={aboutUsStyle.cards__card__title}>Number of Customers</h2>
-        </div>
-
-        <div className={aboutUsStyle.cards__card}>
-          <Image width={70} height={70} src={Icon2} alt="Icon 1" />
-          <span className={aboutUsStyle.cards__card__counter}>
-            <motion.h1 variants={imgAnimation}>{rounded2}</motion.h1>
-          </span>
-          <h2 className={aboutUsStyle.cards__card__title}>Number of Trips</h2>
-        </div>
-
-        <div className={aboutUsStyle.cards__card}>
-          <Image width={70} height={70} src={Icon3} alt="Icon 1" />
-          <span className={aboutUsStyle.cards__card__counter}>
-            <motion.h1 variants={imgAnimation}>{rounded3}</motion.h1>
-          </span>
-          <h2 className={aboutUsStyle.cards__card__title}>Number of Workers</h2>
-        </div>
+        {item.map((counterItem, index) => (
+          <div key={counterItem.id} className={aboutUsStyle.cards__card}>
+            <Image
+              priority={true}
+              width={70}
+              height={70}
+              src={GALLERY + counterItem.icon[0].url}
+              alt={`Icon ${counterItem.icon[0].name}`}
+            />
+            <span className={aboutUsStyle.cards__card__counter}>
+              <motion.h1 variants={imgAnimation}>
+                {index === 0 ? rounded1 : index === 1 ? rounded2 : rounded3}
+              </motion.h1>
+            </span>
+            <h2 className={aboutUsStyle.cards__card__title}>{counterItem.title}</h2>
+          </div>
+        ))}
       </div>
     </motion.div>
   );
