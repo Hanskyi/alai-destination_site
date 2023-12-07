@@ -1,0 +1,39 @@
+.banner {
+  position: relative;
+  text-align: start;
+
+  &_image {
+    max-height: 500px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &_wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  &_title {
+    position: absolute;
+    z-index: 50;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 56px;
+  }
+
+  &_sub_title {
+    text-transform: uppercase;
+    line-height: 26px;
+    font-weight: normal;
+    font-style: normal;
+    margin: 20px 0 0;
+    font-size: 18px;
+  }
+}

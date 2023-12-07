@@ -5,10 +5,10 @@ import Image from 'next/image';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Reviews from '@/components/ClassificationReviews/Reviews';
 import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
-import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 import { useAppSelector } from '@/store/hooks';
 import { selectLocationsRegion } from '@/features/LocationsRegion/LocationsRegionSlice';
 import { GALLERY } from '@/constants';
+import Banner from '@/components/Banner/Banner';
 
 const LocationsRegion = () => {
   const content = useAppSelector(selectLocationsRegion);
@@ -22,18 +22,13 @@ const LocationsRegion = () => {
   return (
     <>
       <div className={style.locationBanner}>
-        <Image
-          width={2000}
-          height={2000}
-          priority
-          className={style.locationBanner__image}
+        <Banner
           src={GALLERY + content?.bannerImage.url}
-          alt={content?.bannerImage.name!}
+          width={1200}
+          height={1200}
+          alt={'#'}
+          title={`${content?.name} region}`}
         />
-        <div className={style.locationBanner__wrapper}>
-          <h3 className={style.locationBanner__title}>{content?.name} region</h3>
-        </div>
-        <BackdropForBanner />
       </div>
       <div className={style.locationDescription}>
         <h2 className={style.locationDescription__title}>{content?.title}</h2>
