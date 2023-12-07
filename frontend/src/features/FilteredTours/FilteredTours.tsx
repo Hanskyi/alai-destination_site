@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import style from './FilteredTours.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import Card from '@/components/Card/Card';
-import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import axiosApi from '@/axiosApi';
 import { NextRouter } from 'next/router';
@@ -32,17 +30,19 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
 
   const [tourCards, setTourCards] = useState<Tour[]>([]);
 
-  const [prevSelectedLocation, setPrevSelectedLocation] = useState('');
-  const [prevSelectedCategory, setPrevSelectedCategory] = useState('');
-  const [prevSelectedPriceSort, setPrevSelectedPriceSort] = useState('');
+  console.log('tourCards: ', tourCards);
+  //
+  // const [prevSelectedLocation, setPrevSelectedLocation] = useState('');
+  // const [prevSelectedCategory, setPrevSelectedCategory] = useState('');
+  // const [prevSelectedPriceSort, setPrevSelectedPriceSort] = useState('');
 
   const isMounted = useRef(true);
 
   const [startDuration, setStartDuration] = useState<number | null>(null);
   const [endDuration, setEndDuration] = useState<number | null>(null);
 
-  const [prevStartDuration, setPrevStartDuration] = useState<number | null>(null);
-  const [prevEndDuration, setPrevEndDuration] = useState<number | null>(null);
+  // const [prevStartDuration, setPrevStartDuration] = useState<number | null>(null);
+  // const [prevEndDuration, setPrevEndDuration] = useState<number | null>(null);
 
   const handleDurationReset = () => {
     setStartDuration(null);
@@ -113,16 +113,16 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
     try {
       setLoading(true);
 
-      if (
-        selectedCategory === prevSelectedCategory &&
-        selectedLocation === prevSelectedLocation &&
-        selectedPriceSort === prevSelectedPriceSort &&
-        startDuration === prevStartDuration &&
-        endDuration === prevEndDuration
-      ) {
-        setLoading(false);
-        return;
-      }
+      // if (
+      //   selectedCategory === prevSelectedCategory &&
+      //   selectedLocation === prevSelectedLocation &&
+      //   selectedPriceSort === prevSelectedPriceSort &&
+      //   startDuration === prevStartDuration &&
+      //   endDuration === prevEndDuration
+      // ) {
+      //   setLoading(false);
+      //   return;
+      // }
 
       const queryParameters = [];
 
@@ -157,7 +157,17 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
 
       const queryString = queryParameters.join('&');
 
-      const response = await axiosApi.get(`tours?${queryString}`);
+      // const response = await axiosApi.get(`tours?${queryString}`);
+
+      let response;
+
+      if (selectedCategory || selectedLocation || router.locale) {
+        // Fetch filtered tours only if at least one filter is selected
+        response = await axiosApi.get(`tours?${queryString}`);
+      } else {
+        // Fetch all tours if no filters are selected
+        response = await axiosApi.get(`tours${queryForAllTours}`);
+      }
 
       let filteredTours = response.data.data;
 
@@ -174,11 +184,11 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
       }
 
       setTourCards(filteredTours);
-      setPrevSelectedCategory(selectedCategory);
-      setPrevSelectedLocation(selectedLocation);
-      setPrevSelectedPriceSort(selectedPriceSort);
-      setPrevStartDuration(startDuration);
-      setPrevEndDuration(endDuration);
+      // setPrevSelectedCategory(selectedCategory);
+      // setPrevSelectedLocation(selectedLocation);
+      // setPrevSelectedPriceSort(selectedPriceSort);
+      // setPrevStartDuration(startDuration);
+      // setPrevEndDuration(endDuration);
     } catch (e) {
       console.log(e);
       alert('Something went wrong. Please refresh the page!');
@@ -192,11 +202,11 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
     selectedPriceSort,
     startDuration,
     endDuration,
-    prevSelectedCategory,
-    prevSelectedLocation,
-    prevSelectedPriceSort,
-    prevStartDuration,
-    prevEndDuration,
+    // prevSelectedCategory,
+    // prevSelectedLocation,
+    // prevSelectedPriceSort,
+    // prevStartDuration,
+    // prevEndDuration,
   ]);
 
   useEffect(() => {
@@ -215,11 +225,11 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
     endDuration,
     classifications,
     locations,
-    prevSelectedCategory,
-    prevSelectedLocation,
-    prevSelectedPriceSort,
-    prevStartDuration,
-    prevEndDuration,
+    // prevSelectedCategory,
+    // prevSelectedLocation,
+    // prevSelectedPriceSort,
+    // prevStartDuration,
+    // prevEndDuration,
   ]);
 
   return (
