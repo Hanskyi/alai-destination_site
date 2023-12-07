@@ -1,5 +1,8 @@
 .clientReview {
   margin-bottom: 30px;
+  border: 1px solid #dcdcdc;
+  padding: 15px;
+  border-radius: 12px;
 }
 .clientReview__header {
   margin: 16px 0 21px;
@@ -7,17 +10,17 @@
 .clientReview__travelerName {
   padding-right: 16px;
   position: relative;
-}
-.clientReview__travelerName:after {
-  position: absolute;
-  content: '';
-  right: 5px;
-  top: 7px;
-  display: block;
-  width: 5px;
-  height: 5px;
-  background-color: red;
-  border-radius: 50%;
+  /*&:after {
+    position: absolute;
+    content: '';
+    right: 5px;
+    top: 7px;
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+  }*/
 }
 .clientReview__travelDate {
   color: #757575;

@@ -2,7 +2,6 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import { homeSlice } from '@/features/Home/homeSlice';
 import { articlesSlice } from '@/features/Articles/ArticlesSlice';
-import { headerFooterSlice } from '@/features/HeaderFooter/headerFooterSlice';
 import { classificationsSlice } from '@/features/Classifications/ClassificationsSlice';
 import { classificationSlice } from '@/features/Classification/ClassificationSlice';
 import { locationsRegionSlice } from '@/features/LocationsRegion/LocationsRegionSlice';
@@ -13,7 +12,6 @@ const reducers = {
   [articlesSlice.name]: articlesSlice.reducer,
   [classificationsSlice.name]: classificationsSlice.reducer,
   [classificationSlice.name]: classificationSlice.reducer,
-  [headerFooterSlice.name]: headerFooterSlice.reducer,
   [locationsRegionSlice.name]: locationsRegionSlice.reducer,
   [toursSlice.name]: toursSlice.reducer,
 };

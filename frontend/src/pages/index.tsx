@@ -1,9 +1,14 @@
 import { wrapper } from '@/store/store';
 import { fetchHomeData } from '@/features/Home/homeThunk';
 import HomePage from '@/features/Home/HomePage';
+import Card from '@/components/Card/Card';
 
 const Home = () => {
-  return <HomePage />;
+  return (
+    <>
+      <HomePage />
+    </>
+  );
 };
 
 export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {

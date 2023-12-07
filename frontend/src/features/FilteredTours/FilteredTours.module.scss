@@ -225,18 +225,6 @@
       }
     }
   }
-
-  .tourCards {
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: 75%;
-    margin-bottom: 50px;
-    justify-content: center;
-    align-items: center;
-    @include mixins.sm {
-      flex-basis: 100%;
-    }
-  }
 }
 
 .clearButton {

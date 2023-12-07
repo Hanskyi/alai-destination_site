@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './FilteredTours.module.scss';
-import { SwiperSlide } from 'swiper/react';
 import 'react-datepicker/dist/react-datepicker.css';
-import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import { Tour } from '@/type';
+import Card from '@/components/Card/Card';
 
 interface Props {
   tours: Tour[];
@@ -263,11 +261,16 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
         {filteredByDurationTours.length === 0 ? (
           notFound
         ) : (
-          <div className={`${style.tourCards}`}>
+          <div className={'tourCards'}>
             {filteredByDurationTours.map((tour: Tour) => (
-              <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
-                <GoodTripsCard item={tour} />
-              </SwiperSlide>
+              <Card
+                key={tour.id}
+                title={tour.title}
+                image={tour.mainImage.url}
+                id={tour.id}
+                classification={tour.classification}
+                price={tour.price}
+              />
             ))}
           </div>
         )}
