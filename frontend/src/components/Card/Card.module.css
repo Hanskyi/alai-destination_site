@@ -31,7 +31,8 @@
   width: 100%;
   gap: 10px;
 }
-.card__body__days, .card__body__classification {
+.card__body__days,
+.card__body__classification {
   color: rgba(0, 0, 0, 0.55);
   font-size: 12px;
   font-weight: 600;

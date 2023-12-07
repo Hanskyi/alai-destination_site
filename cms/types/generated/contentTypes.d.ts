@@ -990,6 +990,90 @@ export interface ApiClassificationClassification extends Schema.CollectionType {
   };
 }
 
+export interface ApiClassificationsPageClassificationsPage
+  extends Schema.SingleType {
+  collectionName: 'classifications_pages';
+  info: {
+    singularName: 'classifications-page';
+    pluralName: 'classifications-pages';
+    displayName: 'classifications-page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    bannerImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    bannerTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    videoLink: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    subTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::classifications-page.classifications-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::classifications-page.classifications-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::classifications-page.classifications-page',
+      'oneToMany',
+      'api::classifications-page.classifications-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiCoreValueCoreValue extends Schema.CollectionType {
   collectionName: 'core_values';
   info: {
@@ -1819,6 +1903,7 @@ declare module '@strapi/types' {
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::blog.blog': ApiBlogBlog;
       'api::classification.classification': ApiClassificationClassification;
+      'api::classifications-page.classifications-page': ApiClassificationsPageClassificationsPage;
       'api::core-value.core-value': ApiCoreValueCoreValue;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::home-article.home-article': ApiHomeArticleHomeArticle;
