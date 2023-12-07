@@ -1,17 +1,17 @@
-import {IAboutUsPage} from '@/type';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {HYDRATE} from 'next-redux-wrapper';
-import {RootState} from '@/store/store';
-import {fetchAllAboutUsPage} from '@/features/AboutUs/AboutUsThunk';
+import { IAboutUsPage } from '@/type';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
+import { RootState } from '@/store/store';
+import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
 
 interface AboutUsState {
-  aboutUs: IAboutUsPage[];
+  aboutUs: IAboutUsPage | null;
   fetchLoading: boolean;
   error: boolean;
 }
 
 const initialState: AboutUsState = {
-  aboutUs: [],
+  aboutUs: null,
   fetchLoading: false,
   error: false,
 };
@@ -24,14 +24,14 @@ export const aboutUsSlice = createSlice({
     builder.addCase<typeof HYDRATE, PayloadAction<RootState, typeof HYDRATE>>(
       HYDRATE,
       (state, action) => {
-        return {...state, ...action.payload.aboutUs};
+        return { ...state, ...action.payload.aboutUs };
       },
     );
 
     builder.addCase(fetchAllAboutUsPage.pending, (state) => {
       state.fetchLoading = true;
     });
-    builder.addCase(fetchAllAboutUsPage.fulfilled, (state, {payload: aboutUs}) => {
+    builder.addCase(fetchAllAboutUsPage.fulfilled, (state, { payload: aboutUs }) => {
       state.fetchLoading = false;
       state.aboutUs = aboutUs;
     });

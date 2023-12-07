@@ -384,11 +384,11 @@ export interface ICounter {
   id: number;
   title: string;
   counter: number;
-  icon: IIcon;
+  icon: IIcon[];
 }
 
 export interface IAboutUs {
-  data: IAboutUsPage[];
+  data: IAboutUsPage;
 }
 
 export interface IAboutUsPage {
