@@ -1,17 +1,21 @@
-import { Tour } from '@/type';
+import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/store/store';
-import { fetchToursData } from './toursThunk';
+import { fetchClassifications, fetchLocations } from './toursThunk';
 import { HYDRATE } from 'next-redux-wrapper';
 
 interface ProductsState {
   tours: Tour[];
+  locations: ILocalizationShortInfo[];
+  classifications: ILocalizationShortInfoClassification[];
   fetchLoading: boolean;
   error: boolean;
 }
 
 const initialState: ProductsState = {
   tours: [],
+  locations: [],
+  classifications: [],
   fetchLoading: false,
   error: false,
 };
@@ -27,15 +31,39 @@ export const toursSlice = createSlice({
         return { ...state, ...action.payload.tours };
       },
     );
+    //
+    // builder.addCase(fetchToursData.pending, (state) => {
+    //   state.fetchLoading = true;
+    // });
+    // builder.addCase(fetchToursData.fulfilled, (state, { payload: data }) => {
+    //   state.fetchLoading = false;
+    //   state.tours = data;
+    // });
+    // builder.addCase(fetchToursData.rejected, (state) => {
+    //   state.fetchLoading = false;
+    //   state.error = true;
+    // });
 
-    builder.addCase(fetchToursData.pending, (state) => {
+    builder.addCase(fetchLocations.pending, (state) => {
       state.fetchLoading = true;
     });
-    builder.addCase(fetchToursData.fulfilled, (state, { payload: data }) => {
+    builder.addCase(fetchLocations.fulfilled, (state, { payload: data }) => {
       state.fetchLoading = false;
-      state.tours = data;
+      state.locations = data;
     });
-    builder.addCase(fetchToursData.rejected, (state) => {
+    builder.addCase(fetchLocations.rejected, (state) => {
+      state.fetchLoading = false;
+      state.error = true;
+    });
+
+    builder.addCase(fetchClassifications.pending, (state) => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(fetchClassifications.fulfilled, (state, { payload: data }) => {
+      state.fetchLoading = false;
+      state.classifications = data;
+    });
+    builder.addCase(fetchClassifications.rejected, (state) => {
       state.fetchLoading = false;
       state.error = true;
     });
@@ -44,4 +72,8 @@ export const toursSlice = createSlice({
 
 export const fetchLoadingSelector = (state: RootState) => state.tours.fetchLoading;
 
-export const selectTours = (state: RootState) => state.tours.tours;
+// export const selectTours = (state: RootState) => state.tours.tours;
+
+export const selectLocations = (state: RootState) => state.tours.locations;
+
+export const selectClassifications = (state: RootState) => state.tours.classifications;

@@ -364,3 +364,14 @@ export interface ILocalizationShortInfo {
   locale: string;
   localizations: Localization[];
 }
+
+export interface IClassificationListShortInto {
+  data: ILocalizationShortInfoClassification[];
+}
+
+export interface ILocalizationShortInfoClassification {
+  id: number;
+  title: string;
+  locale: string;
+  localizations: Localization[];
+}

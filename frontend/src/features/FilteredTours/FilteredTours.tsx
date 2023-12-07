@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import style from './FilteredTours.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Tour } from '@/type';
 import Card from '@/components/Card/Card';
+import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
+import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
+import axiosApi from '@/axiosApi';
+import { useRouter } from 'next/router';
 
 interface Props {
-  tours: Tour[];
+  locations: ILocalizationShortInfo[];
+  classifications: ILocalizationShortInfoClassification[];
 }
 
-const FilteredTours: React.FC<Props> = ({ tours }) => {
+const FilteredTours: React.FC<Props> = ({ locations, classifications }) => {
+  const router = useRouter();
+
   const notFound = (
     <p className={style.notFound}>
       No tours were found with these settings. Please adjust your search parameters to view
@@ -20,6 +27,12 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
 
+  const [loading, setLoading] = useState(true); // Added loading state
+
+  const [tourCards, setTourCards] = useState<Tour[]>([]);
+
+  console.log('tourCards: ', tourCards);
+
   const [startDuration, setStartDuration] = useState<number | null>(null);
   const [endDuration, setEndDuration] = useState<number | null>(null);
 
@@ -30,22 +43,7 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
 
-  const filteredByLocationAndCategory = tours.filter((tour) => {
-    if (!selectedLocation && !selectedCategory) {
-      return true;
-    }
-
-    const locationMatch =
-      !selectedLocation || tour.location.name.toLowerCase() === selectedLocation.toLowerCase();
-
-    const categoryMatch =
-      !selectedCategory ||
-      tour.classification.title.toLowerCase() === selectedCategory.toLowerCase();
-
-    return locationMatch && categoryMatch;
-  });
-
-  const sortedByPrice = filteredByLocationAndCategory.sort((tourA, tourB) => {
+  const sortedByPrice = tourCards.sort((tourA, tourB) => {
     if (selectedPriceSort === 'lowToHigh') {
       return tourA.price - tourB.price;
     } else if (selectedPriceSort === 'highToLow') {
@@ -83,7 +81,7 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
     if (storedPriceSort) setSelectedPriceSort(storedPriceSort);
     if (storedStartDuration) setStartDuration(parseInt(storedStartDuration, 10) || null);
     if (storedEndDuration) setEndDuration(parseInt(storedEndDuration, 10) || null);
-  }, []);
+  }, [router.locale]);
 
   useEffect(() => {
     localStorage.setItem('selectedLocation', selectedLocation);
@@ -94,10 +92,80 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
       startDuration !== null ? startDuration.toString() : 'Any',
     );
     localStorage.setItem('endDuration', endDuration !== null ? endDuration.toString() : 'Any');
-  }, [selectedLocation, selectedCategory, selectedPriceSort, startDuration, endDuration]);
+  }, [
+    router.locale,
+    selectedLocation,
+    selectedCategory,
+    selectedPriceSort,
+    startDuration,
+    endDuration,
+  ]);
 
-  const uniqueLocations = Array.from(new Set(tours.map((tour) => tour.location.id)));
-  const uniqueClassifications = Array.from(new Set(tours.map((tour) => tour.classification.id)));
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+
+      const queryParameters = [];
+
+      queryParameters.push('fields[0]=id');
+      queryParameters.push('fields[1]=title');
+      queryParameters.push('fields[2]=price');
+      queryParameters.push('fields[3]=duration');
+
+      if (selectedCategory) {
+        queryParameters.push(
+          `filters[classification][title][$eq]=${encodeURIComponent(selectedCategory)}`,
+        );
+      }
+
+      if (selectedLocation) {
+        queryParameters.push(
+          `filters[location][name][$eq]=${encodeURIComponent(selectedLocation)}`,
+        );
+      }
+
+      queryParameters.push('populate[classification][fields][0]=title');
+      queryParameters.push('populate[location][fields][0]=name');
+      queryParameters.push('populate[mainImage][fields][0]=url');
+
+      if (router.locale) {
+        queryParameters.push(
+          `populate[localizations][fields][0]=locale&locale=${encodeURIComponent(router.locale)}`,
+        );
+      }
+
+      const queryString = queryParameters.join('&');
+
+      const response = await axiosApi.get(`tours?${queryString}`);
+
+      console.log('Fetching data with filters:', {
+        selectedCategory,
+        selectedLocation,
+        selectedPriceSort,
+        startDuration,
+        endDuration,
+      });
+
+      setTourCards(response.data.data);
+    } catch (e) {
+      console.log(e);
+      alert('Something went wrong. Please refresh the page!');
+    } finally {
+      setLoading(false);
+    }
+  }, [router, selectedLocation, selectedCategory, selectedPriceSort, startDuration, endDuration]);
+
+  useEffect(() => {
+    void fetchData();
+  }, [
+    router.locale,
+    fetchData,
+    selectedLocation,
+    selectedCategory,
+    selectedPriceSort,
+    startDuration,
+    endDuration,
+  ]);
 
   return (
     <>
@@ -117,11 +185,11 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               <option value="" disabled>
                 Location
               </option>
-              {uniqueLocations.map((locationId) => {
-                const location = tours.find((tour) => tour.location.id === locationId);
+
+              {locations.map((location) => {
                 return (
-                  <option key={location?.location.id} value={location?.location.name}>
-                    {location?.location.name}
+                  <option key={location.id} value={location.name}>
+                    {location.name}
                   </option>
                 );
               })}
@@ -145,14 +213,10 @@ const FilteredTours: React.FC<Props> = ({ tours }) => {
               <option value="" disabled>
                 Categories
               </option>
-              {uniqueClassifications.map((id) => {
-                const classification = tours.find((tour) => tour.classification.id === id);
+              {classifications.map((classification) => {
                 return (
-                  <option
-                    key={classification?.classification.id}
-                    value={classification?.classification.title}
-                  >
-                    {classification?.classification.title}
+                  <option key={classification.id} value={classification.title}>
+                    {classification.title}
                   </option>
                 );
               })}
