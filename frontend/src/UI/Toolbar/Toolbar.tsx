@@ -29,6 +29,8 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
 
   const { data: session } = useSession();
 
+  console.log(hfData);
+
   console.log(locations, 'Тут Локации!!!!!'); // как отрисуешь локации, удали консоль!!!
 
   const t = useTranslations('Header.Navigation');

@@ -229,6 +229,7 @@ export interface IHeaderFooterData {
   id: number;
   mainPhoneNumber: string;
   locale: string;
+  companyEmail: string;
   socialLinks: ISocialLink[];
   logo: ILogo;
 }
