@@ -5,8 +5,8 @@ import { SwiperSlide } from 'swiper/react';
 import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
 import 'swiper/css';
 import style from './TravelSliderBlock.module.scss';
-import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
+import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 
 const TravelSliderBlock = () => {
   const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);
