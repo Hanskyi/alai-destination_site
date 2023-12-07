@@ -24,7 +24,11 @@ body {
 }
 
 header {
-  height: 60px;
+  height: 80px;
+
+  @include mixins.md {
+    height: 60px;
+  }
 }
 footer {
   height: 200px;

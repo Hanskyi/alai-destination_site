@@ -185,10 +185,16 @@
   position: relative;
 }
 
-.destinations {
+.destination__wrapper {
+  margin: 0 25px 0 0;
   position: relative;
-  width: 85px;
+}
+
+.destinations {
+
+  width: 115px;
   cursor: pointer;
+  margin: 0;
 
   &__image {
     position: absolute;
@@ -196,7 +202,7 @@
     background-size: cover;
     width: 6px;
     height: 10px;
-    right: -29px;
+    right: 0px;
     top: 8px;
 
     transform: rotate(90deg);
