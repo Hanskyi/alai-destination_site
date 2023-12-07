@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './FilteredTours.module.scss';
-import { SwiperSlide } from 'swiper/react';
 import 'react-datepicker/dist/react-datepicker.css';
-import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
 import { Tour } from '@/type';
 import Card from '@/components/Card/Card';
 
