@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,7 +8,7 @@ import logout from '@/assets/toolbar/logout.png';
 import toolbar from './Toolbar.module.scss';
 import Backdrop from '@/components/Backdrop/Backdrop';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { GALLERY } from '@/constants';
+import { baseUrl, GALLERY } from '@/constants';
 import { IHeaderFooterInfo, ILocationListShortInfo } from '@/type';
 import { useTranslations } from 'next-intl';
 
@@ -28,8 +29,6 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
   const [backdropOpen, setBackdropOpen] = useState(initialBackdropState);
 
   const { data: session } = useSession();
-
-  console.log(locations, 'Тут Локации!!!!!'); // как отрисуешь локации, удали консоль!!!
 
   const t = useTranslations('Header.Navigation');
 
@@ -82,37 +81,6 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
   const largeLinks = [
     { text: t('item_2'), href: '/classifications' },
     { text: t('item_3'), href: '/about-us' },
-  ];
-
-  const regionLinks = [
-    {
-      region: 'Jalal-abad',
-      href: '/locations/Jalal-abad',
-    },
-    {
-      region: 'Osh',
-      href: '/locations/Osh',
-    },
-    {
-      region: 'Chuy',
-      href: '/locations/Chuy',
-    },
-    {
-      region: 'Talas',
-      href: '/locations/Talas',
-    },
-    {
-      region: 'Batken',
-      href: '/locations/Batken',
-    },
-    {
-      region: 'Issyk-Kul',
-      href: '/locations/Issyk-Kul',
-    },
-    {
-      region: 'Naryn',
-      href: '/locations/Naryn',
-    },
   ];
 
   const onClickLinkHeader = () => {
@@ -181,7 +149,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
               </div>
 
               <div className={toolbar.linksBottom}>
-                <div className={toolbar.destination__wrapper}>
+                <div>
                   <div
                     className={`${toolbar.headerLink} ${toolbar.destinations}`}
                     onClick={onClickLinkHeader}
@@ -196,9 +164,14 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                   {destinationsDropdown && (
                     <div className={toolbar.dropdown}>
                       <div className={toolbar.dropdown__links}>
-                        {regionLinks.map((item, index) => (
-                          <Link key={index} className={toolbar.dropdown__link} href={item.href}>
-                            {item.region}
+                        {locations?.data.map((item, index) => (
+                          <Link
+                            key={index}
+                            className={toolbar.dropdown__link}
+                            href={baseUrl + 'locations/' + item.id}
+                            onClick={closeMenu}
+                          >
+                            {item.name}
                           </Link>
                         ))}
                       </div>
@@ -258,9 +231,14 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                 {destinationsDropdown && (
                   <div className={`${toolbar.dropdown} ${toolbar.dropdown__burger}`}>
                     <div className={toolbar.dropdown__links}>
-                      {regionLinks.map((item, index) => (
-                        <Link key={index} className={toolbar.dropdown__link} href={item.href}>
-                          {item.region}
+                      {locations?.data.map((item, index) => (
+                        <Link
+                          key={index}
+                          className={toolbar.dropdown__link}
+                          href={baseUrl + 'locations/' + item.id}
+                          onClick={closeMenu}
+                        >
+                          {item.name}
                         </Link>
                       ))}
                     </div>
@@ -272,10 +250,6 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                     {link.text}
                   </Link>
                 ))}
-
-                <Link className={toolbar.headerLink} href="#">
-                  My Booking
-                </Link>
               </div>
             </div>
           </div>

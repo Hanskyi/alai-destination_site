@@ -1,31 +1,5 @@
 @use '../../styles/mixins';
 
-.locationBanner {
-  position: relative;
-  &__image {
-    max-height: 500px;
-    width: 100%;
-    object-fit: cover;
-    background-size: cover;
-  }
-  &__wrapper {
-    margin: 0 auto;
-    max-width: 1150px;
-    padding: 0 15px;
-  }
-  &__title {
-    position: absolute;
-    z-index: 50;
-    bottom: 20px;
-    color: #fff;
-    text-shadow: 0 0 10px #000;
-    font-size: 52px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 56px;
-  }
-}
-
 .locationDescription {
   max-width: 1150px;
   margin: 50px auto;

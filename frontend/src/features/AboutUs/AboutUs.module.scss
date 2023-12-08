@@ -338,6 +338,16 @@
 
   &__card {
     flex-shrink: 0;
+    width: 200px;
+    height: 130px;
+  }
+
+  &__img {
+    flex-shrink: 0;
+    object-fit: contain;
+    width: 200px;
+    height: 115px;
+    text-align: center;
   }
 }
 
@@ -348,38 +358,33 @@
 
   &__card {
     margin: 0 40px 60px 0;
-    flex: 1;
-    flex-basis: 230px;
+    //flex: 1;
+    //flex-basis: 230px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-right: 20px;
 
     @include mixins.sm {
       text-align: center;
+      justify-content: space-around;
     }
   }
 
   &__title {
-    font-size: 22px;
+    font-size: 27px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 1px;
+    text-align: center;
   }
 
   &__text {
     margin: 23px 0 23px;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
-  }
-
-  &__link {
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  &__link:hover {
-    color: #24c358;
   }
 }

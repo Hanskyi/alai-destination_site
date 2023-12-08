@@ -1,18 +1,25 @@
 import React from 'react';
 import FilteredTours from '@/features/FilteredTours/FilteredTours';
 import { wrapper } from '@/store/store';
-import { fetchToursData } from '@/features/FilteredTours/toursThunk';
+import { fetchClassifications, fetchLocations } from '@/features/FilteredTours/toursThunk';
 import { useAppSelector } from '@/store/hooks';
-import { selectTours } from '@/features/FilteredTours/toursSlice';
+import { selectClassifications, selectLocations } from '@/features/FilteredTours/toursSlice';
+import { useRouter } from 'next/router';
 
 const Tours = () => {
-  const tours = useAppSelector(selectTours);
-
-  return <FilteredTours tours={tours} />;
+  const router = useRouter();
+  const locations = useAppSelector(selectLocations);
+  const classifications = useAppSelector(selectClassifications);
+  return <FilteredTours router={router} locations={locations} classifications={classifications} />;
 };
 
 export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {
-  await store.dispatch(fetchToursData(context.locale ? context.locale : 'en'));
+  const locations = store.dispatch(fetchLocations(context.locale ? context.locale : 'en'));
+  const classifications = store.dispatch(
+    fetchClassifications(context.locale ? context.locale : 'en'),
+  );
+  await Promise.all([locations, classifications]);
+
   return {
     props: {
       messages: (await import(`../../lang/${context.locale}.json`)).default,

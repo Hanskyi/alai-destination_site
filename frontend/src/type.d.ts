@@ -365,3 +365,65 @@ export interface ILocalizationShortInfo {
   locale: string;
   localizations: Localization[];
 }
+
+//---------------------
+
+export interface ICoreValues {
+  id: number;
+  title: string;
+  description: string;
+  icon: IIcon;
+}
+
+export interface IPartners {
+  id: number;
+  link: string;
+  logo: ILogo;
+}
+
+export interface ICounter {
+  id: number;
+  title: string;
+  counter: number;
+  icon: IIcon[];
+}
+
+export interface IAboutUs {
+  data: IAboutUsPage;
+}
+
+export interface IAboutUsPage {
+  id: number;
+  bannerTitle: string;
+  bannerSubtitle: string;
+  missionTitle: string;
+  missionDescription: string;
+  valuesTitle: string;
+  partnersTitle: string;
+  partnersDescription: string;
+  awardsTitle: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  bannerImage: Image;
+  bannerIcon: IIcon;
+  missionIcon: IIcon;
+  coreValues: ICoreValues[];
+  partners: IPartners[];
+  awardsImages: Image[];
+  counter: ICounter[];
+  counterBanner: Image;
+  localizations: Localization[];
+}
+
+export interface IClassificationListShortInto {
+  data: ILocalizationShortInfoClassification[];
+}
+
+export interface ILocalizationShortInfoClassification {
+  id: number;
+  title: string;
+  locale: string;
+  localizations: Localization[];
+}
