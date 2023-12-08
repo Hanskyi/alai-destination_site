@@ -2,15 +2,14 @@ import React, { useEffect } from 'react';
 import ValuesBlock from '@/features/AboutUs/Components/ValuesBlock';
 import CountersBlock from '@/features/AboutUs/Components/CountersBlock';
 import Image from 'next/image';
-
 import Link from 'next/link';
 import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
-import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/router';
 import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
 import { selectAboutUs } from '@/features/AboutUs/AboutUsSlice';
 import { GALLERY } from '@/constants';
+import Banner from '@/components/Banner/Banner';
 
 const AboutUsPage = () => {
   const dispatch = useAppDispatch();
@@ -24,13 +23,14 @@ const AboutUsPage = () => {
     aboutUs && (
       <>
         <div className={aboutUsStyle.aboutUs__content}>
-          <div className="container">
-            <div className={aboutUsStyle.text}>
-              <h1 className={aboutUsStyle.text__title}>{aboutUs.bannerTitle}</h1>
-              <h4 className={aboutUsStyle.text__subtitle}>{aboutUs.bannerSubtitle}</h4>
-              <BackdropForBanner />
-            </div>
-          </div>
+          <Banner
+            src={GALLERY + aboutUs.bannerImage.url}
+            width={1200}
+            height={1200}
+            alt={'#'}
+            title={aboutUs.bannerTitle}
+            subTitle={aboutUs.bannerSubtitle}
+          />
         </div>
 
         <div className={aboutUsStyle.middleBlock}>

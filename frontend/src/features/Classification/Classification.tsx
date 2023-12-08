@@ -3,9 +3,9 @@ import style from './Classification.module.scss';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
 import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
-import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 import { useAppSelector } from '@/store/hooks';
 import { GALLERY } from '@/constants';
+import Banner from '@/components/Banner/Banner';
 
 const Classification = () => {
   const { classification } = useAppSelector((state) => state.classification);
@@ -19,18 +19,13 @@ const Classification = () => {
     classification && (
       <>
         <div className={style.classificationBanner}>
-          <Image
-            priority={true}
-            className={style.classificationBanner__image}
+          <Banner
             src={GALLERY + classification?.data.image.url}
             width={1200}
             height={1200}
-            alt="#"
+            alt={'#'}
+            title={classification?.data.title}
           />
-          <BackdropForBanner />
-          <div className={style.classificationBanner__wrapper}>
-            <h3 className={style.classificationBanner__title}>{classification?.data.title}</h3>
-          </div>
         </div>
         <div className={style.classificationInfo}>
           <h2 className={style.classificationInfo__title}>
