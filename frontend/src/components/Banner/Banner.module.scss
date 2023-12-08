@@ -1,6 +1,10 @@
+@use '../../styles/mixins';
+
 .banner {
   position: relative;
   text-align: start;
+  overflow: hidden;
+  border: 2px solid black;
 
   &_image {
     max-height: 500px;
@@ -10,22 +14,26 @@
 
   &_wrapper {
     max-width: 1150px;
+    color: #fff;
     margin: 0 auto;
     padding: 0 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
   }
 
   &_title {
-    position: absolute;
-    z-index: 50;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, 50%);
-    color: #fff;
     text-shadow: 0 0 10px #000;
     font-size: 52px;
     font-style: normal;
     font-weight: 600;
     line-height: 56px;
+
+    @include mixins.lg {
+      font-size: 42px;
+    }
   }
 
   &_sub_title {
