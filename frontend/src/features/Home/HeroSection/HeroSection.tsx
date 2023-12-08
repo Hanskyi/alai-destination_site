@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import AsyncSelect from 'react-select/async';
-import { IoNavigate } from 'react-icons/io5';
-import { IoBicycle } from 'react-icons/io5';
+import { IoBicycle, IoNavigate } from 'react-icons/io5';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './HeroSection.module.scss';
 import { useAppSelector } from '@/store/hooks';
 import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 import { useRouter } from 'next/router';
 import { GALLERY } from '@/constants';
+import { selectClassifications, selectLocations } from '@/features/Home/homeSlice';
 
 interface Option {
   value: string;
@@ -17,34 +17,32 @@ interface Option {
 
 const HeroSection = () => {
   const router = useRouter();
-
   const [showSelect, setShowSelect] = useState(false);
 
   const [selectedLocation, setSelectedLocation] = useState<string>('');
   const [selectedCategory, setSelectedClassification] = useState('');
 
   const heroSection = useAppSelector((state) => state.home.homeData?.heroSection);
-  const classifications = useAppSelector((state) => state.home.homeData?.homeClassification);
-  const tours = useAppSelector((state) => state.home.homeData?.homeTour.data.tours);
+
+  const locations = useAppSelector(selectLocations);
+  const classifications = useAppSelector(selectClassifications);
 
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     setShowSelect(true);
-  }, []);
+  }, [router.locale]);
 
   const filterLocationOptions = (inputValue: string) => {
-    if (!tours) {
+    if (!locations) {
       return [];
     }
-
-    const locationOptions = Array.from(new Set(tours.map((tour) => tour.location.name))).map(
+    const locationOptions = Array.from(new Set(locations.map((location) => location.name))).map(
       (locationName) => ({
         value: locationName,
         label: locationName,
       }),
     );
-
     return locationOptions.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
@@ -52,17 +50,15 @@ const HeroSection = () => {
     if (!classifications) {
       return [];
     }
-
-    const uniqueClassifications = Array.from(
-      new Set(classifications.data.classifications.map((classification) => classification.title)),
-    );
-
-    const options: Option[] = uniqueClassifications.map((classificationName) => ({
+    const classificationOptions = Array.from(
+      new Set(classifications.map((classification) => classification.title)),
+    ).map((classificationName) => ({
       value: classificationName,
       label: classificationName,
     }));
-
-    return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
+    return classificationOptions.filter((i) =>
+      i.label.toLowerCase().includes(inputValue.toLowerCase()),
+    );
   };
 
   const loadLocationOptions = (inputValue: string, callback: (options: Option[]) => void) => {
@@ -116,6 +112,7 @@ const HeroSection = () => {
               <IoNavigate className={style.searchIcon} />
               {showSelect && (
                 <AsyncSelect
+                  key={router.locale}
                   onChange={handleLocationChange}
                   isMulti={false}
                   className={style.searchInput}
@@ -148,6 +145,7 @@ const HeroSection = () => {
                 <IoBicycle className={style.bicycleIcon} />
                 {showSelect && (
                   <AsyncSelect
+                    key={router.locale}
                     onChange={handleClassificationChange}
                     isMulti={false}
                     className={`${style.searchInput} ${style.searchInputCategory}`}

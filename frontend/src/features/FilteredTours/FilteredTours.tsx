@@ -38,14 +38,11 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
     if (!selectedLocation && !selectedCategory) {
       return true;
     }
-
     const locationMatch =
       !selectedLocation || tour.location.name.toLowerCase() === selectedLocation.toLowerCase();
-
     const categoryMatch =
       !selectedCategory ||
       tour.classification.title.toLowerCase() === selectedCategory.toLowerCase();
-
     return locationMatch && categoryMatch;
   });
 
@@ -62,16 +59,12 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
     if (startDuration === null && endDuration === null) {
       return true;
     }
-
     const tourDuration = tour.duration;
-
     const startDurationMatch =
       startDuration === null || (tourDuration !== null && tourDuration >= startDuration);
-
     const endDurationMatch =
       endDuration === null ||
       (tourDuration !== null && tourDuration <= endDuration! && tourDuration >= startDuration!);
-
     return startDurationMatch && endDurationMatch;
   });
 
