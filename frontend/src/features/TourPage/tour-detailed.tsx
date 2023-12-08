@@ -9,6 +9,8 @@ import FaqList from '@/components/FaqList/FaqList';
 import Reviews from '@/components/ClassificationReviews/Reviews';
 import ReviewForm from '@/components/ReviewForm/ReviewForm';
 import { TourDataDetailed } from '@/type';
+import Banner from '@/components/Banner/Banner';
+import { GALLERY } from '@/constants';
 
 interface Props {
   tourData: TourDataDetailed;
@@ -17,12 +19,19 @@ interface Props {
 const TourPage: React.FC<Props> = ({ tourData }) => {
   return (
     <div className={style.tour_page}>
-      <TourHeroSection
+      <Banner
+        src={GALLERY + tourData?.mainImage?.url || ''}
+        width={1200}
+        height={1200}
+        alt={'#'}
         title={tourData?.title || ''}
         subTitle={tourData?.subTitle || ''}
-        mainImage={tourData?.mainImage?.url || ''}
       />
-
+      {/*<TourHeroSection*/}
+      {/*  title={tourData?.title || ''}*/}
+      {/*  subTitle={tourData?.subTitle || ''}*/}
+      {/*  mainImage={tourData?.mainImage?.url || ''}*/}
+      {/*/>*/}
       <div className="container">
         <div className={style.parentContainer}>
           <div className={style.tour_container}>

@@ -27,6 +27,8 @@ const HeroSection = () => {
   const classifications = useAppSelector((state) => state.home.homeData?.homeClassification);
   const tours = useAppSelector((state) => state.home.homeData?.homeTour.data.tours);
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   useEffect(() => {
     setShowSelect(true);
   }, []);
@@ -86,11 +88,27 @@ const HeroSection = () => {
     window.location.href = '/tours';
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const parallaxStyles = {
+    top: `${50 + scrollPosition * 0.07}%`,
+  };
+
   return (
     heroSection && (
       <div className={style.mainBlock}>
         <BackdropForBanner />
-        <div className={style.mainBlockContainer}>
+        <div className={style.mainBlockContainer} style={parallaxStyles}>
           <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
 
           <form onSubmit={goToTours} className={style.formBlock}>
