@@ -1,7 +1,7 @@
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/store/store';
-import { fetchClassifications, fetchLocations } from './toursThunk';
+import { fetchClassifications, fetchLocations, fetchToursData } from './toursThunk';
 import { HYDRATE } from 'next-redux-wrapper';
 
 interface ProductsState {
@@ -31,18 +31,18 @@ export const toursSlice = createSlice({
         return { ...state, ...action.payload.tours };
       },
     );
-    //
-    // builder.addCase(fetchToursData.pending, (state) => {
-    //   state.fetchLoading = true;
-    // });
-    // builder.addCase(fetchToursData.fulfilled, (state, { payload: data }) => {
-    //   state.fetchLoading = false;
-    //   state.tours = data;
-    // });
-    // builder.addCase(fetchToursData.rejected, (state) => {
-    //   state.fetchLoading = false;
-    //   state.error = true;
-    // });
+
+    builder.addCase(fetchToursData.pending, (state) => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(fetchToursData.fulfilled, (state, { payload: data }) => {
+      state.fetchLoading = false;
+      state.tours = data;
+    });
+    builder.addCase(fetchToursData.rejected, (state) => {
+      state.fetchLoading = false;
+      state.error = true;
+    });
 
     builder.addCase(fetchLocations.pending, (state) => {
       state.fetchLoading = true;
@@ -72,7 +72,7 @@ export const toursSlice = createSlice({
 
 export const fetchLoadingSelector = (state: RootState) => state.tours.fetchLoading;
 
-// export const selectTours = (state: RootState) => state.tours.tours;
+export const selectTours = (state: RootState) => state.tours.tours;
 
 export const selectLocations = (state: RootState) => state.tours.locations;
 

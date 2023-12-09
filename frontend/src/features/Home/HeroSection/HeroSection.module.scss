@@ -49,7 +49,6 @@
       padding: 10px;
       font-weight: bold;
       margin-bottom: 32px;
-      max-width: 500px;
       color: white;
       font-size: 64px;
       line-height: 64px;
@@ -81,6 +80,8 @@
       }
 
       .searchSelectBlock {
+        display: flex;
+        align-items: center;
         z-index: 5;
         width: 100%;
         @include mixins.sm {
@@ -89,6 +90,7 @@
       }
 
       .searchInput {
+        flex-grow: 1;
         position: relative;
         width: 350px;
         margin-right: 5px;
@@ -115,6 +117,9 @@
             position: relative;
             margin-right: 5px;
             width: 250px;
+            @include mixins.md {
+              margin-bottom: 0;
+            }
             @include mixins.sm {
               margin-right: 2px;
             }

@@ -1,22 +1,18 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './FilteredTours.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import Card from '@/components/Card/Card';
-import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
-import axiosApi from '@/axiosApi';
 import { NextRouter } from 'next/router';
 
 interface Props {
   router: NextRouter;
+  tours: Tour[];
   locations: ILocalizationShortInfo[];
   classifications: ILocalizationShortInfoClassification[];
 }
 
-const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) => {
-  const queryForAllTours = `?fields[0]=id&fields[1]=title&fields[2]=price&fields[3]=duration&populate[classification][fields][0]=title&populate[location][fields][0]=name&populate[mainImage][fields][0]=url&populate[localizations][populate]=true&populate[localizations][fields][0]=locale&locale=${router.locale}`;
-
+const FilteredTours: React.FC<Props> = ({ tours, router, locations, classifications }) => {
   const notFound = (
     <p className={style.notFound}>
       No tours were found with these settings. Please adjust your search parameters to view
@@ -28,21 +24,8 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
 
-  const [loading, setLoading] = useState(true); // Added loading state
-
-  const [tourCards, setTourCards] = useState<Tour[]>([]);
-
-  const [prevSelectedLocation, setPrevSelectedLocation] = useState('');
-  const [prevSelectedCategory, setPrevSelectedCategory] = useState('');
-  const [prevSelectedPriceSort, setPrevSelectedPriceSort] = useState('');
-
-  const isMounted = useRef(true);
-
   const [startDuration, setStartDuration] = useState<number | null>(null);
   const [endDuration, setEndDuration] = useState<number | null>(null);
-
-  const [prevStartDuration, setPrevStartDuration] = useState<number | null>(null);
-  const [prevEndDuration, setPrevEndDuration] = useState<number | null>(null);
 
   const handleDurationReset = () => {
     setStartDuration(null);
@@ -51,7 +34,19 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
 
-  const sortedByPrice = tourCards.sort((tourA, tourB) => {
+  const filterByLocationAndCategory = tours.filter((tour) => {
+    if (!selectedLocation && !selectedCategory) {
+      return true;
+    }
+    const locationMatch =
+      !selectedLocation || tour.location.name.toLowerCase() === selectedLocation.toLowerCase();
+    const categoryMatch =
+      !selectedCategory ||
+      tour.classification.title.toLowerCase() === selectedCategory.toLowerCase();
+    return locationMatch && categoryMatch;
+  });
+
+  const sortedByPrice = filterByLocationAndCategory.sort((tourA, tourB) => {
     if (selectedPriceSort === 'lowToHigh') {
       return tourA.price - tourB.price;
     } else if (selectedPriceSort === 'highToLow') {
@@ -64,16 +59,12 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
     if (startDuration === null && endDuration === null) {
       return true;
     }
-
     const tourDuration = tour.duration;
-
     const startDurationMatch =
       startDuration === null || (tourDuration !== null && tourDuration >= startDuration);
-
     const endDurationMatch =
       endDuration === null ||
       (tourDuration !== null && tourDuration <= endDuration! && tourDuration >= startDuration!);
-
     return startDurationMatch && endDurationMatch;
   });
 
@@ -107,119 +98,6 @@ const FilteredTours: React.FC<Props> = ({ router, locations, classifications }) 
     selectedPriceSort,
     startDuration,
     endDuration,
-  ]);
-
-  const fetchData = useCallback(async () => {
-    try {
-      setLoading(true);
-
-      if (
-        selectedCategory === prevSelectedCategory &&
-        selectedLocation === prevSelectedLocation &&
-        selectedPriceSort === prevSelectedPriceSort &&
-        startDuration === prevStartDuration &&
-        endDuration === prevEndDuration
-      ) {
-        setLoading(false);
-        return;
-      }
-
-      const queryParameters = [];
-
-      queryParameters.push('fields[0]=id');
-      queryParameters.push('fields[1]=title');
-      queryParameters.push('fields[2]=price');
-      queryParameters.push('fields[3]=duration');
-
-      if (selectedCategory) {
-        queryParameters.push(
-          `filters[classification][title][$eq]=${encodeURIComponent(selectedCategory)}`,
-        );
-      }
-
-      if (selectedLocation) {
-        queryParameters.push(
-          `filters[location][name][$eq]=${encodeURIComponent(selectedLocation)}`,
-        );
-      }
-
-      queryParameters.push('populate[classification][fields][0]=title');
-      queryParameters.push('populate[location][fields][0]=name');
-      queryParameters.push('populate[mainImage][fields][0]=url');
-
-      if (router.locale) {
-        queryParameters.push(
-          `populate[localizations][populate]=true&populate[localizations][fields][0]=locale&locale=${encodeURIComponent(
-            router.locale,
-          )}`,
-        );
-      }
-
-      const queryString = queryParameters.join('&');
-
-      const response = await axiosApi.get(`tours?${queryString}`);
-
-      let filteredTours = response.data.data;
-
-      if (selectedLocation) {
-        filteredTours = filteredTours.filter(
-          (tour: Tour) => tour.location.name === selectedLocation,
-        );
-      }
-
-      if (selectedCategory) {
-        filteredTours = filteredTours.filter(
-          (tour: Tour) => tour.classification.title === selectedCategory,
-        );
-      }
-
-      setTourCards(filteredTours);
-      setPrevSelectedCategory(selectedCategory);
-      setPrevSelectedLocation(selectedLocation);
-      setPrevSelectedPriceSort(selectedPriceSort);
-      setPrevStartDuration(startDuration);
-      setPrevEndDuration(endDuration);
-    } catch (e) {
-      console.log(e);
-      alert('Something went wrong. Please refresh the page!');
-    } finally {
-      setLoading(false);
-    }
-  }, [
-    router.locale,
-    selectedLocation,
-    selectedCategory,
-    selectedPriceSort,
-    startDuration,
-    endDuration,
-    prevSelectedCategory,
-    prevSelectedLocation,
-    prevSelectedPriceSort,
-    prevStartDuration,
-    prevEndDuration,
-  ]);
-
-  useEffect(() => {
-    if (isMounted.current) {
-      isMounted.current = false;
-      return;
-    }
-    void fetchData();
-  }, [
-    router.locale,
-    selectedLocation,
-    selectedCategory,
-    fetchData,
-    selectedPriceSort,
-    startDuration,
-    endDuration,
-    classifications,
-    locations,
-    prevSelectedCategory,
-    prevSelectedLocation,
-    prevSelectedPriceSort,
-    prevStartDuration,
-    prevEndDuration,
   ]);
 
   return (

@@ -5,10 +5,11 @@ import {
   ILocalizationShortInfo,
   ILocalizationShortInfoClassification,
   ILocationListShortInfo,
+  Tour,
+  ToursPage,
 } from '@/type';
 
-// const queryRoute =
-//   '?sort[0]=title:asc&fields[0]=id&fields[1]=title&fields[2]=price&fields[3]=duration&populate[classification][fields][0]=title&populate[location][fields][0]=name&populate[mainImage][fields][0]=url&pagination[pageSize]=10&pagination[page]=1&publicationState=live';
+let tours = `?fields[0]=id&fields[1]=title&fields[2]=price&fields[3]=duration&populate[classification][fields][0]=title&populate[location][fields][0]=name&populate[mainImage][fields][0]=url&populate[localizations][populate]=true&populate[localizations][fields][0]=locale`;
 
 const locations =
   'locations?fields[0]=name&fields[1]=locale&populate[localizations][populate]=true&populate[localizations][fields][0]=locale';
@@ -16,10 +17,10 @@ const locations =
 const classifications =
   'classifications?fields[0]=title&fields[1]=locale&populate[localizations][populate]=true&populate[localizations][fields][0]=locale';
 
-// export const fetchToursData = createAsyncThunk<Tour[], string>('tours/fetchAll', async (locale) => {
-//   const { data } = await axiosApi.get<ToursPage>('tours' + queryRoute + `&locale=${locale}`);
-//   return data.data;
-// });
+export const fetchToursData = createAsyncThunk<Tour[], string>('tours/fetchAll', async (locale) => {
+  const { data } = await axiosApi.get<ToursPage>('tours' + tours + `&locale=${locale}`);
+  return data.data;
+});
 
 export const fetchLocations = createAsyncThunk<ILocalizationShortInfo[], string>(
   'locations/fetchAll',
