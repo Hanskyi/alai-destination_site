@@ -10,6 +10,33 @@ import imageNotAvailable from '@/assets/imageNotAvailable.png';
 const Blog = () => {
   const { article } = useAppSelector((state) => state.articles);
 
+  //Render Video
+  const renderVideo = () => {
+    const content = article?.data ? article.data.content : ''; // Get the content from article data
+
+    if (!content) {
+      return null;
+    }
+
+    const regex = /<figure class="media"><oembed url="(.*?)"><\/oembed><\/figure>/g;
+
+    const replacedData = content.replace(regex, (match, url) => {
+      const videoID = extractVideoID(url);
+
+      return `<div class="videoWrapper"><iframe width="560" height="315" src="//www.youtube.com/embed/${videoID}" frameborder="0" allowfullscreen></iframe></div>`;
+    });
+
+    return <div dangerouslySetInnerHTML={{ __html: replacedData }} />;
+  };
+
+  const extractVideoID = (url:string) => {
+    const regex =
+      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/;
+    const match = url.match(regex);
+
+    return match ? match[1] : '';
+  };
+
   return (
     <div className={`${style.blog} container`}>
       <div className={style.blog_header}>
@@ -37,10 +64,9 @@ const Blog = () => {
           alt="Blog image"
         />
       </div>
-      <div className={style.detailed_itinerary}>
-        <div className={style.day_detailed}>
-          <div dangerouslySetInnerHTML={{ __html: article?.data ? article.data.content : '' }} />
-        </div>
+      <div className={style.blog_content}>
+        {/* Render the replaced content with videos */}
+        {renderVideo()}
       </div>
     </div>
   );
