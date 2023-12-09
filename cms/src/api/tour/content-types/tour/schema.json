@@ -84,24 +84,6 @@
       "min": 1,
       "max": 30
     },
-    "startDate": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "date",
-      "required": true
-    },
-    "endDate": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "required": true,
-      "type": "date"
-    },
     "blogs": {
       "type": "relation",
       "relation": "manyToMany",
@@ -144,7 +126,7 @@
     "tourPrice": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "customField",
