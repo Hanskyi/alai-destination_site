@@ -29,7 +29,7 @@ const Blog = () => {
     return <div dangerouslySetInnerHTML={{ __html: replacedData }} />;
   };
 
-  const extractVideoID = (url:string) => {
+  const extractVideoID = (url: string) => {
     const regex =
       /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/;
     const match = url.match(regex);
