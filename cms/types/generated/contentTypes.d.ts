@@ -1389,7 +1389,7 @@ export interface ApiInfoInfo extends Schema.SingleType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1777,20 +1777,6 @@ export interface ApiTourTour extends Schema.CollectionType {
         min: 1;
         max: 30;
       }>;
-    startDate: Attribute.Date &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    endDate: Attribute.Date &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     blogs: Attribute.Relation<'api::tour.tour', 'manyToMany', 'api::blog.blog'>;
     seats: Attribute.Integer &
       Attribute.SetPluginOptions<{
@@ -1834,7 +1820,7 @@ export interface ApiTourTour extends Schema.CollectionType {
       > &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     subTitle: Attribute.Text &
