@@ -18,5 +18,8 @@
   "TourCard": {
     "days": "days",
     "from": "from"
+  },
+  "AboutUs": {
+    "contacts": "contacts"
   }
 }
