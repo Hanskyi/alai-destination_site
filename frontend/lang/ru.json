@@ -27,5 +27,19 @@
   },
   "LocationID": {
     "subtitle": "Все туры по направлению:"
+  },
+  "ToursPage": {
+    "title": "Поиск",
+    "subtitle": "Куда поедем :)"
+  },
+  "FilterBlock": {
+    "location": "Направление",
+    "categories": "Категории",
+    "sortByPrice": "По цене",
+    "minPrice": "по возрастанию",
+    "maxPrice": "по убыванию",
+    "duration": "Длительность",
+    "clear": "очистить",
+    "clearAll": "сбросить"
   }
 }

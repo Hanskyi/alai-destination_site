@@ -27,5 +27,19 @@
   },
   "LocationID": {
     "subtitle": "All tours in the:"
+  },
+  "ToursPage": {
+    "title": "Search",
+    "subtitle": "Discover your next adventure"
+  },
+  "FilterBlock": {
+    "location": "Location",
+    "categories": "Categories",
+    "sortByPrice": "Sort by Price",
+    "minPrice": "Low to High",
+    "maxPrice": "High to Low",
+    "duration": "Duration",
+    "clear": "clear",
+    "clearAll": "clear all"
   }
 }
