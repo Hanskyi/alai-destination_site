@@ -41,5 +41,30 @@
     "duration": "Duration",
     "clear": "clear",
     "clearAll": "clear all"
+  },
+  "TourDetails": {
+    "title": "Tour Details",
+    "type": "Tour Type",
+    "duration": "Duration",
+    "participants": "Participants",
+    "price": "Price",
+    "people": "people",
+    "days": "days"
+  },
+  "TourIdTabs": {
+    "overview": "Overview",
+    "detailedItinerary": "Detailed Itinerary",
+    "tourPrice": "Tour Price",
+    "tourDates": "Tour Dates",
+    "bookNow": "Book Now"
+  },
+  "TourIdGallery": {
+    "gallery": "gallery"
+  },
+  "ReviewsBlock": {
+    "title": "Reviews",
+    "totalReviews": "out of {maxRating} based on {totalRatingCount} reviews submitted.",
+    "filterByRating": "Filter by rating",
+    "showAll": "Show All Reviews"
   }
 }

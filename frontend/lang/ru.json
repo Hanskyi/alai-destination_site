@@ -41,5 +41,30 @@
     "duration": "Длительность",
     "clear": "очистить",
     "clearAll": "сбросить"
+  },
+  "TourDetails": {
+    "title": "Детали тура",
+    "type": "Категория",
+    "duration": "Длительность",
+    "participants": "Участники",
+    "price": "Цена",
+    "people": "чел.",
+    "days": "дн."
+  },
+  "TourIdTabs": {
+    "overview": "Обзор",
+    "detailedItinerary": "Подробный маршрут",
+    "tourPrice": "Tour Price",
+    "tourDates": "Стоимость тура",
+    "bookNow": "Забронировать"
+  },
+  "TourIdGallery": {
+    "gallery": "галерея"
+  },
+  "ReviewsBlock": {
+    "title": "Отзывы",
+    "totalReviews": "из {maxRating} на основе {totalRatingCount} представленных отзывов.",
+    "filterByRating": "Сортировать по рейтингу",
+    "showAll": "Показать все отзывы"
   }
 }
