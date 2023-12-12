@@ -1,8 +1,8 @@
 import React from 'react';
-import NotFound from '@/features/NotFound/NotFound';
+import Error from '@/features/Error/Error';
 
-const NotFoundPage = () => {
-  return <NotFound />;
+const ServerProblemPage = () => {
+  return <Error statusCode={'500'} message={'Internal Server Error'} />;
 };
 
 export const getStaticProps = async (context: { locale: any }) => {
@@ -13,4 +13,4 @@ export const getStaticProps = async (context: { locale: any }) => {
   };
 };
 
-export default NotFoundPage;
+export default ServerProblemPage;
