@@ -40,11 +40,11 @@ const LocationsRegion: React.FC = () => {
         <div className={classificationsStyle.classificationInfo__video} style={{ height: '486px' }}>
           {isVideoPlaying ? (
             <iframe
+              style={{ border: 'none' }}
               width="100%"
               height="100%"
               src={`https://www.youtube.com/embed/${content.videoLink}?si=ELqKiwQhDaaWnzZ3`}
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
@@ -72,7 +72,6 @@ const LocationsRegion: React.FC = () => {
           </h3>
           <ToursDisplay tours={content.tours} initialCardCount={3} additionalCardCount={3} />
         </div>
-        {/*<Reviews />*/}
       </>
     )
   );
