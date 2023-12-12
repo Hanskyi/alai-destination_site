@@ -3,15 +3,14 @@ import React, { useState } from 'react';
 import style from './locationRegion.module.scss';
 import classificationsStyle from '@/features/Classification/Classification.module.scss';
 import Image from 'next/image';
-import playIcon from '@/assets/icon/icon-play.svg';
-import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
 import { useAppSelector } from '@/store/hooks';
 import { selectLocationsRegion } from '@/features/LocationsRegion/LocationsRegionSlice';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
+import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
 
-const LocationsRegion = () => {
+const LocationsRegion: React.FC = () => {
   const content = useAppSelector(selectLocationsRegion);
 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -62,7 +61,6 @@ const LocationsRegion = () => {
                 className={classificationsStyle.classificationInfo__video__button}
                 onClick={handlePlayButtonClick}
               >
-                <Image src={playIcon} alt="#" />
                 Play
               </button>
             </>
@@ -72,23 +70,11 @@ const LocationsRegion = () => {
           <h3 className={style.toursBlog__title}>
             {t('subtitle')} {content.name}
           </h3>
-          <div className={style.toursBlog__cards}>
-            {content.tours.length! > 0 ? (
-              content.tours.map((item) => <ClassificationsCard key={item.id} tour={item} />)
-            ) : (
-              <h3 className={style.toursBlog__title}>Not tours yet</h3>
-            )}
-          </div>
-          {content.tours.length! > 6 && (
-            <button className={classificationsStyle.classificationCards__button}>
-              Show more trips
-            </button>
-          )}
+          <ToursDisplay tours={content.tours} initialCardCount={3} additionalCardCount={3} />
         </div>
         {/*<Reviews />*/}
       </>
     )
   );
 };
-
 export default LocationsRegion;

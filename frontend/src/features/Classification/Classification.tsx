@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import style from './Classification.module.scss';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
-import ClassificationsCard from '@/components/ClassificationsCard/ClassificationsCard';
 import { useAppSelector } from '@/store/hooks';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
+import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
 
 const Classification = () => {
@@ -23,11 +23,11 @@ const Classification = () => {
       <>
         <div className={style.classificationBanner}>
           <Banner
-            src={GALLERY + classification?.data.image.url}
+            src={GALLERY + classification.data.image.url}
             width={1200}
             height={1200}
             alt={'#'}
-            title={classification?.data.title}
+            title={classification.data.title}
           />
         </div>
         <div className={style.classificationInfo}>
@@ -35,9 +35,7 @@ const Classification = () => {
             Each journey may begin with a single step, but some require a few more steps than
             others.
           </h2>
-          <p className={style.classificationInfo__description}>
-            {classification?.data.description}
-          </p>
+          <p className={style.classificationInfo__description}>{classification.data.description}</p>
           <div className={style.classificationInfo__video} style={{ height: ' 486px' }}>
             {isVideoPlaying ? (
               <iframe
@@ -72,18 +70,11 @@ const Classification = () => {
             <h3 className={style.classificationCards__title}>
               {t('subtitle')} {classification?.data.title}
             </h3>
-            <div className={style.classificationCards__content}>
-              {classification?.data?.tours.length! > 0 ? (
-                classification?.data?.tours.map((item) => (
-                  <ClassificationsCard key={item.id} tour={item} />
-                ))
-              ) : (
-                <h3 className={style.classificationCards__title}>No tours yet!</h3>
-              )}
-            </div>
-            {classification?.data.tours.length! > 6 && (
-              <button className={style.classificationCards__button}>Show more trips</button>
-            )}
+            <ToursDisplay
+              tours={classification.data.tours}
+              initialCardCount={3}
+              additionalCardCount={3}
+            />
           </div>
           {/*<Reviews />*/}
         </div>
