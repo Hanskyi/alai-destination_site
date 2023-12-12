@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { OneArticle, OneClassification } from '@/type';
+import { OneClassification } from '@/type';
 import axiosApi from '@/axiosApi';
 
 interface ClassificationArgument {

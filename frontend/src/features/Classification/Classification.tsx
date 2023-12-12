@@ -39,11 +39,11 @@ const Classification = () => {
           <div className={style.classificationInfo__video} style={{ height: ' 486px' }}>
             {isVideoPlaying ? (
               <iframe
+                style={{ border: 'none' }}
                 width="100%"
                 height="100%"
                 src={`https://www.youtube.com/embed/${classification.data.videoLink}?autoplay=1&rel=0&modestbranding=1`}
                 title="YouTube video player"
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>

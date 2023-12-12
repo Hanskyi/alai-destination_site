@@ -8,7 +8,6 @@ import {
   selectClassifications,
 } from '@/features/Classifications/ClassificationsSlice';
 import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
-import Reviews from '@/components/ClassificationReviews/Reviews';
 import Banner from '@/components/Banner/Banner';
 import { GALLERY } from '@/constants';
 
@@ -83,7 +82,6 @@ const Classifications = () => {
                 ),
             )}
           </div>
-          {/*<Reviews />*/}
         </div>
       </div>
     </>

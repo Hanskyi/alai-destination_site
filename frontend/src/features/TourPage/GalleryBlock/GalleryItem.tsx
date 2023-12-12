@@ -5,7 +5,7 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/styles.css';
 import style from './Gallery.module.scss';
 import Image from 'next/image';
-import { GALLERY } from '../../../constants';
+import { GALLERY } from '@/constants';
 
 interface GalleryItemProps {
   imageUrl: string;

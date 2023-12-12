@@ -6,6 +6,10 @@ import { useAppSelector } from '@/store/hooks';
 import dayjs from 'dayjs';
 import { GALLERY } from '@/constants';
 import imageNotAvailable from '@/assets/imageNotAvailable.png';
+import Card from '@/components/Card/Card';
+import { SwiperSlide } from 'swiper/react';
+import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
+import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 
 const Blog = () => {
   const { article } = useAppSelector((state) => state.articles);
@@ -23,7 +27,7 @@ const Blog = () => {
     const replacedData = content.replace(regex, (match, url) => {
       const videoID = extractVideoID(url);
 
-      return `<div class="videoWrapper"><iframe width="560" height="315" src="//www.youtube.com/embed/${videoID}" frameborder="0" allowfullscreen></iframe></div>`;
+      return `<div className="videoWrapper"><iframe width="560" height="315" src="//www.youtube.com/embed/${videoID}" style={{ border: "none" } allowfullscreen></iframe></div>`;
     });
 
     return <div dangerouslySetInnerHTML={{ __html: replacedData }} />;
@@ -67,6 +71,24 @@ const Blog = () => {
       <div className={style.blog_content}>
         {/* Render the replaced content with videos */}
         {renderVideo()}
+      </div>
+      <div style={{ overflow: 'hidden' }}>
+        <h2 style={{ marginBottom: '20px' }}>Recommended</h2>
+        {article?.data?.tours.length! > 0 ? (
+          <SwiperComponent link={'/tours'}>
+            {article?.data.tours.map((item) => (
+              <SwiperSlide
+                className={slideStyle.swiper__slide}
+                style={{ border: 'none' }}
+                key={item.id}
+              >
+                <Card key={item.id} image={item.mainImage.url} id={item.id} title={item.title} />
+              </SwiperSlide>
+            ))}
+          </SwiperComponent>
+        ) : (
+          <h3 className={style.classificationCards__title}>No tours yet!</h3>
+        )}
       </div>
     </div>
   );

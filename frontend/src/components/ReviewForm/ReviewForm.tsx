@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import Rating from '../Rating/Rating';
-import axiosApi from '../../axiosApi';
 import styles from './ReviewForm.module.scss';
+import axiosApi from '@/axiosApi';
 
 interface Props {
   tourId: number;
@@ -33,16 +33,16 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
     event.preventDefault();
 
     try {
-      const dataToSend = {
-        data: {
-          review: review,
-          rating: rating,
-          tour: tourId,
-          displayName: displayName,
-          users_permissions_user: session?.user?.userId, // Use user ID from session
-        },
-      };
-      const response = await axiosApi.post('/reviews', dataToSend);
+      // const dataToSend = {
+      //   data: {
+      //     review: review,
+      //     rating: rating,
+      //     tour: tourId,
+      //     displayName: displayName,
+      //     users_permissions_user: session?.user?.userId, // Use user ID from session
+      //   },
+      // };
+      // const response = await axiosApi.post('/reviews', dataToSend);
 
       // Reset fields
       setReview('');

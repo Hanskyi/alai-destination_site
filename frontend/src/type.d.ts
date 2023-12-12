@@ -109,9 +109,9 @@ export interface IClassificationData {
   localizations: Localization[];
 }
 
-export interface IClassification {
-  data: IClassificationData;
-}
+// export interface IClassification {
+//   data: IClassificationData;
+// }
 
 export interface IClassificationDataData {
   data: IClassificationData[];
@@ -190,6 +190,7 @@ export interface OneArticleData {
   title: string;
   content: string;
   author: string;
+  tours: ArticleTour[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -197,6 +198,13 @@ export interface OneArticleData {
   previewDescription: string;
   mainImage: Image;
   localizations: Localization[];
+}
+
+export interface ArticleTour {
+  id: number;
+  title: string;
+  previewDescription: string;
+  mainImage: Image;
 }
 
 export interface OneClassification {
@@ -281,30 +289,30 @@ export interface ToursPage {
   data: Tour[];
 }
 
-export interface TourData {
-  data: {
-    id: number;
-    classification: Classification;
-    review: TourReview[];
-    title: string;
-    images: Image[];
-    mainImage: Image;
-    price: number;
-    duration: number;
-    startDate: string;
-    endDate: string;
-    blogs: Blog[];
-    location: string;
-    seats: number;
-    overviewCK: string;
-    detailedDays: string;
-    tourPrice: string;
-    subTitle: string;
-    scheduleTable: ITable[];
-    previewDescription: string;
-    faqList: ITable[];
-  };
-}
+// export interface TourData {
+//   data: {
+//     id: number;
+//     classification: Classification;
+//     review: TourReview[];
+//     title: string;
+//     images: Image[];
+//     mainImage: Image;
+//     price: number;
+//     duration: number;
+//     startDate: string;
+//     endDate: string;
+//     blogs: Blog[];
+//     location: string;
+//     seats: number;
+//     overviewCK: string;
+//     detailedDays: string;
+//     tourPrice: string;
+//     subTitle: string;
+//     scheduleTable: ITable[];
+//     previewDescription: string;
+//     faqList: ITable[];
+//   };
+// }
 
 export interface TourDataDetailed {
   id: number;

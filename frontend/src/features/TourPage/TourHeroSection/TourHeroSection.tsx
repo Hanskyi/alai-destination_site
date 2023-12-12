@@ -1,6 +1,6 @@
 import React from 'react';
 import tourStyle from './TourHeroSection.module.scss';
-import { GALLERY } from '../../../constants';
+import { GALLERY } from '@/constants';
 import BackdropForBanner from '@/components/BackdropForBanner/BackdropForBanner';
 
 interface Props {

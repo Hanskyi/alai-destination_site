@@ -38,6 +38,7 @@
 .cardWaysToTravelCard {
   width: 238px;
   height: 297px;
+  overflow: hidden;
 }
 .cardWaysToTravelCard__image {
   width: 100%;
@@ -78,8 +79,7 @@
 .goodTripsCard__body__wrapper {
   overflow: hidden;
 }
-.goodTripsCard__body__days,
-.goodTripsCard__body__classification {
+.goodTripsCard__body__days, .goodTripsCard__body__classification {
   color: rgba(0, 0, 0, 0.55);
   font-size: 10px;
   font-style: normal;

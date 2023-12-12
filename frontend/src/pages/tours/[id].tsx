@@ -2,7 +2,6 @@ import { GetServerSideProps } from 'next';
 import { TourDataDetailed } from '@/type';
 import axiosApi from '../../axiosApi';
 import TourPage from '../../features/TourPage/tour-detailed';
-import { TourData } from '../../type';
 
 interface Props {
   tourData: TourDataDetailed | null;
