@@ -73,11 +73,15 @@ const Classifications = () => {
             Our walking, hiking & trekking trips
           </h3>
           <div className={style.classificationsCards__content}>
-            {classifications.map((category) => (
-              <div className={style.classificationsCards__content__box} key={category.id}>
-                <WaysToTravelCard item={category} />
-              </div>
-            ))}
+            {classifications.map(
+              (category) =>
+                category &&
+                category.image && (
+                  <div className={style.classificationsCards__content__box} key={category.id}>
+                    <WaysToTravelCard item={category} />
+                  </div>
+                ),
+            )}
           </div>
           {/*<Reviews />*/}
         </div>

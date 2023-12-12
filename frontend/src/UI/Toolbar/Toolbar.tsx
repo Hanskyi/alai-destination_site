@@ -31,6 +31,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
   const { data: session } = useSession();
 
   const t = useTranslations('Header.Navigation');
+  const loginStatus = useTranslations('Header.LoginStatus');
 
   const handleGoogleSignIn = async () => {
     await signIn('google');
@@ -49,7 +50,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
   const renderHeaderTopLinks = session
     ? [
         {
-          text: 'Logout',
+          text: loginStatus('logout'),
           onClick: () => signOut(),
           href: '#',
           imgSrc: logout,
@@ -64,7 +65,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
       ]
     : [
         {
-          text: 'Log in',
+          text: loginStatus('login'),
           onClick: handleGoogleSignIn,
           href: '#',
           imgSrc: enter,

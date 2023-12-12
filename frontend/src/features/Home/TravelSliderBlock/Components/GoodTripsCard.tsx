@@ -3,12 +3,14 @@ import style from '../TravelSliderBlock.module.scss';
 import Image from 'next/image';
 import { TourCard } from '@/type';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   item: TourCard;
 }
 
 const GoodTripsCard: React.FC<Props> = ({ item }) => {
+  const t = useTranslations('TourCard');
   return (
     <Link href={`/tours/${item?.id}`} className={style.card}>
       <>
@@ -23,7 +25,9 @@ const GoodTripsCard: React.FC<Props> = ({ item }) => {
         </div>
         <div className={style.goodTripsCard__body}>
           <div className={style.goodTripsCard__body__wrapper}>
-            <span className={style.goodTripsCard__body__days}>{item?.duration} days</span>
+            <span className={style.goodTripsCard__body__days}>
+              {item?.duration} {t('days')}
+            </span>
             <span className={style.goodTripsCard__body__classification}>
               {item?.classification.title}
             </span>
@@ -31,7 +35,8 @@ const GoodTripsCard: React.FC<Props> = ({ item }) => {
 
           <span className={style.goodTripsCard__body__title}>{item?.title}</span>
           <p className={style.goodTripsCard__body__price}>
-            From <span className={style.goodTripsCard__body__price__span}>${item?.price} USD</span>
+            {t('from')}{' '}
+            <span className={style.goodTripsCard__body__price__span}>${item?.price} USD</span>
           </p>
         </div>
       </>

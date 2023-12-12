@@ -6,10 +6,13 @@ import ClassificationsCard from '@/components/ClassificationsCard/Classification
 import { useAppSelector } from '@/store/hooks';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
+import { useTranslations } from 'next-intl';
 
 const Classification = () => {
   const { classification } = useAppSelector((state) => state.classification);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const t = useTranslations('ClassificationID');
 
   const handlePlayButtonClick = () => {
     setIsVideoPlaying(true);
@@ -67,7 +70,7 @@ const Classification = () => {
           </div>
           <div className={style.classificationCards}>
             <h3 className={style.classificationCards__title}>
-              Our walking, hiking & trekking trips
+              {t('subtitle')} {classification?.data.title}
             </h3>
             <div className={style.classificationCards__content}>
               {classification?.data?.tours.length! > 0 ? (

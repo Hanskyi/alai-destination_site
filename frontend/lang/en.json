@@ -2,9 +2,44 @@
   "Header": {
     "Navigation": {
       "item_1": "Destinations",
-      "item_2": "Ways to travel",
+      "item_2": "Categories",
       "item_3": "About us",
       "item_4": "Home"
+    },
+    "LoginStatus": {
+      "login": "Log in",
+      "logout": "Log out"
     }
+  },
+  "HomeCategories": {
+    "title": "Small group travel that good all over.",
+    "subTitle": "Good views, good friends and good times on over 1000 trips in more than 100 countries"
+  },
+  "TourCard": {
+    "days": "days",
+    "from": "from"
+  },
+  "AboutUs": {
+    "contacts": "contacts"
+  },
+  "ClassificationID": {
+    "subtitle": "Tours by category:"
+  },
+  "LocationID": {
+    "subtitle": "All tours in the:"
+  },
+  "ToursPage": {
+    "title": "Search",
+    "subtitle": "Discover your next adventure"
+  },
+  "FilterBlock": {
+    "location": "Location",
+    "categories": "Categories",
+    "sortByPrice": "Sort by Price",
+    "minPrice": "Low to High",
+    "maxPrice": "High to Low",
+    "duration": "Duration",
+    "clear": "clear",
+    "clearAll": "clear all"
   }
 }

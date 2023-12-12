@@ -10,11 +10,14 @@ import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
 import { selectAboutUs } from '@/features/AboutUs/AboutUsSlice';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
+import { useTranslations } from 'next-intl';
 
 const AboutUsPage = () => {
   const dispatch = useAppDispatch();
   const { locale } = useRouter();
   const aboutUs = useAppSelector(selectAboutUs);
+
+  const t = useTranslations('AboutUs');
 
   useEffect(() => {
     dispatch(fetchAllAboutUsPage(locale || 'en'));
@@ -98,7 +101,7 @@ const AboutUsPage = () => {
 
           <div className={aboutUsStyle.contactsBlock}>
             <div className="container">
-              <h2 className={aboutUsStyle.contactsBlock__title}>Contacts</h2>
+              <h2 className={aboutUsStyle.contactsBlock__title}>{t('contacts')}</h2>
               <div className={aboutUsStyle.contactsBlock__card}>
                 <p className={aboutUsStyle.contactsBlock__text}>Mob: +996 550 339292</p>
                 <p className={aboutUsStyle.contactsBlock__text}>WhatsApp: +996 550 339292</p>

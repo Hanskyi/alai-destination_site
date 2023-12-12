@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Card from '@/components/Card/Card';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import { NextRouter } from 'next/router';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   router: NextRouter;
@@ -26,6 +27,9 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
 
   const [startDuration, setStartDuration] = useState<number | null>(null);
   const [endDuration, setEndDuration] = useState<number | null>(null);
+
+  const t = useTranslations('ToursPage');
+  const filterTranslation = useTranslations('FilterBlock');
 
   const handleDurationReset = () => {
     setStartDuration(null);
@@ -103,8 +107,8 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
   return (
     <>
       <div className={style.titleBlock}>
-        <h1>Search</h1>
-        <h2>Discover your next adventure</h2>
+        <h1>{t('title')}</h1>
+        <h2>{t('subtitle')}</h2>
       </div>
 
       <div className={`${style.filteringBlock} container`}>
@@ -116,7 +120,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
               onChange={(e) => setSelectedLocation(e.target.value)}
             >
               <option value="" disabled>
-                Location
+                {filterTranslation('location')}
               </option>
 
               {locations.map((location) => {
@@ -132,7 +136,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                 className={`${style.clearButton} ${style.additionalClass}`}
                 onClick={() => setSelectedLocation('')}
               >
-                Clear
+                {filterTranslation('clear')}
               </button>
             )}
           </div>
@@ -144,7 +148,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
               <option value="" disabled>
-                Categories
+                {filterTranslation('categories')}
               </option>
               {classifications.map((classification) => {
                 return (
@@ -159,7 +163,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                 className={`${style.clearButton} ${style.additionalClass}`}
                 onClick={() => setSelectedCategory('')}
               >
-                Clear
+                {filterTranslation('clear')}
               </button>
             )}
           </div>
@@ -172,10 +176,10 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
               onChange={(e) => setSelectedPriceSort(e.target.value)}
             >
               <option value="" disabled>
-                Sort by Price
+                {filterTranslation('sortByPrice')}
               </option>
-              <option value="lowToHigh">Low to High</option>
-              <option value="highToLow">High to Low</option>
+              <option value="lowToHigh">{filterTranslation('minPrice')}</option>
+              <option value="highToLow">{filterTranslation('maxPrice')}</option>
             </select>
 
             {selectedPriceSort && (
@@ -183,13 +187,13 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                 className={`${style.clearButton} ${style.additionalClass}`}
                 onClick={() => setSelectedPriceSort('')}
               >
-                Clear
+                {filterTranslation('clear')}
               </button>
             )}
           </div>
 
           <div className={style.duration}>
-            <h5>Duration</h5>
+            <h5>{filterTranslation('duration')}</h5>
             <div className={style.durationInner}>
               <div className={style.durationPicker}>
                 <label className={style.durationLabel}>Min</label>
@@ -260,7 +264,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
               className={`${style.resetDuration} ${style.additionalClass}`}
               onClick={handleDurationReset}
             >
-              Clear Duration
+              {filterTranslation('clearAll')}
             </button>
           </div>
         </div>

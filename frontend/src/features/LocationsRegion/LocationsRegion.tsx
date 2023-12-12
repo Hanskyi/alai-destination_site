@@ -9,11 +9,14 @@ import { useAppSelector } from '@/store/hooks';
 import { selectLocationsRegion } from '@/features/LocationsRegion/LocationsRegionSlice';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
+import { useTranslations } from 'next-intl';
 
 const LocationsRegion = () => {
   const content = useAppSelector(selectLocationsRegion);
 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const t = useTranslations('LocationID');
 
   const handlePlayButtonClick = () => {
     setIsVideoPlaying(true);
@@ -28,7 +31,7 @@ const LocationsRegion = () => {
             width={1200}
             height={1200}
             alt={'#'}
-            title={`${content.name} region`}
+            title={`${content.name}`}
           />
         </div>
         <div className={style.locationDescription}>
@@ -66,7 +69,9 @@ const LocationsRegion = () => {
           )}
         </div>
         <div className={style.toursBlog}>
-          <h3 className={style.toursBlog__title}>all tours in the {content.name} region</h3>
+          <h3 className={style.toursBlog__title}>
+            {t('subtitle')} {content.name}
+          </h3>
           <div className={style.toursBlog__cards}>
             {content.tours.length! > 0 ? (
               content.tours.map((item) => <ClassificationsCard key={item.id} tour={item} />)
