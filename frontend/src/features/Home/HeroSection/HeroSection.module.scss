@@ -22,17 +22,17 @@
     max-width: 1150px;
     padding: 20px;
     @include mixins.xxl {
-      transform: translate(-70%, -50%);
+      transform: translate(-60%, -50%);
     }
     @include mixins.xl {
-      transform: translate(-60%, -50%);
+      transform: translate(-50%, -50%);
     }
     @include mixins.lg {
       transform: translate(-50%, -50%);
     }
     @include mixins.md {
       width: 80%;
-      transform: translate(-60%, -10%);
+      transform: translate(-60%, -30%);
     }
     @include mixins.sm {
       width: 90%;
@@ -71,7 +71,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      @include mixins.md {
+      @include mixins.lg {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -84,8 +84,11 @@
         align-items: center;
         z-index: 5;
         width: 100%;
-        @include mixins.sm {
-          width: 100%;
+        @include mixins.lg {
+          margin-bottom: 5px;
+        }
+        @include mixins.md {
+          margin-bottom: 0;
         }
       }
 
@@ -94,6 +97,9 @@
         position: relative;
         width: 350px;
         margin-right: 5px;
+        @include mixins.lg {
+          margin-right: 0;
+        }
         @include mixins.md {
           margin-right: 0;
           margin-bottom: 5px;
@@ -110,13 +116,16 @@
       .datepickerAndButton {
         display: flex;
         justify-content: space-between;
+        @include mixins.md {
+          width: 100%;
+        }
         .datepicker {
           display: flex;
           align-items: center;
+          flex-grow: 1;
           .searchInputCategory {
             position: relative;
             margin-right: 5px;
-            width: 250px;
             @include mixins.md {
               margin-bottom: 0;
             }
