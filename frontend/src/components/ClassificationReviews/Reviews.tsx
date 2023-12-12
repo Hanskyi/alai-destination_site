@@ -15,6 +15,8 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
   const [rate, setRate] = useState<number>(0);
   const { data: session } = useSession();
 
+  console.log(reviews)
+
   // Function to filter reviews based on the selected rate
   const filteredReviews = useMemo(() => {
     let filtered = reviews;
@@ -24,7 +26,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
     }
 
     // Get the last 15 reviews from the filtered list
-    return filtered.slice(-5);
+    return filtered.slice(-10);
   }, [rate, reviews]);
 
   // Handler to reset the rating filter

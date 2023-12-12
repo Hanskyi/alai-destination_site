@@ -22,7 +22,13 @@ const populate = {
     fields: ["name", "url"]
   },
   reviews: {
-    fields: ["rating"],
+    populate: {
+      users_permissions_user:{
+        populate:true,
+        fields:["username", "id"]
+      },
+    },
+    fields: ["review", "rating", "createdAt", "displayName", "users_permissions_user"],
   },
   localizations: {
     populate: true
