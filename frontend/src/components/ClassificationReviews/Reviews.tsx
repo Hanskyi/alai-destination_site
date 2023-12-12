@@ -15,7 +15,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
   const [rate, setRate] = useState<number>(0);
   const { data: session } = useSession();
 
-  console.log(reviews)
+  console.log(reviews);
 
   // Function to filter reviews based on the selected rate
   const filteredReviews = useMemo(() => {
