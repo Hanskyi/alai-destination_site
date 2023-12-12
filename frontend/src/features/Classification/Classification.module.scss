@@ -69,25 +69,4 @@
     line-height: 42px;
     margin: 30px 0;
   }
-
-  &__content {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  &__button {
-    border: 1px solid #222;
-    padding: 12px 17px;
-    background: #fff;
-    cursor: pointer;
-    color: #222;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 26.67px;
-    display: block;
-    margin: 0 auto;
-  }
 }
