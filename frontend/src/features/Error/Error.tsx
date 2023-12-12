@@ -1,7 +1,12 @@
 import React from 'react';
-import style from './NotFound.module.scss';
+import style from './Error.module.scss';
 
-const NotFound = () => {
+interface Props {
+  statusCode: string;
+  message: string;
+}
+
+const Error: React.FC<Props> = ({ statusCode, message }) => {
   return (
     <div className={style.skyBlock}>
       <div className={style.skyBlock_hotBaloon}>
@@ -209,9 +214,11 @@ const NotFound = () => {
           </defs>
         </svg>
       </div>
-      <p className={style.skyBlock_text}>404 Error: Page Not Found</p>
+      <p className={style.skyBlock_text}>
+        {statusCode} Error: {message}
+      </p>
     </div>
   );
 };
 
-export default NotFound;
+export default Error;
