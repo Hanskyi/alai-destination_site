@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Rating from '../Rating/Rating';
 import axiosApi from '../../axiosApi';
 import styles from './ReviewForm.module.scss';
@@ -13,6 +13,7 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
   const [rating, setRating] = useState(1);
   const [displayName, setDisplayName] = useState('');
   const { data: session } = useSession();
+  const [hasSubmittedReview, setHasSubmittedReview] = useState(false);
 
   const handleRatingChange = (newRating: number) => {
     setRating(newRating);
@@ -50,6 +51,28 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
       console.error('Error submitting review:', error);
     }
   };
+
+  useEffect(() => {
+    const fetchUserReview = async () => {
+      try {
+        // Fetch user's reviews for the specific tour
+        const response = await axiosApi.get(
+          `/reviews?tour=${tourId}&users_permissions_user=${session?.user?.userId}`,
+        );
+
+        // Check if the user has already submitted a review for the tour
+        if (response.data.length > 0) {
+          setHasSubmittedReview(true);
+        }
+      } catch (error) {
+        console.error('Error fetching user review:', error);
+      }
+    };
+
+    if (session) {
+      fetchUserReview();
+    }
+  }, [session, tourId]);
 
   if (!session) {
     return (

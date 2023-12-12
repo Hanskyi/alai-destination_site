@@ -10,7 +10,7 @@ interface Props {
 
 const GoodTripsCard: React.FC<Props> = ({ item }) => {
   return (
-    <Link href={'#'} className={style.card}>
+    <Link href={`/tours/${item?.id}`} className={style.card}>
       <>
         <div className={style.goodTripsCard}>
           <Image

@@ -4,7 +4,6 @@ import style from './TourPage.module.scss';
 import Gallery from '@/features/TourPage/GalleryBlock/Gallery';
 import DescriptionBlock from '@/features/TourPage/DescriptionBlock/DescriptionBlock';
 import TourDetails from '@/features/TourPage/TourDetails/TourDetails';
-import TourHeroSection from '@/features/TourPage/TourHeroSection/TourHeroSection';
 import FaqList from '@/components/FaqList/FaqList';
 import Reviews from '@/components/ClassificationReviews/Reviews';
 import ReviewForm from '@/components/ReviewForm/ReviewForm';
@@ -27,11 +26,6 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
         title={tourData?.title || ''}
         subTitle={tourData?.subTitle || ''}
       />
-      {/*<TourHeroSection*/}
-      {/*  title={tourData?.title || ''}*/}
-      {/*  subTitle={tourData?.subTitle || ''}*/}
-      {/*  mainImage={tourData?.mainImage?.url || ''}*/}
-      {/*/>*/}
       <div className="container">
         <div className={style.parentContainer}>
           <div className={style.tour_container}>

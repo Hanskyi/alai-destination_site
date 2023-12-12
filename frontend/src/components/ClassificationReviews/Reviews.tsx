@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import styles from './Reviews.module.scss';
 import Rating from '@/components/Rating/Rating';
 
-// import {REVIEWS_COUNT} from '@/dummyData';
 import FilterByRating from '@/components/ClassificationReviews/components/FilterByRating/FilterByRating';
 import ClientReview from '@/components/ClassificationReviews/components/ClientReview/ClientReview';
 import { TourReview } from '../../type';
@@ -10,7 +9,6 @@ import { useSession } from 'next-auth/react';
 
 interface Props {
   reviews: TourReview[];
-  // id: string;
 }
 
 const Reviews: React.FC<Props> = ({ reviews }) => {
@@ -19,14 +17,17 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
 
   // Function to filter reviews based on the selected rate
   const filteredReviews = useMemo(() => {
-    if (rate === 0) {
-      return reviews; // Return all reviews if rate is 0 (no filter)
-    } else {
-      return reviews.filter((review) => review.rating === rate); // Filter reviews by rating
+    let filtered = reviews;
+
+    if (rate !== 0) {
+      filtered = reviews.filter((review) => review.rating === rate);
     }
+
+    // Get the last 15 reviews from the filtered list
+    return filtered.slice(-5);
   }, [rate, reviews]);
 
-  // Handler to reset the rating filter (show all reviews)
+  // Handler to reset the rating filter
   const handleShowAllReviews = () => {
     setRate(0); // Set rate to 0 to show all reviews
   };
