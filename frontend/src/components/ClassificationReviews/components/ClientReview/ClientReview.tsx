@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from '@/components/Rating/Rating';
 import dayjs from 'dayjs';
-import { TourReview } from '../../../../type';
+import { TourReview } from '@/type';
 import styles from './ClientReview.module.scss';
 
 interface Props {

@@ -70,7 +70,7 @@ export const toursSlice = createSlice({
   },
 });
 
-export const fetchLoadingSelector = (state: RootState) => state.tours.fetchLoading;
+// export const fetchLoadingSelector = (state: RootState) => state.tours.fetchLoading;
 
 export const selectTours = (state: RootState) => state.tours.tours;
 

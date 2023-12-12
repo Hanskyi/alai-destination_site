@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FaqItem from '@/components/FaqList/FaqItem';
 import styles from './FaqList.module.scss';
-import { IFaq } from '../../type';
+import { IFaq } from '@/type';
 
 interface IProps {
   faqList: IFaq[];

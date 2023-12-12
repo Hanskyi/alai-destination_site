@@ -1,6 +1,6 @@
 import React from 'react';
 import FaqList from '../../../../components/FaqList/FaqList';
-import { ITable } from '../../../../type';
+import { ITable } from '@/type';
 import style from './TourDates.module.scss';
 
 interface Props {
