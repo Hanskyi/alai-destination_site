@@ -3,9 +3,6 @@ module.exports = ({ env }) => {
 
   const connections = {
     mysql: {
-      // settings: {
-      //   forceMigration: false,
-      // },
       connection: {
         connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
