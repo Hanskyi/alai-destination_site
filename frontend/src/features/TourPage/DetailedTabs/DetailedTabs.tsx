@@ -7,6 +7,7 @@ import TourDates from './TourDates/TourDates';
 import TourPrice from './TourPrice/TourPrice';
 import style from './DetailedTabs.module.scss';
 import { ITable } from '@/type';
+import { useTranslations } from 'next-intl';
 
 interface TabLinkProps {
   tabName: string;
@@ -25,6 +26,8 @@ const DetailedTabs: React.FC<Props> = ({ overviewCK, detailedDays, tourPrice, sc
   const { tab } = router.query;
   const [activeTab, setActiveTab] = useState(tab || 'overview');
 
+  const t = useTranslations('TourIdTabs');
+
   const handleTabClick = (tabName: string) => {
     setActiveTab(tabName);
   };
@@ -32,11 +35,11 @@ const DetailedTabs: React.FC<Props> = ({ overviewCK, detailedDays, tourPrice, sc
   const renderTabs = () => {
     return (
       <ul className={style.tabs_list}>
-        <TabLink tabName="overview" label="Overview" />
-        <TabLink tabName="detaileditinerary" label="Detailed Itinerary" />
-        <TabLink tabName="tourprice" label="Tour Price" />
-        <TabLink tabName="tourdates" label="Tour Dates" />
-        <TabLink tabName="booknow" label="Book Now" />
+        <TabLink tabName="overview" label={t('overview')} />
+        <TabLink tabName="detaileditinerary" label={t('detailedItinerary')} />
+        <TabLink tabName="tourprice" label={t('tourPrice')} />
+        <TabLink tabName="tourdates" label={t('tourDates')} />
+        <TabLink tabName="booknow" label={t('bookNow')} />
       </ul>
     );
   };

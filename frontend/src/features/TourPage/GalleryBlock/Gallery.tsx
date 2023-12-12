@@ -1,6 +1,7 @@
 import React from 'react';
 import GalleryItem from '@/features/TourPage/GalleryBlock/GalleryItem';
 import style from './Gallery.module.scss';
+import { useTranslations } from 'next-intl';
 
 interface Image {
   id: number;
@@ -13,10 +14,13 @@ interface Props {
 }
 
 const Gallery = ({ images = [] }: Props) => {
+  const t = useTranslations('TourIdGallery');
   return (
     <div className="container">
       <div className={style.gallery_block}>
-        <h3 className={style.gallery_block_title}>Best of Alay Mountains Trek Photo Gallery</h3>
+        <h3 className={style.gallery_block_title}>
+          Best of Alay Mountains Trek Photo {t('gallery')}
+        </h3>
 
         {images && images.length > 0 && (
           <div className={style.gallery_block_cards}>

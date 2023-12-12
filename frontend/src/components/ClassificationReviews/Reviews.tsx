@@ -6,6 +6,7 @@ import FilterByRating from '@/components/ClassificationReviews/components/Filter
 import ClientReview from '@/components/ClassificationReviews/components/ClientReview/ClientReview';
 import { TourReview } from '../../type';
 import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   reviews: TourReview[];
@@ -14,6 +15,7 @@ interface Props {
 const Reviews: React.FC<Props> = ({ reviews }) => {
   const [rate, setRate] = useState<number>(0);
   const { data: session } = useSession();
+  const t = useTranslations('ReviewsBlock');
 
   console.log(reviews);
 
@@ -73,7 +75,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
   };
   return (
     <div className="container">
-      <h3 className={styles.reviews__title}>Reviews</h3>
+      <h3 className={styles.reviews__title}>{t('title')}</h3>
 
       <div className={styles.reviews__total}>
         <Rating
@@ -83,16 +85,17 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
         />
 
         <p>
-          <strong>{average}</strong> out of 5 based on {totalReviews} reviews submitted.
+          <strong>{average}</strong>{' '}
+          {t('totalReviews', { maxRating: 5, totalRatingCount: totalReviews })}
         </p>
       </div>
 
       <div className={styles.reviews}>
         <div className={styles.filterByRating}>
-          <h3 className={styles.filterByRating__title}>Filter by rating</h3>
+          <h3 className={styles.filterByRating__title}>{t('filterByRating')}</h3>
 
           <button className={styles.filterByRating__resetFilter} onClick={handleShowAllReviews}>
-            Show All Reviews
+            {t('showAll')}
           </button>
 
           {REVIEWS_COUNT.map((review) => (
