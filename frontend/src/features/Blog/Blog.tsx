@@ -27,7 +27,7 @@ const Blog = () => {
     const replacedData = content.replace(regex, (match, url) => {
       const videoID = extractVideoID(url);
 
-      return `<div class="videoWrapper"><iframe width="560" height="315" src="//www.youtube.com/embed/${videoID}" frameborder="0" allowfullscreen></iframe></div>`;
+      return `<div className="videoWrapper"><iframe width="560" height="315" src="//www.youtube.com/embed/${videoID}" style={{ border: "none" } allowfullscreen></iframe></div>`;
     });
 
     return <div dangerouslySetInnerHTML={{ __html: replacedData }} />;
@@ -68,10 +68,9 @@ const Blog = () => {
           alt="Blog image"
         />
       </div>
-      <div>
-        <div style={{ margin: '0 -30px' }}>
-          <div dangerouslySetInnerHTML={{ __html: article?.data ? article.data.content : '' }} />
-        </div>
+      <div className={style.blog_content}>
+        {/* Render the replaced content with videos */}
+        {renderVideo()}
       </div>
       <div style={{ overflow: 'hidden' }}>
         <h2 style={{ marginBottom: '20px' }}>Recommended</h2>
@@ -90,9 +89,6 @@ const Blog = () => {
         ) : (
           <h3 className={style.classificationCards__title}>No tours yet!</h3>
         )}
-      <div className={style.blog_content}>
-        {/* Render the replaced content with videos */}
-        {renderVideo()}
       </div>
     </div>
   );

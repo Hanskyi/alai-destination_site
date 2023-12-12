@@ -46,5 +46,9 @@
   max-width: 100%;
   height: 100%;
 }
+.blog_content iframe {
+  margin: 0 auto;
+  display: flex;
+}
 
 /*# sourceMappingURL=Blog.module.css.map */

@@ -1,5 +1,6 @@
 .mainBlock {
   position: relative;
+  overflow: hidden;
 }
 .mainBlock .mainBlockImage {
   width: 100%;
@@ -20,12 +21,12 @@
 }
 @media screen and (max-width: 1400px) {
   .mainBlock .mainBlockContainer {
-    transform: translate(-70%, -50%);
+    transform: translate(-60%, -50%);
   }
 }
 @media screen and (max-width: 1200px) {
   .mainBlock .mainBlockContainer {
-    transform: translate(-60%, -50%);
+    transform: translate(-50%, -50%);
   }
 }
 @media screen and (max-width: 992px) {
@@ -36,7 +37,7 @@
 @media screen and (max-width: 768px) {
   .mainBlock .mainBlockContainer {
     width: 80%;
-    transform: translate(-60%, -10%);
+    transform: translate(-60%, -30%);
   }
 }
 @media screen and (max-width: 576px) {
@@ -51,7 +52,6 @@
   padding: 10px;
   font-weight: bold;
   margin-bottom: 32px;
-  max-width: 500px;
   color: white;
   font-size: 64px;
   line-height: 64px;
@@ -80,7 +80,7 @@
   justify-content: center;
   align-items: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .mainBlock .mainBlockContainer .formBlock {
     flex-direction: column;
     align-items: flex-start;
@@ -92,18 +92,31 @@
   }
 }
 .mainBlock .mainBlockContainer .formBlock .searchSelectBlock {
+  display: flex;
+  align-items: center;
   z-index: 5;
   width: 100%;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 992px) {
   .mainBlock .mainBlockContainer .formBlock .searchSelectBlock {
-    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainBlock .mainBlockContainer .formBlock .searchSelectBlock {
+    margin-bottom: 0;
   }
 }
 .mainBlock .mainBlockContainer .formBlock .searchInput {
+  flex-grow: 1;
   position: relative;
   width: 350px;
   margin-right: 5px;
+}
+@media screen and (max-width: 992px) {
+  .mainBlock .mainBlockContainer .formBlock .searchInput {
+    margin-right: 0;
+  }
 }
 @media screen and (max-width: 768px) {
   .mainBlock .mainBlockContainer .formBlock .searchInput {
@@ -121,14 +134,24 @@
   display: flex;
   justify-content: space-between;
 }
+@media screen and (max-width: 768px) {
+  .mainBlock .mainBlockContainer .formBlock .datepickerAndButton {
+    width: 100%;
+  }
+}
 .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .searchInputCategory {
   position: relative;
   margin-right: 5px;
-  width: 250px;
+}
+@media screen and (max-width: 768px) {
+  .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .searchInputCategory {
+    margin-bottom: 0;
+  }
 }
 @media screen and (max-width: 576px) {
   .mainBlock .mainBlockContainer .formBlock .datepickerAndButton .datepicker .searchInputCategory {
@@ -149,7 +172,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
+  background-image: url("https://cdn-icons-png.flaticon.com/128/8213/8213522.png");
   background-size: 20px 20px;
   background-position: right 15px center;
   background-repeat: no-repeat;
@@ -161,20 +184,10 @@
     background-position: center;
   }
 }
-.mainBlock
-  .mainBlockContainer
-  .formBlock
-  .datepickerAndButton
-  .mainBlockSearchButton
-  .mainBlockSearchButton:hover {
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .mainBlockSearchButton .mainBlockSearchButton:hover {
   background-color: #bd0202;
 }
-.mainBlock
-  .mainBlockContainer
-  .formBlock
-  .datepickerAndButton
-  .mainBlockSearchButton
-  .mainBlockSearchButton:active {
+.mainBlock .mainBlockContainer .formBlock .datepickerAndButton .mainBlockSearchButton .mainBlockSearchButton:active {
   background-color: #940101;
   transform: translateY(2px);
   box-shadow: 0 0 5px rgba(148, 1, 1, 0.5);

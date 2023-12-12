@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import Rating from '../Rating/Rating';
-// import axiosApi from '../../axiosApi';
 import styles from './ReviewForm.module.scss';
+import axiosApi from '@/axiosApi';
 
 interface Props {
   tourId: number;

@@ -1,0 +1,43 @@
+.banner {
+  position: relative;
+  text-align: start;
+  overflow: hidden;
+}
+.banner_image {
+  max-height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+.banner_wrapper {
+  max-width: 1150px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+}
+.banner_title {
+  text-shadow: 0 0 10px #000;
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 56px;
+}
+@media screen and (max-width: 992px) {
+  .banner_title {
+    font-size: 42px;
+  }
+}
+.banner_sub_title {
+  text-transform: uppercase;
+  line-height: 26px;
+  font-weight: normal;
+  font-style: normal;
+  margin: 20px 0 0;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=Banner.module.css.map */
