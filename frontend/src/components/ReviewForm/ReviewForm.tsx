@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Rating from '../Rating/Rating';
 import axiosApi from '../../axiosApi';
 import styles from './ReviewForm.module.scss';
@@ -10,9 +10,12 @@ interface Props {
 
 const ReviewForm: React.FC<Props> = ({ tourId }) => {
   const [review, setReview] = useState('');
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(5);
   const [displayName, setDisplayName] = useState('');
   const { data: session } = useSession();
+  const [hasSubmittedReview, setHasSubmittedReview] = useState(false);
+
+  console.log(session);
 
   const handleRatingChange = (newRating: number) => {
     setRating(newRating);
@@ -43,7 +46,7 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
 
       // Reset fields
       setReview('');
-      setRating(1);
+      setRating(5);
       setDisplayName('');
     } catch (error) {
       // Handle errors here
@@ -51,11 +54,46 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchUserReview = async () => {
+      console.log(session?.user?.userId);
+
+      try {
+        // Fetch user's reviews for the specific tour
+        const response = await axiosApi.get(
+          `/reviews?tour=${tourId}&users_permissions_user=${session?.user?.userId}`,
+        );
+
+        // Check if the user has already submitted a review for the tour
+        if (response.data.data.length > 0) {
+          console.log('has');
+          setHasSubmittedReview(true);
+        }
+      } catch (error) {
+        console.error('Error fetching user review:', error);
+      }
+    };
+
+    if (session) {
+      fetchUserReview();
+    }
+  }, [session, tourId]);
+
   if (!session) {
     return (
       <div className={styles.review_form}>
         <div className={styles.placeholder}>
           <p>Please log in to submit a review.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (hasSubmittedReview) {
+    return (
+      <div className={styles.review_form}>
+        <div className={styles.placeholder}>
+          <p>You have already submitted a review for this tour.</p>
         </div>
       </div>
     );

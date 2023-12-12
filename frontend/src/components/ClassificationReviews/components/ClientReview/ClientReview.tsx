@@ -9,15 +9,13 @@ interface Props {
 }
 
 const ClientReview: React.FC<Props> = ({ review }) => {
-  console.log(review, 'review');
-
   return (
     <div className={styles.clientReview}>
       <Rating size={20} isEdit={false} value={review.rating} />
       <div className={styles.clientReview__initials}>
         <div className={styles.clientReview__header}>
           <span className={styles.clientReview__travelerName}>
-            <strong>{review.displayName}</strong>
+            <strong>{review.displayName ? review.displayName : 'Anonymous'}</strong>
           </span>
         </div>
         <p className={styles.clientReview__review}>{review.review}</p>

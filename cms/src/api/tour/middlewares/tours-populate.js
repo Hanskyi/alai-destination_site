@@ -25,7 +25,7 @@ const populate = {
     populate: {
       users_permissions_user:{
         populate:true,
-        fields:["username"]
+        fields:["username", "id"]
       },
     },
     fields: ["review", "rating", "createdAt", "displayName", "users_permissions_user"],
