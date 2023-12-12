@@ -21,5 +21,11 @@
   },
   "AboutUs": {
     "contacts": "contacts"
+  },
+  "ClassificationID": {
+    "subtitle": "Tours by category:"
+  },
+  "LocationID": {
+    "subtitle": "All tours in the:"
   }
 }

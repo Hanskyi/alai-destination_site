@@ -21,5 +21,11 @@
   },
   "AboutUs": {
     "contacts": "контакты"
+  },
+  "ClassificationID": {
+    "subtitle": "Туры по категории:"
+  },
+  "LocationID": {
+    "subtitle": "Все туры по направлению:"
   }
 }
