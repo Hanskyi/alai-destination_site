@@ -1,8 +1,8 @@
 import React from 'react';
-import NotFound from '@/features/NotFound/NotFound';
+import Error from '@/features/Error/Error';
 
 const NotFoundPage = () => {
-  return <NotFound />;
+  return <Error statusCode={'404'} message={'Page Not Found'} />;
 };
 
 export const getStaticProps = async (context: { locale: any }) => {

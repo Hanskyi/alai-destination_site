@@ -11,6 +11,7 @@ import Banner from '@/components/Banner/Banner';
 
 const Classifications = () => {
   const classifications = useAppSelector(selectClassifications);
+  console.log(classifications);
 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
@@ -47,7 +48,7 @@ const Classifications = () => {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/D4fRDc0ZzHo"
+              src="https://www.youtube.com/embed/D4fRDc0ZzHo?autoplay=1"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
