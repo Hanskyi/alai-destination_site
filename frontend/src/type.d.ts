@@ -427,3 +427,22 @@ export interface ILocalizationShortInfoClassification {
   locale: string;
   localizations: Localization[];
 }
+
+export interface IClassificationPageData {
+  data: IClassificationPage;
+}
+
+export interface IClassificationPage {
+  id: number;
+  bannerTitle: string;
+  title: string;
+  description: string;
+  subTitle: string;
+  videoLink: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  bannerImage: Image;
+  localizations: Localization[];
+}
