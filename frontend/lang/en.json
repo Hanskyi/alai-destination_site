@@ -39,8 +39,8 @@
     "minPrice": "Low to High",
     "maxPrice": "High to Low",
     "duration": "Duration",
-    "clear": "clear",
-    "clearAll": "clear all"
+    "clear": "Clear",
+    "clearAll": "Clear All"
   },
   "TourDetails": {
     "title": "Tour Details",
