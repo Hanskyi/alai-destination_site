@@ -212,9 +212,9 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
 
               <div className={`${toolbar.linksResponsive} ${menuOpen ? toolbar.open : ''}`}>
                 <div className={toolbar.closeButton} onClick={closeMenu}>
-                  <div>X</div>
+                  <div>&#x2715;</div>
                 </div>
-                <Link className={toolbar.headerLink} href="#">
+                <Link className={toolbar.headerLink} href="/">
                   {t('item_4')}
                 </Link>
 
@@ -247,7 +247,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                 )}
 
                 {largeLinks.map((link, index) => (
-                  <Link href="#" key={index} className={toolbar.headerLink}>
+                  <Link href={link.href} key={index} className={toolbar.headerLink}>
                     {link.text}
                   </Link>
                 ))}
