@@ -1,12 +1,6 @@
 import React from 'react';
 import AboutUsPage from '@/features/AboutUs/AboutUsPage';
-import { GetStaticPropsContext } from 'next';
 import { wrapper } from '@/store/store';
-import {
-  fetchClassifications,
-  fetchLocations,
-  fetchToursData,
-} from '@/features/FilteredTours/toursThunk';
 import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
 
 const AboutUs = () => {

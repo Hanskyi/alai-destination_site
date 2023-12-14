@@ -1,20 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Classifications from '@/features/Classifications/Classifications';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { useRouter } from 'next/router';
+import { useAppSelector } from '@/store/hooks';
 import {
   fetchAllClassifications,
   fetchClassificationPage,
 } from '@/features/Classifications/ClassificationsThunk';
 import Preloader from '@/components/Preloder/Preloader';
-import { GetStaticPropsContext } from 'next';
 import { wrapper } from '@/store/store';
-import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
-import {
-  fetchClassifications,
-  fetchLocations,
-  fetchToursData,
-} from '@/features/FilteredTours/toursThunk';
 
 const ClassificationsPage = () => {
   const loading = useAppSelector((state) => state.classifications.fetchLoading);
