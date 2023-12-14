@@ -1,18 +1,18 @@
-'use strict';
+"use strict";
 
 /**
  * classification router
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = require("@strapi/strapi").factories;
 
-module.exports = createCoreRouter('api::classification.classification', {
+module.exports = createCoreRouter("api::classification.classification", {
   config: {
     find: {
-      middlewares: ['api::classification.classifications-populate'],
+      middlewares: ["api::classification.all-classifications-populate"],
     },
     findOne: {
-      middlewares: ['api::classification.classifications-populate'],
+      middlewares: ["api::classification.classifications-populate"],
     },
   },
 });

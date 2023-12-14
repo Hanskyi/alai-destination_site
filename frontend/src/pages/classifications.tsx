@@ -8,19 +8,16 @@ import {
 } from '@/features/Classifications/ClassificationsThunk';
 import Preloader from '@/components/Preloder/Preloader';
 import { GetStaticPropsContext } from 'next';
+import { wrapper } from '@/store/store';
+import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
+import {
+  fetchClassifications,
+  fetchLocations,
+  fetchToursData,
+} from '@/features/FilteredTours/toursThunk';
 
 const ClassificationsPage = () => {
-  const dispatch = useAppDispatch();
-  const { locale } = useRouter();
   const loading = useAppSelector((state) => state.classifications.fetchLoading);
-
-  useEffect(() => {
-    dispatch(fetchAllClassifications(locale || 'en'));
-  }, [dispatch, locale]);
-
-  useEffect(() => {
-    dispatch(fetchClassificationPage(locale || 'en'));
-  }, [dispatch, locale]);
 
   return (
     <>
@@ -36,12 +33,20 @@ const ClassificationsPage = () => {
   );
 };
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
+export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {
+  const classifications = store.dispatch(
+    fetchAllClassifications(context.locale ? context.locale : 'en'),
+  );
+  const classificationPage = store.dispatch(
+    fetchClassificationPage(context.locale ? context.locale : 'en'),
+  );
+
+  await Promise.all([classifications, classificationPage]);
   return {
     props: {
-      messages: (await import(`../../lang/${locale}.json`)).default,
+      messages: (await import(`../../lang/${context.locale}.json`)).default,
     },
   };
-}
+});
 
 export default ClassificationsPage;

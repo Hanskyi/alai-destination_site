@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FilteredTours from '@/features/FilteredTours/FilteredTours';
 import { wrapper } from '@/store/store';
 import {
@@ -13,6 +13,7 @@ import {
   selectTours,
 } from '@/features/FilteredTours/toursSlice';
 import { useRouter } from 'next/router';
+import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
 
 const Tours = () => {
   const router = useRouter();
