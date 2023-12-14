@@ -40,6 +40,7 @@
   cursor: pointer;
   padding: 0 25px;
   color: #222222;
+  position: relative;
   font-size: 16px;
   height: 24px;
 
@@ -225,12 +226,13 @@
   margin-top: 15px;
   animation-name: dropdown-animation;
   animation-duration: 0.7s;
+  text-align: center;
 
   &__link {
     display: block;
     height: auto;
     width: 100%;
-    padding: 5px 0 5px 25px;
+    padding: 5px;
 
     &:hover {
       background-color: #bebebe;
