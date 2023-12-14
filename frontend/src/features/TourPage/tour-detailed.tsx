@@ -23,7 +23,6 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
   const { locale, query } = useRouter();
   const { id } = query;
 
-  console.log(id);
   useEffect(() => {
     if (id) {
       dispatch(fetchReviewsForClassification({ id: id as string }));
