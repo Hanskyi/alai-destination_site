@@ -12,6 +12,7 @@ interface Props {
   image: TypeImage;
   id: number;
   buttonText?: string;
+  tourCard?: boolean;
 }
 
 const ClassificationsCard: React.FC<Props> = ({
@@ -20,6 +21,7 @@ const ClassificationsCard: React.FC<Props> = ({
   image,
   id,
   buttonText,
+  tourCard,
 }) => {
   const [plainText, setPlainText] = useState<string | null>(null);
 
@@ -33,7 +35,7 @@ const ClassificationsCard: React.FC<Props> = ({
   }, [previewDescription]);
 
   return (
-    <Link href={`/classifications/${id}`}>
+    <Link href={(tourCard ? `/tours/` : `/classifications/`) + id}>
       <div className={style.classificationCard}>
         <div className={style.classificationCard__image}>
           <Image

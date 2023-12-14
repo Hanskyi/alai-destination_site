@@ -11,7 +11,7 @@ interface Props {
 const ArticlesCard: React.FC<Props> = ({ article }) => {
   return (
     <div className={style.articleCard}>
-      <Link href={'/articles/1'}>
+      <Link href={`/articles/${article.id}`}>
         <div className={style.articleCard__image}>
           <Image
             src={'http://localhost:1337' + article.mainImage.url}
@@ -24,10 +24,6 @@ const ArticlesCard: React.FC<Props> = ({ article }) => {
         <div className={style.articleCard__content}>
           <div className={style.articleCard__content__box}>
             <h3 className={style.articleCard__content__title}>{article.title}</h3>
-            {/*<div*/}
-            {/*  className={style.articleCard__content__title}*/}
-            {/*  dangerouslySetInnerHTML={{ __html: article.title }}*/}
-            {/*/>*/}
             <div
               className={style.articleCard__content__text}
               dangerouslySetInnerHTML={{ __html: article.content }}

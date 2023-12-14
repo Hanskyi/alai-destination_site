@@ -16,7 +16,7 @@ interface Props {
 
 const Card: React.FC<Props> = (props) => {
   return (
-    <Link href={`/tours/${props.id}`}>
+    <Link href={(props.categoryCard ? `/classifications/` : `/tours/`) + props.id}>
       <div className={style.card}>
         <Image
           width={1200}

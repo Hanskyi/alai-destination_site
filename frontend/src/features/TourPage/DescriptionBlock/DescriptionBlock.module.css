@@ -27,7 +27,7 @@
   list-style: none;
 }
 .descriptionBlock .listOfHighlights .itemOfHighlight:before {
-  content: '›';
+  content: "›";
   color: grey;
   font-style: normal;
   font-weight: normal;

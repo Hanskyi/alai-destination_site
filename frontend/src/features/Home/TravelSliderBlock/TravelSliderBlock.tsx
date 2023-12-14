@@ -3,10 +3,10 @@ import { useAppSelector } from '@/store/hooks';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 import { SwiperSlide } from 'swiper/react';
 import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-import 'swiper/css';
 import style from './TravelSliderBlock.module.scss';
 import { useTranslations } from 'next-intl';
 import Card from '@/components/Card/Card';
+import 'swiper/css';
 
 const TravelSliderBlock = () => {
   const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);

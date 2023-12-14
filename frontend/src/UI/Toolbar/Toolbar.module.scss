@@ -37,12 +37,11 @@
 
 .headerLink {
   text-align: center;
+  cursor: pointer;
   padding: 0 25px;
-  position: relative;
   color: #222222;
   font-size: 16px;
   height: 24px;
-  @include mixins.underline-animation(red, 4px, -5px);
 
   @include mixins.xl {
     display: block;
@@ -204,24 +203,13 @@
 
     transform: rotate(90deg);
 
-    @include mixins.xxl {
+    @include mixins.lg {
       top: 8px;
-    }
-    @include mixins.xl {
-      top: 8px;
-    }
-    @include mixins.xl {
-      top: 8px;
+      right: 26%;
     }
 
     &__active {
-      top: 6px;
       rotate: 180deg;
-    }
-
-    &__burger {
-      top: 146px;
-      left: 128px;
     }
   }
 }
@@ -252,6 +240,7 @@
 
   &__burger {
     position: static;
+    width: 100%;
   }
 }
 

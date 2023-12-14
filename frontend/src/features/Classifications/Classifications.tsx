@@ -15,7 +15,6 @@ const Classifications = () => {
   const classifications = useAppSelector(selectClassifications);
 
   const content = useAppSelector(selectClassificationPage);
-  console.log(content);
 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
@@ -72,15 +71,19 @@ const Classifications = () => {
             Our walking, hiking & trekking trips
           </h3>
           <div className={style.classificationsCards__content}>
-            {classifications.map((category) => (
-              <Card
-                key={category.id}
-                id={category.id}
-                title={category.title}
-                image={category.image.url}
-                categoryCard={true}
-              />
-            ))}
+            {classifications.map(
+              (category) =>
+                category &&
+                category.image && (
+                  <Card
+                    key={category.id}
+                    id={category.id}
+                    title={category.title}
+                    image={category.image.url}
+                    categoryCard={true}
+                  />
+                ),
+            )}
           </div>
         </div>
       </div>

@@ -34,6 +34,7 @@ const ToursDisplay: React.FC<ToursDisplayProps> = ({
               title={item.title}
               previewDescription={item.previewDescription}
               buttonText={'Read more'}
+              tourCard={true}
             />
           ))
         ) : (
