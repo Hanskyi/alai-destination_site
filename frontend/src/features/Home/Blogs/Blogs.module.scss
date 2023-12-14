@@ -5,6 +5,7 @@
   border: 1px solid #bebebe;
   padding: 25px 18px;
   display: flex;
+  transition: transform 0.3s ease-in-out;
 
   &_link {
     display: flex;
@@ -12,7 +13,7 @@
   }
 
   &:hover {
-    background-color: #bebebe;
+    transform: scale(1.05);
   }
 
   @include mixins.md {
