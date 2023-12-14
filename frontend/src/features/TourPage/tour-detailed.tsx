@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DetailedTabs from './DetailedTabs/DetailedTabs';
 import style from './TourPage.module.scss';
 import Gallery from '@/features/TourPage/GalleryBlock/Gallery';
@@ -10,12 +10,25 @@ import ReviewForm from '@/components/ReviewForm/ReviewForm';
 import { TourDataDetailed } from '@/type';
 import Banner from '@/components/Banner/Banner';
 import { GALLERY } from '@/constants';
+import { fetchReviewsForClassification } from '../../components/ClassificationReviews/TourReviewsThunk';
+import { useAppDispatch } from '../../store/hooks';
+import { useRouter } from 'next/router';
 
 interface Props {
   tourData: TourDataDetailed;
 }
 
 const TourPage: React.FC<Props> = ({ tourData }) => {
+  const dispatch = useAppDispatch();
+  const { locale, query } = useRouter();
+  const { id } = query;
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchReviewsForClassification({ id: id as string }));
+    }
+  }, [dispatch, locale, id]);
+
   return (
     <div className={style.tour_page}>
       <Banner
@@ -39,7 +52,7 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
             <Gallery images={tourData?.images} />
             <FaqList faqList={tourData?.faqList || []} />
 
-            <Reviews reviews={tourData?.reviews} />
+            <Reviews />
             <hr />
             <ReviewForm tourId={tourData?.id} />
           </div>

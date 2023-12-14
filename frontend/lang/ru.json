@@ -54,8 +54,8 @@
   "TourIdTabs": {
     "overview": "Обзор",
     "detailedItinerary": "Подробный маршрут",
-    "tourPrice": "Tour Price",
-    "tourDates": "Стоимость тура",
+    "tourPrice": "Стоимость тура",
+    "tourDates": "Даты",
     "bookNow": "Забронировать"
   },
   "TourIdGallery": {

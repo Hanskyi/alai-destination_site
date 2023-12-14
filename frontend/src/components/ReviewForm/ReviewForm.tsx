@@ -15,8 +15,6 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
   const { data: session } = useSession();
   const [hasSubmittedReview, setHasSubmittedReview] = useState(false);
 
-  console.log(session);
-
   const handleRatingChange = (newRating: number) => {
     setRating(newRating);
   };
@@ -56,8 +54,6 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
 
   useEffect(() => {
     const fetchUserReview = async () => {
-      console.log(session?.user?.userId);
-
       try {
         // Fetch user's reviews for the specific tour
         const response = await axiosApi.get(
@@ -66,7 +62,6 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
 
         // Check if the user has already submitted a review for the tour
         if (response.data.data.length > 0) {
-          console.log('has');
           setHasSubmittedReview(true);
         }
       } catch (error) {
