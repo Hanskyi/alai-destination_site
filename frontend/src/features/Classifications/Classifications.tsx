@@ -30,11 +30,11 @@ const Classifications = () => {
           width={1200}
           height={1200}
           alt={'#'}
-          title={content?.title}
+          title={content?.bannerTitle}
         />
       </div>
       <div className={style.classificationsInfo}>
-        <h2 className={style.classificationsInfo__title}>{content?.subTitle}</h2>
+        <h2 className={style.classificationsInfo__title}>{content?.title}</h2>
         <p className={style.classificationsInfo__description}>{content?.description}</p>
         <div className={style.classificationsInfo__video} style={{ height: ' 486px' }}>
           {isVideoPlaying ? (
@@ -67,9 +67,7 @@ const Classifications = () => {
           )}
         </div>
         <div className={style.classificationsCards}>
-          <h3 className={style.classificationsCards__title}>
-            Our walking, hiking & trekking trips
-          </h3>
+          <h3 className={style.classificationsCards__title}>{content?.subTitle}</h3>
           <div className={style.classificationsCards__content}>
             {classifications.map(
               (category) =>
