@@ -6,28 +6,27 @@ import ClientReview from '@/components/ClassificationReviews/components/ClientRe
 import { TourReview } from '@/type';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { useAppSelector } from '../../store/hooks';
 
-interface Props {
-  reviews: TourReview[];
-}
-
-const Reviews: React.FC<Props> = ({ reviews }) => {
+const Reviews = () => {
   const [rate, setRate] = useState<number>(0);
   const { data: session } = useSession();
   const t = useTranslations('ReviewsBlock');
 
-  console.log(reviews);
+  const { reviews } = useAppSelector((state) => state.tourReview);
+
+  const loading = useAppSelector((state) => state.tourReview.fetchLoading);
 
   // Function to filter reviews based on the selected rate
   const filteredReviews = useMemo(() => {
-    let filtered = reviews;
+    let filtered = reviews || [];
 
     if (rate !== 0) {
-      filtered = reviews.filter((review) => review.rating === rate);
+      filtered = (reviews || []).filter((review) => review?.rating === rate);
     }
 
-    // Get the last 15 reviews from the filtered list
-    return filtered.slice(-10);
+    // Get the last 10 reviews from the filtered list
+    return filtered;
   }, [rate, reviews]);
 
   // Handler to reset the rating filter
@@ -41,7 +40,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
     const reviewCounts = Array(5).fill(0);
 
     // Calculate counts for each rating
-    reviews.forEach((review) => {
+    reviews?.forEach((review) => {
       reviewCounts[review.rating - 1]++; // Increment the count for the respective star rating
     });
 
@@ -53,7 +52,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
   };
 
   // Call the function and store the resulting array
-  const REVIEWS_COUNT = createReviewsCountArray(reviews);
+  const REVIEWS_COUNT = createReviewsCountArray(reviews || []);
 
   const roundedToOneSymbolForStars = (roundedNumber: number): number => {
     return Math.floor(Math.round(roundedNumber) * 10) / 10;
@@ -70,10 +69,22 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
   const percentage = (num: number): number => {
     return (num * 100) / totalReviews;
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (filteredReviews.length === 0) {
+    return (
+      <>
+        <h3 className={styles.reviews__title}>{t('title')}</h3>
+        <p>No reviews available</p>
+      </>
+    );
+  }
+
   return (
     <div className="container">
-      <h3 className={styles.reviews__title}>{t('title')}</h3>
-
       <div className={styles.reviews__total}>
         <Rating
           size={25}
@@ -82,7 +93,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
         />
 
         <p>
-          <strong>{average}</strong>{' '}
+          <strong>{String(average)}</strong>{' '}
           {t('totalReviews', { maxRating: 5, totalRatingCount: totalReviews })}
         </p>
       </div>

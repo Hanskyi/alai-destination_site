@@ -15,7 +15,6 @@ const Classifications = () => {
   const classifications = useAppSelector(selectClassifications);
 
   const content = useAppSelector(selectClassificationPage);
-  console.log(content);
 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 

@@ -16,7 +16,6 @@ import { useRouter } from 'next/router';
 
 const Tours = () => {
   const router = useRouter();
-
   const tours = useAppSelector(selectTours);
   const locations = useAppSelector(selectLocations);
   const classifications = useAppSelector(selectClassifications);
