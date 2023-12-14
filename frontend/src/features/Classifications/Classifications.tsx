@@ -7,9 +7,9 @@ import {
   selectClassificationPage,
   selectClassifications,
 } from '@/features/Classifications/ClassificationsSlice';
-import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
 import Banner from '@/components/Banner/Banner';
 import { GALLERY } from '@/constants';
+import Card from '@/components/Card/Card';
 
 const Classifications = () => {
   const classifications = useAppSelector(selectClassifications);
@@ -72,15 +72,15 @@ const Classifications = () => {
             Our walking, hiking & trekking trips
           </h3>
           <div className={style.classificationsCards__content}>
-            {classifications.map(
-              (category) =>
-                category &&
-                category.image && (
-                  <div className={style.classificationsCards__content__box} key={category.id}>
-                    <WaysToTravelCard item={category} />
-                  </div>
-                ),
-            )}
+            {classifications.map((category) => (
+              <Card
+                key={category.id}
+                id={category.id}
+                title={category.title}
+                image={category.image.url}
+                categoryCard={true}
+              />
+            ))}
           </div>
         </div>
       </div>

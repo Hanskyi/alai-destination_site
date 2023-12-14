@@ -36,6 +36,7 @@ footer {
 
 .content__wrapper {
   flex: 1;
+  margin-top: 58px;
 }
 
 a {
@@ -90,17 +91,11 @@ img {
 }
 
 .swiper-slide {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
   width: 100%;
   height: auto !important;
   margin-right: 16px;
   margin-bottom: 16px;
-  border-radius: 0.25rem;
   cursor: pointer;
-  border: 1px solid #bebebe;
   position: relative;
 }
 

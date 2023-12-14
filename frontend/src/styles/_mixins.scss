@@ -27,3 +27,27 @@
     @content;
   }
 }
+
+@mixin underline-animation($underline-color, $height, $bottom) {
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: $bottom;
+    width: 100%;
+    height: $height;
+    background-color: $underline-color;
+    transform: scalex(0);
+    transition: transform 0.4s ease-in-out 0s;
+  }
+  &:focus {
+    outline: 0;
+  }
+  &:hover,
+  &:focus {
+    &:before {
+      transform: scalex(1);
+      transition: transform 0.4s ease-in-out 0s;
+    }
+  }
+}

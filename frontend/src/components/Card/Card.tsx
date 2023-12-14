@@ -6,20 +6,22 @@ import Link from 'next/link';
 
 interface Props {
   title: string;
-  duration?: string;
+  duration?: number;
   image: string;
   id: string | number;
   classification?: Classification;
   price?: number;
+  categoryCard?: boolean;
 }
 
 const Card: React.FC<Props> = (props) => {
   return (
-    <Link href={`/tours/${props.id}`} className={style.cardWrapper}>
+    <Link href={`/tours/${props.id}`}>
       <div className={style.card}>
         <Image
           width={1200}
           height={1200}
+          style={{ height: props.categoryCard ? '300px' : '200px' }}
           className={style.card__image}
           src={'http://localhost:1337' + props.image}
           alt="#"
