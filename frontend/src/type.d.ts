@@ -214,6 +214,7 @@ export interface OneClassification {
 export interface OneClassificationData {
   id: number;
   title: string;
+  subTitle: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
