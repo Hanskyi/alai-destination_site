@@ -1,6 +1,9 @@
 @charset "UTF-8";
 .mySwiper__slide {
   width: 238px !important;
+  border-radius: 0.25rem;
+  border: 1px solid #bebebe;
+  overflow: hidden;
 }
 .mySwiper__btns {
   display: flex;

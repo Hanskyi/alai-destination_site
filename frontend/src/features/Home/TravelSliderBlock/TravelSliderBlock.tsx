@@ -3,11 +3,10 @@ import { useAppSelector } from '@/store/hooks';
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 import { SwiperSlide } from 'swiper/react';
 import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss';
-import 'swiper/css';
 import style from './TravelSliderBlock.module.scss';
-import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
-import GoodTripsCard from '@/features/Home/TravelSliderBlock/Components/GoodTripsCard';
 import { useTranslations } from 'next-intl';
+import Card from '@/components/Card/Card';
+import 'swiper/css';
 
 const TravelSliderBlock = () => {
   const homeClassifications = useAppSelector((state) => state.home.homeData?.homeClassification);
@@ -22,10 +21,15 @@ const TravelSliderBlock = () => {
 
       <div className={style.travelSliderBlog__first}>
         <p className={style.travelSliderBlog__description}>{homeClassifications?.data.title}</p>
-        <SwiperComponent>
+        <SwiperComponent link={'/classifications'}>
           {homeClassifications?.data.classifications.map((category) => (
             <SwiperSlide className={slideStyle.swiper__slide} key={category.id}>
-              <WaysToTravelCard item={category} />
+              <Card
+                title={category.title}
+                id={category.id}
+                image={category.image.url}
+                categoryCard={true}
+              />
             </SwiperSlide>
           ))}
         </SwiperComponent>
@@ -33,10 +37,17 @@ const TravelSliderBlock = () => {
 
       <div className="travelSliderBlog__second">
         <p className={style.travelSliderBlog__description}>{homeTour?.data.title}</p>
-        <SwiperComponent>
+        <SwiperComponent link={'/tours'}>
           {homeTour?.data.tours.map((tour) => (
             <SwiperSlide className={slideStyle.swiper__slide} key={tour.id}>
-              <GoodTripsCard item={tour} />
+              <Card
+                id={tour.id}
+                title={tour.title}
+                price={tour.price}
+                image={tour.mainImage.url}
+                classification={tour.classification}
+                duration={tour.duration}
+              />
             </SwiperSlide>
           ))}
         </SwiperComponent>

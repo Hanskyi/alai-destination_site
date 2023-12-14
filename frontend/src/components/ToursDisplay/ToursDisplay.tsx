@@ -26,7 +26,17 @@ const ToursDisplay: React.FC<ToursDisplayProps> = ({
     <>
       <div className={style.toursDisplay__cards}>
         {displayedTours.length > 0 ? (
-          displayedTours.map((item: any) => <ClassificationsCard key={item.id} tour={item} />)
+          displayedTours.map((item: TourLocationRegion) => (
+            <ClassificationsCard
+              key={item.id}
+              image={item.mainImage}
+              id={item.id}
+              title={item.title}
+              previewDescription={item.previewDescription}
+              buttonText={'Read more'}
+              tourCard={true}
+            />
+          ))
         ) : (
           <h3 className={style.toursDisplay__title}>No tours yet</h3>
         )}

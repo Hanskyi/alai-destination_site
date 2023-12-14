@@ -44,10 +44,7 @@ const Classification = () => {
           />
         </div>
         <div className={style.classificationInfo}>
-          <h2 className={style.classificationInfo__title}>
-            Each journey may begin with a single step, but some require a few more steps than
-            others.
-          </h2>
+          <h2 className={style.classificationInfo__title}>{classification.data.subTitle}</h2>
           <p className={style.classificationInfo__description}>{classification.data.description}</p>
           <div className={style.classificationInfo__video} style={{ height: ' 486px' }}>
             {isVideoPlaying ? (

@@ -7,9 +7,9 @@ import {
   selectClassificationPage,
   selectClassifications,
 } from '@/features/Classifications/ClassificationsSlice';
-import WaysToTravelCard from '@/features/Home/TravelSliderBlock/Components/WaysToTravelCard';
 import Banner from '@/components/Banner/Banner';
 import { GALLERY } from '@/constants';
+import Card from '@/components/Card/Card';
 
 const Classifications = () => {
   const classifications = useAppSelector(selectClassifications);
@@ -30,20 +30,20 @@ const Classifications = () => {
           width={1200}
           height={1200}
           alt={'#'}
-          title={content?.title}
+          title={content?.bannerTitle}
         />
       </div>
       <div className={style.classificationsInfo}>
-        <h2 className={style.classificationsInfo__title}>{content?.subTitle}</h2>
+        <h2 className={style.classificationsInfo__title}>{content?.title}</h2>
         <p className={style.classificationsInfo__description}>{content?.description}</p>
         <div className={style.classificationsInfo__video} style={{ height: ' 486px' }}>
           {isVideoPlaying ? (
             <iframe
               width="100%"
               height="100%"
+              style={{ border: 'none' }}
               src={`https://www.youtube.com/embed/${content?.videoLink}?autoplay=1&rel=0&modestbranding=1`}
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
@@ -67,17 +67,19 @@ const Classifications = () => {
           )}
         </div>
         <div className={style.classificationsCards}>
-          <h3 className={style.classificationsCards__title}>
-            Our walking, hiking & trekking trips
-          </h3>
+          <h3 className={style.classificationsCards__title}>{content?.subTitle}</h3>
           <div className={style.classificationsCards__content}>
             {classifications.map(
               (category) =>
                 category &&
                 category.image && (
-                  <div className={style.classificationsCards__content__box} key={category.id}>
-                    <WaysToTravelCard item={category} />
-                  </div>
+                  <Card
+                    key={category.id}
+                    id={category.id}
+                    title={category.title}
+                    image={category.image.url}
+                    categoryCard={true}
+                  />
                 ),
             )}
           </div>
