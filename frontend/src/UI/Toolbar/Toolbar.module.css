@@ -2,7 +2,7 @@
   box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.14);
   margin-bottom: 0;
   z-index: 999;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -36,7 +36,9 @@
 }
 
 .headerLink {
-  margin: 0 25px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 25px;
   color: #222222;
   font-size: 16px;
   height: 24px;
@@ -81,11 +83,6 @@
   align-items: center;
   padding-bottom: 10px;
   justify-content: space-evenly;
-}
-@media screen and (max-width: 1200px) {
-  .headerBottom {
-    margin-top: -20px;
-  }
 }
 @media screen and (max-width: 992px) {
   .headerBottom {
@@ -196,43 +193,27 @@
 }
 
 .destinations {
-  position: relative;
-  width: 115px;
   cursor: pointer;
+  position: relative;
   margin: 0;
 }
 .destinations__image {
+  background: url("../../assets/toolbar/toolbarNextImage.svg") no-repeat;
   position: absolute;
-  background-image: url("../../assets/toolbar/toolbarNextImage.svg");
-  background-size: cover;
   width: 6px;
   height: 10px;
-  right: 0;
+  right: 13px;
   top: 8px;
   transform: rotate(90deg);
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 992px) {
   .destinations__image {
     top: 8px;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .destinations__image {
-    top: 8px;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .destinations__image {
-    top: 8px;
+    right: 26%;
   }
 }
 .destinations__image__active {
-  top: 6px;
   rotate: 180deg;
-}
-.destinations__image__burger {
-  top: 146px;
-  left: 128px;
 }
 
 .dropdown {
@@ -259,6 +240,7 @@
 }
 .dropdown__burger {
   position: static;
+  width: 100%;
 }
 
 @keyframes dropdown-animation {

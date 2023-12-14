@@ -24,11 +24,13 @@ const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, link })
       style={{ overflow: 'visible' }}
     >
       {children}
-      <SwiperSlide className={style.mySwiper__slide}>
-        <Link className={style.swiper__btn} href={`${link}`}>
-          See all trips
-        </Link>
-      </SwiperSlide>
+      {link && (
+        <SwiperSlide className={style.mySwiper__slide}>
+          <Link className={style.swiper__btn} href={link}>
+            See all trips
+          </Link>
+        </SwiperSlide>
+      )}
       <div className={style.mySwiper__btns}>
         <div className={`${style.mySwiper__btns__prev} mySwiper__btns__prev`}></div>
         <div className={`${style.mySwiper__btns__next} mySwiper__btns__next`}></div>

@@ -1,7 +1,11 @@
 .mySwiper {
   &__slide {
     width: 238px !important;
+    border-radius: 0.25rem;
+    border: 1px solid #bebebe;
+    overflow: hidden;
   }
+
   &__btns {
     display: flex;
     margin-top: 16px;

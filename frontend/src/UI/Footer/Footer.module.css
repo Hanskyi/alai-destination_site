@@ -123,11 +123,6 @@
   justify-content: space-between;
   gap: 15px;
 }
-@media screen and (max-width: 576px) {
-  .footer__bottom > div {
-    justify-content: center;
-  }
-}
 .footer__bottom .social__list {
   gap: 16px;
   flex-wrap: wrap;

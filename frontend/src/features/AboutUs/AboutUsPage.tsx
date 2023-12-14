@@ -1,27 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ValuesBlock from '@/features/AboutUs/Components/ValuesBlock';
 import CountersBlock from '@/features/AboutUs/Components/CountersBlock';
 import Image from 'next/image';
 import Link from 'next/link';
 import aboutUsStyle from '@/features/AboutUs/AboutUs.module.scss';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { useRouter } from 'next/router';
-import { fetchAllAboutUsPage } from '@/features/AboutUs/AboutUsThunk';
+import { useAppSelector } from '@/store/hooks';
 import { selectAboutUs } from '@/features/AboutUs/AboutUsSlice';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
 import { useTranslations } from 'next-intl';
 
 const AboutUsPage = () => {
-  const dispatch = useAppDispatch();
-  const { locale } = useRouter();
   const aboutUs = useAppSelector(selectAboutUs);
 
   const t = useTranslations('AboutUs');
 
-  useEffect(() => {
-    dispatch(fetchAllAboutUsPage(locale || 'en'));
-  }, [dispatch, locale]);
   return (
     aboutUs && (
       <>

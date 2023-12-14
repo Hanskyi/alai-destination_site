@@ -2,7 +2,12 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #57caf4 0%, rgba(137, 223, 255, 0.552083) 61.98%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    #57caf4 0%,
+    rgba(137, 223, 255, 0.552083) 61.98%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .skyBlock_hotBaloon {
   text-align: center;
@@ -34,7 +39,8 @@
 
 /* Animation Keyframes */
 @-webkit-keyframes balloon {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: translateY(0) rotate(-3deg);
   }
   50% {
@@ -42,7 +48,8 @@
   }
 }
 @-moz-keyframes balloon {
-  0%, 100% {
+  0%,
+  100% {
     -moz-transform: translateY(0) rotate(-3deg);
   }
   50% {
@@ -50,7 +57,8 @@
   }
 }
 @-o-keyframes balloon {
-  0%, 100% {
+  0%,
+  100% {
     -o-transform: translateY(0) rotate(-3deg);
   }
   50% {
@@ -58,7 +66,8 @@
   }
 }
 @keyframes balloon {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(-3deg);
   }
   50% {

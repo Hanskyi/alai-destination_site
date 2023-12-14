@@ -36,7 +36,9 @@
 }
 
 .headerLink {
-  margin: 0 25px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 25px;
   color: #222222;
   font-size: 16px;
   height: 24px;
@@ -78,10 +80,6 @@
   align-items: center;
   padding-bottom: 10px;
   justify-content: space-evenly;
-
-  @include mixins.xl {
-    margin-top: -20px;
-  }
 
   @include mixins.lg {
     margin-top: -54px;
@@ -191,40 +189,27 @@
 }
 
 .destinations {
-  position: relative;
-  width: 115px;
   cursor: pointer;
+  position: relative;
   margin: 0;
 
   &__image {
+    background: url('../../assets/toolbar/toolbarNextImage.svg') no-repeat;
     position: absolute;
-    background-image: url('../../assets/toolbar/toolbarNextImage.svg');
-    background-size: cover;
     width: 6px;
     height: 10px;
-    right: 0;
+    right: 13px;
     top: 8px;
 
     transform: rotate(90deg);
 
-    @include mixins.xxl {
+    @include mixins.lg {
       top: 8px;
-    }
-    @include mixins.xl {
-      top: 8px;
-    }
-    @include mixins.xl {
-      top: 8px;
+      right: 26%;
     }
 
     &__active {
-      top: 6px;
       rotate: 180deg;
-    }
-
-    &__burger {
-      top: 146px;
-      left: 128px;
     }
   }
 }
@@ -255,6 +240,7 @@
 
   &__burger {
     position: static;
+    width: 100%;
   }
 }
 
