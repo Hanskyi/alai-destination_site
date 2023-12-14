@@ -12,7 +12,7 @@ interface Props {
 const SocialsItem: React.FC<Props> = ({ icon }) => {
   return (
     <div className={footer.social__listItem}>
-      <Link href={icon.href}>
+      <Link href={icon.href} target="_blank">
         <Image width={32} height={32} src={GALLERY + icon.icon.url} alt={icon.icon.name} />
       </Link>
     </div>
