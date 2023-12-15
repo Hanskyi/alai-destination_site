@@ -5,6 +5,7 @@ import { useAppSelector } from '@/store/hooks';
 import { selectArticles } from '@/features/Articles/ArticlesSlice';
 import ArticlesCard from '@/features/Articles/Components/ArticlesCard';
 import Banner from '@/components/Banner/Banner';
+import { motion } from 'framer-motion';
 
 const Articles = () => {
   const articles = useAppSelector(selectArticles);
@@ -27,8 +28,19 @@ const Articles = () => {
 
       <div className="d-flex flex-column align-center">
         <div className={`${style.articleCardContainer} container d-flex f-wrap justify-center`}>
-          {displayedArticles.map((article) => (
-            <ArticlesCard key={article.id} article={article} />
+          {displayedArticles.map((article, i) => (
+            <motion.div
+              key={article.id}
+              initial={{
+                opacity: 0,
+                translateX: i % 2 === 0 ? -50 : 50,
+                translateY: -50,
+              }}
+              animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+              transition={{ duration: 0.3, delay: i * 0.2 }}
+            >
+              <ArticlesCard key={article.id} article={article} />
+            </motion.div>
           ))}
         </div>
         {visibleArticles < articles.length && (

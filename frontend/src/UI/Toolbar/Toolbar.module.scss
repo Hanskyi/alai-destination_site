@@ -35,14 +35,39 @@
   }
 }
 
+@mixin underline-animation($underline-color, $height, $bottom) {
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: $bottom;
+    width: 100%;
+    height: $height;
+    background-color: $underline-color;
+    transform: scalex(0);
+    transition: transform 0.4s ease-in-out 0s;
+  }
+  &:focus {
+    outline: 0;
+  }
+  &:hover,
+  &:focus,
+  &.active {
+    &:before {
+      transform: scalex(1);
+      transition: transform 0.4s ease-in-out 0s;
+    }
+  }
+}
+
 .headerLink {
   text-align: center;
   cursor: pointer;
-  padding: 0 25px;
+  margin: 0 25px;
   color: #222222;
   position: relative;
   font-size: 16px;
   height: 24px;
+  @include underline-animation(red, 2px, -3px);
 
   @include mixins.xl {
     display: block;
@@ -51,6 +76,7 @@
   @include mixins.lg {
     margin: 15px 0 10px 16px;
     font-weight: 400;
+    @include underline-animation(none, 0, 0);
   }
 }
 
@@ -192,14 +218,13 @@
 .destinations {
   cursor: pointer;
   position: relative;
-  margin: 0;
 
   &__image {
     background: url('../../assets/toolbar/toolbarNextImage.svg') no-repeat;
     position: absolute;
     width: 6px;
     height: 10px;
-    right: 13px;
+    right: -13px;
     top: 8px;
 
     transform: rotate(90deg);
@@ -235,7 +260,7 @@
     padding: 5px;
 
     &:hover {
-      background-color: #bebebe;
+      background-color: rgba(190, 190, 190, 0.27);
       transition: background-color 0.3s;
     }
   }

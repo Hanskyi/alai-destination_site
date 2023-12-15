@@ -5,6 +5,7 @@ import Card from '@/components/Card/Card';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import { NextRouter } from 'next/router';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 
 interface Props {
   router: NextRouter;
@@ -269,22 +270,35 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
           </div>
         </div>
 
-        {filteredByDurationTours.length === 0 ? (
-          notFound
-        ) : (
-          <div className={'tourCards'}>
-            {filteredByDurationTours.map((tour: Tour) => (
-              <Card
-                key={tour.id}
-                title={tour.title}
-                image={tour.mainImage.url}
-                id={tour.id}
-                classification={tour.classification}
-                price={tour.price}
-              />
-            ))}
-          </div>
-        )}
+        <div className="tourCardsContainer">
+          {filteredByDurationTours.length === 0 ? (
+            notFound
+          ) : (
+            <div className="tourCards">
+              {filteredByDurationTours.map((tour: Tour, i) => (
+                <motion.div
+                  key={tour.id}
+                  className={'tourCards'}
+                  initial={{
+                    opacity: 0,
+                    translateX: i % 2 === 0 ? -50 : 50,
+                    translateY: -50,
+                  }}
+                  animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.2 }}
+                >
+                  <Card
+                    title={tour.title}
+                    image={tour.mainImage.url}
+                    id={tour.id}
+                    classification={tour.classification}
+                    price={tour.price}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
