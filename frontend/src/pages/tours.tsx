@@ -75,6 +75,10 @@ export const getServerSideProps: GetServerSideProps<Props> = wrapper.getServerSi
         queryParameters.push(`filters[duration][$gte]=${context.query.duration as string}`);
       }
 
+      if (context.query.price === 'lowToHigh' || context.query.price === 'highToLow') {
+        queryParameters.push(`sort[price]=${context.query.price === 'lowToHigh' ? 'asc' : 'desc'}`);
+      }
+
       queryParameters.push('populate[classification][fields][0]=title');
       queryParameters.push('populate[location][fields][0]=name');
       queryParameters.push('populate[mainImage][fields][0]=url');
@@ -83,9 +87,15 @@ export const getServerSideProps: GetServerSideProps<Props> = wrapper.getServerSi
 
       let toursUrl = `tours?fields[0]=id&fields[1]=title&fields[2]=price&fields[3]=duration&populate[classification][fields][0]=title&populate[location][fields][0]=name&populate[mainImage][fields][0]=url&populate[localizations][populate]=true&populate[localizations][fields][0]=locale`;
 
-      if (context.query.location || context.query.classification || context.query.duration) {
+      if (
+        context.query.location ||
+        context.query.classification ||
+        context.query.price ||
+        context.query.duration
+      ) {
         toursUrl = `tours?${queryString}`;
       }
+
       const toursResponse = await axiosApi.get<ToursPage>(`${toursUrl}&locale=${context.locale}`);
       const tours = toursResponse.data.data;
 
