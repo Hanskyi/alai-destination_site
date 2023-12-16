@@ -11,6 +11,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { baseUrl, GALLERY } from '@/constants';
 import { IHeaderFooterInfo, ILocationListShortInfo } from '@/type';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/router';
 
 interface IProps {
   hfData: IHeaderFooterInfo | null;
@@ -92,6 +93,8 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
   const onClickLinkBurger = () => {
     setDestinationsDropdown(!destinationsDropdown);
   };
+
+  const router = useRouter();
 
   return (
     hfData && (
@@ -180,7 +183,13 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                   )}
                 </div>
                 {largeLinks.map((link, index) => (
-                  <Link href={link.href} key={index} className={toolbar.headerLink}>
+                  <Link
+                    href={link.href}
+                    key={index}
+                    className={`${toolbar.headerLink} ${
+                      router.pathname === link.href ? toolbar.active : ''
+                    }`}
+                  >
                     {link.text}
                   </Link>
                 ))}

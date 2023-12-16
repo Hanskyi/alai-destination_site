@@ -13,6 +13,7 @@
   }
 
   &_wrapper {
+    text-align: center;
     max-width: 1150px;
     color: #fff;
     margin: 0 auto;
@@ -30,13 +31,19 @@
 
   &_title {
     text-shadow: 0 0 10px #000;
-    font-size: 52px;
+    font-size: 42px;
     font-style: normal;
     font-weight: 600;
-    line-height: 56px;
+    line-height: 50px;
 
     @include mixins.lg {
-      font-size: 42px;
+      font-size: 36px;
+      line-height: 36px;
+    }
+
+    @include mixins.md {
+      font-size: 28px;
+      line-height: 32px;
     }
   }
 

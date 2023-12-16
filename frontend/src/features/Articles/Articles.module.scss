@@ -8,19 +8,59 @@
 .articleCardBtn {
   cursor: pointer;
   border: none;
-  background-color: inherit;
   text-transform: uppercase;
-  color: #000;
+  color: white;
   font-size: 12px;
-  font-weight: 600;
-  line-height: 12px;
   letter-spacing: 1px;
   margin-top: 52px;
   margin-bottom: 150px;
+  -webkit-animation: pulse 1.5s infinite;
 
   @include mixins.md {
     margin-top: 38px;
     margin-bottom: 50px;
+  }
+
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  background: rgba(255, 0, 0, 0.76);
+  position: relative;
+
+  &:hover {
+    color: red;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: red;
+    box-shadow:
+      -1px -1px 5px 0px #fff,
+      7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+    transition: 400ms ease all;
+  }
+
+  &:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+
+  &:hover:before,
+  &:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
   }
 }
 
@@ -33,7 +73,14 @@
   margin-bottom: 16px;
   border-radius: 0.25rem;
   cursor: pointer;
-  border: 1px solid #bebebe;
+  -webkit-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &__image {
     width: 374px;
@@ -61,6 +108,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       -webkit-line-clamp: 2;
+      margin-bottom: 10px;
     }
 
     &__text {
