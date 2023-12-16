@@ -56,10 +56,8 @@
   }
 
   &_content {
-
     .wp-block-group {
       background: red;
-
     }
 
     padding-top: 20px;
@@ -83,11 +81,9 @@
     }
 
     div > iframe {
-
       @include mixins.md {
         width: 100% !important;
       }
-
     }
 
     iframe {

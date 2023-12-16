@@ -1,7 +1,6 @@
 @use '../../../../styles/mixins';
 
 .tour_price {
-
   figure {
     width: 100% !important;
     min-height: 150px !important;
@@ -21,13 +20,9 @@
       }
 
       @include mixins.lg {
-
-
-
         height: 440px;
         display: flex;
         justify-content: center;
-
 
         tbody {
           display: flex !important;
