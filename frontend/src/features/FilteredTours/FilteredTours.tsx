@@ -47,15 +47,6 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
   };
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
-  //
-  // const sortedByPrice = tours.sort((tourA, tourB) => {
-  //   if (selectedPriceSort === 'lowToHigh') {
-  //     return tourA.price - tourB.price;
-  //   } else if (selectedPriceSort === 'highToLow') {
-  //     return tourB.price - tourA.price;
-  //   }
-  //   return 0;
-  // });
 
   const handleLocationChange = (value: string) => {
     setSelectedLocation(value);
@@ -112,7 +103,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         <div className={style.filteringTools}>
           <div className={style.selectBox}>
             <select
-              className={style.sortInput}
+              className={`${style.sortInput} ${selectedLocation ? style.selectedSortInput : ''}`}
               value={selectedLocation}
               onChange={(e) => handleLocationChange(e.target.value)}
             >
@@ -132,7 +123,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
 
           <div className={style.selectBox}>
             <select
-              className={style.sortInput}
+              className={`${style.sortInput} ${selectedCategory ? style.selectedSortInput : ''}`}
               value={selectedCategory}
               onChange={(e) => handleCategoryChange(e.target.value)}
             >
@@ -152,7 +143,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
           <div className={style.selectBox}>
             <select
               name="sortByPrice"
-              className={style.sortInput}
+              className={`${style.sortInput} ${selectedPriceSort ? style.selectedSortInput : ''}`}
               value={selectedPriceSort}
               onChange={(e) => handlePriceSortChange(e.target.value)}
             >
@@ -168,9 +159,10 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
             <h5>{filterTranslation('duration')}</h5>
             <div className={style.durationInner}>
               <div className={style.durationPicker}>
-                {/*<label className={style.durationLabel}>Min</label>*/}
                 <select
-                  className={`${style.sortInput} ${style.sortDuration}`}
+                  className={`${style.sortInput} ${style.sortDuration} ${
+                    duration ? style.selectedSortInput : ''
+                  }`}
                   value={duration === 0 ? 'Any' : duration}
                   onChange={(e) => handleDurationChange(parseInt(e.target.value))}
                 >
@@ -182,43 +174,8 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                   ))}
                 </select>
               </div>
-
-              {/*<span className={style.spanDuration}>to</span>*/}
-
-              {/*<div className={style.durationPicker}>*/}
-              {/*  <label className={style.durationLabel}>Max</label>*/}
-              {/*  <select*/}
-              {/*    className={`${style.sortInput} ${style.sortDuration}`}*/}
-              {/*    value={endDuration === 0 ? 'Any' : endDuration}*/}
-              {/*    onChange={(e) => setEndDuration(parseInt(e.target.value))}*/}
-              {/*  >*/}
-              {/*    <option value="Any">Any</option>*/}
-              {/*    {durationOptions*/}
-              {/*      .filter(*/}
-              {/*        (day) => startDuration === 0 || day >= parseInt(startDuration.toString(), 10),*/}
-              {/*      )*/}
-              {/*      .map((day) => (*/}
-              {/*        <option key={day} value={day}>*/}
-              {/*          {day} {day === 1 ? 'day' : 'days'}*/}
-              {/*        </option>*/}
-              {/*      ))}*/}
-              {/*  </select>*/}
-              {/*</div>*/}
             </div>
           </div>
-
-          {/*<Link*/}
-          {/*  style={{ width: '100%', textAlign: 'center' }}*/}
-          {/*  className={`${style.resetDuration} ${style.additionalClass}`}*/}
-          {/*  href={*/}
-          {/*    baseUrl +*/}
-          {/*    'tours' +*/}
-          {/*    (selectedLocation ? '?location=' + selectedLocation : '') +*/}
-          {/*    (selectedCategory ? '&classification=' + selectedCategory : '')*/}
-          {/*  }*/}
-          {/*>*/}
-          {/*  Start Search*/}
-          {/*</Link>*/}
 
           {selectedLocation || selectedCategory || selectedPriceSort || duration ? (
             <Link

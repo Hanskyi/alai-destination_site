@@ -1,17 +1,6 @@
 import React from 'react';
 import FilteredTours from '@/features/FilteredTours/FilteredTours';
 import { wrapper } from '@/store/store';
-import {
-  fetchClassifications,
-  fetchLocations,
-  fetchToursData,
-} from '@/features/FilteredTours/toursThunk';
-import { useAppSelector } from '@/store/hooks';
-import {
-  selectClassifications,
-  selectLocations,
-  selectTours,
-} from '@/features/FilteredTours/toursSlice';
 import { useRouter } from 'next/router';
 import {
   IClassificationListShortInto,
@@ -33,10 +22,6 @@ interface Props {
 const Tours = ({ tours, locations, classifications }: Props) => {
   const router = useRouter();
 
-  // const tours = useAppSelector(selectTours);
-  // const locations = useAppSelector(selectLocations);
-  // const classifications = useAppSelector(selectClassifications);
-
   return (
     <FilteredTours
       router={router}
@@ -48,7 +33,7 @@ const Tours = ({ tours, locations, classifications }: Props) => {
 };
 
 export const getServerSideProps: GetServerSideProps<Props> = wrapper.getServerSideProps(
-  (store) => async (context) => {
+  () => async (context) => {
     try {
       const queryParameters = [];
 
@@ -134,19 +119,5 @@ export const getServerSideProps: GetServerSideProps<Props> = wrapper.getServerSi
     }
   },
 );
-
-// export const getStaticProps = wrapper.getStaticProps((store) => async (context) => {
-//   const tours = store.dispatch(fetchToursData(context.locale ? context.locale : 'en'));
-//   const locations = store.dispatch(fetchLocations(context.locale ? context.locale : 'en'));
-//   const classifications = store.dispatch(
-//     fetchClassifications(context.locale ? context.locale : 'en'),
-//   );
-//   await Promise.all([tours, locations, classifications]);
-//   return {
-//     props: {
-//       messages: (await import(`../../lang/${context.locale}.json`)).default,
-//     },
-//   };
-// });
 
 export default Tours;
