@@ -25,6 +25,10 @@
       @include mixins.md {
         padding: 20px;
       }
+
+      @include mixins.sm {
+        padding: 10px;
+      }
     }
   }
 
