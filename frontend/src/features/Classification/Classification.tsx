@@ -71,7 +71,6 @@ const Classification = () => {
                   onClick={handlePlayButtonClick}
                 >
                   <Image src={playIcon} alt="#" />
-                  Play
                 </button>
               </>
             )}
