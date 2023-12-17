@@ -85,6 +85,7 @@ const Reviews = () => {
 
   return (
     <div className="container">
+      <h3 className={styles.reviews__title}>{t('title')}</h3>
       <div className={styles.reviews__total}>
         <Rating
           size={25}
