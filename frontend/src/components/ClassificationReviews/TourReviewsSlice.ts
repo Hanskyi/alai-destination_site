@@ -54,5 +54,4 @@ export const tourReviewSlice = createSlice({
 });
 
 export const fetchLoadingSelector = (state: RootState) => state.tourReview.fetchLoading;
-
 export const selectLocations = (state: RootState) => state.tourReview.reviews;

@@ -14,6 +14,16 @@ interface GalleryItemProps {
 
 const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt }) => {
   const [open, setOpen] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+  const images = [
+    { url: imageUrl, name: alt }, // Assuming 'images' should be an array containing the current image
+  ];
+
+  const slides = images.map((image, index) => ({
+    src: `${GALLERY}${image.url}`,
+    alt: image.name,
+  }));
 
   return (
     <div className={style.gallery_card} onClick={() => setOpen(true)}>
@@ -32,7 +42,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt }) => {
         <Lightbox
           open={open}
           close={() => setOpen(false)}
-          slides={[{ src: `${GALLERY}${imageUrl}`, alt }]}
+          slides={slides}
           render={{ slide: NextJsImage }}
         />
       )}
