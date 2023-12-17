@@ -195,7 +195,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
             <div className="tourCards">
               {tours.map((tour: Tour, i) => (
                 <motion.div
-                  key={tour.id}
+                  key={`${tour.id}-${i}`}
                   className={'tourCards'}
                   initial={{
                     opacity: 0,
