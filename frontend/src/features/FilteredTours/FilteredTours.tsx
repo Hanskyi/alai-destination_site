@@ -26,13 +26,6 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
     setDuration(parseInt(duration as string) || 0);
   }, [router.query]);
 
-  const notFound = (
-    <p className={style.notFound}>
-      No tours were found with these settings. Please adjust your search parameters to view
-      available tours.
-    </p>
-  );
-
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
@@ -40,6 +33,8 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
 
   const t = useTranslations('ToursPage');
   const filterTranslation = useTranslations('FilterBlock');
+
+  const notFound = <p className={style.notFound}>{filterTranslation('noToursFound')}</p>;
 
   const handleReset = () => {
     setLoading(true);
