@@ -40,7 +40,10 @@
     "maxPrice": "High to Low",
     "duration": "Duration",
     "clear": "Clear",
-    "clearAll": "Clear All"
+    "clearAll": "Clear All",
+    "durationAny": "Any",
+    "day": "day",
+    "days": "days"
   },
   "TourDetails": {
     "title": "Tour Details",

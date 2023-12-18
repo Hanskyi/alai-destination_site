@@ -5,8 +5,8 @@ import Card from '@/components/Card/Card';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import { NextRouter } from 'next/router';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Preloader from '@/components/Preloder/Preloader';
 
 interface Props {
   router: NextRouter;
@@ -16,6 +16,8 @@ interface Props {
 }
 
 const FilteredTours: React.FC<Props> = ({ tours, router, locations, classifications }) => {
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const { location, classification, price, duration } = router.query;
     setSelectedLocation((location as string) || '');
@@ -40,15 +42,26 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
   const filterTranslation = useTranslations('FilterBlock');
 
   const handleReset = () => {
+    setLoading(true);
+
     setSelectedLocation('');
     setSelectedCategory('');
     setSelectedPriceSort('');
     setDuration(0);
+    router
+      .push({
+        pathname: '/tours',
+        query: {},
+      })
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
 
   const handleLocationChange = (value: string) => {
+    setLoading(true);
     setSelectedLocation(value);
 
     router
@@ -56,10 +69,14 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         pathname: '/tours',
         query: { ...router.query, location: value },
       })
-      .then();
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   const handleCategoryChange = (value: string) => {
+    setLoading(true);
+
     setSelectedCategory(value);
 
     router
@@ -67,10 +84,14 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         pathname: '/tours',
         query: { ...router.query, classification: value },
       })
-      .then();
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   const handlePriceSortChange = (value: string) => {
+    setLoading(true);
+
     setSelectedPriceSort(value);
 
     router
@@ -78,10 +99,14 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         pathname: '/tours',
         query: { ...router.query, price: value },
       })
-      .then();
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   const handleDurationChange = (value: number) => {
+    setLoading(true);
+
     setDuration(value);
 
     router
@@ -89,7 +114,9 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         pathname: '/tours',
         query: { ...router.query, duration: value.toString() },
       })
-      .then();
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -166,10 +193,10 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                   value={duration === 0 ? 'Any' : duration}
                   onChange={(e) => handleDurationChange(parseInt(e.target.value))}
                 >
-                  <option value="Any">Any</option>
+                  <option value="Any">{filterTranslation('durationAny')}</option>
                   {durationOptions.map((day) => (
                     <option key={day} value={day}>
-                      {day} {day === 1 ? 'day' : 'days'}
+                      {day} {day === 1 ? filterTranslation('day') : filterTranslation('days')}
                     </option>
                   ))}
                 </select>
@@ -178,46 +205,49 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
           </div>
 
           {selectedLocation || selectedCategory || selectedPriceSort || duration ? (
-            <Link
-              href="/tours"
+            <button
               className={`${style.resetDuration} ${style.additionalClass}`}
               onClick={handleReset}
             >
               {filterTranslation('clearAll')}
-            </Link>
+            </button>
           ) : null}
         </div>
 
-        <div className="tourCardsContainer">
-          {tours.length === 0 ? (
-            notFound
-          ) : (
-            <div className="tourCards">
-              {tours.map((tour: Tour, i) => (
-                <motion.div
-                  key={tour.id}
-                  className={'tourCards'}
-                  initial={{
-                    opacity: 0,
-                    translateX: i % 2 === 0 ? -50 : 50,
-                    translateY: -50,
-                  }}
-                  animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-                  transition={{ duration: 0.3, delay: i * 0.2 }}
-                >
-                  <Card
-                    title={tour.title}
-                    image={tour.mainImage.url}
-                    id={tour.id}
-                    classification={tour.classification}
-                    price={tour.price}
-                    duration={tour.duration}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </div>
+        {loading ? (
+          <Preloader />
+        ) : (
+          <div className="tourCardsContainer">
+            {tours.length === 0 ? (
+              notFound
+            ) : (
+              <div className="tourCards">
+                {tours.map((tour: Tour, i) => (
+                  <motion.div
+                    key={`${tour.id}-${i}`}
+                    className={'tourCards'}
+                    initial={{
+                      opacity: 0,
+                      translateX: i % 2 === 0 ? -50 : 50,
+                      translateY: -50,
+                    }}
+                    animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.2 }}
+                  >
+                    <Card
+                      title={tour.title}
+                      image={tour.mainImage.url}
+                      id={tour.id}
+                      classification={tour.classification}
+                      price={tour.price}
+                      duration={tour.duration}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

@@ -36,11 +36,14 @@
     "location": "Направление",
     "categories": "Категории",
     "sortByPrice": "По цене",
-    "minPrice": "по возрастанию",
-    "maxPrice": "по убыванию",
+    "minPrice": "По возрастанию",
+    "maxPrice": "По убыванию",
     "duration": "Длительность",
     "clear": "очистить",
-    "clearAll": "сбросить"
+    "clearAll": "Сбросить",
+    "durationAny": "Любая",
+    "day": "день",
+    "days": "дней"
   },
   "TourDetails": {
     "title": "Детали тура",
