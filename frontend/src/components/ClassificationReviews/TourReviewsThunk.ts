@@ -1,38 +1,47 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosApi from '@/axiosApi';
-import { TourData, TourDataDetailed, TourReview } from '../../type';
-
-interface IdArgument {
-  id: string;
-}
+import { TourDataDetailed, TourReview } from '../../type';
 
 interface TData {
   data: {
-    tours: TourDataDetailed[];
+    data: {
+      data: TourDataDetailed[];
+    };
   };
 }
 
-export const fetchReviewsForClassification = createAsyncThunk<TourReview[], IdArgument>(
+
+interface TourReviewData {
+  data: {
+    data: {
+      reviews: TourReview[];
+    };
+  };
+}
+
+export const fetchReviewsForClassification = createAsyncThunk<TourReview[], { id: string }>(
   'reviews/fetchForClassification',
   async ({ id }) => {
     try {
-      const responseEng = await axiosApi.get<TData[]>(`classifications/${id}?_populate=tours`);
-      const tourData = responseEng.data;
+      const responseEng = await axiosApi.get<any>(`classifications/${id}?_populate=tours`)!;
 
-      if (!tourData || !tourData[0]?.data?.tours) {
+      console.log(responseEng);
+      const tourData = responseEng.data.data;
+
+      if (!tourData || !tourData?.tours) {
         throw new Error('No tour data found');
       }
 
-      const tours = tourData[0].data.tours;
+      const tours = tourData.tours;
       const reviews: TourReview[] = [];
 
       for (const tour of tours) {
         const tourId = tour.id;
-        const reviewsResponse = await axiosApi.get<TourReview[]>(
+        const reviewsResponse = await axiosApi.get<any>(
           `tours/${tourId}?populate[reviews]=review,rating,createdAt,displayName`,
         );
 
-        reviews.push(...reviewsResponse.data);
+        reviews.push(...reviewsResponse.data.data.reviews);
       }
       return reviews;
     } catch (error) {

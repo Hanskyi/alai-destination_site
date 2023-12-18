@@ -9,6 +9,7 @@ import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
 import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
+import playIcon from '@/assets/icon/icon-play.svg';
 
 const LocationsRegion: React.FC = () => {
   const content = useAppSelector(selectLocationsRegion);
@@ -43,7 +44,7 @@ const LocationsRegion: React.FC = () => {
               style={{ border: 'none' }}
               width="100%"
               height="100%"
-              src={`https://www.youtube.com/embed/${content.videoLink}?si=ELqKiwQhDaaWnzZ3`}
+              src={`https://www.youtube.com/embed/${content.videoLink}?autoplay=1&rel=0&modestbranding=1`}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -61,7 +62,7 @@ const LocationsRegion: React.FC = () => {
                 className={classificationsStyle.classificationInfo__video__button}
                 onClick={handlePlayButtonClick}
               >
-                Play
+                <Image src={playIcon} alt="#" />
               </button>
             </>
           )}

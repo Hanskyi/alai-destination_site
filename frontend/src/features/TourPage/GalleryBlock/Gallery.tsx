@@ -4,7 +4,7 @@ import style from './Gallery.module.scss';
 import { useTranslations } from 'next-intl';
 
 interface Image {
-  id: number;
+  id?: number;
   name: string;
   url: string;
 }
@@ -13,8 +13,9 @@ interface Props {
   images?: Image[];
 }
 
-const Gallery = ({ images = [] }: Props) => {
+const Gallery: React.FC<Props> = ({ images = [] }) => {
   const t = useTranslations('TourIdGallery');
+
   return (
     <div className="container">
       <div className={style.gallery_block}>
