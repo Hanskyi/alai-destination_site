@@ -1,5 +1,5 @@
 .footer {
-  font-family: 'Montserat', sans-serif;
+  font-family: "Montserat", sans-serif;
 }
 .footer__top {
   padding: 50px 0 84px;
@@ -48,7 +48,7 @@
   cursor: pointer;
 }
 .footer__top .block-subscribe button .i-envelope {
-  background: url('../../assets/icon/i_envelope.png') no-repeat;
+  background: url("../../assets/icon/i_envelope.png") no-repeat;
   background-size: contain;
   display: block;
   width: 18px;
@@ -122,6 +122,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 15px;
+}
+.footer__bottom .social__listItem {
+  transition: 0.5s ease-in-out;
+}
+.footer__bottom .social__listItem:hover {
+  transform: scale(1.2);
 }
 .footer__bottom .social__list {
   gap: 16px;

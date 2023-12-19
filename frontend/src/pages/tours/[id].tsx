@@ -14,21 +14,20 @@ const Tour = ({ tourData }: Props) => {
 
 export default Tour;
 
-export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
-  const { id } = context.query || {};
-
+export const getServerSideProps: GetServerSideProps<Props> = async ({ params, locale }) => {
+  const id = params?.id;
   if (!id || Array.isArray(id)) {
     throw new Error('Param id must be a string');
   }
 
   try {
-    const { data } = await axiosApi.get<any>(`tours/${id}`);
+    const { data } = await axiosApi.get<any>(`tours/${id}?locale=${locale}`);
 
     const tData = data.data;
     return {
       props: {
         tourData: tData,
-        messages: (await import(`../../../lang/${context.locale}.json`)).default,
+        messages: (await import(`../../../lang/${locale}.json`)).default,
       },
     };
   } catch (error) {
@@ -36,7 +35,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     return {
       props: {
         tourData: null,
-        messages: (await import(`../../../lang/${context.locale}.json`)).default,
+        messages: (await import(`../../../lang/${locale}.json`)).default,
       },
     };
   }

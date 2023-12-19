@@ -38,11 +38,28 @@
 .headerLink {
   text-align: center;
   cursor: pointer;
-  padding: 0 25px;
+  margin: 0 25px;
   color: #222222;
   position: relative;
   font-size: 16px;
   height: 24px;
+}
+.headerLink:before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  transform: scalex(0);
+  transition: transform 0.4s ease-in-out 0s;
+}
+.headerLink:focus {
+  outline: 0;
+}
+.headerLink:hover:before, .headerLink:focus:before, .headerLink.active:before {
+  transform: scalex(1);
+  transition: transform 0.4s ease-in-out 0s;
 }
 @media screen and (max-width: 1200px) {
   .headerLink {
@@ -53,6 +70,23 @@
   .headerLink {
     margin: 15px 0 10px 16px;
     font-weight: 400;
+  }
+  .headerLink:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background-color: none;
+    transform: scalex(0);
+    transition: transform 0.4s ease-in-out 0s;
+  }
+  .headerLink:focus {
+    outline: 0;
+  }
+  .headerLink:hover:before, .headerLink:focus:before, .headerLink.active:before {
+    transform: scalex(1);
+    transition: transform 0.4s ease-in-out 0s;
   }
 }
 
@@ -196,14 +230,13 @@
 .destinations {
   cursor: pointer;
   position: relative;
-  margin: 0;
 }
 .destinations__image {
-  background: url('../../assets/toolbar/toolbarNextImage.svg') no-repeat;
+  background: url("../../assets/toolbar/toolbarNextImage.svg") no-repeat;
   position: absolute;
   width: 6px;
   height: 10px;
-  right: 13px;
+  right: -13px;
   top: 8px;
   transform: rotate(90deg);
 }
@@ -237,7 +270,7 @@
   padding: 5px;
 }
 .dropdown__link:hover {
-  background-color: #bebebe;
+  background-color: rgba(190, 190, 190, 0.27);
   transition: background-color 0.3s;
 }
 .dropdown__burger {

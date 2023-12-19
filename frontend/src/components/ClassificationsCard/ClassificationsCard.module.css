@@ -6,10 +6,13 @@
   overflow: hidden;
   border-radius: 0.25rem;
   cursor: pointer;
-  border: 1px solid #bebebe;
+  -webkit-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  transition: transform 0.3s ease-in-out;
 }
 .classificationCard:hover {
-  background-color: #bebebe;
+  transform: scale(1.05);
 }
 @media screen and (max-width: 768px) {
   .classificationCard {
@@ -61,8 +64,8 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
-  background-size: 16px 16px;
+  background-image: url("../../assets/icon/icon-arrow.svg");
+  background-size: 20px 20px;
   background-position: right 16px center;
   background-repeat: no-repeat;
   width: auto;
@@ -72,12 +75,10 @@
   text-align: center;
 }
 .classificationCard__content__button:hover {
-  background-color: #333232;
-}
-.classificationCard__content__button:active {
-  background-color: #424242;
-  transform: translateY(2px);
-  box-shadow: 0 0 5px rgba(0, 1, 1, 0.5);
+  transition: background-color 0.4s ease-in-out;
+  background-color: #ffffff;
+  background-image: url("../../assets/icon/icon-arrow-black.svg");
+  color: black;
 }
 
 /*# sourceMappingURL=ClassificationsCard.module.css.map */

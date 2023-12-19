@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["TourPrice.module.scss"],"names":[],"mappings":"AACE;EACE;EACA;;AAGF;EACE;EACA;;AAEF;EACE;EACA","file":"TourPrice.module.css"}
+{"version":3,"sourceRoot":"","sources":["TourPrice.module.scss","../../../../styles/_mixins.scss"],"names":[],"mappings":"AAGE;EACE;EACA;;AAEA;EACE;;AAGE;EACE;;AAIJ;EACE;EACA;;ACLN;EDNE;IAeI;IACA;IACA;;EAEA;IACE;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;;;ACvBV;EDVA;IAwCI","file":"TourPrice.module.css"}

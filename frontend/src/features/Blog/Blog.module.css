@@ -46,6 +46,32 @@
   max-width: 100%;
   height: 100%;
 }
+.blog_content {
+  padding-top: 20px;
+}
+.blog_content .wp-block-group {
+  background: red;
+}
+.blog_content figure {
+  width: 100% !important;
+}
+.blog_content img {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  color: transparent;
+  display: block;
+  position: relative;
+}
+.blog_content > div > div {
+  padding: 10px !important;
+}
+@media screen and (max-width: 768px) {
+  .blog_content div > iframe {
+    width: 100% !important;
+  }
+}
 .blog_content iframe {
   margin: 0 auto;
   display: flex;
