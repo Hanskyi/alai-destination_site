@@ -1,30 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosApi from '@/axiosApi';
-import { TourDataDetailed, TourReview } from '../../type';
-
-interface TData {
-  data: {
-    data: {
-      data: TourDataDetailed[];
-    };
-  };
-}
-
-interface TourReviewData {
-  data: {
-    data: {
-      reviews: TourReview[];
-    };
-  };
-}
+import { TourReview } from '@/type';
 
 export const fetchReviewsForClassification = createAsyncThunk<TourReview[], { id: string }>(
   'reviews/fetchForClassification',
   async ({ id }) => {
     try {
-      const responseEng = await axiosApi.get<any>(`classifications/${id}?_populate=tours`)!;
+      const responseEng = await axiosApi<any>(`classifications/${id}?_populate=tours`)!;
 
-      console.log(responseEng);
       const tourData = responseEng.data.data;
 
       if (!tourData || !tourData?.tours) {
