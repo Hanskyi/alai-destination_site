@@ -58,7 +58,6 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
           const response = await axiosApi.get(`tours/${tourId}`);
           const userReviews = response.data.data.reviews;
 
-
           const userSubmittedReview = Object.values(userReviews).find(
             (review: any) => review.users_permissions_user.id === session.user?.userId,
           );
