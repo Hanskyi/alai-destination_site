@@ -17,6 +17,12 @@ module.exports = createCoreRouter('api::tour.tour', {
     findOne: {
       middlewares: ['api::tour.tours-populate'],
     },
+    // findOneById: {
+    //   middlewares: ['api::tour.tours-populate'],
+    //   handler: 'Tour.findOne',
+    //   method: 'GET',
+    //   path: '/tours/:id',
+    // },
     getTourReviews: {
       middlewares: ['api::tour.tours-reviews'],
       handler: 'Tour.getTourReviews',

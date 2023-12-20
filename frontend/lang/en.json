@@ -44,7 +44,7 @@
     "durationAny": "Any",
     "day": "day",
     "days": "days",
-    "noToursFound":  "No tours were found with these settings. Please adjust your search parameters to view available tours."
+    "noToursFound": "No tours were found with these settings. Please adjust your search parameters to view available tours."
   },
   "TourDetails": {
     "title": "Tour Details",

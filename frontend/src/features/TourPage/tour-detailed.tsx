@@ -10,7 +10,10 @@ import ReviewForm from '@/components/ReviewForm/ReviewForm';
 import { TourDataDetailed } from '@/type';
 import Banner from '@/components/Banner/Banner';
 import { GALLERY } from '@/constants';
-import { fetchReviewsForClassification } from '../../components/ClassificationReviews/TourReviewsThunk';
+import {
+  fetchReviewsForClassification,
+  fetchReviewsForTour,
+} from '../../components/ClassificationReviews/TourReviewsThunk';
 import { useAppDispatch } from '../../store/hooks';
 import { useRouter } from 'next/router';
 
@@ -25,7 +28,7 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchReviewsForClassification({ id: id as string }));
+      dispatch(fetchReviewsForTour(id as string));
     }
   }, [dispatch, locale, id]);
 

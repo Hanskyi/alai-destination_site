@@ -123,18 +123,6 @@
       },
       "customField": "plugin::ckeditor5video.CKEditor"
     },
-    "tourPrice": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "customField",
-      "options": {
-        "preset": "toolbar"
-      },
-      "customField": "plugin::ckeditor5video.CKEditor"
-    },
     "subTitle": {
       "pluginOptions": {
         "i18n": {
@@ -174,13 +162,25 @@
         }
       },
       "component": "tour.table-el",
-      "required": true
+      "required": false
     },
     "location": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::location.location",
       "inversedBy": "tours"
+    },
+    "tourPrice": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5video.CKEditor"
     }
   }
 }

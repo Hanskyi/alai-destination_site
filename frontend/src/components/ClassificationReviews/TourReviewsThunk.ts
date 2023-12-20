@@ -10,7 +10,6 @@ interface TData {
   };
 }
 
-
 interface TourReviewData {
   data: {
     data: {
@@ -53,13 +52,16 @@ export const fetchReviewsForClassification = createAsyncThunk<TourReview[], { id
 
 export const fetchReviewsForTour = createAsyncThunk<TourReview[], string>(
   'reviews/fetchForTour',
-  async (tourId) => {
+  async (id) => {
     try {
-      const response = await axiosApi.get<TourReview[]>(
-        `tours/${tourId}?populate[reviews]=review,rating,createdAt,displayName`,
+      const response = await axiosApi.get<any>(
+        `tours/${id}?populate[reviews]=review,rating,createdAt,displayName`,
       );
 
-      return response.data;
+      const fetchData = response.data.data.reviews;
+
+      console.log(fetchData, 'fetchData');
+      return fetchData;
     } catch (error) {
       console.error('Error fetching reviews for tour:', error);
       throw error;
