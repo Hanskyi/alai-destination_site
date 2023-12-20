@@ -18,7 +18,7 @@ const ArticlesCard: React.FC<Props> = ({ article }) => {
       tempDiv.innerHTML = htmlCode;
       setPlainText(tempDiv.innerText);
     }
-  }, [article.content]);
+  }, [article.content, article]);
 
   return (
     <div className={style.articleCard}>

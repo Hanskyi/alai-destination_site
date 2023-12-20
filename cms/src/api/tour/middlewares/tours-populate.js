@@ -27,6 +27,11 @@ const populate = {
         populate:true,
         fields:["username", "id"]
       },
+      tour:{
+        populate:{
+          fields:["title", "id"]
+        }
+      }
     },
     fields: ["review", "rating", "createdAt", "displayName", "users_permissions_user"],
   },

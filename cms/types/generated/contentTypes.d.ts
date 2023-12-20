@@ -1818,18 +1818,6 @@ export interface ApiTourTour extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    tourPrice: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5video.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     subTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1855,7 +1843,6 @@ export interface ApiTourTour extends Schema.CollectionType {
         };
       }>;
     faqList: Attribute.Component<'tour.table-el', true> &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1866,6 +1853,18 @@ export interface ApiTourTour extends Schema.CollectionType {
       'manyToOne',
       'api::location.location'
     >;
+    tourPrice: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5video.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
