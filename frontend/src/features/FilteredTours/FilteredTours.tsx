@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import style from './FilteredTours.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import Card from '@/components/Card/Card';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
@@ -7,6 +6,7 @@ import { NextRouter } from 'next/router';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Preloader from '@/components/Preloder/Preloader';
+import style from './FilteredTours.module.scss';
 
 interface Props {
   router: NextRouter;
@@ -212,7 +212,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         {loading ? (
           <Preloader />
         ) : (
-          <div className="tourCardsContainer">
+          <div style={{ flexGrow: 1 }}>
             {tours.length === 0 ? (
               notFound
             ) : (

@@ -9,6 +9,7 @@
   object-fit: cover;
 }
 .banner_wrapper {
+  text-align: center;
   max-width: 1150px;
   color: #fff;
   margin: 0 auto;
@@ -19,16 +20,28 @@
   transform: translate(-50%, -50%);
   z-index: 50;
 }
+@media screen and (max-width: 768px) {
+  .banner_wrapper {
+    width: 100%;
+  }
+}
 .banner_title {
   text-shadow: 0 0 10px #000;
-  font-size: 52px;
+  font-size: 42px;
   font-style: normal;
   font-weight: 600;
-  line-height: 56px;
+  line-height: 50px;
 }
 @media screen and (max-width: 992px) {
   .banner_title {
-    font-size: 42px;
+    font-size: 36px;
+    line-height: 36px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .banner_title {
+    font-size: 28px;
+    line-height: 32px;
   }
 }
 .banner_sub_title {

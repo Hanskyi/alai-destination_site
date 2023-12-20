@@ -123,6 +123,12 @@
   justify-content: space-between;
   gap: 15px;
 }
+.footer__bottom .social__listItem {
+  transition: 0.5s ease-in-out;
+}
+.footer__bottom .social__listItem:hover {
+  transform: scale(1.2);
+}
 .footer__bottom .social__list {
   gap: 16px;
   flex-wrap: wrap;

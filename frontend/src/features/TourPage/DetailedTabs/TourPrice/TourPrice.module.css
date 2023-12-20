@@ -1,14 +1,40 @@
 .tour_price figure {
   width: 100% !important;
-  height: 110px !important;
+  min-height: 150px !important;
 }
-.tour_price .table {
-  width: 100%;
-  background: red;
+.tour_price figure table {
+  table-layout: auto !important;
 }
-.tour_price table {
-  width: 100%;
-  border-collapse: collapse;
+.tour_price figure table tbody td {
+  height: auto !important;
+}
+.tour_price figure table td {
+  width: auto !important;
+  font-size: 12px !important;
+}
+@media screen and (max-width: 992px) {
+  .tour_price figure table {
+    height: 440px;
+    display: flex;
+    justify-content: center;
+  }
+  .tour_price figure table tbody {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+  }
+  .tour_price figure table tbody tr {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    min-width: 50%;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .tour_price figure {
+    height: fit-content !important;
+  }
 }
 
 /*# sourceMappingURL=TourPrice.module.css.map */
