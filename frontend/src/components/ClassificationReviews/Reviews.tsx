@@ -13,7 +13,6 @@ interface Props {
 
 const Reviews: React.FC<Props> = ({ reviews }) => {
   const [rate, setRate] = useState<number>(0);
-  const { data: session } = useSession();
   const t = useTranslations('ReviewsBlock');
 
   console.log(reviews);
@@ -70,6 +69,7 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
   const percentage = (num: number): number => {
     return (num * 100) / totalReviews;
   };
+
   return (
     <div className="container">
       <h3 className={styles.reviews__title}>{t('title')}</h3>
