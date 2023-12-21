@@ -39,8 +39,12 @@
     "minPrice": "Low to High",
     "maxPrice": "High to Low",
     "duration": "Duration",
-    "clear": "clear",
-    "clearAll": "clear all"
+    "clear": "Clear",
+    "clearAll": "Clear All",
+    "durationAny": "Any",
+    "day": "day",
+    "days": "days",
+    "noToursFound": "No tours were found with these settings. Please adjust your search parameters to view available tours."
   },
   "TourDetails": {
     "title": "Tour Details",

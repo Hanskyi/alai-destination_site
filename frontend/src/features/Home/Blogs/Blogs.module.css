@@ -3,13 +3,14 @@
   border: 1px solid #bebebe;
   padding: 25px 18px;
   display: flex;
+  transition: transform 0.3s ease-in-out;
 }
 .blog_link {
   display: flex;
   flex-direction: column;
 }
 .blog:hover {
-  background-color: #bebebe;
+  transform: scale(1.05);
 }
 @media screen and (max-width: 768px) {
   .blog {

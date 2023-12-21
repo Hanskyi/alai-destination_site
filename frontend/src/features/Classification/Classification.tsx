@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Classification.module.scss';
 import playIcon from '@/assets/icon/icon-play.svg';
 import Image from 'next/image';
@@ -7,10 +7,23 @@ import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
 import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
+import Reviews from '../../components/ClassificationReviews/Reviews';
+import { fetchReviewsForClassification } from '../../components/ClassificationReviews/TourReviewsThunk';
+import { useAppDispatch } from '../../store/hooks';
+import { useRouter } from 'next/router';
 
 const Classification = () => {
   const { classification } = useAppSelector((state) => state.classification);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const dispatch = useAppDispatch();
+  const { locale, query } = useRouter();
+  const { id } = query;
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchReviewsForClassification({ id: id as string }));
+    }
+  }, [dispatch, locale, id]);
 
   const t = useTranslations('ClassificationID');
 
@@ -58,7 +71,6 @@ const Classification = () => {
                   onClick={handlePlayButtonClick}
                 >
                   <Image src={playIcon} alt="#" />
-                  Play
                 </button>
               </>
             )}
@@ -73,7 +85,7 @@ const Classification = () => {
               additionalCardCount={3}
             />
           </div>
-          {/*<Reviews />*/}
+          <Reviews />
         </div>
       </>
     )

@@ -7,10 +7,13 @@
   cursor: pointer;
   height: 100%;
   overflow: hidden;
-  border: 1px solid #bebebe;
+  -webkit-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  transition: transform 0.3s ease-in-out;
 }
 .card:hover {
-  background-color: #bebebe;
+  transform: scale(1.05);
 }
 .card__image {
   max-width: 300px;

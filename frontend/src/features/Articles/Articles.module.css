@@ -6,21 +6,56 @@
 .articleCardBtn {
   cursor: pointer;
   border: none;
-  background-color: inherit;
   text-transform: uppercase;
-  color: #000;
+  color: white;
   font-size: 12px;
-  font-weight: 600;
-  line-height: 12px;
   letter-spacing: 1px;
   margin-top: 52px;
   margin-bottom: 150px;
+  -webkit-animation: pulse 1.5s infinite;
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  background: rgba(255, 0, 0, 0.76);
+  position: relative;
 }
 @media screen and (max-width: 768px) {
   .articleCardBtn {
     margin-top: 38px;
     margin-bottom: 50px;
   }
+}
+.articleCardBtn:hover {
+  color: red;
+  background: transparent;
+  box-shadow: none;
+}
+.articleCardBtn:before,
+.articleCardBtn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: red;
+  box-shadow:
+    -1px -1px 5px 0px #fff,
+    7px 7px 20px 0px rgba(0, 0, 0, 0.2),
+    4px 4px 5px 0px rgba(0, 0, 0, 0.1333333333);
+  transition: 400ms ease all;
+}
+.articleCardBtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.articleCardBtn:hover:before,
+.articleCardBtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
 
 .articleCard {
@@ -32,7 +67,13 @@
   margin-bottom: 16px;
   border-radius: 0.25rem;
   cursor: pointer;
-  border: 1px solid #bebebe;
+  -webkit-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+.articleCard:hover {
+  transform: scale(1.05);
 }
 .articleCard__image {
   width: 374px;
@@ -58,6 +99,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
+  margin-bottom: 10px;
 }
 .articleCard__content__text {
   color: #222;

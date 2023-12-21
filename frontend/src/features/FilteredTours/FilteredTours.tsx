@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import style from './FilteredTours.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import Card from '@/components/Card/Card';
 import { ILocalizationShortInfo, ILocalizationShortInfoClassification, Tour } from '@/type';
 import { NextRouter } from 'next/router';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
+import Preloader from '@/components/Preloder/Preloader';
+import style from './FilteredTours.module.scss';
 
 interface Props {
   router: NextRouter;
@@ -14,95 +16,103 @@ interface Props {
 }
 
 const FilteredTours: React.FC<Props> = ({ tours, router, locations, classifications }) => {
-  const notFound = (
-    <p className={style.notFound}>
-      No tours were found with these settings. Please adjust your search parameters to view
-      available tours.
-    </p>
-  );
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const { location, classification, price, duration } = router.query;
+    setSelectedLocation((location as string) || '');
+    setSelectedCategory((classification as string) || '');
+    setSelectedPriceSort((price as string) || '');
+    setDuration(parseInt(duration as string) || 0);
+  }, [router.query]);
 
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceSort, setSelectedPriceSort] = useState('');
-
-  const [startDuration, setStartDuration] = useState<number | null>(null);
-  const [endDuration, setEndDuration] = useState<number | null>(null);
+  const [duration, setDuration] = useState(0);
 
   const t = useTranslations('ToursPage');
   const filterTranslation = useTranslations('FilterBlock');
 
-  const handleDurationReset = () => {
-    setStartDuration(null);
-    setEndDuration(null);
+  const notFound = <p className={style.notFound}>{filterTranslation('noToursFound')}</p>;
+
+  const handleReset = () => {
+    setLoading(true);
+
+    setSelectedLocation('');
+    setSelectedCategory('');
+    setSelectedPriceSort('');
+    setDuration(0);
+    router
+      .push({
+        pathname: '/tours',
+        query: {},
+      })
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   const durationOptions = Array.from({ length: 30 }, (_, index) => index + 1);
 
-  const filterByLocationAndCategory = tours.filter((tour) => {
-    if (!selectedLocation && !selectedCategory) {
-      return true;
-    }
-    const locationMatch =
-      !selectedLocation || tour.location.name.toLowerCase() === selectedLocation.toLowerCase();
-    const categoryMatch =
-      !selectedCategory ||
-      tour.classification.title.toLowerCase() === selectedCategory.toLowerCase();
-    return locationMatch && categoryMatch;
-  });
+  const handleLocationChange = (value: string) => {
+    setLoading(true);
+    setSelectedLocation(value);
 
-  const sortedByPrice = filterByLocationAndCategory.sort((tourA, tourB) => {
-    if (selectedPriceSort === 'lowToHigh') {
-      return tourA.price - tourB.price;
-    } else if (selectedPriceSort === 'highToLow') {
-      return tourB.price - tourA.price;
-    }
-    return 0;
-  });
+    router
+      .push({
+        pathname: '/tours',
+        query: { ...router.query, location: value },
+      })
+      .then(() => {
+        setLoading(false);
+      });
+  };
 
-  const filteredByDurationTours = sortedByPrice.filter((tour) => {
-    if (startDuration === null && endDuration === null) {
-      return true;
-    }
-    const tourDuration = tour.duration;
-    const startDurationMatch =
-      startDuration === null || (tourDuration !== null && tourDuration >= startDuration);
-    const endDurationMatch =
-      endDuration === null ||
-      (tourDuration !== null && tourDuration <= endDuration! && tourDuration >= startDuration!);
-    return startDurationMatch && endDurationMatch;
-  });
+  const handleCategoryChange = (value: string) => {
+    setLoading(true);
 
-  useEffect(() => {
-    const storedLocation = localStorage.getItem('selectedLocation');
-    const storedCategory = localStorage.getItem('selectedCategory');
-    const storedPriceSort = localStorage.getItem('selectedPriceSort');
-    const storedStartDuration = localStorage.getItem('startDuration');
-    const storedEndDuration = localStorage.getItem('endDuration');
+    setSelectedCategory(value);
 
-    if (storedLocation) setSelectedLocation(storedLocation);
-    if (storedCategory) setSelectedCategory(storedCategory);
-    if (storedPriceSort) setSelectedPriceSort(storedPriceSort);
-    if (storedStartDuration) setStartDuration(parseInt(storedStartDuration, 10) || null);
-    if (storedEndDuration) setEndDuration(parseInt(storedEndDuration, 10) || null);
-  }, []);
+    router
+      .push({
+        pathname: '/tours',
+        query: { ...router.query, classification: value },
+      })
+      .then(() => {
+        setLoading(false);
+      });
+  };
 
-  useEffect(() => {
-    localStorage.setItem('selectedLocation', selectedLocation);
-    localStorage.setItem('selectedCategory', selectedCategory);
-    localStorage.setItem('selectedPriceSort', selectedPriceSort);
-    localStorage.setItem(
-      'startDuration',
-      startDuration !== null ? startDuration.toString() : 'Any',
-    );
-    localStorage.setItem('endDuration', endDuration !== null ? endDuration.toString() : 'Any');
-  }, [
-    router.locale,
-    selectedLocation,
-    selectedCategory,
-    selectedPriceSort,
-    startDuration,
-    endDuration,
-  ]);
+  const handlePriceSortChange = (value: string) => {
+    setLoading(true);
+
+    setSelectedPriceSort(value);
+
+    router
+      .push({
+        pathname: '/tours',
+        query: { ...router.query, price: value },
+      })
+      .then(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleDurationChange = (value: number) => {
+    setLoading(true);
+
+    setDuration(value);
+
+    router
+      .push({
+        pathname: '/tours',
+        query: { ...router.query, duration: value.toString() },
+      })
+      .then(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <>
@@ -115,9 +125,9 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
         <div className={style.filteringTools}>
           <div className={style.selectBox}>
             <select
-              className={style.sortInput}
+              className={`${style.sortInput} ${selectedLocation ? style.selectedSortInput : ''}`}
               value={selectedLocation}
-              onChange={(e) => setSelectedLocation(e.target.value)}
+              onChange={(e) => handleLocationChange(e.target.value)}
             >
               <option value="" disabled>
                 {filterTranslation('location')}
@@ -131,21 +141,13 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                 );
               })}
             </select>
-            {selectedLocation && (
-              <button
-                className={`${style.clearButton} ${style.additionalClass}`}
-                onClick={() => setSelectedLocation('')}
-              >
-                {filterTranslation('clear')}
-              </button>
-            )}
           </div>
 
           <div className={style.selectBox}>
             <select
-              className={style.sortInput}
+              className={`${style.sortInput} ${selectedCategory ? style.selectedSortInput : ''}`}
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              onChange={(e) => handleCategoryChange(e.target.value)}
             >
               <option value="" disabled>
                 {filterTranslation('categories')}
@@ -158,22 +160,14 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
                 );
               })}
             </select>
-            {selectedCategory && (
-              <button
-                className={`${style.clearButton} ${style.additionalClass}`}
-                onClick={() => setSelectedCategory('')}
-              >
-                {filterTranslation('clear')}
-              </button>
-            )}
           </div>
 
           <div className={style.selectBox}>
             <select
               name="sortByPrice"
-              className={style.sortInput}
+              className={`${style.sortInput} ${selectedPriceSort ? style.selectedSortInput : ''}`}
               value={selectedPriceSort}
-              onChange={(e) => setSelectedPriceSort(e.target.value)}
+              onChange={(e) => handlePriceSortChange(e.target.value)}
             >
               <option value="" disabled>
                 {filterTranslation('sortByPrice')}
@@ -181,108 +175,72 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
               <option value="lowToHigh">{filterTranslation('minPrice')}</option>
               <option value="highToLow">{filterTranslation('maxPrice')}</option>
             </select>
-
-            {selectedPriceSort && (
-              <button
-                className={`${style.clearButton} ${style.additionalClass}`}
-                onClick={() => setSelectedPriceSort('')}
-              >
-                {filterTranslation('clear')}
-              </button>
-            )}
           </div>
 
           <div className={style.duration}>
             <h5>{filterTranslation('duration')}</h5>
             <div className={style.durationInner}>
               <div className={style.durationPicker}>
-                <label className={style.durationLabel}>Min</label>
                 <select
-                  className={`${style.sortInput} ${style.sortDuration}`}
-                  value={startDuration === null ? 'Any' : startDuration}
-                  onChange={(e) => {
-                    const selectedValue = e.target.value;
-                    const parsedValue = parseInt(selectedValue, 10);
-                    if (
-                      !isNaN(parsedValue) &&
-                      parsedValue >= 1 &&
-                      (endDuration === null || parsedValue <= parseInt(endDuration.toString(), 10))
-                    ) {
-                      setStartDuration(parsedValue);
-                    }
-                  }}
+                  className={`${style.sortInput} ${style.sortDuration} ${
+                    duration ? style.selectedSortInput : ''
+                  }`}
+                  value={duration === 0 ? 'Any' : duration}
+                  onChange={(e) => handleDurationChange(parseInt(e.target.value))}
                 >
-                  <option value="Any">Any</option>
-                  {durationOptions
-                    .filter(
-                      (day) => endDuration === null || day <= parseInt(endDuration.toString(), 10),
-                    )
-                    .map((day) => (
-                      <option key={day} value={day}>
-                        {day} {day === 1 ? 'day' : 'days'}
-                      </option>
-                    ))}
-                </select>
-              </div>
-
-              <span className={style.spanDuration}>to</span>
-
-              <div className={style.durationPicker}>
-                <label className={style.durationLabel}>Max</label>
-                <select
-                  className={`${style.sortInput} ${style.sortDuration}`}
-                  value={endDuration === null ? 'Any' : endDuration}
-                  onChange={(e) => {
-                    const selectedValue = e.target.value;
-                    const parsedValue = parseInt(selectedValue, 10);
-                    if (
-                      !isNaN(parsedValue) &&
-                      parsedValue >= 1 &&
-                      (startDuration === null ||
-                        parsedValue >= parseInt(startDuration.toString(), 10))
-                    ) {
-                      setEndDuration(parsedValue);
-                    }
-                  }}
-                >
-                  <option value="Any">Any</option>
-                  {durationOptions
-                    .filter(
-                      (day) =>
-                        startDuration === null || day >= parseInt(startDuration.toString(), 10),
-                    )
-                    .map((day) => (
-                      <option key={day} value={day}>
-                        {day} {day === 1 ? 'day' : 'days'}
-                      </option>
-                    ))}
+                  <option value="Any">{filterTranslation('durationAny')}</option>
+                  {durationOptions.map((day) => (
+                    <option key={day} value={day}>
+                      {day} {day === 1 ? filterTranslation('day') : filterTranslation('days')}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
+          </div>
 
+          {selectedLocation || selectedCategory || selectedPriceSort || duration ? (
             <button
               className={`${style.resetDuration} ${style.additionalClass}`}
-              onClick={handleDurationReset}
+              onClick={handleReset}
             >
               {filterTranslation('clearAll')}
             </button>
-          </div>
+          ) : null}
         </div>
 
-        {filteredByDurationTours.length === 0 ? (
-          notFound
+        {loading ? (
+          <Preloader />
         ) : (
-          <div className={'tourCards'}>
-            {filteredByDurationTours.map((tour: Tour) => (
-              <Card
-                key={tour.id}
-                title={tour.title}
-                image={tour.mainImage.url}
-                id={tour.id}
-                classification={tour.classification}
-                price={tour.price}
-              />
-            ))}
+          <div style={{ flexGrow: 1 }}>
+            {tours.length === 0 ? (
+              notFound
+            ) : (
+              <div className="tourCards">
+                {tours.map((tour: Tour, i) => (
+                  <motion.div
+                    key={`${tour.id}-${i}`}
+                    className={'tourCards'}
+                    initial={{
+                      opacity: 0,
+                      translateX: i % 2 === 0 ? -50 : 50,
+                      translateY: -50,
+                    }}
+                    animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.2 }}
+                  >
+                    <Card
+                      title={tour.title}
+                      image={tour.mainImage.url}
+                      id={tour.id}
+                      classification={tour.classification}
+                      price={tour.price}
+                      duration={tour.duration}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

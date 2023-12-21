@@ -56,6 +56,36 @@
   }
 
   &_content {
+    .wp-block-group {
+      background: red;
+    }
+
+    padding-top: 20px;
+
+    figure {
+      width: 100% !important;
+    }
+
+    img {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      height: auto;
+      color: transparent;
+      display: block;
+      position: relative;
+    }
+
+    & > div > div {
+      padding: 10px !important;
+    }
+
+    div > iframe {
+      @include mixins.md {
+        width: 100% !important;
+      }
+    }
+
     iframe {
       margin: 0 auto;
       display: flex;

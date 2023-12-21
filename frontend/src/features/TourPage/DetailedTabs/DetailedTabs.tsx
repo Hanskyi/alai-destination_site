@@ -2,12 +2,11 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Overview from './Overview/Overview';
 import DetailedItinerary from './DetailedItinerary/DetailedItinerary';
-import BookNow from './BookNow/BookNow';
 import TourDates from './TourDates/TourDates';
 import TourPrice from './TourPrice/TourPrice';
-import style from './DetailedTabs.module.scss';
 import { ITable } from '@/type';
 import { useTranslations } from 'next-intl';
+import style from './DetailedTabs.module.scss';
 
 interface TabLinkProps {
   tabName: string;
@@ -39,7 +38,6 @@ const DetailedTabs: React.FC<Props> = ({ overviewCK, detailedDays, tourPrice, sc
         <TabLink tabName="detaileditinerary" label={t('detailedItinerary')} />
         <TabLink tabName="tourprice" label={t('tourPrice')} />
         <TabLink tabName="tourdates" label={t('tourDates')} />
-        <TabLink tabName="booknow" label={t('bookNow')} />
       </ul>
     );
   };
@@ -67,7 +65,6 @@ const DetailedTabs: React.FC<Props> = ({ overviewCK, detailedDays, tourPrice, sc
           {activeTab === 'tourdates' && scheduleTable !== null && (
             <TourDates data={scheduleTable} />
           )}
-          {activeTab === 'booknow' && <BookNow />}
         </div>
       </div>
     </div>

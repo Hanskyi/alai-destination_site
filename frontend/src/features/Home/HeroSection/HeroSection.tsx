@@ -20,7 +20,7 @@ const HeroSection = () => {
   const [showSelect, setShowSelect] = useState(false);
 
   const [selectedLocation, setSelectedLocation] = useState<string>('');
-  const [selectedCategory, setSelectedClassification] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const heroSection = useAppSelector((state) => state.home.homeData?.heroSection);
 
@@ -74,14 +74,28 @@ const HeroSection = () => {
   };
 
   const handleClassificationChange = (selectedOption: Option | null) => {
-    setSelectedClassification(selectedOption ? selectedOption.label : '');
+    setSelectedCategory(selectedOption ? selectedOption.label : '');
   };
 
   const goToTours = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('selectedLocation', selectedLocation);
-    localStorage.setItem('selectedCategory', selectedCategory);
-    window.location.href = '/tours';
+
+    const filters: { [key: string]: string } = {};
+
+    if (selectedLocation) {
+      filters.location = selectedLocation;
+    }
+
+    if (selectedCategory) {
+      filters.classification = selectedCategory;
+    }
+
+    router
+      .push({
+        pathname: '/tours',
+        query: filters,
+      })
+      .then();
   };
 
   useEffect(() => {

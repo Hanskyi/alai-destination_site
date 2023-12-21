@@ -27,7 +27,7 @@ const SwiperComponent: React.FC<PropsWithChildren<Props>> = ({ children, link })
       {link && (
         <SwiperSlide className={style.mySwiper__slide}>
           <Link className={style.swiper__btn} href={link}>
-            See all trips
+            <div className={style.slideContainer}>See all trips</div>
           </Link>
         </SwiperSlide>
       )}

@@ -6,53 +6,47 @@ import ClientReview from '@/components/ClassificationReviews/components/ClientRe
 import { TourReview } from '@/type';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { useAppSelector } from '../../store/hooks';
 
-interface Props {
-  reviews: TourReview[];
-}
+const MAX_DISPLAYED_REVIEWS = 15;
 
-const Reviews: React.FC<Props> = ({ reviews }) => {
+const Reviews = () => {
   const [rate, setRate] = useState<number>(0);
   const t = useTranslations('ReviewsBlock');
 
-  console.log(reviews);
+  const { reviews } = useAppSelector((state) => state.tourReview);
 
-  // Function to filter reviews based on the selected rate
+  const loading = useAppSelector((state) => state.tourReview.fetchLoading);
+
   const filteredReviews = useMemo(() => {
-    let filtered = reviews;
+    let filtered = reviews || [];
 
     if (rate !== 0) {
-      filtered = reviews.filter((review) => review.rating === rate);
+      filtered = (reviews || []).filter((review) => review?.rating === rate);
     }
 
-    // Get the last 15 reviews from the filtered list
-    return filtered.slice(-10);
+    const lastFifteenReviews = filtered.slice(-MAX_DISPLAYED_REVIEWS);
+    return lastFifteenReviews;
   }, [rate, reviews]);
 
-  // Handler to reset the rating filter
   const handleShowAllReviews = () => {
-    setRate(0); // Set rate to 0 to show all reviews
+    setRate(0);
   };
 
-  // Function to create an array of objects containing review counts for each rating
   const createReviewsCountArray = (reviews: TourReview[]) => {
-    // Initialize an array to store counts for each star rating
     const reviewCounts = Array(5).fill(0);
 
-    // Calculate counts for each rating
-    reviews.forEach((review) => {
-      reviewCounts[review.rating - 1]++; // Increment the count for the respective star rating
+    reviews?.forEach((review) => {
+      reviewCounts[review.rating - 1]++;
     });
 
-    // Create an array of objects with rating and count properties
     return reviewCounts.map((count, index) => ({
       rating: index + 1,
       count: count,
     }));
   };
 
-  // Call the function and store the resulting array
-  const REVIEWS_COUNT = createReviewsCountArray(reviews);
+  const REVIEWS_COUNT = createReviewsCountArray(reviews || []);
 
   const roundedToOneSymbolForStars = (roundedNumber: number): number => {
     return Math.floor(Math.round(roundedNumber) * 10) / 10;
@@ -70,31 +64,58 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
     return (num * 100) / totalReviews;
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (filteredReviews.length === 0) {
+    return (
+      <div className="container">
+        <h3 className={styles.reviews__title}>{t('title')}</h3>
+        {rate !== 0 ? (
+          <>
+            {REVIEWS_COUNT.map((review) => (
+              <FilterByRating
+                key={review.rating}
+                rating={review.rating}
+                ratingCount={review.count}
+                fillWidth={percentage(review.count)}
+                setRate={setRate}
+                rate={rate}
+              />
+            ))}
+            <p className={styles.no_reviews}>No reviews available with {rate} star(s).</p>
+            <button className={styles.filterByRating__resetFilter} onClick={handleShowAllReviews}>
+              {t('showAll')}
+            </button>
+          </>
+        ) : (
+          <p>No reviews available</p>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <h3 className={styles.reviews__title}>{t('title')}</h3>
-
       <div className={styles.reviews__total}>
         <Rating
           size={25}
           isEdit={false}
           value={roundedToOneSymbolForStars(weightedSum / totalReviews)}
         />
-
         <p>
-          <strong>{average}</strong>{' '}
+          <strong>{String(average)}</strong>{' '}
           {t('totalReviews', { maxRating: 5, totalRatingCount: totalReviews })}
         </p>
       </div>
-
       <div className={styles.reviews}>
         <div className={styles.filterByRating}>
           <h3 className={styles.filterByRating__title}>{t('filterByRating')}</h3>
-
           <button className={styles.filterByRating__resetFilter} onClick={handleShowAllReviews}>
             {t('showAll')}
           </button>
-
           {REVIEWS_COUNT.map((review) => (
             <FilterByRating
               key={review.rating}
@@ -106,7 +127,6 @@ const Reviews: React.FC<Props> = ({ reviews }) => {
             />
           ))}
         </div>
-
         <div className="clientsReviews">
           {reviews &&
             filteredReviews.map((review) => <ClientReview key={review.id} review={review} />)}

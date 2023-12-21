@@ -36,11 +36,15 @@
     "location": "Направление",
     "categories": "Категории",
     "sortByPrice": "По цене",
-    "minPrice": "по возрастанию",
-    "maxPrice": "по убыванию",
+    "minPrice": "По возрастанию",
+    "maxPrice": "По убыванию",
     "duration": "Длительность",
     "clear": "очистить",
-    "clearAll": "сбросить"
+    "clearAll": "Сбросить",
+    "durationAny": "Любая",
+    "day": "день",
+    "days": "дней",
+    "noToursFound": "С выбранными параметрами поиска туров не найдено. Пожалуйста, измените параметры поиска, чтобы увидеть доступные туры."
   },
   "TourDetails": {
     "title": "Детали тура",
@@ -54,8 +58,8 @@
   "TourIdTabs": {
     "overview": "Обзор",
     "detailedItinerary": "Подробный маршрут",
-    "tourPrice": "Tour Price",
-    "tourDates": "Стоимость тура",
+    "tourPrice": "Стоимость тура",
+    "tourDates": "Даты",
     "bookNow": "Забронировать"
   },
   "TourIdGallery": {

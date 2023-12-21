@@ -46,3 +46,4 @@ export const locationsRegionSlice = createSlice({
 });
 
 export const selectLocationsRegion = (state: RootState) => state.locationsRegion.locationsRegion;
+export const selectFetchLoading = (state: RootState) => state.locationsRegion.fetchLoading;

@@ -1,15 +1,47 @@
+@use '../../../../styles/mixins';
+
 .tour_price {
   figure {
     width: 100% !important;
-    height: 110px !important;
-  }
+    min-height: 150px !important;
 
-  .table {
-    width: 100%;
-    background: red;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
+    table {
+      table-layout: auto !important;
+
+      tbody {
+        td {
+          height: auto !important;
+        }
+      }
+
+      td {
+        width: auto !important;
+        font-size: 12px !important;
+      }
+
+      @include mixins.lg {
+        height: 440px;
+        display: flex;
+        justify-content: center;
+
+        tbody {
+          display: flex !important;
+          justify-content: center;
+          width: 100%;
+
+          tr {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100%;
+            min-width: 50%;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    @include mixins.lg {
+      height: fit-content !important;
+    }
   }
 }
