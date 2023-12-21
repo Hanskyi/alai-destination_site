@@ -12,7 +12,6 @@ const MAX_DISPLAYED_REVIEWS = 15;
 
 const Reviews = () => {
   const [rate, setRate] = useState<number>(0);
-  const { data: session } = useSession();
   const t = useTranslations('ReviewsBlock');
 
   const { reviews } = useAppSelector((state) => state.tourReview);

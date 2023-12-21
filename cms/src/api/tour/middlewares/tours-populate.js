@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * `tours-populate` middleware
@@ -7,25 +7,25 @@
 const populate = {
   classification: {
     populate: true,
-    fields: ["title"]
+    fields: ["title"],
   },
   location: {
     populate: true,
-    fields: ["name"]
+    fields: ["name"],
   },
   mainImage: {
     populate: true,
-    fields: ["name", "url"]
+    fields: ["name", "url"],
   },
   images: {
     populate: true,
-    fields: ["name", "url"]
+    fields: ["name", "url"],
   },
   reviews: {
     populate: {
-      users_permissions_user:{
-        populate:true,
-        fields:["username", "id"]
+      users_permissions_user: {
+        populate: true,
+        fields: ["username", "id"],
       },
       tour:{
         populate:{
@@ -33,17 +33,24 @@ const populate = {
         }
       }
     },
-    fields: ["review", "rating", "createdAt", "displayName", "users_permissions_user"],
+    fields: [
+      "review",
+      "rating",
+      "createdAt",
+      "displayName",
+      "users_permissions_user",
+    ],
   },
   localizations: {
-    populate: true
+    populate: true,
+    fields: ["locale"],
   },
   scheduleTable: {
-    populate:true,
+    populate: true,
     fields: ["heading", "body"],
   },
   faqList: {
-    populate:true,
+    populate: true,
     fields: ["heading", "body"],
   },
 };
@@ -51,7 +58,7 @@ const populate = {
 module.exports = (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info('In tours-populate middleware.');
+    strapi.log.info("In tours-populate middleware.");
 
     ctx.query = {
       populate,
