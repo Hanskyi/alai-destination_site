@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Rating from '../Rating/Rating';
 import styles from './ReviewForm.module.scss';
 import axiosApi from '@/axiosApi';
+import { fetchReviewsForTour } from '../ClassificationReviews/TourReviewsThunk';
+import { useAppDispatch } from '../../store/hooks';
 
 interface Props {
   tourId: number;
@@ -10,10 +12,11 @@ interface Props {
 
 const ReviewForm: React.FC<Props> = ({ tourId }) => {
   const [review, setReview] = useState('');
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState(0);
   const [displayName, setDisplayName] = useState('');
   const { data: session } = useSession();
   const [hasSubmittedReview, setHasSubmittedReview] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleRatingChange = (newRating: number) => {
     setRating(newRating);
@@ -44,8 +47,10 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
 
       // Reset fields
       setReview('');
-      setRating(5);
+      setRating(0);
       setDisplayName('');
+
+      dispatch(fetchReviewsForTour(String(tourId)));
     } catch (error) {
       console.error('Error submitting review:', error);
     }
@@ -74,7 +79,7 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
     if (session) {
       fetchUserReview();
     }
-  }, [session, tourId]);
+  }, [session, tourId, review]);
 
   if (!session) {
     return (

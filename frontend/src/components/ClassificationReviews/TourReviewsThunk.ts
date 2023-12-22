@@ -22,7 +22,7 @@ export const fetchReviewsForClassification = createAsyncThunk<TourReview[], { id
   'reviews/fetchForClassification',
   async ({ id }) => {
     try {
-      const responseEng = await axiosApi.get<any>(`classifications/${id}?_populate=tours`)!;
+      const responseEng = await axiosApi.get<any>(`classifications/${id}?_populate=tours`);
 
       console.log(responseEng);
       const tourData = responseEng.data.data;
