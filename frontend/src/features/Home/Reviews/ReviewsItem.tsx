@@ -3,6 +3,7 @@ import style from './Reviews.module.scss';
 import Image from 'next/image';
 import { Review } from '@/type';
 import articleBanner from '@/assets/articlesImages/articlesBanner.png';
+import { GALLERY } from '@/constants';
 
 interface Props {
   review: Review;
@@ -16,11 +17,7 @@ const ReviewItem: React.FC<Props> = ({ review }) => {
           width={160}
           height={160}
           className={style.review__avatar}
-          src={
-            review.profileImage.url
-              ? 'http://localhost:1337' + review.profileImage.url
-              : articleBanner.src
-          }
+          src={review.profileImage.url ? GALLERY + review.profileImage.url : articleBanner.src}
           alt="avatar"
         />
       </div>

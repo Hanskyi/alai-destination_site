@@ -4,6 +4,7 @@ import { useAppSelector } from '@/store/hooks';
 import articleBanner from '@/assets/articlesImages/articlesBanner.png';
 import Link from 'next/link';
 import style from './Purpose.module.scss';
+import { GALLERY } from '@/constants';
 
 const Purpose = () => {
   const purposeBlock = useAppSelector((state) => state.home.homeData?.purposeBlock);
@@ -28,7 +29,7 @@ const Purpose = () => {
               className={style.purpose_card_img}
               src={
                 purposeBlock?.data.purposeImage.url
-                  ? 'http://localhost:1337' + purposeBlock?.data.purposeImage.url
+                  ? GALLERY + purposeBlock?.data.purposeImage.url
                   : articleBanner.src
               }
               alt="Purpose image"

@@ -3,6 +3,7 @@ import style from '../Articles.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { OneArticleData } from '@/type';
+import { GALLERY } from '@/constants';
 
 interface Props {
   article: OneArticleData;
@@ -25,7 +26,7 @@ const ArticlesCard: React.FC<Props> = ({ article }) => {
       <Link href={`/articles/${article.id}`}>
         <div className={style.articleCard__image}>
           <Image
-            src={'http://localhost:1337' + article.mainImage.url}
+            src={GALLERY + article.mainImage.url}
             alt="#"
             width={400}
             height={400}

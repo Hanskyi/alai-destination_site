@@ -8,8 +8,8 @@ import Banner from '@/components/Banner/Banner';
 import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
 import Reviews from '../../components/ClassificationReviews/Reviews';
-import { fetchReviewsForClassification } from '../../components/ClassificationReviews/TourReviewsThunk';
-import { useAppDispatch } from '../../store/hooks';
+import { fetchReviewsForClassification } from '@/components/ClassificationReviews/TourReviewsThunk';
+import { useAppDispatch } from '@/store/hooks';
 import { useRouter } from 'next/router';
 
 const Classification = () => {

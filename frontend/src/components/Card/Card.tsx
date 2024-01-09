@@ -3,6 +3,7 @@ import style from './Card.module.scss';
 import Image from 'next/image';
 import { Classification } from '@/type';
 import Link from 'next/link';
+import { GALLERY } from '@/constants';
 
 interface Props {
   title: string;
@@ -23,7 +24,7 @@ const Card: React.FC<Props> = (props) => {
           height={1200}
           style={{ height: props.categoryCard ? '300px' : '200px' }}
           className={style.card__image}
-          src={'http://localhost:1337' + props.image}
+          src={GALLERY + props.image}
           alt="#"
         />
         <div className={style.card__body}>

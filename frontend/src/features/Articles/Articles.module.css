@@ -31,19 +31,15 @@
   background: transparent;
   box-shadow: none;
 }
-.articleCardBtn:before,
-.articleCardBtn:after {
-  content: '';
+.articleCardBtn:before, .articleCardBtn:after {
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   height: 2px;
   width: 0;
   background: red;
-  box-shadow:
-    -1px -1px 5px 0px #fff,
-    7px 7px 20px 0px rgba(0, 0, 0, 0.2),
-    4px 4px 5px 0px rgba(0, 0, 0, 0.1333333333);
+  box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.1333333333);
   transition: 400ms ease all;
 }
 .articleCardBtn:after {
@@ -52,8 +48,7 @@
   left: 0;
   bottom: 0;
 }
-.articleCardBtn:hover:before,
-.articleCardBtn:hover:after {
+.articleCardBtn:hover:before, .articleCardBtn:hover:after {
   width: 100%;
   transition: 800ms ease all;
 }
