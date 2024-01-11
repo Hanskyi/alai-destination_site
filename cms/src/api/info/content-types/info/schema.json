@@ -58,6 +58,15 @@
       },
       "type": "string",
       "required": true
+    },
+    "whatsappNumber": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -51,7 +51,7 @@ export default function App({ Component, ...rest }: AppProps) {
           <div className="content__wrapper">
             <Component {...props.pageProps} />
           </div>
-          <Whatsapp />
+          {headerFooter && <Whatsapp contactNumber={headerFooter.data.whatsappNumber} />}
           <Footer hfData={headerFooter} />
         </NextIntlClientProvider>
       </SessionProvider>
