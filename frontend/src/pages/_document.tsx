@@ -12,7 +12,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <Script src={'//code.jivosite.com/widget/dxQn1HehAF'} strategy="beforeInteractive" />
+        <Script src={'//code.jivosite.com/widget/R7jumzTf9R'} strategy="beforeInteractive" />
       </Head>
       <body className={montserrat.className}>
         <Main />

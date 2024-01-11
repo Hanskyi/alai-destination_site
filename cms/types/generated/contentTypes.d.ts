@@ -1399,6 +1399,13 @@ export interface ApiInfoInfo extends Schema.SingleType {
           localized: false;
         };
       }>;
+    whatsappNumber: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

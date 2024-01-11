@@ -237,6 +237,7 @@ export interface IHeaderFooterInfo {
 export interface IHeaderFooterData {
   id: number;
   mainPhoneNumber: string;
+  whatsappNumber: string;
   locale: string;
   companyEmail: string;
   socialLinks: ISocialLink[];

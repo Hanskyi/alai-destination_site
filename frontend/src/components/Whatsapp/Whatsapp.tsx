@@ -3,8 +3,14 @@ import Image from 'next/image';
 import whatsapp from '../../assets/icon/social/wa-whatsapp-icon.svg';
 import { motion, Variants } from 'framer-motion';
 import styles from './Whatsapp.module.scss';
+import { useRouter } from 'next/router';
 
-const Whatsapp = () => {
+interface IProps {
+  contactNumber: string;
+}
+
+const Whatsapp: React.FC<IProps> = ({ contactNumber }) => {
+  const router = useRouter();
   const bounceVariants: Variants = {
     initial: { y: -20, opacity: 0 },
     animate: {
@@ -12,6 +18,10 @@ const Whatsapp = () => {
       opacity: [1, 1, 1],
     },
   };
+
+  const whatsappLink: string = `https://wa.me/${contactNumber}?text=${
+    router.locale === 'ru' ? 'Здравствуйте' : 'Hello'
+  }.`;
   return (
     <motion.div
       className={styles.whatsapp}
@@ -21,7 +31,7 @@ const Whatsapp = () => {
       transition={{ duration: 0.5 }}
     >
       <a
-        href="https://wa.me/996553342428?text=Здравствуйте." // в зависимости от locale менять русский-англ
+        href={whatsappLink} // в зависимости от locale менять русский-англ
         target="_blank"
         title="click to contact us"
       >
