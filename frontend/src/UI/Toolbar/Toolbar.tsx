@@ -8,7 +8,7 @@ import logout from '@/assets/toolbar/logout.png';
 import toolbar from './Toolbar.module.scss';
 import Backdrop from '@/components/Backdrop/Backdrop';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { baseUrl, GALLERY } from '@/constants';
+import { GALLERY } from '@/constants';
 import { IHeaderFooterInfo, ILocationListShortInfo } from '@/type';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
@@ -172,7 +172,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                           <Link
                             key={index}
                             className={toolbar.dropdown__link}
-                            href={baseUrl + 'locations/' + item.id}
+                            href={'/locations/' + item.id}
                             onClick={closeMenu}
                           >
                             {item.name}
@@ -245,7 +245,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                         <Link
                           key={index}
                           className={toolbar.dropdown__link}
-                          href={baseUrl + 'locations/' + item.id}
+                          href={'/locations/' + item.id}
                           onClick={closeMenu}
                         >
                           {item.name}
