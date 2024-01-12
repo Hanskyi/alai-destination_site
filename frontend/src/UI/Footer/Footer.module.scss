@@ -2,7 +2,6 @@
 @use '../../styles/variabels';
 
 .footer {
-
   &__bottom {
     color: variabels.$color-white;
     background: variabels.$color-black-2;
@@ -12,14 +11,14 @@
     justify-content: space-between;
     gap: 15px;
 
-    &__content{
+    &__content {
       gap: 15px;
       display: flex;
       flex-wrap: wrap;
 
-      @include mixins.sm{
+      @include mixins.sm {
         justify-content: space-around;
-        gap:30px;
+        gap: 30px;
       }
     }
 
@@ -30,7 +29,6 @@
         &:hover {
           transform: scale(1.2);
         }
-
       }
 
       &__list {
@@ -38,9 +36,9 @@
         flex-wrap: wrap;
         justify-content: center;
 
-        @include mixins.sm{
-          order:-1
-         }
+        @include mixins.sm {
+          order: -1;
+        }
 
         &-item {
           width: 32px;
@@ -61,16 +59,14 @@
   }
 }
 
-.logo__wrapper{
-  @include mixins.sm{
-    order:-1;
-    flex:1;
+.logo__wrapper {
+  @include mixins.sm {
+    order: -1;
+    flex: 1;
   }
 }
 
-
 .contactsBlock {
-
   &__card {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
