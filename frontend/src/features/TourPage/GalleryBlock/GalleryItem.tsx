@@ -16,29 +16,29 @@ interface GalleryItemProps {
 const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt, slides }) => {
   const [open, setOpen] = React.useState(false);
 
-    console.log( slides)
+  console.log(slides);
   return (
-      <div className={style.gallery_card} onClick={() => setOpen(true)}>
-        <div className={style.gallery_card_imageWrap}>
-          <Image
-              width={270}
-              height={168}
-              priority={true}
-              className={style.gallery_card_image}
-              src={`${GALLERY}${imageUrl}`}
-              alt={alt}
-          />
-        </div>
-
-        {open && (
-            <Lightbox
-                open={open}
-                close={() => setOpen(false)}
-                slides={slides}
-                render={{ slide: NextJsImage }}
-            />
-        )}
+    <div className={style.gallery_card} onClick={() => setOpen(true)}>
+      <div className={style.gallery_card_imageWrap}>
+        <Image
+          width={270}
+          height={168}
+          priority={true}
+          className={style.gallery_card_image}
+          src={`${GALLERY}${imageUrl}`}
+          alt={alt}
+        />
       </div>
+
+      {open && (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={slides}
+          render={{ slide: NextJsImage }}
+        />
+      )}
+    </div>
   );
 };
 
