@@ -21,30 +21,6 @@ const populate = {
     populate: true,
     fields: ["name", "url"],
   },
-  reviews: {
-    populate: {
-      users_permissions_user: {
-        populate: true,
-        fields: ["username", "id"],
-      },
-      tour:{
-        populate:{
-          fields:["title", "id"]
-        }
-      }
-    },
-    fields: [
-      "review",
-      "rating",
-      "createdAt",
-      "displayName",
-      "users_permissions_user",
-    ],
-  },
-  localizations: {
-    populate: true,
-    fields: ["locale"],
-  },
   scheduleTable: {
     populate: true,
     fields: ["heading", "body"],
@@ -52,6 +28,10 @@ const populate = {
   faqList: {
     populate: true,
     fields: ["heading", "body"],
+  },
+  localizations: {
+    populate: true,
+    fields: ["locale"],
   },
 };
 

@@ -2,150 +2,27 @@
 @use '../../styles/variabels';
 
 .footer {
-  font-family: 'Montserat', sans-serif;
-
-  &__top {
-    padding: 50px 0 84px;
-
-    .block-subscribe {
-      max-width: 300px;
-      width: 100%;
-      margin-right: 80px;
-
-      .select-block {
-        margin-bottom: 50px;
-
-        label {
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 24px;
-          color: #0000008c;
-        }
-
-        select {
-          font-size: 16px;
-          line-height: 19px;
-          font-weight: 400;
-          border-width: 0 0 1px 0;
-          border-color: variabels.$color-black-2;
-          width: 100%;
-          padding: 5px 0;
-
-          outline: none;
-        }
-      }
-
-      p {
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 24px;
-        margin-bottom: 19px;
-        color: #000;
-      }
-
-      button {
-        display: flex;
-        justify-content: center;
-        font-weight: 500;
-        font-size: 16px;
-        padding: 13px;
-        width: 100%;
-        border-radius: 4px;
-        color: variabels.$color-white;
-        background: variabels.$color-black-2;
-        cursor: pointer;
-
-        .i-envelope {
-          background: url('../../assets/icon/i_envelope.png') no-repeat;
-          background-size: contain;
-
-          display: block;
-          width: 18px;
-          height: 18px;
-          margin-right: 16px;
-        }
-      }
-
-      @include mixins.lg {
-        max-width: 100%;
-        margin-right: 0;
-        display: flex;
-        gap: 16px;
-
-        & > div {
-          flex: 1;
-        }
-      }
-
-      @include mixins.md {
-        flex-direction: column;
-        margin-bottom: 30px;
-      }
-    }
-
-    .footer__nav {
-      gap: 60px;
-      flex-wrap: wrap;
-
-      &-heading {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 24px;
-        margin-bottom: 24px;
-      }
-
-      &-list {
-        &--item {
-          margin-bottom: 24px;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 16px;
-          color: #000000db;
-
-          &:hover {
-            text-decoration: underline;
-          }
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      &-col {
-        flex: 1;
-
-        @include mixins.md {
-          max-width: 44%;
-          min-width: 44%;
-        }
-      }
-    }
-
-    @include mixins.lg {
-      .container {
-        flex-direction: column;
-
-        .block-subscribe {
-          margin-bottom: 36px;
-        }
-      }
-    }
-  }
-
   &__bottom {
     color: variabels.$color-white;
     background: variabels.$color-black-2;
     padding: 32px 25px 80px;
     width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
 
-    & > div {
-      flex-wrap: wrap;
-      justify-content: space-between;
+    &__content {
       gap: 15px;
+      display: flex;
+      flex-wrap: wrap;
+
+      @include mixins.sm {
+        justify-content: space-around;
+        gap: 30px;
+      }
     }
+
     .social {
-      // спросить у команды
       &__listItem {
         transition: 0.5s ease-in-out;
 
@@ -158,6 +35,10 @@
         gap: 16px;
         flex-wrap: wrap;
         justify-content: center;
+
+        @include mixins.sm {
+          order: -1;
+        }
 
         &-item {
           width: 32px;
@@ -175,5 +56,43 @@
         }
       }
     }
+  }
+}
+
+.logo__wrapper {
+  @include mixins.sm {
+    order: -1;
+    flex: 1;
+  }
+}
+
+.contactsBlock {
+  &__card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+
+    @include mixins.lg {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
   }
 }

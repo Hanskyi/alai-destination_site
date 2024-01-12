@@ -12,6 +12,7 @@ import { SessionProvider } from 'next-auth/react';
 import { IHeaderFooterInfo, ILocationListShortInfo } from '@/type';
 import axiosApi from '@/axiosApi';
 import '../styles/globals.scss';
+import Head from 'next/head';
 
 export default function App({ Component, ...rest }: AppProps) {
   const [headerFooter, setHeaderFooter] = useState<IHeaderFooterInfo | null>(null);
@@ -49,6 +50,9 @@ export default function App({ Component, ...rest }: AppProps) {
           <LanguageSwitcher />
           <Toolbar hfData={headerFooter} locations={locations} />
           <div className="content__wrapper">
+            <Head>
+              <link rel="shortcut icon" href="/frontend/src/assets/favicon.ico" />
+            </Head>
             <Component {...props.pageProps} />
           </div>
           {headerFooter && <Whatsapp contactNumber={headerFooter.data.whatsappNumber} />}
