@@ -2,7 +2,6 @@
 
 .mainBlock {
   position: relative;
-  overflow: hidden;
 
   .mainBlockImage {
     width: 100%;
@@ -35,36 +34,37 @@
       transform: translate(-60%, -30%);
     }
     @include mixins.sm {
-      width: 90%;
-      transform: translate(-55%, -30%);
+      width: 95%;
+      transform: translate(-50%, -30%);
     }
 
     .mainBlockHeader {
       text-transform: capitalize;
-      //background: rgba(0, 0, 0, 0.51);
-      // обязательно сделать затемняющий фон для читабельности на белом фоне, сделать аккуратно
-      //width: min-content;
-      // с свойством content нужно будет разобраться, оно здесь просто для примера.
       border-radius: 4px;
       padding: 10px;
       font-weight: bold;
       margin-bottom: 32px;
       color: white;
       font-size: 64px;
-      line-height: 64px;
+      line-height: 74px;
+      width: 50%;
       @include mixins.lg {
         width: 100%;
       }
       @include mixins.md {
-        width: 100%;
+        width: 80%;
         margin-bottom: 15px;
-        font-size: 48px;
+        font-size: 56px;
       }
       @include mixins.sm {
         width: 100%;
         margin-bottom: 15px;
-        font-size: 40px;
+        font-size: 45px;
       }
+    }
+
+    .mainBlockHeaderMutation{
+      width: 100%;
     }
 
     .formBlock {

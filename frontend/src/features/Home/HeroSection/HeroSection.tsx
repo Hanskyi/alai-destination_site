@@ -27,8 +27,6 @@ const HeroSection = () => {
   const locations = useAppSelector(selectLocations);
   const classifications = useAppSelector(selectClassifications);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   useEffect(() => {
     setShowSelect(true);
   }, [router.locale]);
@@ -98,28 +96,18 @@ const HeroSection = () => {
       .then();
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const parallaxStyles = {
-    top: `${50 + scrollPosition * 0.07}%`,
-  };
-
   return (
     heroSection && (
       <div className={style.mainBlock}>
         <BackdropForBanner />
-        <div className={style.mainBlockContainer} style={parallaxStyles}>
-          <h1 className={style.mainBlockHeader}>{heroSection?.data.title}</h1>
+        <div className={style.mainBlockContainer}>
+          <h1
+            className={`${style.mainBlockHeader} ${
+              router.locale === 'ru' ? style.mainBlockHeaderMutation : ''
+            }`}
+          >
+            {heroSection?.data.title}
+          </h1>
 
           <form onSubmit={goToTours} className={style.formBlock}>
             <div className={style.searchSelectBlock}>
