@@ -96,32 +96,6 @@ const AboutUsPage = () => {
               </div>
             </div>
           </div>
-
-          <div className={aboutUsStyle.contactsBlock}>
-            <div className="container">
-              <h2 className={aboutUsStyle.contactsBlock__title}>{t('contacts')}</h2>
-              <div className={aboutUsStyle.contactsBlock__card}>
-                <a href="tel:+996550339292" className={aboutUsStyle.contactsBlock__text}>
-                  Mob: +996 550 339292
-                </a>
-                <a
-                  href="https://wa.me/996553342428?text=Здравствуйте."
-                  target="_blank"
-                  className={aboutUsStyle.contactsBlock__text}
-                >
-                  WhatsApp: +996 550 339292
-                </a>
-                <a
-                  href="mailto:info@example.com"
-                  className={aboutUsStyle.contactsBlock__text}
-                  target="_blank"
-                >
-                  E-mail: info@example.com
-                </a>
-                <p className={aboutUsStyle.contactsBlock__text}>Address: Kyrgyzstan, Bishkek</p>
-              </div>
-            </div>
-          </div>
         </div>
       </>
     )
