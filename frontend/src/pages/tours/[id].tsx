@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import { TourDataDetailed } from '@/type';
 import axiosApi from '../../axiosApi';
 import TourPage from '../../features/TourPage/tour-detailed';
+import Head from 'next/head';
 
 interface Props {
   tourData: TourDataDetailed | null;
@@ -9,7 +10,18 @@ interface Props {
 }
 
 const Tour = ({ tourData }: Props) => {
-  return <>{tourData && <TourPage tourData={tourData} />}</>;
+  return (
+    <>
+      {tourData && (
+        <>
+          <Head>
+            <title>{tourData.title}</title>
+          </Head>
+          <TourPage tourData={tourData} />
+        </>
+      )}
+    </>
+  );
 };
 
 export default Tour;

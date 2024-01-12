@@ -70,5 +70,9 @@
     "totalReviews": "из {maxRating} на основе {totalRatingCount} представленных отзывов.",
     "filterByRating": "Сортировать по рейтингу",
     "showAll": "Показать все отзывы"
+  },
+  "HeadTitles": {
+    "categoriesPageTitle": "категории туров",
+    "aboutUsPageTitle": "о нас"
   }
 }

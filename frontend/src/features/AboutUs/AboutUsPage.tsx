@@ -9,15 +9,20 @@ import { selectAboutUs } from '@/features/AboutUs/AboutUsSlice';
 import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
 import { useTranslations } from 'next-intl';
+import Head from 'next/head';
 
 const AboutUsPage = () => {
   const aboutUs = useAppSelector(selectAboutUs);
 
   const t = useTranslations('AboutUs');
+  const headTitle = useTranslations('HeadTitles');
 
   return (
     aboutUs && (
       <>
+        <Head>
+          <title>{headTitle('aboutUsPageTitle')}</title>
+        </Head>
         <div className={aboutUsStyle.aboutUs__content}>
           <Banner
             src={GALLERY + aboutUs.bannerImage.url}

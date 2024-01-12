@@ -22,7 +22,6 @@ interface Props {
 }
 
 const TourPage: React.FC<Props> = ({ tourData }) => {
-  console.log(tourData);
   const dispatch = useAppDispatch();
   const { locale, query } = useRouter();
   const { id } = query;
@@ -54,7 +53,11 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
               scheduleTable={tourData?.scheduleTable || null}
             />
             <Gallery images={tourData?.images} />
-            <FaqList faqList={tourData?.faqList || []} />
+
+            <div>
+              <h2 style={{ marginLeft: '20px' }}>F.A.Q.</h2>
+              <FaqList faqList={tourData?.faqList || []} />
+            </div>
 
             <Reviews />
             <hr />

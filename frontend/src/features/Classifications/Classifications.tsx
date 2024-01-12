@@ -10,6 +10,8 @@ import {
 import Banner from '@/components/Banner/Banner';
 import { GALLERY } from '@/constants';
 import Card from '@/components/Card/Card';
+import Head from 'next/head';
+import { useTranslations } from 'next-intl';
 
 const Classifications = () => {
   const classifications = useAppSelector(selectClassifications);
@@ -18,12 +20,17 @@ const Classifications = () => {
 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
+  const t = useTranslations('HeadTitles');
+
   const handlePlayButtonClick = () => {
     setIsVideoPlaying(true);
   };
 
   return (
     <>
+      <Head>
+        <title>{t('categoriesPageTitle')}</title>
+      </Head>
       <div className={style.classificationsBanner}>
         <Banner
           src={content?.bannerImage.url ? `${GALLERY}${content.bannerImage.url}` : ''}
