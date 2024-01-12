@@ -10,43 +10,35 @@ import { GALLERY } from '@/constants';
 interface GalleryItemProps {
   imageUrl: string;
   alt: string;
+  slides: Array<{ src: string; alt: string; index: number }>;
 }
 
-const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt }) => {
+const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt, slides }) => {
   const [open, setOpen] = React.useState(false);
-  const [currentIndex, setCurrentIndex] = React.useState(0);
 
-  const images = [
-    { url: imageUrl, name: alt }, // Assuming 'images' should be an array containing the current image
-  ];
-
-  const slides = images.map((image, index) => ({
-    src: `${GALLERY}${image.url}`,
-    alt: image.name,
-  }));
-
+    console.log( slides)
   return (
-    <div className={style.gallery_card} onClick={() => setOpen(true)}>
-      <div className={style.gallery_card_imageWrap}>
-        <Image
-          width={270}
-          height={168}
-          priority={true}
-          className={style.gallery_card_image}
-          src={`${GALLERY}${imageUrl}`}
-          alt={alt}
-        />
-      </div>
+      <div className={style.gallery_card} onClick={() => setOpen(true)}>
+        <div className={style.gallery_card_imageWrap}>
+          <Image
+              width={270}
+              height={168}
+              priority={true}
+              className={style.gallery_card_image}
+              src={`${GALLERY}${imageUrl}`}
+              alt={alt}
+          />
+        </div>
 
-      {open && (
-        <Lightbox
-          open={open}
-          close={() => setOpen(false)}
-          slides={slides}
-          render={{ slide: NextJsImage }}
-        />
-      )}
-    </div>
+        {open && (
+            <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                slides={slides}
+                render={{ slide: NextJsImage }}
+            />
+        )}
+      </div>
   );
 };
 
