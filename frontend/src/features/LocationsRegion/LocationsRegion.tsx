@@ -10,6 +10,7 @@ import Banner from '@/components/Banner/Banner';
 import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
 import playIcon from '@/assets/icon/icon-play.svg';
+import Head from 'next/head';
 
 const LocationsRegion: React.FC = () => {
   const content = useAppSelector(selectLocationsRegion);
@@ -25,6 +26,10 @@ const LocationsRegion: React.FC = () => {
   return (
     content && (
       <>
+        <Head>
+          <title>{content.name}</title>
+        </Head>
+
         <div className={style.locationBanner}>
           <Banner
             src={GALLERY + content.bannerImage.url}

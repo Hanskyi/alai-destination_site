@@ -11,6 +11,7 @@ import Reviews from '../../components/ClassificationReviews/Reviews';
 import { fetchReviewsForClassification } from '@/components/ClassificationReviews/TourReviewsThunk';
 import { useAppDispatch } from '@/store/hooks';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Classification = () => {
   const { classification } = useAppSelector((state) => state.classification);
@@ -34,6 +35,9 @@ const Classification = () => {
   return (
     classification && (
       <>
+        <Head>
+          <title>{classification.data.title}</title>
+        </Head>
         <div className={style.classificationBanner}>
           <Banner
             src={GALLERY + classification.data.image.url}

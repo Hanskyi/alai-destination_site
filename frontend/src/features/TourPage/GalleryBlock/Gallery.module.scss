@@ -25,6 +25,7 @@
 
 .gallery_block {
   padding-left: 22px;
+  margin-bottom: 30px;
 
   @include mixins.md {
     padding-left: 0;

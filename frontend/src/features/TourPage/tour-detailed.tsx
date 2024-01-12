@@ -53,13 +53,22 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
               scheduleTable={tourData?.scheduleTable || null}
             />
             <Gallery images={tourData?.images} />
-            <FaqList faqList={tourData?.faqList || []} />
+
+            <div>
+              <h2 style={{ marginLeft: '20px' }}>F.A.Q.</h2>
+              <FaqList faqList={tourData?.faqList || []} />
+            </div>
 
             <Reviews />
             <hr />
             <ReviewForm tourId={tourData?.id} />
           </div>
-          <TourDetails />
+          <TourDetails
+            category={tourData.classification.title}
+            duration={tourData.duration}
+            price={tourData.price}
+            seats={tourData.seats}
+          />
         </div>
       </div>
     </div>

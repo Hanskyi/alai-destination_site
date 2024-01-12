@@ -70,5 +70,9 @@
     "totalReviews": "out of {maxRating} based on {totalRatingCount} reviews submitted.",
     "filterByRating": "Filter by rating",
     "showAll": "Show All Reviews"
+  },
+  "HeadTitles": {
+    "categoriesPageTitle": "tour categories",
+    "aboutUsPageTitle": "about us"
   }
 }
