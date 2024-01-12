@@ -1,10 +1,14 @@
 import { wrapper } from '@/store/store';
 import { fetchHomeData, fetchClassifications, fetchLocations } from '@/features/Home/homeThunk';
 import HomePage from '@/features/Home/HomePage';
+import Head from 'next/head';
 
 const Home = () => {
   return (
     <>
+      <Head>
+        <title>alai destination</title>
+      </Head>
       <HomePage />
     </>
   );

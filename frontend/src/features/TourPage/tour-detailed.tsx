@@ -22,6 +22,7 @@ interface Props {
 }
 
 const TourPage: React.FC<Props> = ({ tourData }) => {
+  console.log(tourData);
   const dispatch = useAppDispatch();
   const { locale, query } = useRouter();
   const { id } = query;
@@ -59,7 +60,12 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
             <hr />
             <ReviewForm tourId={tourData?.id} />
           </div>
-          <TourDetails />
+          <TourDetails
+            category={tourData.classification.title}
+            duration={tourData.duration}
+            price={tourData.price}
+            seats={tourData.seats}
+          />
         </div>
       </div>
     </div>
