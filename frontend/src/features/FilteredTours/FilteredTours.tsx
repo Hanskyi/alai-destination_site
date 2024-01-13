@@ -107,7 +107,7 @@ const FilteredTours: React.FC<Props> = ({ tours, router, locations, classificati
     router
       .push({
         pathname: '/tours',
-        query: { ...router.query, duration: value.toString() },
+        query: { ...router.query, duration: value },
       })
       .then(() => {
         setLoading(false);
