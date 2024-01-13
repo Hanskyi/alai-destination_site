@@ -37,6 +37,10 @@
       width: 95%;
       transform: translate(-50%, -30%);
     }
+    @include mixins.xs {
+      width: 95%;
+      transform: translate(-50%, -40%);
+    }
 
     .mainBlockHeader {
       text-transform: capitalize;
@@ -60,6 +64,11 @@
         width: 100%;
         margin-bottom: 15px;
         font-size: 45px;
+      }
+      @include mixins.xs {
+        font-size: 35px;
+        line-height: 44px;
+
       }
     }
 
