@@ -26,9 +26,7 @@ const Gallery: React.FC<Props> = ({ images = [] }) => {
   return (
     <div className="container">
       <div className={style.gallery_block}>
-        <h3 className={style.gallery_block_title}>
-          Best of Alay Mountains Trek Photo {t('gallery')}
-        </h3>
+        <h3 className={style.gallery_block_title}>{t('gallery')}</h3>
 
         {images && images.length > 0 && (
           <div className={style.gallery_block_cards}>
