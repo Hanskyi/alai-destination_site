@@ -74,5 +74,8 @@
   "HeadTitles": {
     "categoriesPageTitle": "tour categories",
     "aboutUsPageTitle": "about us"
+  },
+  "FAQ": {
+    "title":"F.A.Q"
   }
 }

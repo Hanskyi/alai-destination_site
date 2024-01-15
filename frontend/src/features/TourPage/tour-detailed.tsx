@@ -13,6 +13,7 @@ import { GALLERY } from '@/constants';
 import { fetchReviewsForTour } from '@/components/ClassificationReviews/TourReviewsThunk';
 import { useAppDispatch } from '@/store/hooks';
 import { useRouter } from 'next/router';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   tourData: TourDataDetailed;
@@ -22,6 +23,7 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
   const dispatch = useAppDispatch();
   const { locale, query } = useRouter();
   const { id } = query;
+  const t = useTranslations('FAQ');
 
   useEffect(() => {
     if (id) {
@@ -52,7 +54,7 @@ const TourPage: React.FC<Props> = ({ tourData }) => {
             <Gallery images={tourData?.images} />
 
             <div>
-              <h2 style={{ marginLeft: '20px' }}>F.A.Q.</h2>
+              <h2 style={{ marginLeft: '20px' }}>{t('title')}</h2>
               <FaqList faqList={tourData?.faqList || []} />
             </div>
 

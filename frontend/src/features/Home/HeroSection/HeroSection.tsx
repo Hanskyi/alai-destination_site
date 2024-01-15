@@ -115,6 +115,7 @@ const HeroSection = () => {
               {showSelect && (
                 <AsyncSelect
                   key={router.locale}
+                  name="location"
                   onChange={handleLocationChange}
                   isMulti={false}
                   className={style.searchInput}
@@ -148,6 +149,7 @@ const HeroSection = () => {
                 {showSelect && (
                   <AsyncSelect
                     key={router.locale}
+                    name="category"
                     onChange={handleClassificationChange}
                     isMulti={false}
                     className={`${style.searchInput} ${style.searchInputCategory}`}

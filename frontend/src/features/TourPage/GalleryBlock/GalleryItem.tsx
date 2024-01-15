@@ -16,7 +16,6 @@ interface GalleryItemProps {
 const GalleryItem: React.FC<GalleryItemProps> = ({ imageUrl, alt, slides }) => {
   const [open, setOpen] = React.useState(false);
 
-  console.log(slides);
   return (
     <div className={style.gallery_card} onClick={() => setOpen(true)}>
       <div className={style.gallery_card_imageWrap}>

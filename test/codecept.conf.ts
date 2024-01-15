@@ -22,7 +22,8 @@ export const config: CodeceptJS.MainConfig = {
   "gherkin": {
     "features": "./features/*.feature",
     "steps": [
-      "./step_definitions/steps.ts"
+      "./step_definitions/languageSwitchTest.ts",
+      "./step_definitions/search.ts"
     ]
   },
   name: 'test',

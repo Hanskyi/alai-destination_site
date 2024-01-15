@@ -74,5 +74,8 @@
   "HeadTitles": {
     "categoriesPageTitle": "категории туров",
     "aboutUsPageTitle": "о нас"
+  },
+  "FAQ": {
+    "title":"Часто задаваемогые вопросы"
   }
 }

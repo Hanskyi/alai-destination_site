@@ -2,6 +2,12 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import ReactFlagsSelect from 'react-flags-select';
 import style from './LanguageSwitcher.module.scss';
+import { ParsedUrlQuery } from 'node:querystring';
+
+interface Path {
+  pathname: string;
+  query: ParsedUrlQuery;
+}
 
 const LanguageSwitcher = () => {
   const router = useRouter();
@@ -10,10 +16,17 @@ const LanguageSwitcher = () => {
     const currentPath = router.pathname;
     const currentQuery = router.query;
 
-    const href = {
+    let href: Path = {
       pathname: currentPath,
       query: currentQuery,
     };
+
+    if (currentPath === '/tours') {
+      href = {
+        pathname: currentPath,
+        query: {},
+      };
+    }
 
     if (router.locale?.toLowerCase() === locale.toLowerCase()) {
       return;
