@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import style from './Blog.module.scss';
@@ -12,34 +12,40 @@ import slideStyle from '@/components/SwiperComponent/SwiperComponent.module.scss
 import SwiperComponent from '@/components/SwiperComponent/SwiperComponent';
 
 const Blog = () => {
+  const [modifiedContent, setModifiedContent] = useState('');
   const { article } = useAppSelector((state) => state.articles);
 
   //Render Video
-  const renderVideo = () => {
-    const content = article?.data ? article.data.content : ''; // Get the content from article data
+  useEffect(() => {
+    const extractVideoID = (url: string) => {
+      const regex =
+        /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/;
+      const match = url.match(regex);
 
-    if (!content) {
-      return null;
+      return match ? match[1] : '';
+    };
+
+    const cont = article?.data ? article.data.content : '';
+
+    if (!cont) {
+      return;
     }
 
     const regex = /<figure class="media"><oembed url="(.*?)"><\/oembed><\/figure>/g;
 
-    const replacedData = content.replace(regex, (match, url) => {
+    let replacedData = cont.replace(regex, (_, url) => {
       const videoID = extractVideoID(url);
 
       return `<div className="videoWrapper"><iframe width="560" height="315" src="//www.youtube.com/embed/${videoID}" style={{ border: "none" } allowfullscreen></iframe></div>`;
     });
 
-    return <div dangerouslySetInnerHTML={{ __html: replacedData }} />;
-  };
+    replacedData = replacedData.replace(
+      /localhost:1337/g,
+      process.env.NEXT_PUBLIC_API_DOMAIN || 'localhost:1337',
+    );
 
-  const extractVideoID = (url: string) => {
-    const regex =
-      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/;
-    const match = url.match(regex);
-
-    return match ? match[1] : '';
-  };
+    setModifiedContent(replacedData);
+  }, [article]);
 
   return (
     <div className={`${style.blog} container`}>
@@ -70,7 +76,7 @@ const Blog = () => {
       </div>
       <div className={style.blog_content}>
         {/* Render the replaced content with videos */}
-        {renderVideo()}
+        {modifiedContent && <div dangerouslySetInnerHTML={{ __html: modifiedContent }} />}
       </div>
       <div style={{ overflow: 'hidden' }}>
         <h2 style={{ marginBottom: '20px' }}>Recommended</h2>
