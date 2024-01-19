@@ -19,6 +19,7 @@
     &.current_tab {
       .tabs_list_btn {
         background: #007bff;
+        cursor: pointer;
       }
     }
   }
@@ -31,6 +32,7 @@
     font-size: 16px;
     font-weight: 400;
     border-radius: 4px;
+    cursor: pointer;
   }
 }
 

@@ -5,6 +5,7 @@
   border: 1px solid #bebebe;
   padding: 25px 18px;
   display: flex;
+  cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
   &_link {
@@ -43,6 +44,12 @@
     font-size: 12px;
     color: #0000008c;
     margin-top: auto;
+    display: block;
+    max-width: 125px;
+    background-image: url('../../../assets/icon/icon-arrow-grey.svg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
   }
 }
 
@@ -56,9 +63,20 @@
     letter-spacing: 0.8px;
     color: #000000db;
     text-transform: uppercase;
+    background-image: url('../../../assets/icon/icon-arrow-black.svg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    max-width: 390px;
 
     &:hover {
       color: #818181;
+      background-image: url('../../../assets/icon/icon-arrow-grey.svg');
+    }
+
+    @include mixins.sm {
+      max-width: 250px;
+      background-position: right 105px bottom 5px;
     }
   }
 
