@@ -113,6 +113,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                         onClick={link.onClick}
                         src={link.imgSrc}
                         alt={link.imgAlt || 'icon'}
+                        // priority
                       />
                       <span className={toolbar.topText}>
                         {link.onClick ? (

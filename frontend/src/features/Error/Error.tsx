@@ -21,7 +21,7 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
             <path
               d="M56.1619 222.141L148.269 208.249C147.026 211.705 145.388 217.454 143.597 224.261C141.476 232.319 139.122 241.94 136.925 251.182C134.729 260.425 132.69 269.295 131.2 275.854C130.455 279.133 129.847 281.835 129.426 283.717C129.217 284.648 129.054 285.378 128.943 285.879H67.8027C67.7701 285.624 67.7306 285.315 67.6841 284.957C67.5336 283.797 67.3107 282.111 67.0213 280.011C66.4426 275.811 65.5976 269.95 64.5325 263.307C62.4654 250.415 59.5632 234.538 56.1619 222.141Z"
               stroke="white"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </g>
           <g filter="url(#filter1_d)">
@@ -31,7 +31,7 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
               width="24.3043"
               height="60.9015"
               stroke="white"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </g>
           <path
@@ -70,8 +70,8 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
           <path
             d="M125.355 296.209V317.657C125.355 320.97 122.669 323.657 119.355 323.657H103.625"
             stroke="#6D4225"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
           <g filter="url(#filter2_i)">
             <path
@@ -101,9 +101,9 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
               width="102.924"
               height="87.8752"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -122,9 +122,9 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
               width="34.3043"
               height="70.9015"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -143,9 +143,9 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
               width="208.429"
               height="228.589"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
               <feColorMatrix
                 in="SourceAlpha"
@@ -166,9 +166,9 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
               width="106.214"
               height="227.589"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
               <feColorMatrix
                 in="SourceAlpha"
@@ -196,8 +196,8 @@ const Error: React.FC<Props> = ({ statusCode, message }) => {
         >
           <rect width="1332" height="392" fill="url(#pattern0)" />
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M2519 391.782V392H2637V50.5832C2637.2 48.8696 2637.3 47.127 2637.3 45.3608C2637.3 20.3087 2616.99 0 2591.94 0C2570.08 0 2551.84 15.4529 2547.54 36.0276C2537.42 32.8294 2526.65 31.1045 2515.47 31.1045C2460.57 31.1045 2415.39 72.7378 2409.78 126.156C2399.94 118.565 2387.6 114.05 2374.2 114.05C2357.52 114.05 2342.47 121.057 2331.84 132.289C2318.16 107.506 2291.76 90.7216 2261.45 90.7216C2228.72 90.7216 2200.57 110.287 2188.04 138.359C2181.45 134.443 2173.76 132.194 2165.54 132.194C2142.58 132.194 2123.72 149.757 2121.67 172.182C2108.17 160.205 2090.4 152.931 2070.93 152.931C2043.44 152.931 2019.34 167.437 2005.87 189.213C1995.85 179.585 1982.24 173.667 1967.25 173.667C1953.96 173.667 1941.76 178.318 1932.19 186.081C1930.55 151.75 1902.2 124.418 1867.46 124.418C1843.84 124.418 1823.17 137.054 1811.85 155.935C1805.68 153.983 1799.11 152.931 1792.29 152.931C1762.48 152.931 1737.37 173.059 1729.81 200.466C1719.46 194.942 1707.64 191.811 1695.09 191.811C1681.9 191.811 1669.52 195.267 1658.8 201.321C1645.36 182.982 1623.66 171.075 1599.18 171.075C1590.33 171.075 1581.85 172.631 1573.98 175.485C1565.87 160.509 1550.02 150.339 1531.79 150.339C1515.85 150.339 1501.73 158.113 1493.01 170.076C1488.48 151.315 1471.59 137.379 1451.44 137.379C1427.82 137.379 1408.67 156.527 1408.67 180.147C1408.67 181.252 1408.71 182.346 1408.79 183.43C1402 180.484 1394.51 178.851 1386.63 178.851C1381.62 178.851 1376.76 179.513 1372.14 180.755C1372.3 178.846 1372.38 176.914 1372.38 174.963C1372.38 137.027 1341.63 106.274 1303.69 106.274C1265.75 106.274 1235 137.027 1235 174.963C1235 195.514 1244.03 213.957 1258.33 226.545V391.782H2519Z"
             fill="white"
           />
