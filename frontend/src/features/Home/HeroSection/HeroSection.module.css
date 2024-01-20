@@ -1,6 +1,5 @@
 .mainBlock {
   position: relative;
-  overflow: hidden;
 }
 .mainBlock .mainBlockImage {
   width: 100%;
@@ -42,8 +41,14 @@
 }
 @media screen and (max-width: 576px) {
   .mainBlock .mainBlockContainer {
-    width: 90%;
-    transform: translate(-55%, -30%);
+    width: 95%;
+    transform: translate(-50%, -30%);
+  }
+}
+@media screen and (max-width: 320px) {
+  .mainBlock .mainBlockContainer {
+    width: 95%;
+    transform: translate(-50%, -40%);
   }
 }
 .mainBlock .mainBlockContainer .mainBlockHeader {
@@ -54,7 +59,8 @@
   margin-bottom: 32px;
   color: white;
   font-size: 64px;
-  line-height: 64px;
+  line-height: 74px;
+  width: 50%;
 }
 @media screen and (max-width: 992px) {
   .mainBlock .mainBlockContainer .mainBlockHeader {
@@ -63,17 +69,26 @@
 }
 @media screen and (max-width: 768px) {
   .mainBlock .mainBlockContainer .mainBlockHeader {
-    width: 100%;
+    width: 80%;
     margin-bottom: 15px;
-    font-size: 48px;
+    font-size: 56px;
   }
 }
 @media screen and (max-width: 576px) {
   .mainBlock .mainBlockContainer .mainBlockHeader {
     width: 100%;
     margin-bottom: 15px;
-    font-size: 40px;
+    font-size: 45px;
   }
+}
+@media screen and (max-width: 320px) {
+  .mainBlock .mainBlockContainer .mainBlockHeader {
+    font-size: 35px;
+    line-height: 44px;
+  }
+}
+.mainBlock .mainBlockContainer .mainBlockHeaderMutation {
+  width: 100%;
 }
 .mainBlock .mainBlockContainer .formBlock {
   display: flex;
@@ -172,7 +187,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  background-image: url('https://cdn-icons-png.flaticon.com/128/8213/8213522.png');
+  background-image: url("https://cdn-icons-png.flaticon.com/128/8213/8213522.png");
   background-size: 20px 20px;
   background-position: right 15px center;
   background-repeat: no-repeat;

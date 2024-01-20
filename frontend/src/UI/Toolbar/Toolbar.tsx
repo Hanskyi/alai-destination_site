@@ -224,7 +224,7 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                 <div className={toolbar.closeButton} onClick={closeMenu}>
                   <div>&#x2715;</div>
                 </div>
-                <Link className={toolbar.headerLink} href="/">
+                <Link className={toolbar.headerLink} href="/" onClick={closeMenu}>
                   {t('item_4')}
                 </Link>
 
@@ -257,7 +257,12 @@ const Toolbar: React.FC<IProps> = ({ hfData, locations }) => {
                 )}
 
                 {largeLinks.map((link, index) => (
-                  <Link href={link.href} key={index} className={toolbar.headerLink}>
+                  <Link
+                    href={link.href}
+                    key={index}
+                    className={toolbar.headerLink}
+                    onClick={closeMenu}
+                  >
                     {link.text}
                   </Link>
                 ))}
