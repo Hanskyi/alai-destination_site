@@ -40,16 +40,24 @@
   }
 
   &_subtext {
+    position: relative;
     font-weight: 400;
     font-size: 12px;
     color: #0000008c;
     margin-top: auto;
     display: block;
-    max-width: 125px;
-    background-image: url('../../../assets/icon/icon-arrow-grey.svg');
-    background-position: right center;
-    background-repeat: no-repeat;
     cursor: pointer;
+
+    &::after {
+      content: '';
+      background-image: url('../../../assets/icon/icon-arrow-grey.svg');
+      background-position: right top 2px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+    }
   }
 }
 
@@ -57,26 +65,38 @@
   padding: 60px 22px;
 
   &_title {
+    position: relative;
     font-weight: 600;
     margin-bottom: 10px;
     font-size: 16px;
     letter-spacing: 0.8px;
     color: #000000db;
     text-transform: uppercase;
-    background-image: url('../../../assets/icon/icon-arrow-black.svg');
-    background-position: right center;
-    background-repeat: no-repeat;
     cursor: pointer;
-    max-width: 390px;
+    width: max-content;
+
+    &:after {
+      content: '';
+      background-image: url('../../../assets/icon/icon-arrow-black.svg');
+      background-position: right top 2px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+    }
 
     &:hover {
       color: #818181;
-      background-image: url('../../../assets/icon/icon-arrow-grey.svg');
+
+      &:after {
+        background-image: url('../../../assets/icon/icon-arrow-grey.svg');
+      }
     }
 
-    @include mixins.sm {
-      max-width: 250px;
-      background-position: right 105px bottom 5px;
+    @media (max-width: 470px) {
+      width: fit-content;
+      max-width: 300px;
     }
   }
 
