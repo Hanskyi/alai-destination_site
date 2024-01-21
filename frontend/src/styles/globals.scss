@@ -17,6 +17,7 @@ body {
   line-height: 24px;
   height: 100%;
 }
+
 #__next {
   height: 100%;
   display: flex;
@@ -30,6 +31,7 @@ header {
     height: 60px;
   }
 }
+
 footer {
   height: 200px;
 }
@@ -61,9 +63,11 @@ img {
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .flex-row {
   flex-direction: row;
 }
@@ -106,4 +110,18 @@ img {
   margin-bottom: 30px;
   justify-content: center;
   align-items: stretch;
+}
+
+.videoWrapper {
+  background: red;
+  iframe {
+
+  }
+}
+
+
+.DetailedTabs_day_detailed__acooa div > div > iframe {
+  @include mixins.md {
+    width: 100% !important;
+  }
 }

@@ -81,15 +81,15 @@ const ReviewForm: React.FC<Props> = ({ tourId }) => {
     }
   }, [session, tourId, review]);
 
-  if (!session) {
-    return (
-      <div className={styles.review_form}>
-        <div className={styles.placeholder}>
-          <p>Please log in to submit a review.</p>
-        </div>
-      </div>
-    );
-  }
+  // if (!session) {
+  //   return (
+  //     <div className={styles.review_form}>
+  //       <div className={styles.placeholder}>
+  //         <p>Please log in to submit a review.</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (hasSubmittedReview) {
     return (

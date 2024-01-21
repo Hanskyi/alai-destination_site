@@ -23,8 +23,6 @@ export const fetchReviewsForClassification = createAsyncThunk<TourReview[], { id
   async ({ id }) => {
     try {
       const responseEng = await axiosApi.get<any>(`classifications/${id}?_populate=tours`);
-
-      console.log(responseEng);
       const tourData = responseEng.data.data;
 
       if (!tourData || !tourData?.tours) {
@@ -60,7 +58,6 @@ export const fetchReviewsForTour = createAsyncThunk<TourReview[], string>(
 
       const fetchData = response.data.data.reviews;
 
-      console.log(fetchData, 'fetchData');
       return fetchData;
     } catch (error) {
       console.error('Error fetching reviews for tour:', error);
