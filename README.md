@@ -69,8 +69,7 @@ The project has been successfully deployed on the Digital Ocean platform, provid
 
 Join Alai Destination and discover the world of exciting travels with our innovative tourism project! 🌍🚀
 
-
-## 🚀 Команды Разработки
+## 🚀 Команды Фронтенд Разработки
 
 ### Установка проекта
 
@@ -78,50 +77,35 @@ Join Alai Destination and discover the world of exciting travels with our innova
 git clone https://github.com/your-username/alai-destination.git
 npm install
 ```
-
-
-Прошу прощения за недоразумение. Вот команды в более удобном формате README:
-
-markdown
-Copy code
-## 🚀 Команды Разработки
-
-### Установка проекта
-
+## Запуск в режиме разработки
 ```bash
-git clone https://github.com/your-username/alai-destination.git
-npm install
-Запуск в режиме разработки
-bash
-Copy code
 npm run dev
-Форматирование кода с использованием Prettier
-bash
-Copy code
+```
+## Форматирование кода с использованием Prettier
+```bash
 npm run format
-Проверка форматирования кода
-bash
-Copy code
+```
+## Проверка форматирования кода
+```bash
 npm run format:check
-Сборка проекта
-bash
-Copy code
+```
+## Сборка проекта
+```bash
 npm run build
-Запуск собранного проекта
-bash
-Copy code
+```
+## Запуск собранного проекта
+```bash
 npm run start
-Линтинг кода
-bash
-Copy code
+```
+## Линтинг кода
+``` bash
 npm run lint
-Проверка типов с использованием TypeScript
-bash
-Copy code
+```
+## Проверка типов с использованием TypeScript
+```bash
 npm run typecheck
-Запуск тестов с использованием Jest
-bash
-Copy code
+```
+## Запуск тестов с использованием Jest
+```bash
 npm test
-Примечание: Убедитесь, что вы выполнили все вышеперечисленные шаги для успешного запуска фронтенда проекта.
 ```
