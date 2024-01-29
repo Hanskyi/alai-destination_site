@@ -109,7 +109,7 @@
   justify-content: space-evenly;
 
   @include mixins.lg {
-    margin-top: -54px;
+    margin-top: -34px;
     display: block;
   }
 }
@@ -140,9 +140,11 @@
 }
 
 .logo {
-  @include mixins.lg {
-    width: 100px;
-    height: 24px;
+  img {
+    @include mixins.lg {
+      width: fit-content !important;
+      height: 45px !important;
+    }
   }
 }
 
