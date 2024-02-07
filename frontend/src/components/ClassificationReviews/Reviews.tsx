@@ -5,7 +5,7 @@ import FilterByRating from '@/components/ClassificationReviews/components/Filter
 import ClientReview from '@/components/ClassificationReviews/components/ClientReview/ClientReview';
 import {TourReview} from '@/type';
 import {useTranslations} from 'next-intl';
-import {useAppSelector} from '../../store/hooks';
+import {useAppSelector} from '@/store/hooks';
 
 const MAX_DISPLAYED_REVIEWS = 15;
 
@@ -24,8 +24,7 @@ const Reviews = () => {
       filtered = (reviews || []).filter((review) => review?.rating === rate);
     }
 
-    const lastFifteenReviews = filtered.slice(-MAX_DISPLAYED_REVIEWS);
-    return lastFifteenReviews;
+    return  filtered.slice(-MAX_DISPLAYED_REVIEWS);
   }, [rate, reviews]);
 
   const handleShowAllReviews = () => {
