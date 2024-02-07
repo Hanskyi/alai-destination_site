@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import FooterLogo from '../../assets/footer/logo_footer.png';
+import FooterLogo from '../../../public/assets/footer/logo_footer.png';
 import Socials from './Components/Socials';
 import styles from './Footer.module.scss';
 import Image from 'next/image';

@@ -1,12 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React, {useMemo, useState} from 'react';
 import styles from './Reviews.module.scss';
 import Rating from '@/components/Rating/Rating';
 import FilterByRating from '@/components/ClassificationReviews/components/FilterByRating/FilterByRating';
 import ClientReview from '@/components/ClassificationReviews/components/ClientReview/ClientReview';
-import { TourReview } from '@/type';
-import { useSession } from 'next-auth/react';
-import { useTranslations } from 'next-intl';
-import { useAppSelector } from '../../store/hooks';
+import {TourReview} from '@/type';
+import {useTranslations} from 'next-intl';
+import {useAppSelector} from '../../store/hooks';
 
 const MAX_DISPLAYED_REVIEWS = 15;
 

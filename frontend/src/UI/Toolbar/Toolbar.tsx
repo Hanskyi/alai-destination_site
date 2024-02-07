@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import phoneIcon from '@/assets/toolbar/phone-icon.png';
-import enter from '@/assets/toolbar/enter1.png';
-import logout from '@/assets/toolbar/logout.png';
+import phoneIcon from '../../../public/assets/toolbar/phone-icon.png';
+import enter from '../../../public/assets/toolbar/enter1.png';
+import logout from '../../../public/assets/toolbar/logout.png';
 import toolbar from './Toolbar.module.scss';
 import Backdrop from '@/components/Backdrop/Backdrop';
 import { signIn, signOut, useSession } from 'next-auth/react';
