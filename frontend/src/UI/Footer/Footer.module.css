@@ -48,7 +48,7 @@
   cursor: pointer;
 }
 .footer__top .block-subscribe button .i-envelope {
-  background: url('../../assets/icon/i_envelope.png') no-repeat;
+  background: url('../../../public/assets/icon/i_envelope.png') no-repeat;
   background-size: contain;
   display: block;
   width: 18px;

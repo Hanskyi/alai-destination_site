@@ -9,7 +9,7 @@ import { GALLERY } from '@/constants';
 import Banner from '@/components/Banner/Banner';
 import ToursDisplay from '@/components/ToursDisplay/ToursDisplay';
 import { useTranslations } from 'next-intl';
-import playIcon from '@/assets/icon/icon-play.svg';
+import playIcon from '../../../public/assets/icon/icon-play.svg';
 import Head from 'next/head';
 
 const LocationsRegion: React.FC = () => {

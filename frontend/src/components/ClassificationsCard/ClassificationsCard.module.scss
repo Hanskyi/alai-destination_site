@@ -70,7 +70,7 @@
       color: #fff;
       border: none;
       cursor: pointer;
-      background-image: url('../../assets/icon/icon-arrow.svg');
+      background-image: url('../../../public/assets/icon/icon-arrow.svg');
       background-size: 20px 20px;
       background-position: right 16px center;
       background-repeat: no-repeat;
@@ -84,7 +84,7 @@
     &__button:hover {
       transition: background-color 0.4s ease-in-out;
       background-color: #ffffff;
-      background-image: url('../../assets/icon/icon-arrow-black.svg');
+      background-image: url('../../../public/assets/icon/icon-arrow-black.svg');
       color: black;
     }
   }

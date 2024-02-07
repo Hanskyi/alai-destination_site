@@ -51,7 +51,7 @@ export default function App({ Component, ...rest }: AppProps) {
           <Toolbar hfData={headerFooter} locations={locations} />
           <div className="content__wrapper">
             <Head>
-              <link rel="shortcut icon" href="/frontend/src/assets/favicon.ico" />
+              <link rel="shortcut icon" href="/assets/favicon.ico" />
             </Head>
             <Component {...props.pageProps} />
           </div>
