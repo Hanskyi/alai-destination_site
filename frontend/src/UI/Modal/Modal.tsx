@@ -1,6 +1,6 @@
 'use client';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import IconClose from '@/assets/icon/IconClose';
+import IconClose from '../../../public/assets/icon/IconClose';
 import modal from './Modal.module.scss';
 
 interface ModalData {
