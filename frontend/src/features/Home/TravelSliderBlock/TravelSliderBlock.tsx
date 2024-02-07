@@ -27,7 +27,7 @@ const TravelSliderBlock = () => {
               <Card
                 title={category.title}
                 id={category.id}
-                image={category.image.url}
+                image={category.image ? category.image.url : ''}
                 categoryCard={true}
               />
             </SwiperSlide>
